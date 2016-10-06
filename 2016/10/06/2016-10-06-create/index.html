@@ -14,7 +14,7 @@
 <meta property="og:site_name" content="香辣猪蹄儿">
 <meta property="og:description" content="工作已经一年了，想着该稍微停下来总结一下了。恰巧印象笔记开始限终端限流量。于是就有了写博客记录一下日常感想，同时将之前的一些笔记迁移到博客的想法。
 在github闲逛的时候看到了Litten的博客，很是喜欢。于是发现了hexo,各种特性都让我甚是喜欢，就这么对Hexo一见钟情了。在知乎上搜到了一篇介绍hexo主题的回答,一圈看下来，还是比较喜欢Yilia这个主题，也就是我最早看到的Litten开发">
-<meta property="og:updated_time" content="2016-10-06T18:08:06.203Z">
+<meta property="og:updated_time" content="2016-10-06T18:33:49.472Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用hexo在github上搭建博客的记录">
 <meta name="twitter:description" content="工作已经一年了，想着该稍微停下来总结一下了。恰巧印象笔记开始限终端限流量。于是就有了写博客记录一下日常感想，同时将之前的一些笔记迁移到博客的想法。
@@ -153,8 +153,7 @@
 <p>在github闲逛的时候看到了<a href="https://litten.github.io/" target="_blank" rel="external">Litten</a>的博客，很是喜欢。于是发现了<a href="https://hexo.io/" target="_blank" rel="external">hexo</a>,各种特性都让我甚是喜欢，就这么对Hexo一见钟情了。在知乎上搜到了一篇介绍<a href="https://www.zhihu.com/question/24422335" target="_blank" rel="external">hexo主题</a>的回答,一圈看下来，还是比较喜欢<a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">Yilia</a>这个主题，也就是我最早看到的Litten开发的~缘分啊，（逃</p>
 <p>于是果断决定使用这个主题，计划着先直接用着，后续有时间的话自己也试着DIY一下自己的主题。</p>
 <p>废话不多说了，简单的记录一下第一次搭建Hexo博客的过程。</p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Hexo是在nodejs环境下搭建的，在npm的帮助下几行命令就轻松搞定，简直是轻松愉快。当然了，前提是已经安装好了git和nodejs。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-cli -g</div><div class="line">$ hexo init blog</div><div class="line">$ <span class="built_in">cd</span> blog</div><div class="line">$ npm install</div><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Hexo是在nodejs环境下搭建的，在npm的帮助下几行命令就轻松搞定，简直是轻松愉快。当然了，前提是已经安装好了git和nodejs。<br>测试意见部署<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-cli -g</div><div class="line">$ hexo init blog</div><div class="line">$ <span class="built_in">cd</span> blog</div><div class="line">$ npm install</div><div class="line">$ hexo server</div></pre></td></tr></table></figure></p>
 <h2 id="切换主题"><a href="#切换主题" class="headerlink" title="切换主题"></a>切换主题</h2><p>同样很方便，到博客的根目录下，将主题git下来。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/litten/hexo-theme-yilia.git themes/yilia</div></pre></td></tr></table></figure>
 <p>然后修改根目录下_config.yml中的配置项theme: yilia。如果server是在运行状态下，甚至都不需要重启。只需要刷新下页面，新的主题就已经换上去了。开开心心- -</p>
