@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yvshuo.github.io/"/>
-  <updated>2016-10-07T14:01:32.217Z</updated>
+  <updated>2016-10-07T15:51:24.480Z</updated>
   <id>http://yvshuo.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yvshuo.github.io/2016/10/07/2016-10-07-githubssh/"/>
     <id>http://yvshuo.github.io/2016/10/07/2016-10-07-githubssh/</id>
     <published>2016-10-07T04:31:27.000Z</published>
-    <updated>2016-10-07T14:01:32.217Z</updated>
+    <updated>2016-10-07T15:51:24.480Z</updated>
     
     <content type="html"><![CDATA[<p>今天研究了一下hexo的自动打包部署，记录一下。</p>
 <h2 id="配置github的ssh"><a href="#配置github的ssh" class="headerlink" title="配置github的ssh"></a>配置github的ssh</h2><h3 id="本地生成公钥"><a href="#本地生成公钥" class="headerlink" title="本地生成公钥"></a>本地生成公钥</h3><p>运行 git Bash 客户端，检查是否已经配置过SSH key。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~/.ssh</div><div class="line">$ ls</div></pre></td></tr></table></figure></p>
@@ -38,7 +38,7 @@
 <p>配置完成后，测试一下是否配置成功。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh -T git@github.com</div></pre></td></tr></table></figure></p>
 <p>如果显示以下警告：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">The authenticity of host <span class="string">'github.com (207.97.227.239)'</span> can<span class="string">'t be established.</span></div><div class="line"># RSA key fingerprint is &lt;your fingerprint&gt;.</div><div class="line"># Are you sure you want to continue connecting (yes/no)?</div></pre></td></tr></table></figure></p>
 <p>则说明已经配置成功了，输入yes即可。</p>
-<h2 id="配置hexo的自动打包部署"><a href="#配置hexo的自动打包部署" class="headerlink" title="配置hexo的自动打包部署"></a>配置hexo的自动打包部署</h2><h3 id="安装hexo-feployer-git"><a href="#安装hexo-feployer-git" class="headerlink" title="安装hexo-feployer-git"></a>安装hexo-feployer-git</h3><p>还是通过npm来安装，输入下面的命令，稍等片刻即可安装成功。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
+<h2 id="配置hexo的自动打包部署"><a href="#配置hexo的自动打包部署" class="headerlink" title="配置hexo的自动打包部署"></a>配置hexo的自动打包部署</h2><h3 id="安装hexo-deployer-git"><a href="#安装hexo-deployer-git" class="headerlink" title="安装hexo-deployer-git"></a>安装hexo-deployer-git</h3><p>还是通过npm来安装，输入下面的命令，稍等片刻即可安装成功。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
 <h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><p>在根目录的_config.yml中找到以下代码段。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  <span class="built_in">type</span>: git</div><div class="line">  repo: &lt;repository url&gt;</div><div class="line">  branch: [branch]</div><div class="line">  message: [message]</div></pre></td></tr></table></figure></p>
 <ul>
 <li>repo 里配置git仓库的信息，这里我的就是git@github.com:yvshuo/yvshuo.github.io</li>
@@ -46,6 +46,7 @@
 <li>message 是自定义提交的信息，默认为Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}，可以空着</li>
 </ul>
 <h3 id="自动部署提交"><a href="#自动部署提交" class="headerlink" title="自动部署提交"></a>自动部署提交</h3><p>配置完成后，剩下的就是一条命令了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate --deploy</div></pre></td></tr></table></figure></p>
+<p>缩写的命令也是可以的。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo g -<span class="_">-d</span></div></pre></td></tr></table></figure></p>
 <p>开开心心。。。。</p>
 <h2 id="最后唠叨几句"><a href="#最后唠叨几句" class="headerlink" title="最后唠叨几句"></a>最后唠叨几句</h2><ul>
 <li>发现一篇很好的介绍hexo的文章，戳<a href="http://blog.fens.me/hexo-blog-github/" target="_blank" rel="external">Hexo在github上构建免费的Web应用</a></li>
