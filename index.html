@@ -152,16 +152,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>今天研究了一下hexo的自动打包部署，记录一下。</p>
-<h2 id="配置github的ssh"><a href="#配置github的ssh" class="headerlink" title="配置github的ssh"></a>配置github的ssh</h2><h3 id="本地生成公钥"><a href="#本地生成公钥" class="headerlink" title="本地生成公钥"></a>本地生成公钥</h3><p>运行 git Bash 客户端，检查是否已经配置过SSH key。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~/.ssh</div><div class="line">$ ls</div></pre></td></tr></table></figure>
-<p>如果没有 id_rsa 和 id_rsa.pub，则需要创建一个SSH key。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C <span class="string">"XXX@XXX.com"</span></div></pre></td></tr></table></figure>
-<ul>
-<li>-t 制定密钥类型，默认rsa，可以省略</li>
-<li>-C 设置注释文字，通常设置自己的邮箱</li>
-<li>-f 制定密钥文件存储文件名</li>
-</ul>
-<p>然后就会生成 id_rsa 和 id_rsa.pub 两个文件，其中 id_rsa.pub就是我们要配在github里的公钥。</p>
+<h2 id="配置github的ssh"><a href="#配置github的ssh" class="headerlink" title="配置github的ssh"></a>配置github的ssh</h2><h3 id="本地生成公钥"><a href="#本地生成公钥" class="headerlink" title="本地生成公钥"></a>本地生成公钥</h3><p>运行 git Bash 客户端，检查是否已经配置过SSH key。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~/.ssh</div><div class="line">$ ls</div></pre></td></tr></table></figure></p>
         <p class="article-more-link">
           <a  href="/2016/10/07/2016-10-07-githubssh/#more">more >></a>
         </p>
@@ -217,8 +208,6 @@
 <p>在github闲逛的时候看到了<a href="https://litten.github.io/">Litten</a>的博客，很是喜欢。于是发现了<a href="https://hexo.io/">hexo</a>,各种特性都让我甚是喜欢，就这么对Hexo一见钟情了。在知乎上搜到了一篇介绍<a href="https://www.zhihu.com/question/24422335">hexo主题</a>的回答,一圈看下来，还是比较喜欢<a href="https://github.com/litten/hexo-theme-yilia">Yilia</a>这个主题，也就是我最早看到的Litten开发的~缘分啊，（逃</p>
 <p>于是果断决定使用这个主题，计划着先直接用着，后续有时间的话自己也试着DIY一下自己的主题。</p>
 <p>废话不多说了，简单的记录一下第一次搭建Hexo博客的过程。</p>
-<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Hexo是在nodejs环境下搭建的，在npm的帮助下几行命令就轻松搞定，简直是轻松愉快。当然了，前提是已经安装好了git和nodejs。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-cli -g</div><div class="line">$ hexo init blog</div><div class="line">$ <span class="built_in">cd</span> blog</div><div class="line">$ npm install</div><div class="line">$ hexo server</div></pre></td></tr></table></figure>
         <p class="article-more-link">
           <a  href="/2016/10/06/2016-10-06-create/#more">more >></a>
         </p>

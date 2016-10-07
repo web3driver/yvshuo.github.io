@@ -7,37 +7,19 @@
   <title>配置hexo的一键打包部署 | 香辣猪蹄儿</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="今天研究了一下hexo的自动打包部署，记录一下。
-配置github的ssh本地生成公钥运行 git Bash 客户端，检查是否已经配置过SSH key。
-12$ cd ~/.ssh$ ls
-如果没有 id_rsa 和 id_rsa.pub，则需要创建一个SSH key。
-1$ ssh-keygen -t rsa -C &quot;XXX@XXX.com&quot;
-
--t 制定密钥类型，默认rsa，可以省略
--C 设">
+配置github的ssh本地生成公钥运行 git Bash 客户端，检查是否已经配置过SSH key。12$ cd ~/.ssh$ ls">
 <meta property="og:type" content="article">
 <meta property="og:title" content="配置hexo的一键打包部署">
 <meta property="og:url" content="http://yvshuo.github.io/2016/10/07/2016-10-07-githubssh/index.html">
 <meta property="og:site_name" content="香辣猪蹄儿">
 <meta property="og:description" content="今天研究了一下hexo的自动打包部署，记录一下。
-配置github的ssh本地生成公钥运行 git Bash 客户端，检查是否已经配置过SSH key。
-12$ cd ~/.ssh$ ls
-如果没有 id_rsa 和 id_rsa.pub，则需要创建一个SSH key。
-1$ ssh-keygen -t rsa -C &quot;XXX@XXX.com&quot;
-
--t 制定密钥类型，默认rsa，可以省略
--C 设">
+配置github的ssh本地生成公钥运行 git Bash 客户端，检查是否已经配置过SSH key。12$ cd ~/.ssh$ ls">
 <meta property="og:image" content="http://yvshuo.github.io/assets/images/2016/10/07/githubssh-1.png">
-<meta property="og:updated_time" content="2016-10-07T05:41:45.871Z">
+<meta property="og:updated_time" content="2016-10-07T14:01:32.217Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="配置hexo的一键打包部署">
 <meta name="twitter:description" content="今天研究了一下hexo的自动打包部署，记录一下。
-配置github的ssh本地生成公钥运行 git Bash 客户端，检查是否已经配置过SSH key。
-12$ cd ~/.ssh$ ls
-如果没有 id_rsa 和 id_rsa.pub，则需要创建一个SSH key。
-1$ ssh-keygen -t rsa -C &quot;XXX@XXX.com&quot;
-
--t 制定密钥类型，默认rsa，可以省略
--C 设">
+配置github的ssh本地生成公钥运行 git Bash 客户端，检查是否已经配置过SSH key。12$ cd ~/.ssh$ ls">
 <meta name="twitter:image" content="http://yvshuo.github.io/assets/images/2016/10/07/githubssh-1.png">
   
     <link rel="alternative" href="/atom.xml" title="香辣猪蹄儿" type="application/atom+xml">
@@ -174,8 +156,8 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>今天研究了一下hexo的自动打包部署，记录一下。</p>
-<h2 id="配置github的ssh"><a href="#配置github的ssh" class="headerlink" title="配置github的ssh"></a>配置github的ssh</h2><h3 id="本地生成公钥"><a href="#本地生成公钥" class="headerlink" title="本地生成公钥"></a>本地生成公钥</h3><p>运行 git Bash 客户端，检查是否已经配置过SSH key。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~/.ssh</div><div class="line">$ ls</div></pre></td></tr></table></figure>
+<h2 id="配置github的ssh"><a href="#配置github的ssh" class="headerlink" title="配置github的ssh"></a>配置github的ssh</h2><h3 id="本地生成公钥"><a href="#本地生成公钥" class="headerlink" title="本地生成公钥"></a>本地生成公钥</h3><p>运行 git Bash 客户端，检查是否已经配置过SSH key。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~/.ssh</div><div class="line">$ ls</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
 <p>如果没有 id_rsa 和 id_rsa.pub，则需要创建一个SSH key。</p>
 <figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C <span class="string">"XXX@XXX.com"</span></div></pre></td></tr></table></figure>
 <ul>
@@ -184,7 +166,6 @@
 <li>-f 制定密钥文件存储文件名</li>
 </ul>
 <p>然后就会生成 id_rsa 和 id_rsa.pub 两个文件，其中 id_rsa.pub就是我们要配在github里的公钥。</p>
-<a id="more"></a>
 <h3 id="在github中配置ssh-key"><a href="#在github中配置ssh-key" class="headerlink" title="在github中配置ssh key"></a>在github中配置ssh key</h3><p>在github中找到配置项的SSH and GPG keys，然后按下图所示配置。</p>
 <p><img src="/assets/images/2016/10/07/githubssh-1.png" alt=""></p>
 <p>配置完成后，测试一下是否配置成功。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh -T git@github.com</div></pre></td></tr></table></figure></p>
