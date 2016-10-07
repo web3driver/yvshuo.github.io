@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title>香辣猪蹄儿</title>
+  <subtitle>吃着猪蹄儿写着代码，开开心心~</subtitle>
+  <link href="/atom.xml" rel="self"/>
+  
+  <link href="http://yvshuo.github.io/"/>
+  <updated>2016-10-07T05:41:45.871Z</updated>
+  <id>http://yvshuo.github.io/</id>
+  
+  <author>
+    <name>yvshuo</name>
+    
+  </author>
+  
+  <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>配置hexo的一键打包部署</title>
+    <link href="http://yvshuo.github.io/2016/10/07/2016-10-07-githubssh/"/>
+    <id>http://yvshuo.github.io/2016/10/07/2016-10-07-githubssh/</id>
+    <published>2016-10-07T04:31:27.000Z</published>
+    <updated>2016-10-07T05:41:45.871Z</updated>
+    
+    <content type="html"><![CDATA[<p>今天研究了一下hexo的自动打包部署，记录一下。</p>
+<h2 id="配置github的ssh"><a href="#配置github的ssh" class="headerlink" title="配置github的ssh"></a>配置github的ssh</h2><h3 id="本地生成公钥"><a href="#本地生成公钥" class="headerlink" title="本地生成公钥"></a>本地生成公钥</h3><p>运行 git Bash 客户端，检查是否已经配置过SSH key。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~/.ssh</div><div class="line">$ ls</div></pre></td></tr></table></figure>
+<p>如果没有 id_rsa 和 id_rsa.pub，则需要创建一个SSH key。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C <span class="string">"XXX@XXX.com"</span></div></pre></td></tr></table></figure>
+<ul>
+<li>-t 制定密钥类型，默认rsa，可以省略</li>
+<li>-C 设置注释文字，通常设置自己的邮箱</li>
+<li>-f 制定密钥文件存储文件名</li>
+</ul>
+<p>然后就会生成 id_rsa 和 id_rsa.pub 两个文件，其中 id_rsa.pub就是我们要配在github里的公钥。</p>
+<a id="more"></a>
+<h3 id="在github中配置ssh-key"><a href="#在github中配置ssh-key" class="headerlink" title="在github中配置ssh key"></a>在github中配置ssh key</h3><p>在github中找到配置项的SSH and GPG keys，然后按下图所示配置。</p>
+<p><img src="/assets/images/2016/10/07/githubssh-1.png" alt=""></p>
+<p>配置完成后，测试一下是否配置成功。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh -T git@github.com</div></pre></td></tr></table></figure></p>
+<p>如果显示以下警告：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">The authenticity of host <span class="string">'github.com (207.97.227.239)'</span> can<span class="string">'t be established.</span></div><div class="line"># RSA key fingerprint is &lt;your fingerprint&gt;.</div><div class="line"># Are you sure you want to continue connecting (yes/no)?</div></pre></td></tr></table></figure></p>
+<p>则说明已经配置成功了，输入yes即可。</p>
+<h2 id="配置hexo的自动打包部署"><a href="#配置hexo的自动打包部署" class="headerlink" title="配置hexo的自动打包部署"></a>配置hexo的自动打包部署</h2><h3 id="安装hexo-feployer-git"><a href="#安装hexo-feployer-git" class="headerlink" title="安装hexo-feployer-git"></a>安装hexo-feployer-git</h3><p>还是通过npm来安装，输入下面的命令，稍等片刻即可安装成功。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
+<h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><p>在根目录的_config.yml中找到以下代码段。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  <span class="built_in">type</span>: git</div><div class="line">  repo: &lt;repository url&gt;</div><div class="line">  branch: [branch]</div><div class="line">  message: [message]</div></pre></td></tr></table></figure></p>
+<ul>
+<li>repo 里配置git仓库的信息，这里我的就是git@github.com:yvshuo/yvshuo.github.io</li>
+<li>branch 里配置分支名称，我的是主分支，就配置的master</li>
+<li>message 是自定义提交的信息，默认为Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}，可以空着</li>
+</ul>
+<h3 id="自动部署提交"><a href="#自动部署提交" class="headerlink" title="自动部署提交"></a>自动部署提交</h3><p>配置完成后，剩下的就是一条命令了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate --deploy</div></pre></td></tr></table></figure></p>
+<p>开开心心。。。。</p>
+<h2 id="最后唠叨几句"><a href="#最后唠叨几句" class="headerlink" title="最后唠叨几句"></a>最后唠叨几句</h2><ul>
+<li>发现一篇很好的介绍hexo的文章，戳<a href="http://blog.fens.me/hexo-blog-github/" target="_blank" rel="external">Hexo在github上构建免费的Web应用</a></li>
+<li>明天又要上班了，终于又可以开心的建设社会主义了。。。。。。（逃</li>
+</ul>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;今天研究了一下hexo的自动打包部署，记录一下。&lt;/p&gt;
+&lt;h2 id=&quot;配置github的ssh&quot;&gt;&lt;a href=&quot;#配置github的ssh&quot; class=&quot;headerlink&quot; title=&quot;配置github的ssh&quot;&gt;&lt;/a&gt;配置github的ssh&lt;/h2&gt;&lt;h3 id=&quot;本地生成公钥&quot;&gt;&lt;a href=&quot;#本地生成公钥&quot; class=&quot;headerlink&quot; title=&quot;本地生成公钥&quot;&gt;&lt;/a&gt;本地生成公钥&lt;/h3&gt;&lt;p&gt;运行 git Bash 客户端，检查是否已经配置过SSH key。&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ &lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; ~/.ssh&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;$ ls&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;如果没有 id_rsa 和 id_rsa.pub，则需要创建一个SSH key。&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ ssh-keygen -t rsa -C &lt;span class=&quot;string&quot;&gt;&quot;XXX@XXX.com&quot;&lt;/span&gt;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;ul&gt;
+&lt;li&gt;-t 制定密钥类型，默认rsa，可以省略&lt;/li&gt;
+&lt;li&gt;-C 设置注释文字，通常设置自己的邮箱&lt;/li&gt;
+&lt;li&gt;-f 制定密钥文件存储文件名&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;然后就会生成 id_rsa 和 id_rsa.pub 两个文件，其中 id_rsa.pub就是我们要配在github里的公钥。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://yvshuo.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>使用hexo在github上搭建博客的记录</title>
+    <link href="http://yvshuo.github.io/2016/10/06/2016-10-06-create/"/>
+    <id>http://yvshuo.github.io/2016/10/06/2016-10-06-create/</id>
+    <published>2016-10-05T16:40:58.000Z</published>
+    <updated>2016-10-07T04:27:39.363Z</updated>
+    
+    <content type="html"><![CDATA[<p>工作已经一年了，想着该稍微停下来总结一下了。恰巧印象笔记开始限终端限流量。于是就有了写博客记录一下日常感想，同时将之前的一些笔记迁移到博客的想法。</p>
+<p>在github闲逛的时候看到了<a href="https://litten.github.io/" target="_blank" rel="external">Litten</a>的博客，很是喜欢。于是发现了<a href="https://hexo.io/" target="_blank" rel="external">hexo</a>,各种特性都让我甚是喜欢，就这么对Hexo一见钟情了。在知乎上搜到了一篇介绍<a href="https://www.zhihu.com/question/24422335" target="_blank" rel="external">hexo主题</a>的回答,一圈看下来，还是比较喜欢<a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">Yilia</a>这个主题，也就是我最早看到的Litten开发的~缘分啊，（逃</p>
+<p>于是果断决定使用这个主题，计划着先直接用着，后续有时间的话自己也试着DIY一下自己的主题。</p>
+<p>废话不多说了，简单的记录一下第一次搭建Hexo博客的过程。</p>
+<h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>Hexo是在nodejs环境下搭建的，在npm的帮助下几行命令就轻松搞定，简直是轻松愉快。当然了，前提是已经安装好了git和nodejs。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-cli -g</div><div class="line">$ hexo init blog</div><div class="line">$ <span class="built_in">cd</span> blog</div><div class="line">$ npm install</div><div class="line">$ hexo server</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<h2 id="切换主题"><a href="#切换主题" class="headerlink" title="切换主题"></a>切换主题</h2><p>同样很方便，到博客的根目录下，将主题git下来。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/litten/hexo-theme-yilia.git themes/yilia</div></pre></td></tr></table></figure>
+<p>然后修改根目录下_config.yml中的配置项theme: yilia。如果server是在运行状态下，甚至都不需要重启。只需要刷新下页面，新的主题就已经换上去了。开开心心- -</p>
+<h2 id="新建文章"><a href="#新建文章" class="headerlink" title="新建文章"></a>新建文章</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo new <span class="string">"我的文章"</span></div></pre></td></tr></table></figure>
+<p>这样就会生成一篇叫“我的文章”的文章了。默认会在_posts文件夹下新建一个对应的markdown文件“我的文章.md”，编辑这个md文件就可以写文章并发布了。格式遵循<a href="https://daringfireball.net/projects/markdown/syntax" target="_blank" rel="external">md的语法</a>。</p>
+<h2 id="生成静态文件"><a href="#生成静态文件" class="headerlink" title="生成静态文件"></a>生成静态文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate</div></pre></td></tr></table></figure>
+<p>生成的静态文件在public文件夹中，这些文件就可以提交到github来搭建自己的个人博客了~简直炫酷。</p>
+<h2 id="发布到github上"><a href="#发布到github上" class="headerlink" title="发布到github上"></a>发布到github上</h2><p>每个github账号下都默认有一个自己的XXX.github.io的子域名，可以部署静态代码来生成自己的网站。</p>
+<p>譬如我的github账号是yvshuo,于是我要新建一个名字叫做yvshuo.github.io的项目。然后到刚才生成的public文件下将代码提交到github仓库里。如果不熟悉git操作，可以参看<a href="http://rogerdudler.github.io/git-guide/index.zh.html" target="_blank" rel="external">git-简明指南</a>快速入手。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> public/</div><div class="line">$ git init</div><div class="line">$ git add --all</div><div class="line">$ git commit -m <span class="string">"create"</span></div><div class="line">$ git remote add origin https://github.com/yvshuo/yvshuo.github.io.git</div><div class="line">$ git push -u origin master</div></pre></td></tr></table></figure>
+<p>然后就是享受成果的时候了~~<a href="https://yvshuo.github.io/">yvshuo</a></p>
+<h2 id="一点点小补充"><a href="#一点点小补充" class="headerlink" title="一点点小补充"></a>一点点小补充</h2><ol>
+<li>除了上面说的最基本的一些东西外，还有很多配置和可以自己来diy的东西。具体可参考hexo的<a href="https://hexo.io/zh-cn/docs/" target="_blank" rel="external">中文文档</a>。再次表达对hexo的爱~</li>
+<li>md编辑器可以自己在sublime text里配，也可以用专门的编辑器，如<a href="http://markdownpad.com/" target="_blank" rel="external">MarkdownPad</a>。当然，我觉得最爽的还是在本地开着hexo server然后监听文件变动自动部署，再直接在浏览器里F5~</li>
+<li>今天第一次接触hexo，还有待后续进一步发掘这个工具的强大之处</li>
+</ol>
+<h2 id="立FLAG"><a href="#立FLAG" class="headerlink" title="立FLAG"></a>立FLAG</h2><blockquote>
+<p>要把这个博客经营下去。谢老师监督我→_→</p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;工作已经一年了，想着该稍微停下来总结一下了。恰巧印象笔记开始限终端限流量。于是就有了写博客记录一下日常感想，同时将之前的一些笔记迁移到博客的想法。&lt;/p&gt;
+&lt;p&gt;在github闲逛的时候看到了&lt;a href=&quot;https://litten.github.io/&quot;&gt;Litten&lt;/a&gt;的博客，很是喜欢。于是发现了&lt;a href=&quot;https://hexo.io/&quot;&gt;hexo&lt;/a&gt;,各种特性都让我甚是喜欢，就这么对Hexo一见钟情了。在知乎上搜到了一篇介绍&lt;a href=&quot;https://www.zhihu.com/question/24422335&quot;&gt;hexo主题&lt;/a&gt;的回答,一圈看下来，还是比较喜欢&lt;a href=&quot;https://github.com/litten/hexo-theme-yilia&quot;&gt;Yilia&lt;/a&gt;这个主题，也就是我最早看到的Litten开发的~缘分啊，（逃&lt;/p&gt;
+&lt;p&gt;于是果断决定使用这个主题，计划着先直接用着，后续有时间的话自己也试着DIY一下自己的主题。&lt;/p&gt;
+&lt;p&gt;废话不多说了，简单的记录一下第一次搭建Hexo博客的过程。&lt;/p&gt;
+&lt;h2 id=&quot;概述&quot;&gt;&lt;a href=&quot;#概述&quot; class=&quot;headerlink&quot; title=&quot;概述&quot;&gt;&lt;/a&gt;概述&lt;/h2&gt;&lt;p&gt;Hexo是在nodejs环境下搭建的，在npm的帮助下几行命令就轻松搞定，简直是轻松愉快。当然了，前提是已经安装好了git和nodejs。&lt;/p&gt;
+&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;$ npm install hexo-cli -g&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;$ hexo init blog&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;$ &lt;span class=&quot;built_in&quot;&gt;cd&lt;/span&gt; blog&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;$ npm install&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;$ hexo server&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://yvshuo.github.io/tags/hexo/"/>
+    
+  </entry>
+  
+</feed>
