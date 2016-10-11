@@ -16,7 +16,7 @@
 <meta property="og:description" content="今天读到了一篇讲闭包的文章，是我目前看到的最透彻的一篇闭包的讲解。趁热记一下笔记。
 在我以前的认识中，一直觉得闭包就是在js中提供了一种类似于java中get方法的功能，使我们可以通过闭包来访问到函数体内的局部变量。然鹅，我的理解也就顶多意会了闭包的一点皮毛。下面就直接通过代码来记录一下这篇文章中写到的知识点。
 静态作用域的理解1234567891011121314var x = 10;funct">
-<meta property="og:updated_time" content="2016-10-11T16:07:19.694Z">
+<meta property="og:updated_time" content="2016-10-11T16:09:23.325Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="一篇关于javascript闭包的笔记">
 <meta name="twitter:description" content="今天读到了一篇讲闭包的文章，是我目前看到的最透彻的一篇闭包的讲解。趁热记一下笔记。
@@ -160,6 +160,7 @@
         <p>今天读到了一篇讲<a href="http://web.jobbole.com/88167/" target="_blank" rel="external">闭包的文章</a>，是我目前看到的最透彻的一篇闭包的讲解。趁热记一下笔记。</p>
 <p>在我以前的认识中，一直觉得闭包就是在js中提供了一种类似于java中get方法的功能，使我们可以通过闭包来访问到函数体内的局部变量。然鹅，我的理解也就顶多意会了闭包的一点皮毛。下面就直接通过代码来记录一下这篇文章中写到的知识点。</p>
 <h3 id="静态作用域的理解"><a href="#静态作用域的理解" class="headerlink" title="静态作用域的理解"></a>静态作用域的理解</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">10</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;	</div><div class="line">  <span class="keyword">var</span> y = x + <span class="number">5</span>;	</div><div class="line">  <span class="keyword">return</span> y;	</div><div class="line">&#125;	</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123; 	</div><div class="line">  <span class="keyword">var</span> x = <span class="number">2</span>;	</div><div class="line">  <span class="keyword">return</span> foo();	</div><div class="line">&#125;	</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">main</span>(<span class="params"></span>) </span>&#123;	</div><div class="line">  foo(); <span class="comment">// Static scope: 15; Dynamic scope: 15	</span></div><div class="line">  bar(); <span class="comment">// Static scope: 15; Dynamic scope: 7	</span></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>现在大部分的程序语言都是使用的静态作用域的规则，基本就是内嵌套作用域规则。</p>
 <blockquote>
 <p><strong>内嵌套作用域规则：</strong><br>由一个声明引进的标识符在这个声明所在的作用域里可见，而且在其内部嵌套的每个作用域里也可见，除非它被嵌套于内部的对同名标识符的另一个声明所掩盖。为了找到某个给定的标识符所引用的对象，应该在当前最内层作用域里查找。如果找到了一个声明，也就可以找到该标识符所引用的对象。否则我们就到直接的外层作用域里去查找，并继续向外顺序地检查外层作用域，直到到达程序的最外嵌套层次，也就是全局对象声明所在的作用域。如果在所有层次上都没有找到有关声明，那么这个程序就有错误。</p>

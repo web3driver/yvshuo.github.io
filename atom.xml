@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yvshuo.github.io/"/>
-  <updated>2016-10-11T16:07:19.694Z</updated>
+  <updated>2016-10-11T16:09:23.325Z</updated>
   <id>http://yvshuo.github.io/</id>
   
   <author>
@@ -20,11 +20,12 @@
     <link href="http://yvshuo.github.io/2016/10/11/2016-10-11-closure/"/>
     <id>http://yvshuo.github.io/2016/10/11/2016-10-11-closure/</id>
     <published>2016-10-11T15:21:48.000Z</published>
-    <updated>2016-10-11T16:07:19.694Z</updated>
+    <updated>2016-10-11T16:09:23.325Z</updated>
     
     <content type="html"><![CDATA[<p>今天读到了一篇讲<a href="http://web.jobbole.com/88167/" target="_blank" rel="external">闭包的文章</a>，是我目前看到的最透彻的一篇闭包的讲解。趁热记一下笔记。</p>
 <p>在我以前的认识中，一直觉得闭包就是在js中提供了一种类似于java中get方法的功能，使我们可以通过闭包来访问到函数体内的局部变量。然鹅，我的理解也就顶多意会了闭包的一点皮毛。下面就直接通过代码来记录一下这篇文章中写到的知识点。</p>
 <h3 id="静态作用域的理解"><a href="#静态作用域的理解" class="headerlink" title="静态作用域的理解"></a>静态作用域的理解</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">10</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;	</div><div class="line">  <span class="keyword">var</span> y = x + <span class="number">5</span>;	</div><div class="line">  <span class="keyword">return</span> y;	</div><div class="line">&#125;	</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123; 	</div><div class="line">  <span class="keyword">var</span> x = <span class="number">2</span>;	</div><div class="line">  <span class="keyword">return</span> foo();	</div><div class="line">&#125;	</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">main</span>(<span class="params"></span>) </span>&#123;	</div><div class="line">  foo(); <span class="comment">// Static scope: 15; Dynamic scope: 15	</span></div><div class="line">  bar(); <span class="comment">// Static scope: 15; Dynamic scope: 7	</span></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
 <p>现在大部分的程序语言都是使用的静态作用域的规则，基本就是内嵌套作用域规则。</p>
 <blockquote>
 <p><strong>内嵌套作用域规则：</strong><br>由一个声明引进的标识符在这个声明所在的作用域里可见，而且在其内部嵌套的每个作用域里也可见，除非它被嵌套于内部的对同名标识符的另一个声明所掩盖。为了找到某个给定的标识符所引用的对象，应该在当前最内层作用域里查找。如果找到了一个声明，也就可以找到该标识符所引用的对象。否则我们就到直接的外层作用域里去查找，并继续向外顺序地检查外层作用域，直到到达程序的最外嵌套层次，也就是全局对象声明所在的作用域。如果在所有层次上都没有找到有关声明，那么这个程序就有错误。</p>
@@ -46,8 +47,9 @@
     
     <summary type="html">
     
-      &lt;p&gt;今天读到了一篇讲&lt;a href=&quot;http://web.jobbole.com/88167/&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;闭包的文章&lt;/a&gt;，是我目前看到的最透彻的一篇闭包的讲解。趁热记一下笔记。&lt;/p&gt;
-&lt;p&gt;在我以前的认识中，一直觉得
+      &lt;p&gt;今天读到了一篇讲&lt;a href=&quot;http://web.jobbole.com/88167/&quot;&gt;闭包的文章&lt;/a&gt;，是我目前看到的最透彻的一篇闭包的讲解。趁热记一下笔记。&lt;/p&gt;
+&lt;p&gt;在我以前的认识中，一直觉得闭包就是在js中提供了一种类似于java中get方法的功能，使我们可以通过闭包来访问到函数体内的局部变量。然鹅，我的理解也就顶多意会了闭包的一点皮毛。下面就直接通过代码来记录一下这篇文章中写到的知识点。&lt;/p&gt;
+&lt;h3 id=&quot;静态作用域的理解&quot;&gt;&lt;a href=&quot;#静态作用域的理解&quot; class=&quot;headerlink&quot; title=&quot;静态作用域的理解&quot;&gt;&lt;/a&gt;静态作用域的理解&lt;/h3&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;2&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;3&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;4&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;5&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;6&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;7&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;8&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;9&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;10&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;11&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;12&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;13&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;14&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; x = &lt;span class=&quot;number&quot;&gt;10&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;foo&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;	&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; y = x + &lt;span class=&quot;number&quot;&gt;5&lt;/span&gt;;	&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; y;	&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;	&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;bar&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123; 	&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; x = &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;	&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; foo();	&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;	&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;main&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;	&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  foo(); &lt;span class=&quot;comment&quot;&gt;// Static scope: 15; Dynamic scope: 15	&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  bar(); &lt;span class=&quot;comment&quot;&gt;// Static scope: 15; Dynamic scope: 7	&lt;/span&gt;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;  &lt;span class=&quot;keyword&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;number&quot;&gt;0&lt;/span&gt;;	&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
     
     </summary>
     
