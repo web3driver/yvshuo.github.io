@@ -4,17 +4,24 @@
   <meta charset="utf-8">
   
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
-  <title>香辣猪蹄儿</title>
+  <title>一篇关于javascript闭包的笔记 | 香辣猪蹄儿</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="余硕的个人博客。认认真真写代码，开开心心吃猪蹄。">
-<meta property="og:type" content="website">
-<meta property="og:title" content="香辣猪蹄儿">
-<meta property="og:url" content="http://yvshuo.github.io/index.html">
+  <meta name="description" content="今天读到了一篇讲闭包的文章，是我目前看到的最透彻的一篇闭包的讲解。趁热记一下笔记。
+在我以前的认识中，一直觉得闭包就是在js中提供了一种类似于java中get方法的功能，使我们可以通过闭包来访问到函数体内的局部变量。然鹅，我的理解也就顶多意会了闭包的一点皮毛。下面就直接通过代码来记录一下这篇文章中写到的知识点。
+静态作用域的理解1234567891011121314var x = 10;funct">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一篇关于javascript闭包的笔记">
+<meta property="og:url" content="http://yvshuo.github.io/2016/10/11/2016-10-11-closure/index.html">
 <meta property="og:site_name" content="香辣猪蹄儿">
-<meta property="og:description" content="余硕的个人博客。认认真真写代码，开开心心吃猪蹄。">
+<meta property="og:description" content="今天读到了一篇讲闭包的文章，是我目前看到的最透彻的一篇闭包的讲解。趁热记一下笔记。
+在我以前的认识中，一直觉得闭包就是在js中提供了一种类似于java中get方法的功能，使我们可以通过闭包来访问到函数体内的局部变量。然鹅，我的理解也就顶多意会了闭包的一点皮毛。下面就直接通过代码来记录一下这篇文章中写到的知识点。
+静态作用域的理解1234567891011121314var x = 10;funct">
+<meta property="og:updated_time" content="2016-10-11T16:07:19.694Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="香辣猪蹄儿">
-<meta name="twitter:description" content="余硕的个人博客。认认真真写代码，开开心心吃猪蹄。">
+<meta name="twitter:title" content="一篇关于javascript闭包的笔记">
+<meta name="twitter:description" content="今天读到了一篇讲闭包的文章，是我目前看到的最透彻的一篇闭包的讲解。趁热记一下笔记。
+在我以前的认识中，一直觉得闭包就是在js中提供了一种类似于java中get方法的功能，使我们可以通过闭包来访问到函数体内的局部变量。然鹅，我的理解也就顶多意会了闭包的一点皮毛。下面就直接通过代码来记录一下这篇文章中写到的知识点。
+静态作用域的理解1234567891011121314var x = 10;funct">
   
     <link rel="alternative" href="/atom.xml" title="香辣猪蹄儿" type="application/atom+xml">
   
@@ -132,9 +139,7 @@
 </nav>
 
       <div class="body-wrap">
-        
-  
-    <article id="post-2016-10-11-closure" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-2016-10-11-closure" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <input type="hidden" class="isFancy" />
@@ -143,8 +148,8 @@
       <header class="article-header">
         
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/11/2016-10-11-closure/">一篇关于javascript闭包的笔记</a>
+    <h1 class="article-title" itemprop="name">
+      一篇关于javascript闭包的笔记
     </h1>
   
 
@@ -193,125 +198,45 @@
   </div>
 </article>
 
-
-
-
-
-
-
-
-
-
   
-    <article id="post-2016-10-07-githubssh" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/07/2016-10-07-githubssh/">配置hexo的一键打包部署</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天研究了一下hexo的自动打包部署，记录一下。</p>
-<h2 id="配置github的ssh"><a href="#配置github的ssh" class="headerlink" title="配置github的ssh"></a>配置github的ssh</h2><h3 id="本地生成公钥"><a href="#本地生成公钥" class="headerlink" title="本地生成公钥"></a>本地生成公钥</h3><p>运行 git Bash 客户端，检查是否已经配置过SSH key。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~/.ssh</div><div class="line">$ ls</div></pre></td></tr></table></figure></p>
-        <p class="article-more-link">
-          <a  href="/2016/10/07/2016-10-07-githubssh/#more">more >></a>
-        </p>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/10/07/2016-10-07-githubssh/" class="archive-article-date">
-  	<time datetime="2016-10-07T04:31:27.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-07</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
-  
-    <article id="post-2016-10-06-create" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <input type="hidden" class="isFancy" />
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/06/2016-10-06-create/">使用hexo在github上搭建博客的记录</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>工作已经一年了，想着该稍微停下来总结一下了。恰巧印象笔记开始限终端限流量。于是就有了写博客记录一下日常感想，同时将之前的一些笔记迁移到博客的想法。</p>
-<p>在github闲逛的时候看到了<a href="https://litten.github.io/">Litten</a>的博客，很是喜欢。于是发现了<a href="https://hexo.io/">hexo</a>,各种特性都让我甚是喜欢，就这么对Hexo一见钟情了。在知乎上搜到了一篇介绍<a href="https://www.zhihu.com/question/24422335">hexo主题</a>的回答,一圈看下来，还是比较喜欢<a href="https://github.com/litten/hexo-theme-yilia">Yilia</a>这个主题，也就是我最早看到的Litten开发的~缘分啊，（逃</p>
-<p>于是果断决定使用这个主题，计划着先直接用着，后续有时间的话自己也试着DIY一下自己的主题。</p>
-<p>废话不多说了，简单的记录一下第一次搭建Hexo博客的过程。</p>
-        <p class="article-more-link">
-          <a  href="/2016/10/06/2016-10-06-create/#more">more >></a>
-        </p>
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      <a href="/2016/10/06/2016-10-06-create/" class="archive-article-date">
-  	<time datetime="2016-10-05T16:40:58.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-06</time>
-</a>
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags"></i>
-		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-	</div>
-
-      
-
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-
-
+<nav id="article-nav">
   
   
+    <a href="/2016/10/07/2016-10-07-githubssh/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">配置hexo的一键打包部署</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2016-10-11-closure" data-title="一篇关于javascript闭包的笔记" data-url="http://yvshuo.github.io/2016/10/11/2016-10-11-closure/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"yvshuo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
 
 
       </div>
@@ -335,8 +260,8 @@
 		fancybox: true,
 		mathjax: false,
 		animate: true,
-		isHome: true,
-		isPost: false,
+		isHome: false,
+		isPost: true,
 		isArchive: false,
 		isTag: false,
 		isCategory: false,
