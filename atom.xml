@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yvshuo.github.io/"/>
-  <updated>2016-10-11T16:09:23.000Z</updated>
+  <updated>2016-10-26T16:49:15.000Z</updated>
   <id>http://yvshuo.github.io/</id>
   
   <author>
@@ -14,6 +14,34 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>webpack简介</title>
+    <link href="http://yvshuo.github.io/2016/10/26/2016-10-26-webpacknote/"/>
+    <id>http://yvshuo.github.io/2016/10/26/2016-10-26-webpacknote/</id>
+    <published>2016-10-26T15:21:48.000Z</published>
+    <updated>2016-10-26T16:49:15.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近一直在研究vue，顺带着研究了一下webpack。本文只是一篇简短的记录，后续会继续更新一些webpack深入的学习笔记。</p>
+<h3 id="webpack概述"><a href="#webpack概述" class="headerlink" title="webpack概述"></a>webpack概述</h3><p>简单的说，webpack是一个前端的打包工具。它做的事情就是将你项目中使用的各种前端模块打包到一起，转换为合适的格式发布。<br>通过使用webpack，可以将各种其他格式，如<code>scss</code>、<code>typescript</code>等拓展类型的语言转换为可运行的javascript。配合webpack的核心<code>loaders</code>和<code>plugins</code>，可以灵活的实现各种需求，非常的强力！<br><a id="more"></a><br>下面是一个典型的webpack的配置文件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</div><div class="line"><span class="keyword">var</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</div><div class="line"><span class="keyword">var</span> ExtractTextPlugin = <span class="built_in">require</span>(<span class="string">'extract-text-webpack-plugin'</span>);</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">entry</span>: __dirname + <span class="string">"/app/main.js"</span>,</div><div class="line">  <span class="attr">output</span>: &#123;</div><div class="line">    <span class="attr">path</span>: __dirname + <span class="string">"/build"</span>,</div><div class="line">    <span class="attr">filename</span>: <span class="string">"[name]-[hash].js"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">module</span>: &#123;</div><div class="line">    <span class="attr">loaders</span>: [</div><div class="line">      &#123;</div><div class="line">        <span class="attr">test</span>: <span class="regexp">/\.json$/</span>,</div><div class="line">        <span class="attr">loader</span>: <span class="string">"json"</span></div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</div><div class="line">        <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</div><div class="line">        <span class="attr">loader</span>: <span class="string">'babel'</span></div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</div><div class="line">        <span class="attr">loader</span>: ExtractTextPlugin.extract(<span class="string">'style'</span>, <span class="string">'css?modules!postcss'</span>)</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">postcss</span>: [</div><div class="line">    <span class="built_in">require</span>(<span class="string">'autoprefixer'</span>)</div><div class="line">  ],</div><div class="line">  <span class="attr">plugins</span>: [</div><div class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</div><div class="line">      <span class="attr">template</span>: __dirname + <span class="string">"/app/index.tmpl.html"</span></div><div class="line">    &#125;),</div><div class="line">    <span class="keyword">new</span> webpack.optimize.OccurenceOrderPlugin(),</div><div class="line">    <span class="keyword">new</span> webpack.optimize.UglifyJsPlugin(),</div><div class="line">    <span class="keyword">new</span> ExtractTextPlugin(<span class="string">"[name]-[hash].css"</span>)</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面就来具体解释下webpack的使用方法以及配置文件的意思。</p>
+<h3 id="基于webpack项目的基本结构"><a href="#基于webpack项目的基本结构" class="headerlink" title="基于webpack项目的基本结构"></a>基于webpack项目的基本结构</h3><p>通常会包含一些子模块文件目录以及一个<code>package.json</code>和<code>webpack.config.js</code>的文件。因为webpack是运行在<code>nodejs</code>环境下的，所以<code>package.json</code>中配置项目依赖，然后在<code>webpack.config.js</code>中配置打包的一些信息。<br>在package.json中通常会在script配置项下配置webpack的不同的运行信息。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//package.json</span></div><div class="line">&#123;</div><div class="line">  <span class="string">"name"</span>: <span class="string">"webpack-sample-project"</span>,</div><div class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="string">"description"</span>: <span class="string">"Sample webpack project"</span>,</div><div class="line">  <span class="string">"scripts"</span>: &#123;</div><div class="line">    <span class="string">"start"</span>: <span class="string">"webpack-dev-server --progress"</span>,</div><div class="line">    <span class="string">"build"</span>: <span class="string">"NODE_ENV=production webpack --config ./webpack.production.config.js --progress"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"author"</span>: <span class="string">"Cássio Zen"</span>,</div><div class="line">  <span class="string">"license"</span>: <span class="string">"ISC"</span>,</div><div class="line">  <span class="string">"devDependencies"</span>: &#123;...&#125;,</div><div class="line">  <span class="string">"dependencies"</span>: &#123;...&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后通过<code>npm start</code>就可以运行webpack开发状态下的打包命令，通过<code>npm build</code>就可以运行webpack生产环境下的打包命令了～轻松愉快</p>
+<h3 id="loaders"><a href="#loaders" class="headerlink" title="loaders"></a>loaders</h3><p>未完待续。。。。。。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近一直在研究vue，顺带着研究了一下webpack。本文只是一篇简短的记录，后续会继续更新一些webpack深入的学习笔记。&lt;/p&gt;
+&lt;h3 id=&quot;webpack概述&quot;&gt;&lt;a href=&quot;#webpack概述&quot; class=&quot;headerlink&quot; title=&quot;webpack概述&quot;&gt;&lt;/a&gt;webpack概述&lt;/h3&gt;&lt;p&gt;简单的说，webpack是一个前端的打包工具。它做的事情就是将你项目中使用的各种前端模块打包到一起，转换为合适的格式发布。&lt;br&gt;通过使用webpack，可以将各种其他格式，如&lt;code&gt;scss&lt;/code&gt;、&lt;code&gt;typescript&lt;/code&gt;等拓展类型的语言转换为可运行的javascript。配合webpack的核心&lt;code&gt;loaders&lt;/code&gt;和&lt;code&gt;plugins&lt;/code&gt;，可以灵活的实现各种需求，非常的强力！&lt;br&gt;
+    
+    </summary>
+    
+    
+      <category term="webpack" scheme="http://yvshuo.github.io/tags/webpack/"/>
+    
+  </entry>
   
   <entry>
     <title>一篇关于javascript闭包的笔记</title>
@@ -55,28 +83,6 @@
     
     
       <category term="js" scheme="http://yvshuo.github.io/tags/js/"/>
-    
-  </entry>
-  
-  <entry>
-    <title>一篇关于webpack的笔记</title>
-    <link href="http://yvshuo.github.io/2016/10/11/2016-10-26-webpacknote/"/>
-    <id>http://yvshuo.github.io/2016/10/11/2016-10-26-webpacknote/</id>
-    <published>2016-10-11T15:21:48.000Z</published>
-    <updated>2016-10-26T15:20:45.000Z</updated>
-    
-    <content type="html"><![CDATA[<p>嗯，这又是一篇笔记，哈哈哈。</p>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;p&gt;嗯，这又是一篇笔记，哈哈哈。&lt;/p&gt;
-
-    
-    </summary>
-    
-    
-      <category term="webpack" scheme="http://yvshuo.github.io/tags/webpack/"/>
     
   </entry>
   

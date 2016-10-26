@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>webpack简介 | 香辣猪蹄儿</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="最近一直在研究vue，顺带着研究了一下webpack。本文只是一篇简短的记录，后续会继续更新一些webpack深入的学习笔记。
+webpack概述简单的说，webpack是一个前端的打包工具。它做的事情就是将你项目中使用的各种前端模块打包到一起，转换为合适的格式发布。通过使用webpack，可以将各种其他格式，如scss、typescript等拓展类型的语言转换为可运行的javascript。配合">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack简介">
+<meta property="og:url" content="http://yvshuo.github.io/2016/10/26/2016-10-26-webpacknote/index.html">
+<meta property="og:site_name" content="香辣猪蹄儿">
+<meta property="og:description" content="最近一直在研究vue，顺带着研究了一下webpack。本文只是一篇简短的记录，后续会继续更新一些webpack深入的学习笔记。
+webpack概述简单的说，webpack是一个前端的打包工具。它做的事情就是将你项目中使用的各种前端模块打包到一起，转换为合适的格式发布。通过使用webpack，可以将各种其他格式，如scss、typescript等拓展类型的语言转换为可运行的javascript。配合">
+<meta property="og:updated_time" content="2016-10-26T16:49:15.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack简介">
+<meta name="twitter:description" content="最近一直在研究vue，顺带着研究了一下webpack。本文只是一篇简短的记录，后续会继续更新一些webpack深入的学习笔记。
+webpack概述简单的说，webpack是一个前端的打包工具。它做的事情就是将你项目中使用的各种前端模块打包到一起，转换为合适的格式发布。通过使用webpack，可以将各种其他格式，如scss、typescript等拓展类型的语言转换为可运行的javascript。配合">
+  
+    <link rel="alternative" href="/atom.xml" title="香辣猪蹄儿" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/assets/images/global/favicon.ico">
+  
+  <script src="/style.js"></script>
+  
+
+</head>
+
+<body>
+  <img src="/assets/images/global/avatar.jpg" style="width: 0;height: 0;display:none">
+  <div id="container">
+    <div class="left-col">
+      <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img src="/assets/images/global/avatar.jpg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">yvshuo</a></h1>
+		</hgroup>
+
+		
+		<p class="header-subtitle">吃着猪蹄儿写着代码，开开心心~</p>
+		
+
+		<nav class="header-menu">
+			<ul>
+			
+				<li><a href="/">主页</a></li>
+	        
+			</ul>
+		</nav>
+		<nav class="header-smart-menu">
+	        
+    		
+    			
+    			<a class="js-smart-menu" data-idx="0" href="javascript:void(0)">所有文章</a>
+    			
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="1" href="javascript:void(0)">标签</a>
+    			
+    			
+            
+    			
+            
+    			
+    			<a class="js-smart-menu" data-idx="2" href="javascript:void(0)">关于我</a>
+    			
+    			
+            
+		</nav>
+		<nav class="header-nav">
+			<div class="social">
+				
+					<a class="github" target="_blank" href="https://github.com/yvshuo" title="github">github</a>
+		        
+					<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+		        
+					<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/sure-y" title="zhihu">zhihu</a>
+		        
+			</div>
+		</nav>
+	</header>		
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"><i class="icon-list"></i></div>
+  		<h1 class="header-author js-mobile-header hide">yvshuo</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+				
+					<img src="/assets/images/global/avatar.jpg" class="js-avatar">
+				
+			</div>
+			<hgroup>
+			  <h1 class="header-author">yvshuo</h1>
+			</hgroup>
+			
+			<p class="header-subtitle">吃着猪蹄儿写着代码，开开心心~</p>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/yvshuo" title="github">github</a>
+			        
+						<a class="rss" target="_blank" href="/atom.xml" title="rss">rss</a>
+			        
+						<a class="zhihu" target="_blank" href="https://www.zhihu.com/people/sure-y" title="zhihu">zhihu</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap">
+        <article id="post-2016-10-26-webpacknote" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      webpack简介
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>最近一直在研究vue，顺带着研究了一下webpack。本文只是一篇简短的记录，后续会继续更新一些webpack深入的学习笔记。</p>
+<h3 id="webpack概述"><a href="#webpack概述" class="headerlink" title="webpack概述"></a>webpack概述</h3><p>简单的说，webpack是一个前端的打包工具。它做的事情就是将你项目中使用的各种前端模块打包到一起，转换为合适的格式发布。<br>通过使用webpack，可以将各种其他格式，如<code>scss</code>、<code>typescript</code>等拓展类型的语言转换为可运行的javascript。配合webpack的核心<code>loaders</code>和<code>plugins</code>，可以灵活的实现各种需求，非常的强力！<br><a id="more"></a><br>下面是一个典型的webpack的配置文件：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</div><div class="line"><span class="keyword">var</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</div><div class="line"><span class="keyword">var</span> ExtractTextPlugin = <span class="built_in">require</span>(<span class="string">'extract-text-webpack-plugin'</span>);</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">entry</span>: __dirname + <span class="string">"/app/main.js"</span>,</div><div class="line">  <span class="attr">output</span>: &#123;</div><div class="line">    <span class="attr">path</span>: __dirname + <span class="string">"/build"</span>,</div><div class="line">    <span class="attr">filename</span>: <span class="string">"[name]-[hash].js"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">module</span>: &#123;</div><div class="line">    <span class="attr">loaders</span>: [</div><div class="line">      &#123;</div><div class="line">        <span class="attr">test</span>: <span class="regexp">/\.json$/</span>,</div><div class="line">        <span class="attr">loader</span>: <span class="string">"json"</span></div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</div><div class="line">        <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</div><div class="line">        <span class="attr">loader</span>: <span class="string">'babel'</span></div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</div><div class="line">        <span class="attr">loader</span>: ExtractTextPlugin.extract(<span class="string">'style'</span>, <span class="string">'css?modules!postcss'</span>)</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">postcss</span>: [</div><div class="line">    <span class="built_in">require</span>(<span class="string">'autoprefixer'</span>)</div><div class="line">  ],</div><div class="line">  <span class="attr">plugins</span>: [</div><div class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</div><div class="line">      <span class="attr">template</span>: __dirname + <span class="string">"/app/index.tmpl.html"</span></div><div class="line">    &#125;),</div><div class="line">    <span class="keyword">new</span> webpack.optimize.OccurenceOrderPlugin(),</div><div class="line">    <span class="keyword">new</span> webpack.optimize.UglifyJsPlugin(),</div><div class="line">    <span class="keyword">new</span> ExtractTextPlugin(<span class="string">"[name]-[hash].css"</span>)</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>下面就来具体解释下webpack的使用方法以及配置文件的意思。</p>
+<h3 id="基于webpack项目的基本结构"><a href="#基于webpack项目的基本结构" class="headerlink" title="基于webpack项目的基本结构"></a>基于webpack项目的基本结构</h3><p>通常会包含一些子模块文件目录以及一个<code>package.json</code>和<code>webpack.config.js</code>的文件。因为webpack是运行在<code>nodejs</code>环境下的，所以<code>package.json</code>中配置项目依赖，然后在<code>webpack.config.js</code>中配置打包的一些信息。<br>在package.json中通常会在script配置项下配置webpack的不同的运行信息。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//package.json</span></div><div class="line">&#123;</div><div class="line">  <span class="string">"name"</span>: <span class="string">"webpack-sample-project"</span>,</div><div class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="string">"description"</span>: <span class="string">"Sample webpack project"</span>,</div><div class="line">  <span class="string">"scripts"</span>: &#123;</div><div class="line">    <span class="string">"start"</span>: <span class="string">"webpack-dev-server --progress"</span>,</div><div class="line">    <span class="string">"build"</span>: <span class="string">"NODE_ENV=production webpack --config ./webpack.production.config.js --progress"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"author"</span>: <span class="string">"Cássio Zen"</span>,</div><div class="line">  <span class="string">"license"</span>: <span class="string">"ISC"</span>,</div><div class="line">  <span class="string">"devDependencies"</span>: &#123;...&#125;,</div><div class="line">  <span class="string">"dependencies"</span>: &#123;...&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>然后通过<code>npm start</code>就可以运行webpack开发状态下的打包命令，通过<code>npm build</code>就可以运行webpack生产环境下的打包命令了～轻松愉快</p>
+<h3 id="loaders"><a href="#loaders" class="headerlink" title="loaders"></a>loaders</h3><p>未完待续。。。。。。</p>
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      <a href="/2016/10/26/2016-10-26-webpacknote/" class="archive-article-date">
+  	<time datetime="2016-10-26T15:21:48.000Z" itemprop="datePublished"><i class="icon-clock"></i>2016-10-26</time>
+</a>
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags"></i>
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+	</div>
+
+      
+
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+  
+<nav id="article-nav">
+  
+  
+    <a href="/2016/10/11/2016-10-11-closure/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">一篇关于javascript闭包的笔记</div>
+      <i class="icon-circle-right"></i>
+    </a>
+  
+</nav>
+
+
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="2016-10-26-webpacknote" data-title="webpack简介" data-url="http://yvshuo.github.io/2016/10/26/2016-10-26-webpacknote/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"yvshuo"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+
+      </div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 yvshuo  
+        <script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260544287'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260544287' type='text/javascript'%3E%3C/script%3E"));</script>
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+
+    </div>
+    <script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: false,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: false,
+		root: "/",
+		innerArchive: true
+	}
+</script>
+
+<script src="/./main.js"></script>
+
+
+    
+<div class="tools-col">
+  <ul class="btn-wrap">
+    
+      <li class="chose" data-hook="tools-section-all"><span class="text">全部</span><i class="icon-book"></i></li>
+    
+    
+      <li data-hook="tools-section-tag"><span class="text">标签</span><i class="icon-price-tags"></i></li>
+    
+    
+    
+      <li data-hook="tools-section-me"><span class="text">我</span><i class="icon-smile"></i></li>
+    
+  </ul>
+  <div class="tools-wrap">
+    
+    	<section class="tools-section tools-section-all chose">
+    	</section>
+    
+
+    
+    	<section class="tools-section tools-section-tag">
+    			<div class="widget tagcloud" id="js-tagcloud">
+    				<a href="/tags/hexo/" style="font-size: 20px;">hexo</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a>
+    			</div>
+    	</section>
+    
+
+    
+
+    
+    	<section class="tools-section tools-section-me">
+  	  	
+  	  		<div class="aboutme-wrap" id="js-aboutme">yvshuo，&lt;br&gt;&lt;br&gt;一只小前端&lt;br&gt;爱吃香辣猪蹄&lt;br&gt;入行时间不长&lt;br&gt;努力奋斗中</div>
+  	  	
+    	</section>
+    
+  </div>
+  
+</div>
+    <!-- Root element of PhotoSwipe. Must have class pswp. -->
+<div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+
+    <!-- Background of PhotoSwipe. 
+         It's a separate element as animating opacity is faster than rgba(). -->
+    <div class="pswp__bg"></div>
+
+    <!-- Slides wrapper with overflow:hidden. -->
+    <div class="pswp__scroll-wrap">
+
+        <!-- Container that holds slides. 
+            PhotoSwipe keeps only 3 of them in the DOM to save memory.
+            Don't modify these 3 pswp__item elements, data is added later on. -->
+        <div class="pswp__container">
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+            <div class="pswp__item"></div>
+        </div>
+
+        <!-- Default (PhotoSwipeUI_Default) interface on top of sliding area. Can be changed. -->
+        <div class="pswp__ui pswp__ui--hidden">
+
+            <div class="pswp__top-bar">
+
+                <!--  Controls are self-explanatory. Order can be changed. -->
+
+                <div class="pswp__counter"></div>
+
+                <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+
+                <button class="pswp__button pswp__button--share" style="display:none" title="Share"></button>
+
+                <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+
+                <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+
+                <!-- Preloader demo http://codepen.io/dimsemenov/pen/yyBWoR -->
+                <!-- element will get class pswp__preloader--active when preloader is running -->
+                <div class="pswp__preloader">
+                    <div class="pswp__preloader__icn">
+                      <div class="pswp__preloader__cut">
+                        <div class="pswp__preloader__donut"></div>
+                      </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                <div class="pswp__share-tooltip"></div> 
+            </div>
+
+            <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+            </button>
+
+            <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+            </button>
+
+            <div class="pswp__caption">
+                <div class="pswp__caption__center"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+  </div>
+</body>
+</html>
