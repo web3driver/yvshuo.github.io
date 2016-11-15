@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yvshuo.github.io/"/>
-  <updated>2016-11-03T14:13:02.000Z</updated>
+  <updated>2016-11-15T15:29:24.000Z</updated>
   <id>http://yvshuo.github.io/</id>
   
   <author>
@@ -14,6 +14,112 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>使用ESLint检查语法和代码风格</title>
+    <link href="http://yvshuo.github.io/2016/11/15/2016-11-15-eslint/"/>
+    <id>http://yvshuo.github.io/2016/11/15/2016-11-15-eslint/</id>
+    <published>2016-11-15T13:37:39.000Z</published>
+    <updated>2016-11-15T15:29:24.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>在学习ECMAScript6的过程中发现了一个代码风格和语法的检查工具，<a href="http://eslint.org/docs/user-guide/command-line-interface" target="_blank" rel="external">ESLint</a>，记录一下。</p>
+<h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>这里记录的安装方法是通过npm的安装，所以前提条件是已经安装了npm。如果没有安装的话，建议直接安装nvm，可以方便的切换node的版本。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm i -g eslint</div></pre></td></tr></table></figure></p>
+<p>通过以上命令即可完成eslint CLI的安装。</p>
+<a id="more"></a>
+<h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>ESLint的运行格式如下：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eslint [options] [file|dir|glob]*</div></pre></td></tr></table></figure></p>
+<p>以下的几种方式都是可行的：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">eslint file1.js file2.js</div><div class="line">eslint lib/**</div><div class="line">eslint <span class="string">"lib/**"</span></div></pre></td></tr></table></figure></p>
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><p>以下的内容可以通过eslint -h来查阅<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div></pre></td><td class="code"><pre><div class="line">eslint [options] file.js [file.js] [dir]</div><div class="line">Basic configuration:</div><div class="line">  -c, --config path::String    Use configuration from this file or shareable config</div><div class="line">  --no-eslintrc                Disable use of configuration from .eslintrc</div><div class="line">  --env [String]               Specify environments</div><div class="line">  --ext [String]               Specify JavaScript file extensions - default: .js</div><div class="line">  --global [String]            Define global variables</div><div class="line">  --parser String              Specify the parser to be used</div><div class="line">  --parser-options Object      Specify parser options</div><div class="line">Caching:</div><div class="line">  --cache                      Only check changed files - default: <span class="literal">false</span></div><div class="line">  --cache-file path::String    Path to the cache file. Deprecated: use --cache-location - default: .eslintcache</div><div class="line">  --cache-location path::String  Path to the cache file or directory</div><div class="line">Specifying rules and plugins:</div><div class="line">  --rulesdir [path::String]    Use additional rules from this directory</div><div class="line">  --plugin [String]            Specify plugins</div><div class="line">  --rule Object                Specify rules</div><div class="line">Ignoring files:</div><div class="line">  --ignore-path path::String   Specify path of ignore file</div><div class="line">  --no-ignore                  Disable use of ignore files and patterns</div><div class="line">  --ignore-pattern [String]    Pattern of files to ignore (<span class="keyword">in</span> addition to those <span class="keyword">in</span> .eslintignore)</div><div class="line">Using stdin:</div><div class="line">  --stdin                      Lint code provided on &lt;STDIN&gt; - default: <span class="literal">false</span></div><div class="line">  --stdin-filename String      Specify filename to process STDIN as</div><div class="line">Handling warnings:</div><div class="line">  --quiet                      Report errors only - default: <span class="literal">false</span></div><div class="line">  --max-warnings Int           Number of warnings to trigger nonzero <span class="built_in">exit</span> code - default: -1</div><div class="line">Output:</div><div class="line">  -o, --output-file path::String  Specify file to write report to</div><div class="line">  <span class="_">-f</span>, --format String          Use a specific output format - default: stylish</div><div class="line">  --color, --no-color          Force enabling/disabling of color</div><div class="line">Miscellaneous:</div><div class="line">  --init                       Run config initialization wizard - default: <span class="literal">false</span></div><div class="line">  --fix                        Automatically fix problems</div><div class="line">  --debug                      Output debugging information</div><div class="line">  -h, --help                   Show <span class="built_in">help</span></div><div class="line">  -v, --version                Output the version number</div><div class="line">  --no-inline-config           Prevent comments from changing config or rules</div><div class="line">  --print-config path::String  Print the configuration <span class="keyword">for</span> the given file</div></pre></td></tr></table></figure></p>
+<p>例子：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eslint --ext .jsx --ext .js file.js</div><div class="line">eslint --ext .jsx,.js file.js</div></pre></td></tr></table></figure></p>
+<h3 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h3><ul>
+<li>-c,–config<br>这个选项能给ESLint指定一个附加的配置文件。<br><em>例子：</em><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eslint -c ~/my-eslint.json file.js</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<p>这个例子使用<code>~/my-eslint.json</code>这个配置文件。<br>还有一种是使用共享的配置。<br><em>例子：</em><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eslint -c airbnb file.js</div></pre></td></tr></table></figure></p>
+<p>这个例子使用的是<code>eslint-config-airbnb</code>的配置，使用之前需要安装。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm i -g eslint-config-airbnb</div></pre></td></tr></table></figure></p>
+<ul>
+<li><p>–no-eslintrc<br>禁用<code>.eslintrc</code>和<code>package.json</code>中的配置<br><em>例子：</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eslint --no-eslintrc file.js</div></pre></td></tr></table></figure>
+</li>
+<li><p>–env<br>指定特定的环境<br><em>例子：</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eslint --env browser,node file.js</div><div class="line">eslint --env browser --env node file.js</div></pre></td></tr></table></figure>
+</li>
+<li><p>–ext<br>配置ESLint对哪些文件类型起作用<br><em>例子：</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 只对 .js2 后缀的文件类型起作用</span></div><div class="line">eslint . --ext .js2</div><div class="line"><span class="comment"># 对 .js 和 .js2 后缀的文件类型都起作用</span></div><div class="line">eslint . --ext .js --ext .js2</div><div class="line"><span class="comment"># 对 .js 和 .js2 后缀的文件类型都起作用</span></div><div class="line">eslint . --ext .js,.js2</div></pre></td></tr></table></figure>
+</li>
+<li><p>–ext<br>配置ESLint对哪些文件类型起作用<br><em>例子：</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="comment"># 只对 .js2 后缀的文件类型起作用</span></div><div class="line">eslint . --ext .js2</div><div class="line"><span class="comment"># 对 .js 和 .js2 后缀的文件类型都起作用</span></div><div class="line">eslint . --ext .js --ext .js2</div><div class="line"><span class="comment"># 对 .js 和 .js2 后缀的文件类型都起作用</span></div><div class="line">eslint . --ext .js,.js2</div></pre></td></tr></table></figure>
+</li>
+<li><p>–global<br>设置全局参数<br><em>例子：</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eslint --global require,exports:<span class="literal">true</span> file.js</div><div class="line">eslint --global require --global exports:<span class="literal">true</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>–global<br>设置全局参数<br><em>例子：</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eslint --global require,exports:<span class="literal">true</span> file.js</div><div class="line">eslint --global require --global exports:<span class="literal">true</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>–plugin<br>设置需要载入的插件。设置前需要通过npm安装要载入的插件。<br><em>例子：</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eslint --plugin jquery file.js</div><div class="line">eslint --plugin eslint-plugin-mocha file.js</div></pre></td></tr></table></figure>
+</li>
+<li><p>–rule<br>直接设置要使用的规则。<br><em>例子：</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">eslint --rule <span class="string">'quotes: [2, double]'</span></div><div class="line">eslint --rule <span class="string">'guard-for-in: 2'</span> --rule <span class="string">'brace-style: [2, 1tbs]'</span></div><div class="line">eslint --rule <span class="string">'jquery/dollar-sign: 2'</span></div></pre></td></tr></table></figure>
+</li>
+<li><p>–ignore-path<br>设置一个文件来代替<code>.eslintignore</code>的功能，如果不设置的话，eslint默认会使用当前工作空间的<code>.eslintignore</code><br><em>例子：</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eslint --ignore-path tmp/.eslintignore file.js</div><div class="line">eslint --ignore-path .gitignore file.js</div></pre></td></tr></table></figure>
+</li>
+<li><p>–no-ignore<br>禁用<code>.eslintignore</code>, <code>--ignore-path</code>和<code>--ignore-pattern</code>中的例外情况<br><em>例子：</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eslint --no-ignore file.js</div></pre></td></tr></table></figure>
+</li>
+<li><p>–ignore-pattern<br>设置忽略匹配指定正则类型的文件<br><em>例子：</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eslint --ignore-pattern <span class="string">'/lib/'</span> --ignore-pattern <span class="string">'/src/vendor/*'</span> .</div></pre></td></tr></table></figure>
+</li>
+<li><p>–quiet<br>禁用reporting和warning，ESlint将只通知error<br><em>例子：</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eslint --quiet file.js</div></pre></td></tr></table></figure>
+</li>
+<li><p>–max-warnings<br>设置eslint警告的临界值，在错误过多时强制eslint退出<br><em>例子：</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eslint --max-warnings 10 file.js</div></pre></td></tr></table></figure>
+</li>
+<li><p>-o, –output-file<br>将report写进指定文件<br><em>例子：</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eslint -o ./<span class="built_in">test</span>/test.html</div></pre></td></tr></table></figure>
+</li>
+<li><p>-f, –format<br>指定report输出的格式，可选格式为<code>checkstyle</code>，<code>codeframe</code>，<code>compact</code>，<code>html</code>，<code>jslint-xml</code>，<code>json</code>，<code>junit</code>，<code>stylish (the default)</code>，<code>table</code>，<code>tap</code>，<code>unix</code>，<code>visualstudio</code>。<br><em>例子：</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">eslint <span class="_">-f</span> compact file.js</div></pre></td></tr></table></figure>
+</li>
+<li><p>–color, –no-color<br>指定report的颜色<br><em>例子：</em></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">eslint --color file.js | cat</div><div class="line">eslint --no-color file.js</div></pre></td></tr></table></figure>
+</li>
+<li><p>init<br>初始化一些基本的配置。可以帮助新用户快速配置。</p>
+</li>
+<li><p>-h, –help<br>获得帮助菜单</p>
+</li>
+<li><p>-v, –version<br>显示当前的eslint版本</p>
+</li>
+<li><p>–print-config<br>打印当前eslint的配置信息</p>
+</li>
+<li><p>在<code>.eslintignore</code>中设置忽略的文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">node_modules/*</div><div class="line">**/vendor/*.js</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="实际例子"><a href="#实际例子" class="headerlink" title="实际例子"></a>实际例子</h3><p>在这个例子中使用<a href="https://github.com/airbnb/javascript" target="_blank" rel="external">Airbnb</a>的语法规则。安装Airbnb的语法规则：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm i -g eslint-config-airbnb</div></pre></td></tr></table></figure></p>
+<p>在项目的根目录下新建一个<code>.eslintrc</code>文件，配置ESLint。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">  <span class="string">"extends"</span>: <span class="string">"eslint-config-airbnb"</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>待检查的<code>index.js</code>的代码如下：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> unusued = <span class="string">'I have no purpose!'</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">greet</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> message = <span class="string">'Hello, World!'</span>;</div><div class="line">    alert(message);</div><div class="line">&#125;</div><div class="line">greet();</div></pre></td></tr></table></figure></p>
+<p>使用ESLint检查这个文件<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ eslint index.js</div></pre></td></tr></table></figure></p>
+<p>控制台输出：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">index.js</div><div class="line">  1:5  error  unusued is defined but never used                 no-unused-vars</div><div class="line">  4:5  error  Expected indentation of 2 characters but found 4  indent</div><div class="line">  5:5  error  Expected indentation of 2 characters but found 4  indent</div><div class="line">✖ 3 problems (3 errors, 0 warnings)</div></pre></td></tr></table></figure></p>
+<p>上面代码说明，原文件有三个错误，一个是定义了变量，却没有使用，另外两个是行首缩进为4个空格，而不是规定的2个空格。</p>
+<h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><blockquote>
+<p>1、<a href="http://eslint.org/docs/user-guide/command-line-interface" target="_blank" rel="external">ESLint Command Line Interface</a><br>2、<a href="http://es6.ruanyifeng.com/#docs/style#ESLint的使用" target="_blank" rel="external">ECMAScript 6 入门-编程风格-ESLint的使用</a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;在学习ECMAScript6的过程中发现了一个代码风格和语法的检查工具，&lt;a href=&quot;http://eslint.org/docs/user-guide/command-line-interface&quot;&gt;ESLint&lt;/a&gt;，记录一下。&lt;/p&gt;
+&lt;h3 id=&quot;安装&quot;&gt;&lt;a href=&quot;#安装&quot; class=&quot;headerlink&quot; title=&quot;安装&quot;&gt;&lt;/a&gt;安装&lt;/h3&gt;&lt;p&gt;这里记录的安装方法是通过npm的安装，所以前提条件是已经安装了npm。如果没有安装的话，建议直接安装nvm，可以方便的切换node的版本。&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;gutter&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;npm i -g eslint&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+&lt;p&gt;通过以上命令即可完成eslint CLI的安装。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="js" scheme="http://yvshuo.github.io/tags/js/"/>
+    
+  </entry>
   
   <entry>
     <title>webpack简介</title>
