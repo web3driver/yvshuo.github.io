@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
   <title>香辣猪蹄儿</title>
-  <subtitle>吃着猪蹄儿写着代码，开开心心~</subtitle>
+  <subtitle>认认真真写代码，开开心心吃猪蹄。</subtitle>
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yvshuo.github.io/"/>
-  <updated>2017-01-11T13:11:41.000Z</updated>
+  <updated>2017-01-16T15:43:27.000Z</updated>
   <id>http://yvshuo.github.io/</id>
   
   <author>
@@ -14,6 +14,49 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>重构(1)—重新组织函数</title>
+    <link href="http://yvshuo.github.io/2017/01/16/2017-01-16-refactor/"/>
+    <id>http://yvshuo.github.io/2017/01/16/2017-01-16-refactor/</id>
+    <published>2017-01-16T03:03:47.000Z</published>
+    <updated>2017-01-16T15:43:27.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="1-一点感想"><a href="#1-一点感想" class="headerlink" title="1. 一点感想"></a>1. 一点感想</h2><p>上次单位人力让挑书，然后选了这本《重构-改善既有代码的设计》这本书，作者Martin Fowler是ThoughtWorks公司的首席科学家。虽然书写于很多年前，但是很多思想在编程中依然非常实用。书里主要是讲的各种重构的手法，但是我觉得看完之后，个人感觉更重要的是告诉自己在写代码的过程中如何从源头上注意一些问题，让自己的代码更合理，更优美。最初选这本书也是因为觉得需要超脱语言的层面去理解一些编程的宏观的一些东西，不然总是觉得自己像个机器一样，写着代码，却不懂怎么写更好，为什么别人都那样分层。书已经看了一遍，似乎明白了一些哪些代码好一些、哪些代码差一点。<br>最近再一边读一边记下这个系列的读书笔记，算是记录吧~</p>
+<h2 id="2-代码的坏味道"><a href="#2-代码的坏味道" class="headerlink" title="2. 代码的坏味道"></a>2. 代码的坏味道</h2><ul>
+<li>重复代码：如果在两个不相关的类中出现了重复的相同功能的函数，就应该考虑新建一个独立的类将这个重复的函数提炼出去。</li>
+<li>过长函数：写代码的过程中，有一个原则。<strong>代码块越小，代码的功能就越容易管理，代码的处理和移动也就越轻松。</strong></li>
+<li>过大的类：一个类的代码太多的话，最后就会变成一坨，嗯。尽量将特别大的类进行分解。</li>
+<li>过长的参数列:拆成bean。</li>
+<li>switch泛滥：作者的建议是少用switch，在使用switch的地方考虑使用多态来解决。</li>
+<li>数据泥团：数据成群的绑在一起。正确的做法是将总是绑定在一起的数据放到一个对象里。</li>
+<li>发散式变化：多种变化都对应同一个类的修改。这种情况下需要考虑将这个类拆开，尽量每种变化只对应一个类的修改。</li>
+<li>霰弹式修改：这个类一旦变化，会引发多个类的修改。这种情况下应该尽量将所有需要修改的方法放到一个类里。</li>
+</ul>
+<h2 id="3-重新组织函数"><a href="#3-重新组织函数" class="headerlink" title="3. 重新组织函数"></a>3. 重新组织函数</h2><h3 id="3-1-extract-method（提炼函数）"><a href="#3-1-extract-method（提炼函数）" class="headerlink" title="3.1 extract method（提炼函数）"></a>3.1 extract method（提炼函数）</h3><p>1) 没有局部变量，直接提炼。<br>2) 有局部变量，把这个局部变量作为参数传入被提炼函数<br>3) 如果需要对局部变量赋值，得需要使用remove Assignments to parameters.如果被赋值的局部变量只在被提炼的函数中被赋值，则把这个局部变量声明到被提炼函数中。如果被赋值的局部变量需要在被提炼的函数其它的地方使用，则需要被提炼函数返回一个被修改后的值。如果遇到返回的不止一个值，则最好的方法是再重新提炼一个新的方法，每次只返回一个值最佳。</p>
+<p><code>before</code>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">printOwing</span><span class="params">(<span class="keyword">double</span> amount)</span></span>&#123;</div><div class="line">    printBanner();</div><div class="line">    <span class="comment">//print details</span></div><div class="line">    System.out.println(<span class="string">"amount:"</span>+amount);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>after</code>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">printOwing</span><span class="params">(<span class="keyword">double</span> amount)</span></span>&#123;</div><div class="line">    printBanner();</div><div class="line">    printDetails(amount);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">printDetails</span><span class="params">(<span class="keyword">double</span> amount)</span></span>&#123;</div><div class="line">    System.out.println(<span class="string">"amount:"</span>+amount);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="3-2-inline-method-内联函数"><a href="#3-2-inline-method-内联函数" class="headerlink" title="3.2 inline method(内联函数)"></a>3.2 inline method(内联函数)</h3><p><code>before</code>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">getRating</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> (moreThanFiveLateDeliveries()) ? <span class="number">2</span>:<span class="number">1</span>;</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">boolean</span> <span class="title">moreThanFiveLateDeliveries</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> _numberOfLateDeliveries &gt; <span class="number">5</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>after</code>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">int</span> <span class="title">getRating</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> (_numberOfLateDeliveries &gt; <span class="number">5</span>) ? <span class="number">2</span>:<span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h3 id="3-3-inline-temp-内联临时变量"><a href="#3-3-inline-temp-内联临时变量" class="headerlink" title="3.3 inline temp(内联临时变量)"></a>3.3 inline temp(内联临时变量)</h3><p><code>before</code>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">double</span> basePrice = anOrder.basePrice();</div><div class="line"><span class="keyword">return</span> (basePrice&gt;<span class="number">1000</span>);</div></pre></td></tr></table></figure></p>
+<p><code>after</code>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">return</span> (anOrder.basePrice()&gt;<span class="number">1000</span>);</div></pre></td></tr></table></figure></p>
+<h3 id="3-4-replace-temp-with-query-以查询取代临时变量"><a href="#3-4-replace-temp-with-query-以查询取代临时变量" class="headerlink" title="3.4 replace temp with query(以查询取代临时变量)"></a>3.4 replace temp with query(以查询取代临时变量)</h3><p>临时变量的问题在于：他们是暂时的，而且只能在所属函数内使用。由于临时变量只在所属函数内可见，所以更好的方法是将其替换为一个查询，这样，同一个类中的所有函数都将可以获得这份信息。<br><code>before</code>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">double</span> basePrice = _quantity * _itemPrice;</div><div class="line"><span class="keyword">if</span>(basePrice &gt; <span class="number">1000</span>)</div><div class="line">    <span class="keyword">return</span> basePrice * <span class="number">0.95</span>;</div><div class="line"><span class="keyword">else</span></div><div class="line">    <span class="keyword">return</span> basePrice * <span class="number">0.98</span>;</div></pre></td></tr></table></figure></p>
+<p><code>after</code>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>(basePrice() &gt; <span class="number">1000</span>)</div><div class="line">    <span class="keyword">return</span> basePrice() * <span class="number">0.95</span>;</div><div class="line"><span class="keyword">else</span></div><div class="line">    <span class="keyword">return</span> basePrice() * <span class="number">0.98</span>;</div><div class="line"><span class="function"><span class="keyword">double</span> <span class="title">basePrice</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">return</span> _quantity * _itemPrice;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>在进行这项重构的时候有个需要注意的就是得确保这个临时变量是否只被赋值了一次，有个技巧是在这个临时变量前加final修饰符，如果不只被赋值一次，编译器就会报错。这时候就不能使用这个方法。</p>
+<h3 id="3-5-introduce-explaining-variable（引入解释型变量）"><a href="#3-5-introduce-explaining-variable（引入解释型变量）" class="headerlink" title="3.5 introduce explaining variable（引入解释型变量）"></a>3.5 introduce explaining variable（引入解释型变量）</h3><p>将复杂表达式放进一个临时变量里，以此变量名称来解释表达式的用途。<br><code>before</code>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span>((platform.toUpperCase().indexOf(<span class="string">"MAC"</span>) &gt; -<span class="number">1</span>) &amp;&amp;</div><div class="line">    (browser.toUpperCase().indexOf(<span class="string">"IE"</span>) &gt; -<span class="number">1</span>) &amp;&amp;</div><div class="line">    resize&gt;<span class="number">0</span> )&#123;</div><div class="line">    <span class="comment">//do something</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>after</code>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">final</span> <span class="keyword">boolean</span> isMacOs = platform.toUpperCase().indexOf(<span class="string">"MAC"</span>) &gt; -<span class="number">1</span>;</div><div class="line"><span class="keyword">final</span> <span class="keyword">boolean</span> isIE = browser.toUpperCase().indexOf(<span class="string">"IE"</span>) &gt; -<span class="number">1</span>;</div><div class="line"><span class="keyword">final</span> <span class="keyword">boolean</span> wasResized = resize&gt;<span class="number">0</span>;</div><div class="line"><span class="keyword">if</span>(isMacOs &amp;&amp; isIE &amp;&amp; wasResized)&#123;</div><div class="line">    <span class="comment">//do something</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h2 id=&quot;1-一点感想&quot;&gt;&lt;a href=&quot;#1-一点感想&quot; class=&quot;headerlink&quot; title=&quot;1. 一点感想&quot;&gt;&lt;/a&gt;1. 一点感想&lt;/h2&gt;&lt;p&gt;上次单位人力让挑书，然后选了这本《重构-改善既有代码的设计》这本书，作者Martin Fowler是Th
+    
+    </summary>
+    
+    
+      <category term="重构" scheme="http://yvshuo.github.io/tags/%E9%87%8D%E6%9E%84/"/>
+    
+  </entry>
   
   <entry>
     <title>git知识备忘</title>
