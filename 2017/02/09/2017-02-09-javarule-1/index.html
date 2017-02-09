@@ -6,23 +6,33 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yvshuo.github.io">
-  <title>配置hexo的一键打包部署 | 香辣猪蹄儿</title>
+  <title>阿里巴巴java开发手册解读1-命名规约 | 香辣猪蹄儿</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="今天研究了一下hexo的自动打包部署，记录一下。
-配置github的ssh本地生成公钥运行 git Bash 客户端，检查是否已经配置过SSH key。12$ cd ~/.ssh$ ls">
+  <meta name="description" content="今天拜读了阿里巴巴刚发布的java开发手册，之前做项目时在一些细节的处理上总是不知道如何下手，看完这个手册，收获颇多。附手册全文。
+
+阿里巴巴java开发手册
+
+下面是摘录加批注。注：引用标签内为批注，字面规则不附批注。
+1. 【强制】 代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束反例:name / __name / $Object / name / name$ / Ob">
 <meta property="og:type" content="article">
-<meta property="og:title" content="配置hexo的一键打包部署">
-<meta property="og:url" content="http://yvshuo.github.io/2016/10/07/2016-10-07-githubssh/index.html">
+<meta property="og:title" content="阿里巴巴java开发手册解读1-命名规约">
+<meta property="og:url" content="http://yvshuo.github.io/2017/02/09/2017-02-09-javarule-1/index.html">
 <meta property="og:site_name" content="香辣猪蹄儿">
-<meta property="og:description" content="今天研究了一下hexo的自动打包部署，记录一下。
-配置github的ssh本地生成公钥运行 git Bash 客户端，检查是否已经配置过SSH key。12$ cd ~/.ssh$ ls">
-<meta property="og:image" content="http://yvshuo.github.io/assets/images/2016/10/07/githubssh-1.png">
-<meta property="og:updated_time" content="2016-10-11T15:23:42.000Z">
+<meta property="og:description" content="今天拜读了阿里巴巴刚发布的java开发手册，之前做项目时在一些细节的处理上总是不知道如何下手，看完这个手册，收获颇多。附手册全文。
+
+阿里巴巴java开发手册
+
+下面是摘录加批注。注：引用标签内为批注，字面规则不附批注。
+1. 【强制】 代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束反例:name / __name / $Object / name / name$ / Ob">
+<meta property="og:updated_time" content="2017-02-09T16:58:51.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="配置hexo的一键打包部署">
-<meta name="twitter:description" content="今天研究了一下hexo的自动打包部署，记录一下。
-配置github的ssh本地生成公钥运行 git Bash 客户端，检查是否已经配置过SSH key。12$ cd ~/.ssh$ ls">
-<meta name="twitter:image" content="http://yvshuo.github.io/assets/images/2016/10/07/githubssh-1.png">
+<meta name="twitter:title" content="阿里巴巴java开发手册解读1-命名规约">
+<meta name="twitter:description" content="今天拜读了阿里巴巴刚发布的java开发手册，之前做项目时在一些细节的处理上总是不知道如何下手，看完这个手册，收获颇多。附手册全文。
+
+阿里巴巴java开发手册
+
+下面是摘录加批注。注：引用标签内为批注，字面规则不附批注。
+1. 【强制】 代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束反例:name / __name / $Object / name / name$ / Ob">
   
     <link rel="alternative" href="/atom.xml" title="香辣猪蹄儿" type="application/atom+xml">
   
@@ -148,57 +158,64 @@
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2016-10-07-githubssh" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2017-02-09-javarule-1" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      配置hexo的一键打包部署
+      阿里巴巴java开发手册解读1-命名规约
     </h1>
   
 
         
-        <a href="/2016/10/07/2016-10-07-githubssh/" class="archive-article-date">
-  	<time datetime="2016-10-07T04:31:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-07</time>
+        <a href="/2017/02/09/2017-02-09-javarule-1/" class="archive-article-date">
+  	<time datetime="2017-02-09T14:43:47.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-09</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>今天研究了一下hexo的自动打包部署，记录一下。</p>
-<h2 id="配置github的ssh"><a href="#配置github的ssh" class="headerlink" title="配置github的ssh"></a>配置github的ssh</h2><h3 id="本地生成公钥"><a href="#本地生成公钥" class="headerlink" title="本地生成公钥"></a>本地生成公钥</h3><p>运行 git Bash 客户端，检查是否已经配置过SSH key。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~/.ssh</div><div class="line">$ ls</div></pre></td></tr></table></figure></p>
-<a id="more"></a>
-<p>如果没有 id_rsa 和 id_rsa.pub，则需要创建一个SSH key。</p>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C <span class="string">"XXX@XXX.com"</span></div></pre></td></tr></table></figure>
-<ul>
-<li>-t 制定密钥类型，默认rsa，可以省略</li>
-<li>-C 设置注释文字，通常设置自己的邮箱</li>
-<li>-f 制定密钥文件存储文件名</li>
-</ul>
-<p>然后就会生成 id_rsa 和 id_rsa.pub 两个文件，其中 id_rsa.pub就是我们要配在github里的公钥。</p>
-<h3 id="在github中配置ssh-key"><a href="#在github中配置ssh-key" class="headerlink" title="在github中配置ssh key"></a>在github中配置ssh key</h3><p>在github中找到配置项的SSH and GPG keys，然后按下图所示配置。</p>
-<p><img src="/assets/images/2016/10/07/githubssh-1.png" alt=""></p>
-<p>配置完成后，测试一下是否配置成功。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh -T git@github.com</div></pre></td></tr></table></figure></p>
-<p>如果显示以下警告：<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">The authenticity of host <span class="string">'github.com (207.97.227.239)'</span> can<span class="string">'t be established.</span></div><div class="line"># RSA key fingerprint is &lt;your fingerprint&gt;.</div><div class="line"># Are you sure you want to continue connecting (yes/no)?</div></pre></td></tr></table></figure></p>
-<p>则说明已经配置成功了，输入yes即可。</p>
-<h2 id="配置hexo的自动打包部署"><a href="#配置hexo的自动打包部署" class="headerlink" title="配置hexo的自动打包部署"></a>配置hexo的自动打包部署</h2><h3 id="安装hexo-deployer-git"><a href="#安装hexo-deployer-git" class="headerlink" title="安装hexo-deployer-git"></a>安装hexo-deployer-git</h3><p>还是通过npm来安装，输入下面的命令，稍等片刻即可安装成功。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ npm install hexo-deployer-git --save</div></pre></td></tr></table></figure></p>
-<h3 id="修改配置"><a href="#修改配置" class="headerlink" title="修改配置"></a>修改配置</h3><p>在根目录的_config.yml中找到以下代码段。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">deploy:</div><div class="line">  <span class="built_in">type</span>: git</div><div class="line">  repo: &lt;repository url&gt;</div><div class="line">  branch: [branch]</div><div class="line">  message: [message]</div></pre></td></tr></table></figure></p>
-<ul>
-<li>repo 里配置git仓库的信息，这里我的就是git@github.com:yvshuo/yvshuo.github.io</li>
-<li>branch 里配置分支名称，我的是主分支，就配置的master</li>
-<li>message 是自定义提交的信息，默认为Site updated: {{ now('YYYY-MM-DD HH:mm:ss') }}，可以空着</li>
-</ul>
-<h3 id="自动部署提交"><a href="#自动部署提交" class="headerlink" title="自动部署提交"></a>自动部署提交</h3><p>配置完成后，剩下的就是一条命令了。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo generate --deploy</div></pre></td></tr></table></figure></p>
-<p>缩写的命令也是可以的。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ hexo g -<span class="_">-d</span></div></pre></td></tr></table></figure></p>
-<p>开开心心。。。。</p>
-<h2 id="最后唠叨几句"><a href="#最后唠叨几句" class="headerlink" title="最后唠叨几句"></a>最后唠叨几句</h2><ul>
-<li>记得关掉vpn代理啥的，不然ssh可能会有问题</li>
-<li>发现一篇很好的介绍hexo的文章，戳<a href="http://blog.fens.me/hexo-blog-github/" target="_blank" rel="external">Hexo在github上构建免费的Web应用</a></li>
-<li>明天又要上班了，终于又可以开心的建设社会主义了。。。。。。（逃</li>
-</ul>
+        <p>今天拜读了阿里巴巴刚发布的java开发手册，之前做项目时在一些细节的处理上总是不知道如何下手，看完这个手册，收获颇多。附手册全文。</p>
+<blockquote>
+<p><a href="/assets/pdf/alijava.pdf">阿里巴巴java开发手册</a></p>
+</blockquote>
+<p>下面是摘录加批注。注：引用标签内为批注，字面规则不附批注。</p>
+<h3 id="1-【强制】-代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束"><a href="#1-【强制】-代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束" class="headerlink" title="1. 【强制】 代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束"></a>1. 【强制】 代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束</h3><p><code>反例</code>:<em>name / __name / $Object / name</em> / name$ / Object$</p>
+<blockquote>
+<p><strong>批注</strong>:<br>javascript表示不服！</p>
+</blockquote>
+<h3 id="2-【强制】-代码中的命名严禁使用拼音与英文混合的方式，更不允许直接使用中文的方式。"><a href="#2-【强制】-代码中的命名严禁使用拼音与英文混合的方式，更不允许直接使用中文的方式。" class="headerlink" title="2. 【强制】 代码中的命名严禁使用拼音与英文混合的方式，更不允许直接使用中文的方式。"></a>2. 【强制】 代码中的命名严禁使用拼音与英文混合的方式，更不允许直接使用中文的方式。</h3><p>说明：正确的英文拼写和语法可以让阅读者易于理解，避免歧义。注意，即使纯拼音命名方式<br>也要避免采用<br><code>反例</code>：DaZhePromotion [打折] / getPingfenByName() [评分] / int 某变量 = 3<br><code>正例</code>：alibaba / taobao / youku / hangzhou 等国际通用的名称，可视同英文。</p>
+<blockquote>
+<p><strong>批注</strong>:<br>用拼音命名的同学请举起手！你不是一个人！</p>
+</blockquote>
+<h3 id="3-【强制】类名使用-UpperCamelCase-风格，必须遵从驼峰形式"><a href="#3-【强制】类名使用-UpperCamelCase-风格，必须遵从驼峰形式" class="headerlink" title="3. 【强制】类名使用 UpperCamelCase 风格，必须遵从驼峰形式"></a>3. 【强制】类名使用 UpperCamelCase 风格，必须遵从驼峰形式</h3><p>以下情形例外：（领域模型的相关命名）DO / BO / DTO / VO 等<br><code>正例</code>：MarcoPolo / UserDO / XmlService / TcpUdpDeal / TaPromotion<br><code>反例</code>：macroPolo / UserDo / XMLService / TCPUDPDeal / TAPromotion</p>
+<blockquote>
+<p><strong>批注</strong>:<br>1） DO(data object) 数据对象<br>2） DAO(data access object) 数据访问对象<br>3） DTO(Data Transfer Object) 数据传输对象<br>4） VO(value object) 值对象<br>5） BO(business object) 业务对象<br>6） POJO 是 DO/DTO/BO/VO 的统称</p>
+</blockquote>
+<h3 id="4-【强制】方法名、参数名、成员变量、局部变量都统一使用-lowerCamelCase-风格，必须遵从"><a href="#4-【强制】方法名、参数名、成员变量、局部变量都统一使用-lowerCamelCase-风格，必须遵从" class="headerlink" title="4. 【强制】方法名、参数名、成员变量、局部变量都统一使用 lowerCamelCase 风格，必须遵从"></a>4. 【强制】方法名、参数名、成员变量、局部变量都统一使用 lowerCamelCase 风格，必须遵从</h3><p>驼峰形式<br><code>正例</code>： localValue / getHttpMessage() / inputUserId</p>
+<h3 id="5-【强制】常量命名全部大写，单词间用下划线隔开，力求语义表达完整清楚，不要嫌名字长"><a href="#5-【强制】常量命名全部大写，单词间用下划线隔开，力求语义表达完整清楚，不要嫌名字长" class="headerlink" title="5. 【强制】常量命名全部大写，单词间用下划线隔开，力求语义表达完整清楚，不要嫌名字长"></a>5. 【强制】常量命名全部大写，单词间用下划线隔开，力求语义表达完整清楚，不要嫌名字长</h3><p><code>正例</code>： MAX_STOCK_COUNT<br><code>反例</code>： MAX_COUNT</p>
+<h3 id="6-【强制】抽象类命名使用-Abstract-或-Base-开头；异常类命名使用-Exception-结尾；测试类命名以它要测试的类的名称开始，以-Test-结尾"><a href="#6-【强制】抽象类命名使用-Abstract-或-Base-开头；异常类命名使用-Exception-结尾；测试类命名以它要测试的类的名称开始，以-Test-结尾" class="headerlink" title="6. 【强制】抽象类命名使用 Abstract 或 Base 开头；异常类命名使用 Exception 结尾；测试类命名以它要测试的类的名称开始，以 Test 结尾"></a>6. 【强制】抽象类命名使用 Abstract 或 Base 开头；异常类命名使用 Exception 结尾；测试类命名以它要测试的类的名称开始，以 Test 结尾</h3><h3 id="7-【强制】中括号是数组类型的一部分"><a href="#7-【强制】中括号是数组类型的一部分" class="headerlink" title="7. 【强制】中括号是数组类型的一部分"></a>7. 【强制】中括号是数组类型的一部分</h3><p>数组定义如下：String[] args<br><code>反例</code>：请勿使用 String args[]的方式来定义</p>
+<blockquote>
+<p><strong>批注</strong>:<br>务必注意</p>
+</blockquote>
+<h3 id="8-【强制】POJO-类中布尔类型的变量，都不要加-is"><a href="#8-【强制】POJO-类中布尔类型的变量，都不要加-is" class="headerlink" title="8. 【强制】POJO 类中布尔类型的变量，都不要加 is"></a>8. 【强制】POJO 类中布尔类型的变量，都不要加 is</h3><p>否则部分框架解析会引起序列化错误<br><code>反例</code>：定义为基本数据类型 boolean isSuccess；的属性，它的方法也是 isSuccess()，RPC<br>框架在反向解析的时候，“以为”对应的属性名称是 success，导致属性获取不到，进而抛出异<br>常。</p>
+<h3 id="9-【强制】包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词。包名统一使用单数形式，但是类名如果有复数含义，类名可以使用复数形式"><a href="#9-【强制】包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词。包名统一使用单数形式，但是类名如果有复数含义，类名可以使用复数形式" class="headerlink" title="9. 【强制】包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词。包名统一使用单数形式，但是类名如果有复数含义，类名可以使用复数形式"></a>9. 【强制】包名统一使用小写，点分隔符之间有且仅有一个自然语义的英语单词。包名统一使用单数形式，但是类名如果有复数含义，类名可以使用复数形式</h3><p><code>正例</code>： 应用工具类包名为 com.alibaba.open.util、类名为 MessageUtils（此规则参考<br>spring 的框架结构）</p>
+<h3 id="10-【强制】杜绝完全不规范的缩写，避免望文不知义"><a href="#10-【强制】杜绝完全不规范的缩写，避免望文不知义" class="headerlink" title="10. 【强制】杜绝完全不规范的缩写，避免望文不知义"></a>10. 【强制】杜绝完全不规范的缩写，避免望文不知义</h3><p><code>反例</code>： AbstractClass“缩写”命名成 AbsClass；condition“缩写”命名成 condi，此类<br>随意缩写严重降低了代码的可阅读性。</p>
+<blockquote>
+<p><strong>批注</strong>:<br>一个优秀程序员的自我修养！以后还是少用btn，写全button！</p>
+</blockquote>
+<h3 id="11-【推荐】如果使用到了设计模式，建议在类名中体现出具体模式"><a href="#11-【推荐】如果使用到了设计模式，建议在类名中体现出具体模式" class="headerlink" title="11. 【推荐】如果使用到了设计模式，建议在类名中体现出具体模式"></a>11. 【推荐】如果使用到了设计模式，建议在类名中体现出具体模式</h3><p>说明：将设计模式体现在名字中，有利于阅读者快速理解架构设计思想。<br><code>正例</code>：public class OrderFactory;<br>public class LoginProxy;<br>public class ResourceObserver;</p>
+<h3 id="12-【推荐】接口类中的方法和属性不要加任何修饰符号（public-也不要加），保持代码的简洁性，并加上有效的-Javadoc-注释。尽量不要在接口里定义变量，如果一定要定义变量，肯定是与接口方法相关，并且是整个应用的基础常量"><a href="#12-【推荐】接口类中的方法和属性不要加任何修饰符号（public-也不要加），保持代码的简洁性，并加上有效的-Javadoc-注释。尽量不要在接口里定义变量，如果一定要定义变量，肯定是与接口方法相关，并且是整个应用的基础常量" class="headerlink" title="12. 【推荐】接口类中的方法和属性不要加任何修饰符号（public 也不要加），保持代码的简洁性，并加上有效的 Javadoc 注释。尽量不要在接口里定义变量，如果一定要定义变量，肯定是与接口方法相关，并且是整个应用的基础常量"></a>12. 【推荐】接口类中的方法和属性不要加任何修饰符号（public 也不要加），保持代码的简洁性，并加上有效的 Javadoc 注释。尽量不要在接口里定义变量，如果一定要定义变量，肯定是与接口方法相关，并且是整个应用的基础常量</h3><p><code>正例</code>：接口方法签名：void f();<br> 接口基础常量表示：String COMPANY = “alibaba”;<br><code>反例</code>：接口方法定义：public abstract void f();<br>说明：JDK8 中接口允许有默认实现，那么这个 default 方法，是对所有实现类都有价值的默<br>认实现。</p>
+<blockquote>
+<p><strong>批注</strong>:<br>个人还是习惯加上修饰符号。</p>
+</blockquote>
+<h3 id="13-接口和实现类的命名有两套规则："><a href="#13-接口和实现类的命名有两套规则：" class="headerlink" title="13. 接口和实现类的命名有两套规则："></a>13. 接口和实现类的命名有两套规则：</h3><p><strong> 1）【强制】对于 Service 和 DAO 类，基于 SOA 的理念，暴露出来的服务一定是接口，内部的实现类用 Impl 的后缀与接口区别。</strong><br><code>正例</code>：CacheServiceImpl 实现 CacheService 接口。<br><strong> 2）【推荐】如果是形容能力的接口名称，取对应的形容词做接口名（通常是–able 的形式）。</strong><br><code>正例</code>：AbstractTranslator 实现 Translatable。</p>
+<h3 id="14-【参考】枚举类名建议带上-Enum-后缀，枚举成员名称需要全大写，单词间用下划线隔开。"><a href="#14-【参考】枚举类名建议带上-Enum-后缀，枚举成员名称需要全大写，单词间用下划线隔开。" class="headerlink" title="14. 【参考】枚举类名建议带上 Enum 后缀，枚举成员名称需要全大写，单词间用下划线隔开。"></a>14. 【参考】枚举类名建议带上 Enum 后缀，枚举成员名称需要全大写，单词间用下划线隔开。</h3><p>说明：枚举其实就是特殊的常量类，且构造方法被默认强制是私有<br><code>正例</code>：枚举名字：DealStatusEnum，成员名称：SUCCESS / UNKOWN_REASON。</p>
+<h3 id="15-【参考】各层命名规约："><a href="#15-【参考】各层命名规约：" class="headerlink" title="15. 【参考】各层命名规约："></a>15. 【参考】各层命名规约：</h3><p><strong> A) Service/DAO 层方法命名规约 </strong><br>1） 获取单个对象的方法用 get 做前缀。<br>2） 获取多个对象的方法用 list 做前缀。<br>3） 获取统计值的方法用 count 做前缀。<br>4） 插入的方法用 save（推荐）或 insert 做前缀。<br>5） 删除的方法用 remove（推荐）或 delete 做前缀。<br>6） 修改的方法用 update 做前缀。</p>
+<p><strong> B) 领域模型命名规约 </strong><br>1） 数据对象：xxxDO，xxx 即为数据表名。<br>2） 数据传输对象：xxxDTO，xxx 为业务领域相关的名称。<br>3） 展示对象：xxxVO，xxx 一般为网页名称。<br>4） POJO 是 DO/DTO/BO/VO 的统称，禁止命名成 xxxPOJO。</p>
 
       
 
@@ -212,7 +229,7 @@
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
         		</li>
       		
 		</ul>
@@ -231,18 +248,9 @@
   
 <nav id="article-nav">
   
-    <a href="/2016/10/11/2016-10-11-closure/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          一篇关于javascript闭包的笔记
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/10/06/2016-10-06-create/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">使用hexo在github上搭建博客的记录</div>
+    <a href="/2017/01/16/2017-01-16-refactor/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">重构—重新组织函数</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -256,7 +264,7 @@
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2016-10-07-githubssh" data-title="配置hexo的一键打包部署" data-url="http://yvshuo.github.io/2016/10/07/2016-10-07-githubssh/"></div>
+	<div class="ds-thread" data-thread-key="2017-02-09-javarule-1" data-title="阿里巴巴java开发手册解读1-命名规约" data-url="http://yvshuo.github.io/2017/02/09/2017-02-09-javarule-1/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
