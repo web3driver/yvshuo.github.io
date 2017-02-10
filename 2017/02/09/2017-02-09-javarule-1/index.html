@@ -24,7 +24,7 @@
 
 下面是摘录加批注。注：引用标签内为批注，字面规则不附批注。
 1. 【强制】 代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束反例:name / __name / $Object / name / name$ / Ob">
-<meta property="og:updated_time" content="2017-02-09T17:03:32.000Z">
+<meta property="og:updated_time" content="2017-02-10T01:12:27.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="阿里巴巴java开发手册解读1-命名规约">
 <meta name="twitter:description" content="今天拜读了阿里巴巴刚发布的java开发手册，之前做项目时在一些细节的处理上总是不知道如何下手，看完这个手册，收获颇多。附手册全文。
@@ -188,7 +188,7 @@
 <p><strong>批注</strong>:<br>javascript表示不服！</p>
 </blockquote>
 <a id="more"></a>
-<h3 id="2-【强制】-代码中的命名严禁使用拼音与英文混合的方式，更不允许直接使用中文的方式。"><a href="#2-【强制】-代码中的命名严禁使用拼音与英文混合的方式，更不允许直接使用中文的方式。" class="headerlink" title="2. 【强制】 代码中的命名严禁使用拼音与英文混合的方式，更不允许直接使用中文的方式。"></a>2. 【强制】 代码中的命名严禁使用拼音与英文混合的方式，更不允许直接使用中文的方式。</h3><p>说明：正确的英文拼写和语法可以让阅读者易于理解，避免歧义。注意，即使纯拼音命名方式<br>也要避免采用<br><code>反例</code>：DaZhePromotion [打折] / getPingfenByName() [评分] / int 某变量 = 3<br><code>正例</code>：alibaba / taobao / youku / hangzhou 等国际通用的名称，可视同英文。</p>
+<h3 id="2-【强制】-代码中的命名严禁使用拼音与英文混合的方式，更不允许直接使用中文的方式"><a href="#2-【强制】-代码中的命名严禁使用拼音与英文混合的方式，更不允许直接使用中文的方式" class="headerlink" title="2. 【强制】 代码中的命名严禁使用拼音与英文混合的方式，更不允许直接使用中文的方式"></a>2. 【强制】 代码中的命名严禁使用拼音与英文混合的方式，更不允许直接使用中文的方式</h3><p>说明：正确的英文拼写和语法可以让阅读者易于理解，避免歧义。注意，即使纯拼音命名方式<br>也要避免采用<br><code>反例</code>：DaZhePromotion [打折] / getPingfenByName() [评分] / int 某变量 = 3<br><code>正例</code>：alibaba / taobao / youku / hangzhou 等国际通用的名称，可视同英文。</p>
 <blockquote>
 <p><strong>批注</strong>:<br>用拼音命名的同学请举起手！你不是一个人！</p>
 </blockquote>
@@ -211,7 +211,7 @@
 <h3 id="11-【推荐】如果使用到了设计模式，建议在类名中体现出具体模式"><a href="#11-【推荐】如果使用到了设计模式，建议在类名中体现出具体模式" class="headerlink" title="11. 【推荐】如果使用到了设计模式，建议在类名中体现出具体模式"></a>11. 【推荐】如果使用到了设计模式，建议在类名中体现出具体模式</h3><p>说明：将设计模式体现在名字中，有利于阅读者快速理解架构设计思想。<br><code>正例</code>：public class OrderFactory;<br>public class LoginProxy;<br>public class ResourceObserver;</p>
 <h3 id="12-【推荐】接口类中的方法和属性不要加任何修饰符号（public-也不要加），保持代码的简洁性，并加上有效的-Javadoc-注释。尽量不要在接口里定义变量，如果一定要定义变量，肯定是与接口方法相关，并且是整个应用的基础常量"><a href="#12-【推荐】接口类中的方法和属性不要加任何修饰符号（public-也不要加），保持代码的简洁性，并加上有效的-Javadoc-注释。尽量不要在接口里定义变量，如果一定要定义变量，肯定是与接口方法相关，并且是整个应用的基础常量" class="headerlink" title="12. 【推荐】接口类中的方法和属性不要加任何修饰符号（public 也不要加），保持代码的简洁性，并加上有效的 Javadoc 注释。尽量不要在接口里定义变量，如果一定要定义变量，肯定是与接口方法相关，并且是整个应用的基础常量"></a>12. 【推荐】接口类中的方法和属性不要加任何修饰符号（public 也不要加），保持代码的简洁性，并加上有效的 Javadoc 注释。尽量不要在接口里定义变量，如果一定要定义变量，肯定是与接口方法相关，并且是整个应用的基础常量</h3><p><code>正例</code>：接口方法签名：void f();<br> 接口基础常量表示：String COMPANY = “alibaba”;<br><code>反例</code>：接口方法定义：public abstract void f();<br>说明：JDK8 中接口允许有默认实现，那么这个 default 方法，是对所有实现类都有价值的默<br>认实现。</p>
 <blockquote>
-<p><strong>批注</strong>:<br>个人还是习惯加上修饰符号。</p>
+<p><strong>批注</strong>:<br>个人还是习惯加上修饰符号。不过接口本身就是public的，要改掉这个坏习惯</p>
 </blockquote>
 <h3 id="13-接口和实现类的命名有两套规则："><a href="#13-接口和实现类的命名有两套规则：" class="headerlink" title="13. 接口和实现类的命名有两套规则："></a>13. 接口和实现类的命名有两套规则：</h3><p><strong> 1）【强制】对于 Service 和 DAO 类，基于 SOA 的理念，暴露出来的服务一定是接口，内部的实现类用 Impl 的后缀与接口区别。</strong><br><code>正例</code>：CacheServiceImpl 实现 CacheService 接口。<br><strong> 2）【推荐】如果是形容能力的接口名称，取对应的形容词做接口名（通常是–able 的形式）。</strong><br><code>正例</code>：AbstractTranslator 实现 Translatable。</p>
 <h3 id="14-【参考】枚举类名建议带上-Enum-后缀，枚举成员名称需要全大写，单词间用下划线隔开。"><a href="#14-【参考】枚举类名建议带上-Enum-后缀，枚举成员名称需要全大写，单词间用下划线隔开。" class="headerlink" title="14. 【参考】枚举类名建议带上 Enum 后缀，枚举成员名称需要全大写，单词间用下划线隔开。"></a>14. 【参考】枚举类名建议带上 Enum 后缀，枚举成员名称需要全大写，单词间用下划线隔开。</h3><p>说明：枚举其实就是特殊的常量类，且构造方法被默认强制是私有<br><code>正例</code>：枚举名字：DealStatusEnum，成员名称：SUCCESS / UNKOWN_REASON。</p>
@@ -248,6 +248,15 @@
 
   
 <nav id="article-nav">
+  
+    <a href="/2017/02/10/2017-02-10-javarule-2/" id="article-nav-newer" class="article-nav-link-wrap">
+      <i class="icon-circle-left"></i>
+      <div class="article-nav-title">
+        
+          阿里巴巴java开发手册解读2-常量定义
+        
+      </div>
+    </a>
   
   
     <a href="/2017/01/16/2017-01-16-refactor/" id="article-nav-older" class="article-nav-link-wrap">

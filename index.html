@@ -144,6 +144,73 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2017-02-10-javarule-2" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/10/2017-02-10-javarule-2/">阿里巴巴java开发手册解读2-常量定义</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/10/2017-02-10-javarule-2/" class="archive-article-date">
+  	<time datetime="2017-02-10T01:13:20.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-【强制】不允许出现任何魔法值-即未经定义的常量-直接出现在代码中"><a href="#1-【强制】不允许出现任何魔法值-即未经定义的常量-直接出现在代码中" class="headerlink" title="1. 【强制】不允许出现任何魔法值(即未经定义的常量)直接出现在代码中"></a>1. 【强制】不允许出现任何魔法值(即未经定义的常量)直接出现在代码中</h3><p><code>反例</code>: String key=”Id#taobao_”+tradeId;<br>cache.put(key, value);</p>
+<blockquote>
+<p><strong>批注</strong>:<br>正确的做法应该是维护一个常量表或者在类起始位置定义常量<br><code>正解</code>：<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String PREFIX_TRADEID = <span class="string">"Id#taobao_"</span>;</div><div class="line">String key=PREFIX_TRADEID+tradeId;</div><div class="line">cache.put(key, value);</div></pre></td></tr></table></figure></p>
+</blockquote>
+        
+          <a class="article-more-a" href="/2017/02/10/2017-02-10-javarule-2/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/10/2017-02-10-javarule-2/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-2017-02-09-javarule-1" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
