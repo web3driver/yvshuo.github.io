@@ -6,21 +6,32 @@
   <meta name="renderer" content="webkit">
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <link rel="dns-prefetch" href="http://yvshuo.github.io">
-  <title>webpack简介 | 香辣猪蹄儿</title>
+  <title>阿里巴巴java开发手册解读3-格式规约 | 香辣猪蹄儿</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近一直在研究vue，顺带着研究了一下webpack。本文只是一篇简短的记录，后续会继续更新一些webpack深入的学习笔记。
-webpack概述简单的说，webpack是一个前端的打包工具。它做的事情就是将你项目中使用的各种前端模块打包到一起，转换为合适的格式发布。通过使用webpack，可以将各种其他格式，如scss、typescript等拓展类型的语言转换为可运行的javascript。配合">
+  <meta name="description" content="1. 【强制】大括号的使用约定如果是大括号内为空,则简洁地写成{}即可,不需要换行;如果 是非空代码块则:1) 左大括号前不换行2) 左大括号后换行
+
+批注:123456if (a &amp;lt; 0) &amp;#123;    // do something 1&amp;#125;if (a &amp;gt; 0) &amp;#123;    // do something 2&amp;#125;
+
+3) 右大括号前换行4) 右大括号后还">
 <meta property="og:type" content="article">
-<meta property="og:title" content="webpack简介">
-<meta property="og:url" content="http://yvshuo.github.io/2016/10/26/2016-10-26-webpacknote/index.html">
+<meta property="og:title" content="阿里巴巴java开发手册解读3-格式规约">
+<meta property="og:url" content="http://yvshuo.github.io/2017/02/10/2017-02-10-javarule-3/index.html">
 <meta property="og:site_name" content="香辣猪蹄儿">
-<meta property="og:description" content="最近一直在研究vue，顺带着研究了一下webpack。本文只是一篇简短的记录，后续会继续更新一些webpack深入的学习笔记。
-webpack概述简单的说，webpack是一个前端的打包工具。它做的事情就是将你项目中使用的各种前端模块打包到一起，转换为合适的格式发布。通过使用webpack，可以将各种其他格式，如scss、typescript等拓展类型的语言转换为可运行的javascript。配合">
-<meta property="og:updated_time" content="2016-11-03T14:13:02.000Z">
+<meta property="og:description" content="1. 【强制】大括号的使用约定如果是大括号内为空,则简洁地写成{}即可,不需要换行;如果 是非空代码块则:1) 左大括号前不换行2) 左大括号后换行
+
+批注:123456if (a &amp;lt; 0) &amp;#123;    // do something 1&amp;#125;if (a &amp;gt; 0) &amp;#123;    // do something 2&amp;#125;
+
+3) 右大括号前换行4) 右大括号后还">
+<meta property="og:image" content="http://yvshuo.github.io/assets/images/2017/02/10/1.png">
+<meta property="og:updated_time" content="2017-02-10T10:02:24.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="webpack简介">
-<meta name="twitter:description" content="最近一直在研究vue，顺带着研究了一下webpack。本文只是一篇简短的记录，后续会继续更新一些webpack深入的学习笔记。
-webpack概述简单的说，webpack是一个前端的打包工具。它做的事情就是将你项目中使用的各种前端模块打包到一起，转换为合适的格式发布。通过使用webpack，可以将各种其他格式，如scss、typescript等拓展类型的语言转换为可运行的javascript。配合">
+<meta name="twitter:title" content="阿里巴巴java开发手册解读3-格式规约">
+<meta name="twitter:description" content="1. 【强制】大括号的使用约定如果是大括号内为空,则简洁地写成{}即可,不需要换行;如果 是非空代码块则:1) 左大括号前不换行2) 左大括号后换行
+
+批注:123456if (a &amp;lt; 0) &amp;#123;    // do something 1&amp;#125;if (a &amp;gt; 0) &amp;#123;    // do something 2&amp;#125;
+
+3) 右大括号前换行4) 右大括号后还">
+<meta name="twitter:image" content="http://yvshuo.github.io/assets/images/2017/02/10/1.png">
   
     <link rel="alternative" href="/atom.xml" title="香辣猪蹄儿" type="application/atom+xml">
   
@@ -146,52 +157,47 @@ webpack概述简单的说，webpack是一个前端的打包工具。它做的事
             <canvas data-colors="#eaeaea" data-sectionHeight="100" data-contentId="js-content" id="myCanvas1" class="anm-canvas"></canvas>
           </div>
           <div id="js-content" class="content-ll">
-            <article id="post-2016-10-26-webpacknote" class="article article-type-post " itemscope itemprop="blogPost">
+            <article id="post-2017-02-10-javarule-3" class="article article-type-post " itemscope itemprop="blogPost">
   <div class="article-inner">
     
       <header class="article-header">
         
   
     <h1 class="article-title" itemprop="name">
-      webpack简介
+      阿里巴巴java开发手册解读3-格式规约
     </h1>
   
 
         
-        <a href="/2016/10/26/2016-10-26-webpacknote/" class="archive-article-date">
-  	<time datetime="2016-10-26T15:21:48.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-26</time>
+        <a href="/2017/02/10/2017-02-10-javarule-3/" class="archive-article-date">
+  	<time datetime="2017-02-10T01:35:25.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-10</time>
 </a>
         
       </header>
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近一直在研究vue，顺带着研究了一下webpack。本文只是一篇简短的记录，后续会继续更新一些webpack深入的学习笔记。</p>
-<h3 id="webpack概述"><a href="#webpack概述" class="headerlink" title="webpack概述"></a>webpack概述</h3><p>简单的说，webpack是一个前端的打包工具。它做的事情就是将你项目中使用的各种前端模块打包到一起，转换为合适的格式发布。通过使用webpack，可以将各种其他格式，如<code>scss</code>、<code>typescript</code>等拓展类型的语言转换为可运行的javascript。配合webpack的核心<code>loaders</code>和<code>plugins</code>，可以灵活的实现各种需求，非常的强力！<br><a id="more"></a><br>下面是一个典型的webpack的配置文件：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>);</div><div class="line"><span class="keyword">var</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>);</div><div class="line"><span class="keyword">var</span> ExtractTextPlugin = <span class="built_in">require</span>(<span class="string">'extract-text-webpack-plugin'</span>);</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">entry</span>: __dirname + <span class="string">"/app/main.js"</span>,</div><div class="line">  <span class="attr">output</span>: &#123;</div><div class="line">    <span class="attr">path</span>: __dirname + <span class="string">"/build"</span>,</div><div class="line">    <span class="attr">filename</span>: <span class="string">"[name]-[hash].js"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="attr">module</span>: &#123;</div><div class="line">    <span class="attr">loaders</span>: [</div><div class="line">      &#123;</div><div class="line">        <span class="attr">test</span>: <span class="regexp">/\.json$/</span>,</div><div class="line">        <span class="attr">loader</span>: <span class="string">"json"</span></div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</div><div class="line">        <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</div><div class="line">        <span class="attr">loader</span>: <span class="string">'babel'</span></div><div class="line">      &#125;,</div><div class="line">      &#123;</div><div class="line">        <span class="attr">test</span>: <span class="regexp">/\.css$/</span>,</div><div class="line">        <span class="attr">loader</span>: ExtractTextPlugin.extract(<span class="string">'style'</span>, <span class="string">'css?modules!postcss'</span>)</div><div class="line">      &#125;</div><div class="line">    ]</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">postcss</span>: [</div><div class="line">    <span class="built_in">require</span>(<span class="string">'autoprefixer'</span>)</div><div class="line">  ],</div><div class="line">  <span class="attr">plugins</span>: [</div><div class="line">    <span class="keyword">new</span> HtmlWebpackPlugin(&#123;</div><div class="line">      <span class="attr">template</span>: __dirname + <span class="string">"/app/index.tmpl.html"</span></div><div class="line">    &#125;),</div><div class="line">    <span class="keyword">new</span> webpack.optimize.OccurenceOrderPlugin(),</div><div class="line">    <span class="keyword">new</span> webpack.optimize.UglifyJsPlugin(),</div><div class="line">    <span class="keyword">new</span> ExtractTextPlugin(<span class="string">"[name]-[hash].css"</span>)</div><div class="line">  ]</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>下面就来具体解释下webpack的使用方法以及配置文件的意思。</p>
-<h3 id="基于webpack项目的基本结构"><a href="#基于webpack项目的基本结构" class="headerlink" title="基于webpack项目的基本结构"></a>基于webpack项目的基本结构</h3><p>通常会包含一些子模块文件目录以及一个<code>package.json</code>和<code>webpack.config.js</code>的文件。因为webpack是运行在<code>nodejs</code>环境下的，所以<code>package.json</code>中配置项目依赖，然后在<code>webpack.config.js</code>中配置打包的一些信息。<br>在package.json中通常会在script配置项下配置webpack的不同的运行信息。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line"><span class="comment">//package.json</span></div><div class="line">&#123;</div><div class="line">  <span class="string">"name"</span>: <span class="string">"webpack-sample-project"</span>,</div><div class="line">  <span class="string">"version"</span>: <span class="string">"1.0.0"</span>,</div><div class="line">  <span class="string">"description"</span>: <span class="string">"Sample webpack project"</span>,</div><div class="line">  <span class="string">"scripts"</span>: &#123;</div><div class="line">    <span class="string">"start"</span>: <span class="string">"webpack-dev-server --progress"</span>,</div><div class="line">    <span class="string">"build"</span>: <span class="string">"NODE_ENV=production webpack --config ./webpack.production.config.js --progress"</span></div><div class="line">  &#125;,</div><div class="line">  <span class="string">"author"</span>: <span class="string">"Cássio Zen"</span>,</div><div class="line">  <span class="string">"license"</span>: <span class="string">"ISC"</span>,</div><div class="line">  <span class="string">"devDependencies"</span>: &#123;...&#125;,</div><div class="line">  <span class="string">"dependencies"</span>: &#123;...&#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>然后通过<code>npm start</code>就可以运行webpack开发状态下的打包命令，通过<code>npm build</code>就可以运行webpack生产环境下的打包命令了～轻松愉快</p>
-<h3 id="loaders"><a href="#loaders" class="headerlink" title="loaders"></a>loaders</h3><p>Loaders是webpack中最让人激动人心的功能之一了。通过使用不同的loader，webpack通过调用外部的脚本或工具可以对各种各样的格式的文件进行处理，比如说分析JSON文件并把它转换为JavaScript文件，或者说把下一代的JS文件（ES6，ES7)转换为现代浏览器可以识别的JS文件。或者说对React的开发而言，合适的Loaders可以把React的JSX文件转换为JS文件。</p>
-<p>Loaders需要单独安装并且需要在webpack.config.js下的modules关键字下进行配置，Loaders的配置选项包括以下几方面：</p>
-<ul>
-<li>test：一个匹配loaders所处理的文件的拓展名的正则表达式（必须）</li>
-<li>loader：loader的名称（必须）</li>
-<li>include/exclude:手动添加必须处理的文件（文件夹）或屏蔽不需要处理的文件（文件夹）（可选）；</li>
-<li>query：为loaders提供额外的设置选项（可选）</li>
-</ul>
-<p>在前面的代码中有以下一段：<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">&#123;</div><div class="line">    <span class="attr">test</span>: <span class="regexp">/\.js$/</span>,</div><div class="line">    <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>,</div><div class="line">    <span class="attr">loader</span>: <span class="string">'babel'</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>这句的意思就是对除掉node_modules文件夹中js文件外的所有js文件使用npm安装的<code>babel-loader</code>来进行处理。loaders为webpack提供了极其灵活的特性，可以使用丰富的第三方loaders来实现自己特定的需求。</p>
-<h3 id="plugins"><a href="#plugins" class="headerlink" title="plugins"></a>plugins</h3><p>插件（Plugins）是用来拓展Webpack功能的，它们会在整个构建过程中生效，执行相关的任务。<br>Loaders和Plugins常常被弄混，但是他们其实是完全不同的东西，可以这么来说，loaders是在打包构建过程中用来处理源文件的（JSX，Scss，Less..），一次处理一个，插件并不直接操作单个文件，它直接对整个构建过程其作用。Webpack有很多内置插件，同时也有很多第三方插件，可以让我们完成更加丰富的功能。</p>
-<p>我们以HtmlWebpackPlugin插件为例来说明webpack中使用plugins的方法。这个插件的作用是依据一个简单的模板，帮你生成最终的Html5文件，这个文件中自动引用了你打包后的JS文件。每次编译都在文件名中插入一个不同的哈希值。</p>
-<p> 1.<strong>安装</strong><br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install --save-dev html-webpack-plugin</div></pre></td></tr></table></figure></p>
-<p> 2.<strong>在项目的app目录下创建一个html模版，我们将其命名为index.tmpl.html</strong><br><figure class="highlight html"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></div><div class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span> </div><div class="line">    <span class="tag">&lt;<span class="name">head</span>&gt;</span> </div><div class="line">        <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"utf-8"</span>&gt;</span> </div><div class="line">        <span class="tag">&lt;<span class="name">title</span>&gt;</span>Webpack Sample Project<span class="tag">&lt;/<span class="name">title</span>&gt;</span> </div><div class="line">    <span class="tag">&lt;/<span class="name">head</span>&gt;</span></div><div class="line">     <span class="tag">&lt;<span class="name">body</span>&gt;</span> </div><div class="line">        <span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">'root'</span>&gt;</span> <span class="tag">&lt;/<span class="name">div</span>&gt;</span> </div><div class="line">     <span class="tag">&lt;/<span class="name">body</span>&gt;</span></div><div class="line"> <span class="tag">&lt;/<span class="name">html</span>&gt;</span></div></pre></td></tr></table></figure></p>
-<p> 3.<strong>更新webpack的配置文件，新建一个build文件夹用来存放最终的输出文件</strong><br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div><div class="line">25</div><div class="line">26</div><div class="line">27</div><div class="line">28</div><div class="line">29</div><div class="line">30</div><div class="line">31</div><div class="line">32</div><div class="line">33</div><div class="line">34</div><div class="line">35</div><div class="line">36</div><div class="line">37</div><div class="line">38</div><div class="line">39</div><div class="line">40</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">var</span> webpack = <span class="built_in">require</span>(<span class="string">'webpack'</span>); </div><div class="line"><span class="keyword">var</span> HtmlWebpackPlugin = <span class="built_in">require</span>(<span class="string">'html-webpack-plugin'</span>); </div><div class="line"><span class="built_in">module</span>.exports = &#123; </div><div class="line">    <span class="attr">devtool</span>: <span class="string">'eval-source-map'</span>, </div><div class="line">    <span class="attr">entry</span>: __dirname + <span class="string">"/app/main.js"</span>, </div><div class="line">    <span class="attr">output</span>: &#123; </div><div class="line">        <span class="attr">path</span>: __dirname + <span class="string">"/build"</span>, </div><div class="line">        <span class="attr">filename</span>: <span class="string">"bundle.js"</span> </div><div class="line">    &#125;, </div><div class="line">    <span class="attr">module</span>: &#123; </div><div class="line">        <span class="attr">loaders</span>: [ </div><div class="line">            &#123; </div><div class="line">                <span class="attr">test</span>: <span class="regexp">/\.json$/</span>, </div><div class="line">                <span class="attr">loader</span>: <span class="string">"json"</span> </div><div class="line">            &#125;, </div><div class="line">            &#123; </div><div class="line">                <span class="attr">test</span>: <span class="regexp">/\.js$/</span>, </div><div class="line">                <span class="attr">exclude</span>: <span class="regexp">/node_modules/</span>, </div><div class="line">                <span class="attr">loader</span>: <span class="string">'babel'</span> </div><div class="line">            &#125;, </div><div class="line">            &#123; </div><div class="line">                <span class="attr">test</span>: <span class="regexp">/\.css$/</span>, </div><div class="line">                <span class="attr">loader</span>: <span class="string">'style!css?modules!postcss'</span> </div><div class="line">            &#125; </div><div class="line">            ] </div><div class="line">    &#125;, </div><div class="line">    <span class="attr">postcss</span>: [ </div><div class="line">        <span class="built_in">require</span>(<span class="string">'autoprefixer'</span>) </div><div class="line">    ], </div><div class="line">    <span class="attr">plugins</span>: [ </div><div class="line">        <span class="keyword">new</span> HtmlWebpackPlugin(&#123; </div><div class="line">            <span class="attr">template</span>: __dirname + <span class="string">"/app/index.tmpl.html"</span><span class="comment">//new 一个这个插件的实例，并传入相关的参数 </span></div><div class="line">        &#125;) </div><div class="line">     ], </div><div class="line">    <span class="attr">devServer</span>: &#123; </div><div class="line">            <span class="attr">colors</span>: <span class="literal">true</span>, </div><div class="line">            <span class="attr">historyApiFallback</span>: <span class="literal">true</span>, </div><div class="line">            <span class="attr">inline</span>: <span class="literal">true</span> </div><div class="line">     &#125; </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p> 4.<strong>在编译过程中，本插件就会依据此模板生成最终的html页面，会自动添加所依赖的 css, js，favicon等文件</strong></p>
-<h3 id="小结"><a href="#小结" class="headerlink" title="小结"></a>小结</h3><p>本文仅仅是对webpack的主要功能做一个很简单的介绍，它丰富的特性需要在使用中逐渐体会，后续还会继续更新相关内容。</p>
-<h3 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h3><blockquote>
-<p>1、 <a href="http://www.pro-react.com/materials/appendixA/" target="_blank" rel="external">Webpack for React</a><br>2、 <a href="http://www.jianshu.com/p/42e11515c10f" target="_blank" rel="external">入门Webpack，看这篇就够了</a><br>3、 <a href="http://www.w2bc.com/Article/50764" target="_blank" rel="external">一小时包教会 —— webpack 入门指南</a></p>
+        <h3 id="1-【强制】大括号的使用约定"><a href="#1-【强制】大括号的使用约定" class="headerlink" title="1. 【强制】大括号的使用约定"></a>1. 【强制】大括号的使用约定</h3><p>如果是大括号内为空,则简洁地写成{}即可,不需要换行;如果 是非空代码块则:<br><strong>1) 左大括号前不换行</strong><br><strong>2) 左大括号后换行</strong></p>
+<blockquote>
+<p><strong>批注</strong>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (a &lt; 0) &#123;</div><div class="line">    // <span class="keyword">do</span> something 1</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span> (a &gt; 0) &#123;</div><div class="line">    // <span class="keyword">do</span> something 2</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 </blockquote>
+<p><strong>3) 右大括号前换行</strong><br><strong>4) 右大括号后还有else等代码则不换行;表示终止右大括号后必须换行</strong></p>
+<blockquote>
+<p><strong>批注</strong>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">if</span> (a &lt; 0) &#123;</div><div class="line">    // <span class="keyword">do</span> something 1</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    // <span class="keyword">do</span> something 2</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+</blockquote>
+<a id="more"></a>
+<h3 id="2-【强制】-左括号和后一个字符之间不出现空格-同样-右括号和前一个字符之间也不出现空格"><a href="#2-【强制】-左括号和后一个字符之间不出现空格-同样-右括号和前一个字符之间也不出现空格" class="headerlink" title="2. 【强制】 左括号和后一个字符之间不出现空格;同样,右括号和前一个字符之间也不出现空格"></a>2. 【强制】 左括号和后一个字符之间不出现空格;同样,右括号和前一个字符之间也不出现空格</h3><p>详见第 5 条下方正例提示</p>
+<h3 id="3-【强制】if-for-while-switch-do-等保留字与左右括号之间都必须加空格"><a href="#3-【强制】if-for-while-switch-do-等保留字与左右括号之间都必须加空格" class="headerlink" title="3. 【强制】if/for/while/switch/do 等保留字与左右括号之间都必须加空格"></a>3. 【强制】if/for/while/switch/do 等保留字与左右括号之间都必须加空格</h3><h3 id="4-【强制】任何运算符左右必须加一个空格"><a href="#4-【强制】任何运算符左右必须加一个空格" class="headerlink" title="4. 【强制】任何运算符左右必须加一个空格"></a>4. 【强制】任何运算符左右必须加一个空格</h3><p>说明:运算符包括赋值运算符=、逻辑运算符&amp;&amp;、加减乘除符号、三目运行符等。</p>
+<h3 id="5-【强制】缩进采用-4-个空格-禁止使用-tab-字符"><a href="#5-【强制】缩进采用-4-个空格-禁止使用-tab-字符" class="headerlink" title="5. 【强制】缩进采用 4 个空格,禁止使用 tab 字符"></a>5. 【强制】缩进采用 4 个空格,禁止使用 tab 字符</h3><p>说明:如果使用 tab 缩进,必须设置 1 个 tab 为 4 个空格。IDEA 设置 tab 为 4 个空格时, 请勿勾选Use tab character;而在 eclipse 中,必须勾选insert spaces for tabs。<br><code>正例</code>: (涉及1-5点)<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div></pre></td><td class="code"><pre><div class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String args[])</span> </span>&#123;</div><div class="line">    <span class="comment">// 缩进 4 个空格</span></div><div class="line">    String say = <span class="string">"hello"</span>;</div><div class="line">    <span class="comment">// 运算符的左右必须有一个空格</span></div><div class="line">    <span class="keyword">int</span> flag = <span class="number">0</span>;</div><div class="line">    <span class="comment">// 关键词 if 与括号之间必须有一个空格,括号内的 f 与左括号,0 与右括号不需要空格</span></div><div class="line">    <span class="keyword">if</span> (flag == <span class="number">0</span>) &#123;</div><div class="line">        System.out.println(say);</div><div class="line">    &#125;</div><div class="line">    <span class="comment">// 左大括号前加空格且不换行;左大括号后换行</span></div><div class="line">    <span class="keyword">if</span> (flag == <span class="number">1</span>) &#123;</div><div class="line">        System.out.println(<span class="string">"world"</span>);</div><div class="line">    <span class="comment">// 右大括号前换行,右大括号后有 else,不用换行</span></div><div class="line">    &#125; <span class="keyword">else</span> &#123;</div><div class="line">        System.out.println(<span class="string">"ok"</span>);</div><div class="line">    <span class="comment">// 在右大括号后直接结束,则必须换行</span></div><div class="line">    &#125;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<blockquote>
+<p><strong>批注</strong>:<br>下图为eclipse中缩进的设置<br><img src="/assets/images/2017/02/10/1.png" alt="eclipse设置4个空格"></p>
+</blockquote>
+<h3 id="6-【强制】单行字符数限制不超过-120-个-超出需要换行-换行时遵循如下原则"><a href="#6-【强制】单行字符数限制不超过-120-个-超出需要换行-换行时遵循如下原则" class="headerlink" title="6. 【强制】单行字符数限制不超过 120 个,超出需要换行,换行时遵循如下原则:"></a>6. 【强制】单行字符数限制不超过 120 个,超出需要换行,换行时遵循如下原则:</h3><p><strong>1) 第二行相对第一行缩进 4 个空格,从第三行开始,不再继续缩进,参考示例</strong><br><strong>2) 运算符与下文一起换行</strong><br><strong>3) 方法调用的点符号与下文一起换行</strong><br><strong>4) 在多个参数超长,逗号后进行换行</strong><br><strong>5) 在括号前不要换行,见反例</strong><br><code>正例</code>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">StringBuffer sb = <span class="keyword">new</span> StringBuffer();</div><div class="line"><span class="comment">//超过 120 个字符的情况下,换行缩进 4 个空格,并且方法前的点符号一起换行 </span></div><div class="line">sb.append(<span class="string">"zi"</span>).append(<span class="string">"xin"</span>)...</div><div class="line">    .append(<span class="string">"huang"</span>)...</div><div class="line">    .append(<span class="string">"huang"</span>)...</div><div class="line">    .append(<span class="string">"huang"</span>);</div></pre></td></tr></table></figure></p>
+<p><code>反例</code>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div></pre></td><td class="code"><pre><div class="line">StringBuffer sb = <span class="keyword">new</span> StringBuffer();</div><div class="line"><span class="comment">//超过 120 个字符的情况下,不要在括号前换行</span></div><div class="line">sb.append(<span class="string">"zi"</span>).append(<span class="string">"xin"</span>)...append</div><div class="line">    (<span class="string">"huang"</span>);</div><div class="line"><span class="comment">//参数很多的方法调用可能超过 120 个字符,不要在逗号前换行</span></div><div class="line">method(args1, args2, args3, ...</div><div class="line">    , argsX);</div></pre></td></tr></table></figure></p>
+<h3 id="7-【强制】方法参数在定义和传入时-多个参数逗号后边必须加空格"><a href="#7-【强制】方法参数在定义和传入时-多个参数逗号后边必须加空格" class="headerlink" title="7. 【强制】方法参数在定义和传入时,多个参数逗号后边必须加空格"></a>7. 【强制】方法参数在定义和传入时,多个参数逗号后边必须加空格</h3><p><code>正例</code>:下例中实参的”a”,后边必须要有一个空格。<br>method(“a”, “b”, “c”);</p>
+<h3 id="8-【强制】IDE的text-file-encoding设置为UTF-8-IDE中文件的换行符使用Unix格式-不要使用-windows-格式"><a href="#8-【强制】IDE的text-file-encoding设置为UTF-8-IDE中文件的换行符使用Unix格式-不要使用-windows-格式" class="headerlink" title="8. 【强制】IDE的text file encoding设置为UTF-8; IDE中文件的换行符使用Unix格式, 不要使用 windows 格式"></a>8. 【强制】IDE的text file encoding设置为UTF-8; IDE中文件的换行符使用Unix格式, 不要使用 windows 格式</h3><h3 id="9-【推荐】没有必要增加若干空格来使某一行的字符与上一行的相应字符对齐"><a href="#9-【推荐】没有必要增加若干空格来使某一行的字符与上一行的相应字符对齐" class="headerlink" title="9. 【推荐】没有必要增加若干空格来使某一行的字符与上一行的相应字符对齐"></a>9. 【推荐】没有必要增加若干空格来使某一行的字符与上一行的相应字符对齐</h3><p><code>正例</code>:<br><figure class="highlight java"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line"><span class="keyword">int</span> a = <span class="number">3</span>;</div><div class="line"><span class="keyword">long</span> b = <span class="number">4L</span>;</div><div class="line"><span class="keyword">float</span> c = <span class="number">5F</span>;</div><div class="line">StringBuffer sb = <span class="keyword">new</span> StringBuffer();</div></pre></td></tr></table></figure></p>
+<p>说明:增加 sb 这个变量,如果需要对齐,则给 a、b、c 都要增加几个空格,在变量比较多的 情况下,是一种累赘的事情。</p>
+<h3 id="10-【推荐】方法体内的执行语句组、变量的定义语句组、不同的业务逻辑之间或者不同的语义之间插入一个空行。相同业务逻辑和语义之间不需要插入空行。"><a href="#10-【推荐】方法体内的执行语句组、变量的定义语句组、不同的业务逻辑之间或者不同的语义之间插入一个空行。相同业务逻辑和语义之间不需要插入空行。" class="headerlink" title="10. 【推荐】方法体内的执行语句组、变量的定义语句组、不同的业务逻辑之间或者不同的语义之间插入一个空行。相同业务逻辑和语义之间不需要插入空行。"></a>10. 【推荐】方法体内的执行语句组、变量的定义语句组、不同的业务逻辑之间或者不同的语义之间插入一个空行。相同业务逻辑和语义之间不需要插入空行。</h3><p>说明:没有必要插入多行空格进行隔开。</p>
 
       
 
@@ -205,7 +211,11 @@ webpack概述简单的说，webpack是一个前端的打包工具。它做的事
 		<ul class="article-tag-list">
 			 
         		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color3">webpack</a>
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">java文档</a>
         		</li>
       		
 		</ul>
@@ -224,18 +234,9 @@ webpack概述简单的说，webpack是一个前端的打包工具。它做的事
   
 <nav id="article-nav">
   
-    <a href="/2016/11/15/2016-11-15-eslint/" id="article-nav-newer" class="article-nav-link-wrap">
-      <i class="icon-circle-left"></i>
-      <div class="article-nav-title">
-        
-          使用ESLint检查语法和代码风格
-        
-      </div>
-    </a>
   
-  
-    <a href="/2016/10/11/2016-10-11-closure/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">一篇关于javascript闭包的笔记</div>
+    <a href="/2017/02/10/2017-02-10-javarule-2/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">阿里巴巴java开发手册解读2-常量定义</div>
       <i class="icon-circle-right"></i>
     </a>
   
@@ -249,7 +250,7 @@ webpack概述简单的说，webpack是一个前端的打包工具。它做的事
   
   <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="2016-10-26-webpacknote" data-title="webpack简介" data-url="http://yvshuo.github.io/2016/10/26/2016-10-26-webpacknote/"></div>
+	<div class="ds-thread" data-thread-key="2017-02-10-javarule-3" data-title="阿里巴巴java开发手册解读3-格式规约" data-url="http://yvshuo.github.io/2017/02/10/2017-02-10-javarule-3/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
