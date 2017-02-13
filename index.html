@@ -144,6 +144,77 @@
           <div id="js-content" class="content-ll">
             
   
+    <article id="post-2017-02-10-javarule-4" class="article article-type-post  article-index" itemscope itemprop="blogPost">
+  <div class="article-inner">
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/10/2017-02-10-javarule-4/">阿里巴巴java开发手册解读4-OOP 规约</a>
+    </h1>
+  
+
+        
+        <a href="/2017/02/10/2017-02-10-javarule-4/" class="archive-article-date">
+  	<time datetime="2017-02-10T10:43:16.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2017-02-10</time>
+</a>
+        
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-【强制】避免通过一个类的对象引用访问此类的静态变量或静态方法-无谓增加编译器解析成本-直接用类名来访问即可"><a href="#1-【强制】避免通过一个类的对象引用访问此类的静态变量或静态方法-无谓增加编译器解析成本-直接用类名来访问即可" class="headerlink" title="1. 【强制】避免通过一个类的对象引用访问此类的静态变量或静态方法,无谓增加编译器解析成本,直接用类名来访问即可"></a>1. 【强制】避免通过一个类的对象引用访问此类的静态变量或静态方法,无谓增加编译器解析成本,直接用类名来访问即可</h3><blockquote>
+<p><strong>批注</strong>:<br><code>正例</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">Integer.parseInt(<span class="string">"1"</span>);</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p><code>反例</code>:<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">Integer i = new Integer(0);</div><div class="line">i.parseInt(<span class="string">"1"</span>);</div></pre></td></tr></table></figure></p>
+        
+          <a class="article-more-a" href="/2017/02/10/2017-02-10-javarule-4/#more">more >></a>
+        
+      
+
+      
+    </div>
+    <div class="article-info article-info-index">
+      
+      
+	<div class="article-tag tagcloud">
+		<i class="icon-price-tags icon"></i>
+		<ul class="article-tag-list">
+			 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">java</a>
+        		</li>
+      		 
+        		<li class="article-tag-list-item">
+        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color2">java文档</a>
+        		</li>
+      		
+		</ul>
+	</div>
+
+      
+
+      
+        <p class="article-more-link">
+          <a class="article-more-a" href="/2017/02/10/2017-02-10-javarule-4/">展开全文 >></a>
+        </p>
+      
+
+      
+      <div class="clearfix"></div>
+    </div>
+  </div>
+</article>
+
+
+
+
+
+
+
+
+  
     <article id="post-2017-02-10-javarule-3" class="article article-type-post  article-index" itemscope itemprop="blogPost">
   <div class="article-inner">
     
@@ -524,7 +595,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/27/2016-11-27-wxapp/">微信小程序初体验（1）</a>
+      <a class="article-title" href="/2016/11/27/2016-11-27-wxapp/">微信小程序初体验</a>
     </h1>
   
 
@@ -784,71 +855,6 @@
 
 
   
-    <article id="post-2016-10-07-githubssh" class="article article-type-post  article-index" itemscope itemprop="blogPost">
-  <div class="article-inner">
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/07/2016-10-07-githubssh/">配置hexo的一键打包部署</a>
-    </h1>
-  
-
-        
-        <a href="/2016/10/07/2016-10-07-githubssh/" class="archive-article-date">
-  	<time datetime="2016-10-07T04:31:27.000Z" itemprop="datePublished"><i class="icon-calendar icon"></i>2016-10-07</time>
-</a>
-        
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天研究了一下hexo的自动打包部署，记录一下。</p>
-<h2 id="配置github的ssh"><a href="#配置github的ssh" class="headerlink" title="配置github的ssh"></a>配置github的ssh</h2><h3 id="本地生成公钥"><a href="#本地生成公钥" class="headerlink" title="本地生成公钥"></a>本地生成公钥</h3><p>运行 git Bash 客户端，检查是否已经配置过SSH key。<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~/.ssh</div><div class="line">$ ls</div></pre></td></tr></table></figure></p>
-        
-          <a class="article-more-a" href="/2016/10/07/2016-10-07-githubssh/#more">more >></a>
-        
-      
-
-      
-    </div>
-    <div class="article-info article-info-index">
-      
-      
-	<div class="article-tag tagcloud">
-		<i class="icon-price-tags icon"></i>
-		<ul class="article-tag-list">
-			 
-        		<li class="article-tag-list-item">
-        			<a href="javascript:void(0)" class="js-tag article-tag-list-link color5">hexo</a>
-        		</li>
-      		
-		</ul>
-	</div>
-
-      
-
-      
-        <p class="article-more-link">
-          <a class="article-more-a" href="/2016/10/07/2016-10-07-githubssh/">展开全文 >></a>
-        </p>
-      
-
-      
-      <div class="clearfix"></div>
-    </div>
-  </div>
-</article>
-
-
-
-
-
-
-
-
-  
   
     <nav id="page-nav">
       <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
@@ -961,10 +967,6 @@
              
               <li class="article-tag-list-item">
                 <a href="javascript:void(0)" class="js-tag color5">java</a>
-              </li>
-             
-              <li class="article-tag-list-item">
-                <a href="javascript:void(0)" class="js-tag color4">-java -java文档</a>
               </li>
              
               <li class="article-tag-list-item">
