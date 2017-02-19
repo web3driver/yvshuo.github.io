@@ -44,21 +44,25 @@
   <a class="menu-button"></a>
   <a class="logo" href="/"></a>
 </div>
-  
-
-
-<div id="header">
+  <div id="header">
   <a id="logo" href="/">
     <img src="/img/avatar.jpg">
     <span>香辣猪蹄儿</span>
   </a>
   <ul id="nav">
     <!--<li>-->
-      <!--<form id="search-form">-->
-        <!--<input type="text" id="search-query-" class="search-query st-default-search-input">-->
-      <!--</form>-->
-    <!--</li>-->
-    <!--<li><a href="/hahaha/" class="nav-link">测试</a></li>-->
+  <!--<form id="search-form">-->
+    <!--<input type="text" id="search-query-sidebar" class="search-query st-default-search-input">-->
+  <!--</form>-->
+<!--</li>-->
+<!--<li><a href="/v2/guide/" class="nav-link">教程</a></li>-->
+<!--<li><a href="/v2/api/" class="nav-link">API</a></li>-->
+<!--<li><a href="/test/" class="nav-link">测试</a></li>-->
+<!--<li><a href="/about/" class="nav-link">参与贡献</a></li>-->
+
+<li><a href="/" class="nav-link">首页</a></li>
+<li><a href="/archives" class="nav-link">文章列表</a></li>
+
   </ul>
 </div>
     
@@ -75,7 +79,10 @@
 <!--<li><a href="/v2/api/" class="nav-link">API</a></li>-->
 <!--<li><a href="/test/" class="nav-link">测试</a></li>-->
 <!--<li><a href="/about/" class="nav-link">参与贡献</a></li>-->
-<a href="/" class="nav-link">首页</a></li>
+
+<li><a href="/" class="nav-link">首页</a></li>
+<li><a href="/archives" class="nav-link">文章列表</a></li>
+
     </ul>
     <div class="list">
         <h2>
@@ -185,6 +192,12 @@
 </blockquote>
 <h3 id="20-【推荐】类成员与方法访问控制从严"><a href="#20-【推荐】类成员与方法访问控制从严" class="headerlink" title="20. 【推荐】类成员与方法访问控制从严:"></a>20. 【推荐】类成员与方法访问控制从严:</h3><p><strong>1) 如果不允许外部直接通过new来创建对象,那么构造方法必须是private。</strong><br><strong>2) 工具类不允许有public或default构造方法。</strong><br><strong>3) 类非static成员变量并且与子类共享,必须是protected。</strong><br><strong>4) 类非static成员变量并且仅在本类使用,必须是private。</strong><br><strong>5) 类static成员变量如果仅在本类使用,必须是private。</strong><br><strong>6) 若是static成员变量,必须考虑是否为final。</strong><br><strong>7) 类成员方法只供类内部调用,必须是private。</strong><br><strong>8) 类成员方法只对继承类公开,那么限制为protected。</strong><br>说明:任何类、方法、参数、变量,严控访问范围。过宽泛的访问范围,不利于模块解耦。<br>思考:如果是一个 private 的方法,想删除就删除,可是一个 public 的 Service 方法,或者一 个 public 的成员变量,删除一下,不得手心冒点汗吗?变量像自己的小孩,尽量在自己的视 线内,变量作用域太大,如果无限制的到处跑,那么你会担心的。</p>
 
+    <div class="guide-links">
+      
+      
+        <span style="float:right"><a href="/2017/02/10/2017-02-10-javarule-3/">阿里巴巴java开发手册解读3-格式规约</a> →</span>
+      
+    </div>
 </div>
 
   </div>

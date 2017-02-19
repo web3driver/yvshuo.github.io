@@ -751,6 +751,75 @@ ul.demo li {
   vertical-align: middle;
   margin-right: 15px;
 }
+.archives,
+.archive-year-wrap {
+  position: relative;
+  padding: 2.2em 0;
+  max-width: 800px;
+  margin: 0 auto;
+}
+.archives a,
+.archive-year-wrap a {
+  color: #42b983;
+  font-weight: 400;
+}
+.archives h1,
+.archive-year-wrap h1 {
+  margin: 0 0 1em;
+  font-size: 24px;
+  text-align: center;
+}
+.archives .archive-article .archive-article-date,
+.archive-year-wrap .archive-article .archive-article-date {
+  display: block;
+  text-align: center;
+  color: #7f8c8d;
+}
+.archives .archive-article .archive-article-date:before,
+.archive-year-wrap .archive-article .archive-article-date:before {
+  font-family: FontAwesome;
+  content: '\F073';
+  color: #34495e;
+  font-size: 16px;
+  margin-right: 5px;
+}
+.archives .archive-article .archive-article-title,
+.archive-year-wrap .archive-article .archive-article-title {
+  margin-top: 0.5em;
+  display: block;
+}
+.archive-year-wrap {
+  text-align: center;
+  font-size: 30px;
+}
+.archive-year-wrap:after {
+  font-family: FontAwesome;
+  font-size: 24px;
+  content: '-   \f0fb   -';
+  display: block;
+  text-align: center;
+}
+.article-tag-list {
+  list-style: none;
+  padding-left: 0 !important;
+}
+.article-tag-list li {
+  margin: 0;
+  padding: 0;
+  float: left;
+  margin-left: 0.5em;
+}
+.article-tag-list li:first-child {
+  margin-left: 0;
+}
+.article-tag-list li:first-child:before {
+  font-family: FontAwesome;
+  content: '\F02B';
+  margin-right: 0.5em;
+}
+.article-tag-list li a {
+  color: #e96900;
+}
 .content {
   position: relative;
   padding: 2.2em 0;
@@ -945,6 +1014,13 @@ ul.demo li {
   margin-top: 2em;
   height: 1em;
 }
+.guide-links:before {
+  font-family: FontAwesome;
+  font-size: 24px;
+  content: '-   \f0fb   -';
+  display: block;
+  text-align: center;
+}
 .footer {
   color: #7f8c8d;
   margin-top: 2em;
@@ -1020,7 +1096,7 @@ ul.demo li {
     display: block;
   }
   #main {
-    padding: 2em 1.4em 0;
+    padding: 2em 1.4em 2em;
   }
   .highlight pre {
     padding: 1.2em 1em;
