@@ -802,6 +802,8 @@ ul.demo li {
 .article-tag-list {
   list-style: none;
   padding-left: 0 !important;
+  display: block;
+  margin: 1.2em 0 0 !important;
 }
 .article-tag-list li {
   margin: 0;
