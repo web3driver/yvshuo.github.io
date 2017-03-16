@@ -148,7 +148,7 @@
     </div>
     <div class="content with-sidebar blog post">
         <h1>阿里巴巴java开发手册解读9-其他编程规约</h1>
-        <h4>2月 23, 2017</h4>
+        <h4>Feb 23, 2017</h4>
         <h3 id="1-【强制】在使用正则表达式时-利用好其预编译功能-可以有效加快正则匹配速度。"><a href="#1-【强制】在使用正则表达式时-利用好其预编译功能-可以有效加快正则匹配速度。" class="headerlink" title="1. 【强制】在使用正则表达式时,利用好其预编译功能,可以有效加快正则匹配速度。"></a>1. 【强制】在使用正则表达式时,利用好其预编译功能,可以有效加快正则匹配速度。</h3><p>说明:不要在方法体内定义:<code>Pattern pattern = Pattern.compile(规则);</code></p>
 <h3 id="2-【强制】velocity-调用-POJO-类的属性时-建议直接使用属性名取值即可-模板引擎会自动按规范调用-POJO-的-getXxx-如果是-boolean-基本数据类型变量-boolean-命名不需要加-is-前缀-会自动调用-isXxx-方法。"><a href="#2-【强制】velocity-调用-POJO-类的属性时-建议直接使用属性名取值即可-模板引擎会自动按规范调用-POJO-的-getXxx-如果是-boolean-基本数据类型变量-boolean-命名不需要加-is-前缀-会自动调用-isXxx-方法。" class="headerlink" title="2. 【强制】velocity 调用 POJO 类的属性时,建议直接使用属性名取值即可,模板引擎会自动按规范调用 POJO 的 getXxx(),如果是 boolean 基本数据类型变量(boolean 命名不需要加 is 前缀),会自动调用 isXxx()方法。"></a>2. 【强制】velocity 调用 POJO 类的属性时,建议直接使用属性名取值即可,模板引擎会自动按规范调用 POJO 的 getXxx(),如果是 boolean 基本数据类型变量(boolean 命名不需要加 is 前缀),会自动调用 isXxx()方法。</h3><p>说明:注意如果是 Boolean 包装类对象,优先调用 getXxx()的方法。</p>
 <h3 id="3-【强制】后台输送给页面的变量必须加-var-——中间的感叹号。"><a href="#3-【强制】后台输送给页面的变量必须加-var-——中间的感叹号。" class="headerlink" title="3. 【强制】后台输送给页面的变量必须加$!{var}——中间的感叹号。"></a>3. 【强制】后台输送给页面的变量必须加$!{var}——中间的感叹号。</h3><p>说明:如果 var=null 或者不存在,那么${var}会直接显示在页面上。</p>

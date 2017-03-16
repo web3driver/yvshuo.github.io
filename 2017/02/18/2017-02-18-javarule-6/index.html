@@ -148,7 +148,7 @@
     </div>
     <div class="content with-sidebar blog post">
         <h1>阿里巴巴java开发手册解读6-并发处理</h1>
-        <h4>2月 18, 2017</h4>
+        <h4>Feb 18, 2017</h4>
         <h3 id="1-【强制】获取单例对象需要保证线程安全-其中的方法也要保证线程安全。"><a href="#1-【强制】获取单例对象需要保证线程安全-其中的方法也要保证线程安全。" class="headerlink" title="1. 【强制】获取单例对象需要保证线程安全,其中的方法也要保证线程安全。"></a>1. 【强制】获取单例对象需要保证线程安全,其中的方法也要保证线程安全。</h3><p>说明:资源驱动类、工具类、单例工厂类都需要注意。</p>
 <h3 id="2-【强制】创建线程或线程池时请指定有意义的线程名称-方便出错时回溯。"><a href="#2-【强制】创建线程或线程池时请指定有意义的线程名称-方便出错时回溯。" class="headerlink" title="2. 【强制】创建线程或线程池时请指定有意义的线程名称,方便出错时回溯。"></a>2. 【强制】创建线程或线程池时请指定有意义的线程名称,方便出错时回溯。</h3><p><code>正例</code>:<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TimerTaskThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TimerTaskThread</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">super</span>.setName(<span class="string">"TimerTaskThread"</span>); </div><div class="line">    ... </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
