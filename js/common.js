@@ -1,4 +1,4 @@
-(function() {
+(function () {
 
   initMobileMenu()
   if (PAGE_TYPE) {
@@ -12,7 +12,7 @@
     var apiContent = document.querySelector('.content.api')
     if (apiContent) {
       var apiTitles = [].slice.call(apiContent.querySelectorAll('h3'))
-      apiTitles.forEach(function(titleNode) {
+      apiTitles.forEach(function (titleNode) {
         var ulNode = titleNode.parentNode.nextSibling
         if (ulNode.tagName !== 'UL') {
           ulNode = ulNode.nextSibling
@@ -38,10 +38,10 @@
     if (!hashTarget) {
       var normalizedHash = normalizeHash(hash)
       var possibleHashes = [].slice.call(document.querySelectorAll('[id]'))
-        .map(function(el) {
+        .map(function (el) {
           return el.id
         })
-      possibleHashes.sort(function(hashA, hashB) {
+      possibleHashes.sort(function (hashA, hashB) {
         var distanceA = levenshteinDistance(normalizedHash, normalizeHash(hashA))
         var distanceB = levenshteinDistance(normalizedHash, normalizeHash(hashB))
         if (distanceA < distanceB) return -1
@@ -60,8 +60,8 @@
     function levenshteinDistance(a, b) {
       var m = []
       if (!(a && b)) return (b || a).length
-      for (var i = 0; i <= b.length; m[i] = [i++]) {}
-      for (var j = 0; j <= a.length; m[0][j] = j++) {}
+      for (var i = 0; i <= b.length; m[i] = [i++]) { }
+      for (var j = 0; j <= a.length; m[0][j] = j++) { }
       for (var i = 1; i <= b.length; i++) {
         for (var j = 1; j <= a.length; j++) {
           m[i][j] = b.charAt(i - 1) === a.charAt(j - 1) ? m[i - 1][j - 1] : m[i][j] = Math.min(
@@ -82,11 +82,11 @@
     var sidebar = document.querySelector('.sidebar')
     var menuButton = mobileBar.querySelector('.menu-button')
 
-    menuButton.addEventListener('click', function() {
+    menuButton.addEventListener('click', function () {
       sidebar.classList.toggle('open')
     })
 
-    document.body.addEventListener('click', function(e) {
+    document.body.addEventListener('click', function (e) {
       if (e.target !== menuButton && !sidebar.contains(e.target)) {
         sidebar.classList.remove('open')
       }
@@ -100,7 +100,7 @@
   function initVersionSelect() {
     // version select
     var versionSelect = document.querySelector('.version-select')
-    versionSelect && versionSelect.addEventListener('change', function(e) {
+    versionSelect && versionSelect.addEventListener('change', function (e) {
       var version = e.target.value
       var section = window.location.pathname.match(/\/v\d\/(\w+?)\//)[1]
       if (version === 'SELF') return
@@ -139,7 +139,7 @@
       }
       var headers = content.querySelectorAll('h2')
       if (headers.length) {
-        each.call(headers, function(h) {
+        each.call(headers, function (h) {
           sectionContainer.appendChild(makeLink(h))
           var h3s = collectH3s(h)
           allHeaders.push(h)
@@ -150,19 +150,19 @@
         })
       } else {
         headers = content.querySelectorAll('h3')
-        each.call(headers, function(h) {
+        each.call(headers, function (h) {
           sectionContainer.appendChild(makeLink(h))
           allHeaders.push(h)
         })
       }
 
       var animating = false
-      sectionContainer.addEventListener('click', function(e) {
+      sectionContainer.addEventListener('click', function (e) {
         if (e.target.classList.contains('section-link')) {
           sidebar.classList.remove('open')
           setActive(e.target)
           animating = true
-          setTimeout(function() {
+          setTimeout(function () {
             animating = false
           }, 400)
         }
@@ -178,10 +178,10 @@
     }
 
     var hoveredOverSidebar = false
-    sidebar.addEventListener('mouseover', function() {
+    sidebar.addEventListener('mouseover', function () {
       hoveredOverSidebar = true
     })
-    sidebar.addEventListener('mouseleave', function() {
+    sidebar.addEventListener('mouseleave', function () {
       hoveredOverSidebar = false
     })
 
@@ -243,7 +243,7 @@
       if (small) {
         container.className = 'menu-sub'
       }
-      h3s.forEach(function(h) {
+      h3s.forEach(function (h) {
         container.appendChild(makeLink(h))
       })
       return container
@@ -271,8 +271,8 @@
           var newScrollTop = currentActiveIsInView ?
             sidebar.scrollTop :
             linkNotFurtherThanSidebarHeight ?
-            currentPageOffset :
-            currentActiveOffset - sidebarHeight
+              currentPageOffset :
+              currentActiveOffset - sidebarHeight
           sidebar.scrollTop = newScrollTop
         }
       }

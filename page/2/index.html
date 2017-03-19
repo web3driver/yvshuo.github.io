@@ -72,6 +72,97 @@
   </div>
 </div>
 
+	<article id="post-2017-02-17-javarule-5" class="article article-type-post content" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/17/2017-02-17-javarule-5/" class="article-date">
+  <time datetime="2017-02-17T11:43:16.000Z" itemprop="datePublished">2017-02-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/17/2017-02-17-javarule-5/">阿里巴巴java开发手册解读5-集合处理</a>
+    </h1>
+  
+
+      </header>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java文档/">java文档</a></li></ul>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-【强制】关于-hashCode-和-equals-的处理-遵循如下规则"><a href="#1-【强制】关于-hashCode-和-equals-的处理-遵循如下规则" class="headerlink" title="1. 【强制】关于 hashCode 和 equals 的处理,遵循如下规则:"></a>1. 【强制】关于 hashCode 和 equals 的处理,遵循如下规则:</h3><p><strong>1) 只要重写equals,就必须重写hashCode。</strong><br><strong>2) 因为Set存储的是不重复的对象,依据hashCode和equals进行判断,所以Set存储的对象必须重写这两个方法。</strong><br><strong>3) 如果自定义对象做为Map的键,那么必须重写hashCode和equals。</strong><br><code>正例</code>:String 重写了 hashCode 和 equals 方法,所以我们可以非常愉快地使用 String 对象 作为 key 来使用。</p>
+<h3 id="2-【强制】ArrayList的subList结果不可强转成ArrayList"><a href="#2-【强制】ArrayList的subList结果不可强转成ArrayList" class="headerlink" title="2. 【强制】ArrayList的subList结果不可强转成ArrayList"></a>2. 【强制】ArrayList的subList结果不可强转成ArrayList</h3><p>否则会抛出ClassCastException 异常:java.util.RandomAccessSubList cannot be cast to java.util.ArrayList ;<br>说明:subList 返回的是 ArrayList 的内部类 SubList,并不是 ArrayList ,而是 ArrayList 的一个视图,对于SubList子列表的所有操作最终会反映到原列表上。</p>
+<h3 id="3-【强制】在-subList-场景中-高度注意对原集合元素个数的修改"><a href="#3-【强制】在-subList-场景中-高度注意对原集合元素个数的修改" class="headerlink" title="3. 【强制】在 subList 场景中,高度注意对原集合元素个数的修改"></a>3. 【强制】在 subList 场景中,高度注意对原集合元素个数的修改</h3><p>该修改会导致子列表的遍历、增 加、删除均产生ConcurrentModificationException 异常。<br>
+        
+          <p class="article-more-link">
+            <a href="/2017/02/17/2017-02-17-javarule-5/#more">More&gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <!--<a data-url="http://yvshuo.github.io/2017/02/17/2017-02-17-javarule-5/" data-id="cj0g82ova000qsle92wzf2f2j" class="article-share-link">Share</a>-->
+      <!---->
+    </footer>
+  </div>
+  
+</article>
+
+
+
+	<article id="post-2017-02-10-javarule-4" class="article article-type-post content" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/13/2017-02-10-javarule-4/" class="article-date">
+  <time datetime="2017-02-13T10:43:16.000Z" itemprop="datePublished">2017-02-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/13/2017-02-10-javarule-4/">阿里巴巴java开发手册解读4-OOP 规约</a>
+    </h1>
+  
+
+      </header>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java文档/">java文档</a></li></ul>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-【强制】避免通过一个类的对象引用访问此类的静态变量或静态方法-无谓增加编译器解析成本-直接用类名来访问即可"><a href="#1-【强制】避免通过一个类的对象引用访问此类的静态变量或静态方法-无谓增加编译器解析成本-直接用类名来访问即可" class="headerlink" title="1. 【强制】避免通过一个类的对象引用访问此类的静态变量或静态方法,无谓增加编译器解析成本,直接用类名来访问即可"></a>1. 【强制】避免通过一个类的对象引用访问此类的静态变量或静态方法,无谓增加编译器解析成本,直接用类名来访问即可</h3><blockquote>
+<p><strong>批注</strong>:<br><code>正例</code>:<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">Integer.parseInt(<span class="string">"1"</span>);</div></pre></td></tr></table></figure></p>
+</blockquote>
+<p><code>反例</code>:<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">Integer i = new Integer(0);</div><div class="line">i.parseInt(<span class="string">"1"</span>);</div></pre></td></tr></table></figure></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/02/13/2017-02-10-javarule-4/#more">More&gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <!--<a data-url="http://yvshuo.github.io/2017/02/13/2017-02-10-javarule-4/" data-id="cj0g82ox3001rsle9xa4tbgal" class="article-share-link">Share</a>-->
+      <!---->
+    </footer>
+  </div>
+  
+</article>
+
+
+
 	<article id="post-2017-02-10-javarule-3" class="article article-type-post content" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/02/10/2017-02-10-javarule-3/" class="article-date">
@@ -113,7 +204,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/02/10/2017-02-10-javarule-3/" data-id="cj0cfoffa000ix5e9z6d4pima" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/02/10/2017-02-10-javarule-3/" data-id="cj0g82ovd000ssle9n0z7zs5u" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -159,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/02/10/2017-02-10-javarule-2/" data-id="cj0cfoff9000gx5e9zpquwwqp" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/02/10/2017-02-10-javarule-2/" data-id="cj0g82ov7000osle9ceue2hei" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -210,7 +301,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/02/09/2017-02-09-javarule-1/" data-id="cj0cfoff8000ex5e9thu1aji2" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/02/09/2017-02-09-javarule-1/" data-id="cj0g82ov5000lsle96u56mhwc" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -266,109 +357,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/01/16/2017-01-16-refactor/" data-id="cj0cfoff7000cx5e90xpui2pm" class="article-share-link">Share</a>-->
-      <!---->
-    </footer>
-  </div>
-  
-</article>
-
-
-
-	<article id="post-2017-01-11-review-git" class="article article-type-post content" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/01/11/2017-01-11-review-git/" class="article-date">
-  <time datetime="2017-01-11T12:23:51.000Z" itemprop="datePublished">2017-01-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/01/11/2017-01-11-review-git/">git知识备忘</a>
-    </h1>
-  
-
-      </header>
-    
-    
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/git/">git</a></li></ul>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>单位用的svn，一个多月不用git，发现有些命令就忘了- -所以这是一篇git操作备忘。主要内容转载自<a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html">常用 Git 命令清单</a>。</p>
-<h2 id="1-git基本示意"><a href="#1-git基本示意" class="headerlink" title="1. git基本示意"></a>1. git基本示意</h2><p><img src="/assets/images/2017/01/11/1.png" alt="git示意图"></p>
-<blockquote>
-<ul>
-<li>Workspace：工作区</li>
-<li>Index / Stage：暂存区</li>
-<li>Repository：仓库区（或本地仓库）</li>
-<li>Remote：远程仓库</li>
-</ul>
-</blockquote>
-<h2 id="2-常用操作命令"><a href="#2-常用操作命令" class="headerlink" title="2. 常用操作命令"></a>2. 常用操作命令</h2><h3 id="2-1-新建代码库"><a href="#2-1-新建代码库" class="headerlink" title="2.1 新建代码库"></a>2.1 新建代码库</h3><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment"># 在当前目录新建一个Git代码库</span></div><div class="line">$ git init</div><div class="line"><span class="comment"># 新建一个目录，将其初始化为Git代码库</span></div><div class="line">$ git init [project-name]</div><div class="line"><span class="comment"># 下载一个项目和它的整个代码历史</span></div><div class="line">$ git <span class="built_in">clone</span> [url]</div></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2017/01/11/2017-01-11-review-git/#more">More&gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/01/11/2017-01-11-review-git/" data-id="cj0cfoff40008x5e99qv80w88" class="article-share-link">Share</a>-->
-      <!---->
-    </footer>
-  </div>
-  
-</article>
-
-
-
-	<article id="post-2016-11-27-wxapp" class="article article-type-post content" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/11/27/2016-11-27-wxapp/" class="article-date">
-  <time datetime="2016-11-27T03:03:47.000Z" itemprop="datePublished">2016-11-27</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/11/27/2016-11-27-wxapp/">微信小程序初体验</a>
-    </h1>
-  
-
-      </header>
-    
-    
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/微信小程序/">微信小程序</a></li></ul>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>p.s. 这篇文章是一个月之前写的，因为最近忙于其他项目，所以一直没来维护这个博客~微信小程序貌似也有了新的更新。先把这篇贴上，后续填坑23333</p>
-<p>利用周末时间基于cnode社区的api撸了一发微信小程序，记录一下。</p>
-<h3 id="1、开发环境"><a href="#1、开发环境" class="headerlink" title="1、开发环境"></a>1、开发环境</h3><p>微信mac版开发工具0.11.112301<br>下载地址：<a href="https://servicewechat.com/wxa-dev-logic/download_redirect?type=darwin&amp;from=mpwiki&amp;t=20161122">使劲戳我</a><br>其他版本下载地址：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=20161122">继续戳我</a></p>
-<h3 id="2、项目创建"><a href="#2、项目创建" class="headerlink" title="2、项目创建"></a>2、项目创建</h3><p>扫码登录后按下图输入创建项目<br><img src="/assets/images/2016/11/27/1.png" alt=""></p>
-<p>创建项目后界面的样子和默认的文件目录结构<br><img src="/assets/images/2016/11/27/2.png" alt=""></p>
-<p>分析下目录结构<br><img src="/assets/images/2016/11/27/3.png" alt=""><br><code>pages</code>目录下有两个页面，<code>index</code>和<code>logs</code>。<code>.js</code>文件是负责处理该页面的逻辑，<code>.wxml</code>负责视图以及绑定一些交互事件，<code>.wxss</code>来写css样式，<code>.json</code>用来配置一些配置参数或者定义一些静态常量。<br><code>utils</code>目录下是一个工具类。根目录下的<code>app.js</code>是小程序的入口文件，用来注册app。<code>app.json</code>可以用来配置全局常量，<code>app.wxss</code>用来配置项目的公用样式。</p>
-<p>初始程序提供了一个从<code>index</code>页面到<code>logs</code>页面的跳转<br><img src="/assets/images/2016/11/27/4.png" alt=""><br><code>index.wxml</code>中绑定的<code>bindViewTab</code>函数就是前面在<code>index.js</code>中标出的那个函数。函数中调用微信小程序的api定义了一个跳转<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">bindViewTap: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    wx.navigateTo(&#123;</div><div class="line">      <span class="attr">url</span>: <span class="string">'../logs/logs'</span></div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/2016/11/27/2016-11-27-wxapp/#more">More&gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2016/11/27/2016-11-27-wxapp/" data-id="cj0cfoffu000px5e9buwmpdou" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/01/16/2017-01-16-refactor/" data-id="cj0g82ov1000fsle9b78brezr" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -379,7 +368,7 @@
 
   
 	<nav id="page-nav">
-	<a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
+	<a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">下一页</a>
 	</nav>
 
 

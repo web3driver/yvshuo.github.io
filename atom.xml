@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yvshuo.github.io/"/>
-  <updated>2017-03-16T14:01:02.000Z</updated>
+  <updated>2017-03-19T05:08:52.000Z</updated>
   <id>http://yvshuo.github.io/</id>
   
   <author>
@@ -14,6 +14,65 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Default + Rest + Spread</title>
+    <link href="http://yvshuo.github.io/2017/03/19/2017-03-19-es6-2/"/>
+    <id>http://yvshuo.github.io/2017/03/19/2017-03-19-es6-2/</id>
+    <published>2017-03-19T04:57:56.000Z</published>
+    <updated>2017-03-19T05:08:52.000Z</updated>
+    
+    <content type="html"><![CDATA[<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, y=<span class="number">12</span></span>) </span>&#123;</div><div class="line">  <span class="comment">// y is 12 if not passed (or passed as undefined)</span></div><div class="line">  <span class="keyword">return</span> x + y;</div><div class="line">&#125;</div><div class="line">f(<span class="number">3</span>) == <span class="number">15</span></div></pre></td></tr></table></figure>
+<p>给参数设置默认值。<br><br><br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, ...y</span>) </span>&#123;</div><div class="line">  <span class="comment">// y is an Array</span></div><div class="line">  <span class="keyword">return</span> x * y.length;</div><div class="line">&#125;</div><div class="line">f(<span class="number">3</span>, <span class="string">"hello"</span>, <span class="literal">true</span>) == <span class="number">6</span></div></pre></td></tr></table></figure></p>
+<p>ES6的Rest参数，类似于java里的接收不定个数的参数。Rest参数可以替代以前的<code>arguments</code>的用法，需要注意的一点就是Rest参数只能在函数参数列表的最后一个。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// error!</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">...x, y</span>) </span>&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上面这个例子中的Rest参数就会报错。<br><br><br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, y, z</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> x + y + z;</div><div class="line">&#125;</div><div class="line"><span class="comment">// Pass each elem of array as argument</span></div><div class="line">f(...[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]) == <span class="number">6</span></div></pre></td></tr></table></figure></p>
+<p>展开数组，极其好用的一个功能。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> arr1 = [<span class="string">'a'</span>, <span class="string">'b'</span>];</div><div class="line">  <span class="keyword">const</span> arr2 = [<span class="string">'c'</span>];</div><div class="line">  <span class="keyword">const</span> arr3 = [<span class="string">'d'</span>, <span class="string">'e'</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>]];</div><div class="line">  <span class="keyword">return</span> [...arr1, ...arr2, ...arr3];</div><div class="line">&#125;</div><div class="line"><span class="comment">// return [ "a", "b", "c", "d", "e", [ "a", "b" ] ]</span></div></pre></td></tr></table></figure></p>
+<p>展开数组只能展开一级。</p>
+<blockquote>
+<p>参考文章：<a href="https://babeljs.io/learn-es2015/" target="_blank" rel="external">Learn ES2015</a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;functio
+    
+    </summary>
+    
+    
+      <category term="温故而知新" scheme="http://yvshuo.github.io/tags/%E6%B8%A9%E6%95%85%E8%80%8C%E7%9F%A5%E6%96%B0/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>Arrows and Lexical This</title>
+    <link href="http://yvshuo.github.io/2017/03/19/2017-03-19-es6-1/"/>
+    <id>http://yvshuo.github.io/2017/03/19/2017-03-19-es6-1/</id>
+    <published>2017-03-19T03:34:22.000Z</published>
+    <updated>2017-03-19T04:56:37.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>Arrows are a <code>function</code> shorthand using the =&gt; syntax.<br><strong>Unlike <code>functions</code>, arrows share the same lexical <code>this</code> as their surrounding code.</strong><br><strong>If an arrow is inside another function, it shares the <code>arguments</code> variable of its parent function.</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Expression bodies</span></div><div class="line"><span class="keyword">var</span> odds = evens.map(<span class="function"><span class="params">v</span> =&gt;</span> v + <span class="number">1</span>);</div><div class="line"><span class="keyword">var</span> nums = evens.map(<span class="function">(<span class="params">v, i</span>) =&gt;</span> v + i);</div><div class="line"></div><div class="line"><span class="comment">// Statement bodies</span></div><div class="line">nums.forEach(<span class="function"><span class="params">v</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">if</span> (v % <span class="number">5</span> === <span class="number">0</span>)</div><div class="line">    fives.push(v);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>上面的代码一种是箭头函数的表达式形式，一种是语句的形式。表达式形式return表达式的值。语句形式可以执行语句，不带返回值，也可以带返回值，这点和<code>function</code>是一样的。<br><br></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Lexical this</span></div><div class="line"><span class="keyword">var</span> bob = &#123;</div><div class="line">  <span class="attr">_name</span>: <span class="string">"Bob"</span>,</div><div class="line">  <span class="attr">_friends</span>: [],</div><div class="line">  printFriends() &#123;</div><div class="line">    <span class="keyword">this</span>._friends.forEach(<span class="function"><span class="params">f</span> =&gt;</span> <span class="comment">// a</span></div><div class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>._name + <span class="string">" knows "</span> + f)); <span class="comment">// b</span></div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>箭头函数的<code>this</code>和它周围的代码的<code>this</code>指向同一个地方，上面代码中<code>注释a</code>这一行的<code>this</code>和<code>注释b</code>这一行的<code>this</code>就都指向<code>bob</code>变量。<br>在实际使用中，我们需要根据自己不同的需要使用<code>function</code>或者是箭头函数。<br><br></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Lexical arguments</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">square</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> example = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">let</span> numbers = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> number <span class="keyword">of</span> <span class="built_in">arguments</span>) &#123;</div><div class="line">      numbers.push(number * number);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> numbers;</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> example();</div><div class="line">&#125;</div><div class="line"></div><div class="line">square(<span class="number">2</span>, <span class="number">4</span>, <span class="number">7.5</span>, <span class="number">8</span>, <span class="number">11.5</span>, <span class="number">21</span>); <span class="comment">// returns: [4, 16, 56.25, 64, 132.25, 441]</span></div></pre></td></tr></table></figure>
+<p>箭头函数和它的父函数共享一个<code>arguments</code>变量。</p>
+<blockquote>
+<p>参考文章：<a href="https://babeljs.io/learn-es2015/" target="_blank" rel="external">Learn ES2015</a></p>
+</blockquote>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;Arrows are a &lt;code&gt;function&lt;/code&gt; shorthand using the =&amp;gt; syntax.&lt;br&gt;&lt;strong&gt;Unlike &lt;code&gt;functions&lt;/code&gt;, arrows share the same lexi
+    
+    </summary>
+    
+    
+      <category term="温故而知新" scheme="http://yvshuo.github.io/tags/%E6%B8%A9%E6%95%85%E8%80%8C%E7%9F%A5%E6%96%B0/"/>
+    
+  </entry>
   
   <entry>
     <title>阿里巴巴java开发手册解读9-其他编程规约</title>

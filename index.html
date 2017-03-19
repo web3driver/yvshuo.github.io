@@ -72,6 +72,101 @@
   </div>
 </div>
 
+	<article id="post-2017-03-19-es6-2" class="article article-type-post content" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/19/2017-03-19-es6-2/" class="article-date">
+  <time datetime="2017-03-19T04:57:56.000Z" itemprop="datePublished">2017-03-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/19/2017-03-19-es6-2/">Default + Rest + Spread</a>
+    </h1>
+  
+
+      </header>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/温故而知新/">温故而知新</a></li></ul>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, y=<span class="number">12</span></span>) </span>&#123;</div><div class="line">  <span class="comment">// y is 12 if not passed (or passed as undefined)</span></div><div class="line">  <span class="keyword">return</span> x + y;</div><div class="line">&#125;</div><div class="line">f(<span class="number">3</span>) == <span class="number">15</span></div></pre></td></tr></table></figure>
+<p>给参数设置默认值。<br><br><br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, ...y</span>) </span>&#123;</div><div class="line">  <span class="comment">// y is an Array</span></div><div class="line">  <span class="keyword">return</span> x * y.length;</div><div class="line">&#125;</div><div class="line">f(<span class="number">3</span>, <span class="string">"hello"</span>, <span class="literal">true</span>) == <span class="number">6</span></div></pre></td></tr></table></figure></p>
+<p>ES6的Rest参数，类似于java里的接收不定个数的参数。Rest参数可以替代以前的<code>arguments</code>的用法，需要注意的一点就是Rest参数只能在函数参数列表的最后一个。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// error!</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">...x, y</span>) </span>&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上面这个例子中的Rest参数就会报错。<br><br><br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, y, z</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> x + y + z;</div><div class="line">&#125;</div><div class="line"><span class="comment">// Pass each elem of array as argument</span></div><div class="line">f(...[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]) == <span class="number">6</span></div></pre></td></tr></table></figure></p>
+<p>展开数组，极其好用的一个功能。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> arr1 = [<span class="string">'a'</span>, <span class="string">'b'</span>];</div><div class="line">  <span class="keyword">const</span> arr2 = [<span class="string">'c'</span>];</div><div class="line">  <span class="keyword">const</span> arr3 = [<span class="string">'d'</span>, <span class="string">'e'</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>]];</div><div class="line">  <span class="keyword">return</span> [...arr1, ...arr2, ...arr3];</div><div class="line">&#125;</div><div class="line"><span class="comment">// return [ "a", "b", "c", "d", "e", [ "a", "b" ] ]</span></div></pre></td></tr></table></figure></p>
+<p>展开数组只能展开一级。</p>
+<blockquote>
+<p>参考文章：<a href="https://babeljs.io/learn-es2015/" target="_blank" rel="external">Learn ES2015</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <!--<a data-url="http://yvshuo.github.io/2017/03/19/2017-03-19-es6-2/" data-id="cj0g82ovl000zsle94opnktr0" class="article-share-link">Share</a>-->
+      <!---->
+    </footer>
+  </div>
+  
+</article>
+
+
+
+	<article id="post-2017-03-19-es6-1" class="article article-type-post content" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/19/2017-03-19-es6-1/" class="article-date">
+  <time datetime="2017-03-19T03:34:22.000Z" itemprop="datePublished">2017-03-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/19/2017-03-19-es6-1/">Arrows and Lexical This</a>
+    </h1>
+  
+
+      </header>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/温故而知新/">温故而知新</a></li></ul>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Arrows are a <code>function</code> shorthand using the =&gt; syntax.<br><strong>Unlike <code>functions</code>, arrows share the same lexical <code>this</code> as their surrounding code.</strong><br><strong>If an arrow is inside another function, it shares the <code>arguments</code> variable of its parent function.</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Expression bodies</span></div><div class="line"><span class="keyword">var</span> odds = evens.map(<span class="function"><span class="params">v</span> =&gt;</span> v + <span class="number">1</span>);</div><div class="line"><span class="keyword">var</span> nums = evens.map(<span class="function">(<span class="params">v, i</span>) =&gt;</span> v + i);</div><div class="line"></div><div class="line"><span class="comment">// Statement bodies</span></div><div class="line">nums.forEach(<span class="function"><span class="params">v</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">if</span> (v % <span class="number">5</span> === <span class="number">0</span>)</div><div class="line">    fives.push(v);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>上面的代码一种是箭头函数的表达式形式，一种是语句的形式。表达式形式return表达式的值。语句形式可以执行语句，不带返回值，也可以带返回值，这点和<code>function</code>是一样的。<br><br></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Lexical this</span></div><div class="line"><span class="keyword">var</span> bob = &#123;</div><div class="line">  <span class="attr">_name</span>: <span class="string">"Bob"</span>,</div><div class="line">  <span class="attr">_friends</span>: [],</div><div class="line">  printFriends() &#123;</div><div class="line">    <span class="keyword">this</span>._friends.forEach(<span class="function"><span class="params">f</span> =&gt;</span> <span class="comment">// a</span></div><div class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>._name + <span class="string">" knows "</span> + f)); <span class="comment">// b</span></div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>箭头函数的<code>this</code>和它周围的代码的<code>this</code>指向同一个地方，上面代码中<code>注释a</code>这一行的<code>this</code>和<code>注释b</code>这一行的<code>this</code>就都指向<code>bob</code>变量。<br>在实际使用中，我们需要根据自己不同的需要使用<code>function</code>或者是箭头函数。<br><br></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Lexical arguments</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">square</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> example = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">let</span> numbers = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> number <span class="keyword">of</span> <span class="built_in">arguments</span>) &#123;</div><div class="line">      numbers.push(number * number);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> numbers;</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> example();</div><div class="line">&#125;</div><div class="line"></div><div class="line">square(<span class="number">2</span>, <span class="number">4</span>, <span class="number">7.5</span>, <span class="number">8</span>, <span class="number">11.5</span>, <span class="number">21</span>); <span class="comment">// returns: [4, 16, 56.25, 64, 132.25, 441]</span></div></pre></td></tr></table></figure>
+<p>箭头函数和它的父函数共享一个<code>arguments</code>变量。</p>
+<blockquote>
+<p>参考文章：<a href="https://babeljs.io/learn-es2015/" target="_blank" rel="external">Learn ES2015</a></p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <!--<a data-url="http://yvshuo.github.io/2017/03/19/2017-03-19-es6-1/" data-id="cj0g82ovk000ysle9vqz4xp4q" class="article-share-link">Share</a>-->
+      <!---->
+    </footer>
+  </div>
+  
+</article>
+
+
+
 	<article id="post-2017-02-23-javarule-9" class="article article-type-post content" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/02/23/2017-02-23-javarule-9/" class="article-date">
@@ -108,7 +203,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/02/23/2017-02-23-javarule-9/" data-id="cj0cgdfw8001nx5e9vj4qfdm0" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/02/23/2017-02-23-javarule-9/" data-id="cj0g82ox3001ssle9zn0ho1ar" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -153,7 +248,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/02/23/2017-02-23-javarule-8/" data-id="cj0cg46bf001kx5e9ui0l9auq" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/02/23/2017-02-23-javarule-8/" data-id="cj0g82ovi000wsle9qhsmp4b1" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -199,7 +294,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/02/22/2017-02-22-javarule-7/" data-id="cj0cfqecg001hx5e95ka5m1c7" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/02/22/2017-02-22-javarule-7/" data-id="cj0g82ox4001usle9apkprmqs" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -243,98 +338,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/02/18/2017-02-18-javarule-6/" data-id="cj0cfoffj000ox5e9cke71t0s" class="article-share-link">Share</a>-->
-      <!---->
-    </footer>
-  </div>
-  
-</article>
-
-
-
-	<article id="post-2017-02-17-javarule-5" class="article article-type-post content" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/17/2017-02-17-javarule-5/" class="article-date">
-  <time datetime="2017-02-17T11:43:16.000Z" itemprop="datePublished">2017-02-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/17/2017-02-17-javarule-5/">阿里巴巴java开发手册解读5-集合处理</a>
-    </h1>
-  
-
-      </header>
-    
-    
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java文档/">java文档</a></li></ul>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-【强制】关于-hashCode-和-equals-的处理-遵循如下规则"><a href="#1-【强制】关于-hashCode-和-equals-的处理-遵循如下规则" class="headerlink" title="1. 【强制】关于 hashCode 和 equals 的处理,遵循如下规则:"></a>1. 【强制】关于 hashCode 和 equals 的处理,遵循如下规则:</h3><p><strong>1) 只要重写equals,就必须重写hashCode。</strong><br><strong>2) 因为Set存储的是不重复的对象,依据hashCode和equals进行判断,所以Set存储的对象必须重写这两个方法。</strong><br><strong>3) 如果自定义对象做为Map的键,那么必须重写hashCode和equals。</strong><br><code>正例</code>:String 重写了 hashCode 和 equals 方法,所以我们可以非常愉快地使用 String 对象 作为 key 来使用。</p>
-<h3 id="2-【强制】ArrayList的subList结果不可强转成ArrayList"><a href="#2-【强制】ArrayList的subList结果不可强转成ArrayList" class="headerlink" title="2. 【强制】ArrayList的subList结果不可强转成ArrayList"></a>2. 【强制】ArrayList的subList结果不可强转成ArrayList</h3><p>否则会抛出ClassCastException 异常:java.util.RandomAccessSubList cannot be cast to java.util.ArrayList ;<br>说明:subList 返回的是 ArrayList 的内部类 SubList,并不是 ArrayList ,而是 ArrayList 的一个视图,对于SubList子列表的所有操作最终会反映到原列表上。</p>
-<h3 id="3-【强制】在-subList-场景中-高度注意对原集合元素个数的修改"><a href="#3-【强制】在-subList-场景中-高度注意对原集合元素个数的修改" class="headerlink" title="3. 【强制】在 subList 场景中,高度注意对原集合元素个数的修改"></a>3. 【强制】在 subList 场景中,高度注意对原集合元素个数的修改</h3><p>该修改会导致子列表的遍历、增 加、删除均产生ConcurrentModificationException 异常。<br>
-        
-          <p class="article-more-link">
-            <a href="/2017/02/17/2017-02-17-javarule-5/#more">More&gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/02/17/2017-02-17-javarule-5/" data-id="cj0cfofff000mx5e90yup62ua" class="article-share-link">Share</a>-->
-      <!---->
-    </footer>
-  </div>
-  
-</article>
-
-
-
-	<article id="post-2017-02-10-javarule-4" class="article article-type-post content" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/13/2017-02-10-javarule-4/" class="article-date">
-  <time datetime="2017-02-13T10:43:16.000Z" itemprop="datePublished">2017-02-13</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/13/2017-02-10-javarule-4/">阿里巴巴java开发手册解读4-OOP 规约</a>
-    </h1>
-  
-
-      </header>
-    
-    
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java文档/">java文档</a></li></ul>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-【强制】避免通过一个类的对象引用访问此类的静态变量或静态方法-无谓增加编译器解析成本-直接用类名来访问即可"><a href="#1-【强制】避免通过一个类的对象引用访问此类的静态变量或静态方法-无谓增加编译器解析成本-直接用类名来访问即可" class="headerlink" title="1. 【强制】避免通过一个类的对象引用访问此类的静态变量或静态方法,无谓增加编译器解析成本,直接用类名来访问即可"></a>1. 【强制】避免通过一个类的对象引用访问此类的静态变量或静态方法,无谓增加编译器解析成本,直接用类名来访问即可</h3><blockquote>
-<p><strong>批注</strong>:<br><code>正例</code>:<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">Integer.parseInt(<span class="string">"1"</span>);</div></pre></td></tr></table></figure></p>
-</blockquote>
-<p><code>反例</code>:<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">Integer i = new Integer(0);</div><div class="line">i.parseInt(<span class="string">"1"</span>);</div></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/2017/02/13/2017-02-10-javarule-4/#more">More&gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/02/13/2017-02-10-javarule-4/" data-id="cj0cfoffb000kx5e9q3mo2ihb" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/02/18/2017-02-18-javarule-6/" data-id="cj0g82ovf000usle92emsvpmo" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -345,7 +349,7 @@
 
   
 	<nav id="page-nav">
-	<span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
+	<span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/2/">下一页</a>
 	</nav>
 
 

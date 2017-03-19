@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    
+  
+  <title>
+    Arrows and Lexical This|香辣猪蹄儿
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Arrows are a function shorthand using the =&amp;gt; syntax.Unlike functions, arrows share the same lexical this as their surrounding code.If an arrow is inside another function, it shares the arguments va">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Arrows and Lexical This">
+<meta property="og:url" content="http://yvshuo.github.io/2017/03/19/2017-03-19-es6-1/index.html">
+<meta property="og:site_name" content="香辣猪蹄儿">
+<meta property="og:description" content="Arrows are a function shorthand using the =&amp;gt; syntax.Unlike functions, arrows share the same lexical this as their surrounding code.If an arrow is inside another function, it shares the arguments va">
+<meta property="og:updated_time" content="2017-03-19T04:56:37.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Arrows and Lexical This">
+<meta name="twitter:description" content="Arrows are a function shorthand using the =&amp;gt; syntax.Unlike functions, arrows share the same lexical this as their surrounding code.If an arrow is inside another function, it shares the arguments va">
+  
+    <link rel="alternate" href="/atom.xml" title="config.title" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/page.css">
+  <script src="/js/vue.min.js"></script>
+  <script>window.PAGE_TYPE = ""</script>
+</head>
+<body class="docs">
+  
+  <div id="mobile-bar" >
+  <a class="menu-button"></a>
+  <a class="logo" href="/"></a>
+</div>
+  <div id="header">
+  <a id="logo" href="/">
+    <img src="/img/avatar.jpg">
+    <span>香辣猪蹄儿</span>
+  </a>
+  <ul id="nav">
+    <li><a href="/" class="nav-link">首页</a></li>
+<li><a href="/archives" class="nav-link">文章列表</a></li>
+<li><a href="/docs" class="nav-link">文档</a></li>
+
+  </ul>
+</div>
+
+  <div id="main" class="fix-sidebar">
+      
+    <div class="sidebar blog">
+        <ul class="main-menu">
+            <li><a href="/" class="nav-link">首页</a></li>
+<li><a href="/archives" class="nav-link">文章列表</a></li>
+<li><a href="/docs" class="nav-link">文档</a></li>
+
+        </ul>
+        <div class="list">
+            <h2>
+                最新文章
+            </h2>
+            <ul style="padding:0">
+            
+            
+                
+                    <li>
+                        <a href="/2017/03/19/2017-03-19-es6-2/" class="sidebar-link">Default + Rest + Spread</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/03/19/2017-03-19-es6-1/" class="sidebar-link current">Arrows and Lexical This</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/02/23/2017-02-23-javarule-9/" class="sidebar-link">阿里巴巴java开发手册解读9-其他编程规约</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/02/23/2017-02-23-javarule-8/" class="sidebar-link">阿里巴巴java开发手册解读8-注释规约</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/02/22/2017-02-22-javarule-7/" class="sidebar-link">阿里巴巴java开发手册解读7-控制语句</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/02/18/2017-02-18-javarule-6/" class="sidebar-link">阿里巴巴java开发手册解读6-并发处理</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/02/17/2017-02-17-javarule-5/" class="sidebar-link">阿里巴巴java开发手册解读5-集合处理</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/02/13/2017-02-10-javarule-4/" class="sidebar-link">阿里巴巴java开发手册解读4-OOP 规约</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/02/10/2017-02-10-javarule-3/" class="sidebar-link">阿里巴巴java开发手册解读3-格式规约</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/02/10/2017-02-10-javarule-2/" class="sidebar-link">阿里巴巴java开发手册解读2-常量定义</a>
+                    </li>
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+            </ul>
+        </div>
+    </div>
+    <div class="content with-sidebar blog post">
+        <h1>Arrows and Lexical This</h1>
+        <h4>3月 19, 2017</h4>
+        <p>Arrows are a <code>function</code> shorthand using the =&gt; syntax.<br><strong>Unlike <code>functions</code>, arrows share the same lexical <code>this</code> as their surrounding code.</strong><br><strong>If an arrow is inside another function, it shares the <code>arguments</code> variable of its parent function.</strong></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Expression bodies</span></div><div class="line"><span class="keyword">var</span> odds = evens.map(<span class="function"><span class="params">v</span> =&gt;</span> v + <span class="number">1</span>);</div><div class="line"><span class="keyword">var</span> nums = evens.map(<span class="function">(<span class="params">v, i</span>) =&gt;</span> v + i);</div><div class="line"></div><div class="line"><span class="comment">// Statement bodies</span></div><div class="line">nums.forEach(<span class="function"><span class="params">v</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">if</span> (v % <span class="number">5</span> === <span class="number">0</span>)</div><div class="line">    fives.push(v);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
+<p>上面的代码一种是箭头函数的表达式形式，一种是语句的形式。表达式形式return表达式的值。语句形式可以执行语句，不带返回值，也可以带返回值，这点和<code>function</code>是一样的。<br><br></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Lexical this</span></div><div class="line"><span class="keyword">var</span> bob = &#123;</div><div class="line">  <span class="attr">_name</span>: <span class="string">"Bob"</span>,</div><div class="line">  <span class="attr">_friends</span>: [],</div><div class="line">  printFriends() &#123;</div><div class="line">    <span class="keyword">this</span>._friends.forEach(<span class="function"><span class="params">f</span> =&gt;</span> <span class="comment">// a</span></div><div class="line">      <span class="built_in">console</span>.log(<span class="keyword">this</span>._name + <span class="string">" knows "</span> + f)); <span class="comment">// b</span></div><div class="line">  &#125;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+<p>箭头函数的<code>this</code>和它周围的代码的<code>this</code>指向同一个地方，上面代码中<code>注释a</code>这一行的<code>this</code>和<code>注释b</code>这一行的<code>this</code>就都指向<code>bob</code>变量。<br>在实际使用中，我们需要根据自己不同的需要使用<code>function</code>或者是箭头函数。<br><br></p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Lexical arguments</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">square</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> example = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">let</span> numbers = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> number <span class="keyword">of</span> <span class="built_in">arguments</span>) &#123;</div><div class="line">      numbers.push(number * number);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> numbers;</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> example();</div><div class="line">&#125;</div><div class="line"></div><div class="line">square(<span class="number">2</span>, <span class="number">4</span>, <span class="number">7.5</span>, <span class="number">8</span>, <span class="number">11.5</span>, <span class="number">21</span>); <span class="comment">// returns: [4, 16, 56.25, 64, 132.25, 441]</span></div></pre></td></tr></table></figure>
+<p>箭头函数和它的父函数共享一个<code>arguments</code>变量。</p>
+<blockquote>
+<p>参考文章：<a href="https://babeljs.io/learn-es2015/" target="_blank" rel="external">Learn ES2015</a></p>
+</blockquote>
+
+        <div class="guide-links">
+            
+                <span>← <a href="/2017/03/19/2017-03-19-es6-2/">Default + Rest + Spread</a></span>
+            
+            
+                <span style="float:right"><a href="/2017/02/23/2017-02-23-javarule-9/">阿里巴巴java开发手册解读9-其他编程规约</a> →</span>
+            
+        </div>
+    </div>
+
+  </div>
+  
+  
+<script>
+var topScrolled = false
+window.addEventListener('scroll', function () {
+  if (window.pageYOffset > 165 && !topScrolled) {
+    topScrolled = true
+    document.getElementById('mobile-bar').classList.remove('top')
+  } else if (window.pageYOffset <= 165 && topScrolled) {
+    topScrolled = false
+    document.getElementById('mobile-bar').classList.add('top')
+  }
+})
+</script>
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/js/script.js"></script>
+<script src="/js/common.js"></script>
+
+</body>
+</html>
+
