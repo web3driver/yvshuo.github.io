@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yvshuo.github.io/2017/03/19/2017-03-19-es6-1/index.html">
 <meta property="og:site_name" content="香辣猪蹄儿">
 <meta property="og:description" content="Arrows are a function shorthand using the =&amp;gt; syntax.Unlike functions, arrows share the same lexical this as their surrounding code.If an arrow is inside another function, it shares the arguments va">
-<meta property="og:updated_time" content="2017-03-19T04:56:37.000Z">
+<meta property="og:updated_time" content="2017-03-19T05:15:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Arrows and Lexical This">
 <meta name="twitter:description" content="Arrows are a function shorthand using the =&amp;gt; syntax.Unlike functions, arrows share the same lexical this as their surrounding code.If an arrow is inside another function, it shares the arguments va">
@@ -149,7 +149,7 @@
     </div>
     <div class="content with-sidebar blog post">
         <h1>Arrows and Lexical This</h1>
-        <h4>3月 19, 2017</h4>
+        <h4>Mar 19, 2017</h4>
         <p>Arrows are a <code>function</code> shorthand using the =&gt; syntax.<br><strong>Unlike <code>functions</code>, arrows share the same lexical <code>this</code> as their surrounding code.</strong><br><strong>If an arrow is inside another function, it shares the <code>arguments</code> variable of its parent function.</strong></p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Expression bodies</span></div><div class="line"><span class="keyword">var</span> odds = evens.map(<span class="function"><span class="params">v</span> =&gt;</span> v + <span class="number">1</span>);</div><div class="line"><span class="keyword">var</span> nums = evens.map(<span class="function">(<span class="params">v, i</span>) =&gt;</span> v + i);</div><div class="line"></div><div class="line"><span class="comment">// Statement bodies</span></div><div class="line">nums.forEach(<span class="function"><span class="params">v</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">if</span> (v % <span class="number">5</span> === <span class="number">0</span>)</div><div class="line">    fives.push(v);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
 <p>上面的代码一种是箭头函数的表达式形式，一种是语句的形式。表达式形式return表达式的值。语句形式可以执行语句，不带返回值，也可以带返回值，这点和<code>function</code>是一样的。<br><br></p>

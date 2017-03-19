@@ -16,7 +16,7 @@
 <meta property="og:site_name" content="香辣猪蹄儿">
 <meta property="og:description" content="function f(x, y=12) &amp;#123;  // y is 12 if not passed (or passed as undefined)  return x + y;&amp;#125;f(3) == 15
 给参数设置默认值。function f(x, ...y) &amp;#123;  // y is an Array  return x * y.length;&amp;#125;f(3, &quot;hell">
-<meta property="og:updated_time" content="2017-03-19T05:08:52.000Z">
+<meta property="og:updated_time" content="2017-03-19T05:15:42.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Default + Rest + Spread">
 <meta name="twitter:description" content="function f(x, y=12) &amp;#123;  // y is 12 if not passed (or passed as undefined)  return x + y;&amp;#125;f(3) == 15
@@ -152,7 +152,7 @@
     </div>
     <div class="content with-sidebar blog post">
         <h1>Default + Rest + Spread</h1>
-        <h4>3月 19, 2017</h4>
+        <h4>Mar 19, 2017</h4>
         <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, y=<span class="number">12</span></span>) </span>&#123;</div><div class="line">  <span class="comment">// y is 12 if not passed (or passed as undefined)</span></div><div class="line">  <span class="keyword">return</span> x + y;</div><div class="line">&#125;</div><div class="line">f(<span class="number">3</span>) == <span class="number">15</span></div></pre></td></tr></table></figure>
 <p>给参数设置默认值。<br><br><br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, ...y</span>) </span>&#123;</div><div class="line">  <span class="comment">// y is an Array</span></div><div class="line">  <span class="keyword">return</span> x * y.length;</div><div class="line">&#125;</div><div class="line">f(<span class="number">3</span>, <span class="string">"hello"</span>, <span class="literal">true</span>) == <span class="number">6</span></div></pre></td></tr></table></figure></p>
 <p>ES6的Rest参数，类似于java里的接收不定个数的参数。Rest参数可以替代以前的<code>arguments</code>的用法，需要注意的一点就是Rest参数只能在函数参数列表的最后一个。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// error!</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">...x, y</span>) </span>&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>

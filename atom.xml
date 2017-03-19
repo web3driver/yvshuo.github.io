@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yvshuo.github.io/"/>
-  <updated>2017-03-19T05:08:52.000Z</updated>
+  <updated>2017-03-19T05:15:42.000Z</updated>
   <id>http://yvshuo.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yvshuo.github.io/2017/03/19/2017-03-19-es6-2/"/>
     <id>http://yvshuo.github.io/2017/03/19/2017-03-19-es6-2/</id>
     <published>2017-03-19T04:57:56.000Z</published>
-    <updated>2017-03-19T05:08:52.000Z</updated>
+    <updated>2017-03-19T05:15:42.000Z</updated>
     
     <content type="html"><![CDATA[<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, y=<span class="number">12</span></span>) </span>&#123;</div><div class="line">  <span class="comment">// y is 12 if not passed (or passed as undefined)</span></div><div class="line">  <span class="keyword">return</span> x + y;</div><div class="line">&#125;</div><div class="line">f(<span class="number">3</span>) == <span class="number">15</span></div></pre></td></tr></table></figure>
 <p>给参数设置默认值。<br><br><br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, ...y</span>) </span>&#123;</div><div class="line">  <span class="comment">// y is an Array</span></div><div class="line">  <span class="keyword">return</span> x * y.length;</div><div class="line">&#125;</div><div class="line">f(<span class="number">3</span>, <span class="string">"hello"</span>, <span class="literal">true</span>) == <span class="number">6</span></div></pre></td></tr></table></figure></p>
@@ -42,6 +42,8 @@
     
       <category term="温故而知新" scheme="http://yvshuo.github.io/tags/%E6%B8%A9%E6%95%85%E8%80%8C%E7%9F%A5%E6%96%B0/"/>
     
+      <category term="ES6" scheme="http://yvshuo.github.io/tags/ES6/"/>
+    
   </entry>
   
   <entry>
@@ -49,7 +51,7 @@
     <link href="http://yvshuo.github.io/2017/03/19/2017-03-19-es6-1/"/>
     <id>http://yvshuo.github.io/2017/03/19/2017-03-19-es6-1/</id>
     <published>2017-03-19T03:34:22.000Z</published>
-    <updated>2017-03-19T04:56:37.000Z</updated>
+    <updated>2017-03-19T05:15:51.000Z</updated>
     
     <content type="html"><![CDATA[<p>Arrows are a <code>function</code> shorthand using the =&gt; syntax.<br><strong>Unlike <code>functions</code>, arrows share the same lexical <code>this</code> as their surrounding code.</strong><br><strong>If an arrow is inside another function, it shares the <code>arguments</code> variable of its parent function.</strong></p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Expression bodies</span></div><div class="line"><span class="keyword">var</span> odds = evens.map(<span class="function"><span class="params">v</span> =&gt;</span> v + <span class="number">1</span>);</div><div class="line"><span class="keyword">var</span> nums = evens.map(<span class="function">(<span class="params">v, i</span>) =&gt;</span> v + i);</div><div class="line"></div><div class="line"><span class="comment">// Statement bodies</span></div><div class="line">nums.forEach(<span class="function"><span class="params">v</span> =&gt;</span> &#123;</div><div class="line">  <span class="keyword">if</span> (v % <span class="number">5</span> === <span class="number">0</span>)</div><div class="line">    fives.push(v);</div><div class="line">&#125;);</div></pre></td></tr></table></figure>
@@ -71,6 +73,8 @@
     
     
       <category term="温故而知新" scheme="http://yvshuo.github.io/tags/%E6%B8%A9%E6%95%85%E8%80%8C%E7%9F%A5%E6%96%B0/"/>
+    
+      <category term="ES6" scheme="http://yvshuo.github.io/tags/ES6/"/>
     
   </entry>
   
