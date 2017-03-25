@@ -72,6 +72,113 @@
   </div>
 </div>
 
+	<article id="post-2017-02-09-javarule-1" class="article article-type-post content" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/02/09/2017-02-09-javarule-1/" class="article-date">
+  <time datetime="2017-02-09T14:43:47.000Z" itemprop="datePublished">2017-02-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/02/09/2017-02-09-javarule-1/">阿里巴巴java开发手册解读1-命名规约</a>
+    </h1>
+  
+
+      </header>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java文档/">java文档</a></li></ul>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天拜读了阿里巴巴刚发布的java开发手册，之前做项目时在一些细节的处理上总是不知道如何下手，看完这个手册，收获颇多。附手册全文。</p>
+<blockquote>
+<p><a href="/assets/pdf/alijava.pdf">阿里巴巴java开发手册</a></p>
+</blockquote>
+<p>下面是摘录加批注。注：引用标签内为批注，字面规则不附批注。</p>
+<h3 id="1-【强制】-代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束"><a href="#1-【强制】-代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束" class="headerlink" title="1. 【强制】 代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束"></a>1. 【强制】 代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束</h3><p><code>反例</code>:<em>name / __name / $Object / name</em> / name$ / Object$</p>
+<blockquote>
+<p><strong>批注</strong>:<br>javascript表示不服！</p>
+</blockquote>
+        
+          <p class="article-more-link">
+            <a href="/2017/02/09/2017-02-09-javarule-1/#more">More&gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <!--<a data-url="http://yvshuo.github.io/2017/02/09/2017-02-09-javarule-1/" data-id="cj0p0lymy000lawe9rcuj1jb3" class="article-share-link">Share</a>-->
+      <!---->
+    </footer>
+  </div>
+  
+</article>
+
+
+
+	<article id="post-2017-01-16-refactor" class="article article-type-post content" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/01/16/2017-01-16-refactor/" class="article-date">
+  <time datetime="2017-01-16T03:03:47.000Z" itemprop="datePublished">2017-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/01/16/2017-01-16-refactor/">重构—重新组织函数</a>
+    </h1>
+  
+
+      </header>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/重构/">重构</a></li></ul>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>上次单位人力让挑书，然后选了这本《重构-改善既有代码的设计》这本书，作者Martin Fowler是ThoughtWorks公司的首席科学家。虽然书写于很多年前，但是很多思想在编程中依然非常实用。书里主要是讲的各种重构的手法，但是我觉得看完之后，个人感觉更重要的是告诉自己在写代码的过程中如何从源头上注意一些问题，让自己的代码更合理，更优美。最初选这本书也是因为觉得需要超脱语言的层面去理解一些编程的宏观的一些东西，不然总是觉得自己像个机器一样，写着代码，却不懂怎么写更好，为什么别人都那样分层。书已经看了一遍，似乎明白了一些哪些代码好一些、哪些代码差一点。<br>最近再一边读一边记下这个系列的读书笔记，算是记录吧~</p>
+<h2 id="1-代码的坏味道"><a href="#1-代码的坏味道" class="headerlink" title="1. 代码的坏味道"></a>1. 代码的坏味道</h2><ul>
+<li>重复代码：如果在两个不相关的类中出现了重复的相同功能的函数，就应该考虑新建一个独立的类将这个重复的函数提炼出去。</li>
+<li>过长函数：写代码的过程中，有一个原则。<strong>代码块越小，代码的功能就越容易管理，代码的处理和移动也就越轻松。</strong></li>
+<li>过大的类：一个类的代码太多的话，最后就会变成一坨，嗯。尽量将特别大的类进行分解。</li>
+<li>过长的参数列:拆成bean。</li>
+<li>switch泛滥：作者的建议是少用switch，在使用switch的地方考虑使用多态来解决。</li>
+<li>数据泥团：数据成群的绑在一起。正确的做法是将总是绑定在一起的数据放到一个对象里。</li>
+<li>发散式变化：多种变化都对应同一个类的修改。这种情况下需要考虑将这个类拆开，尽量每种变化只对应一个类的修改。</li>
+<li>霰弹式修改：这个类一旦变化，会引发多个类的修改。这种情况下应该尽量将所有需要修改的方法放到一个类里。</li>
+</ul>
+<h2 id="2-重新组织函数"><a href="#2-重新组织函数" class="headerlink" title="2. 重新组织函数"></a>2. 重新组织函数</h2><h3 id="2-1-extract-method（提炼函数）"><a href="#2-1-extract-method（提炼函数）" class="headerlink" title="2.1 extract method（提炼函数）"></a>2.1 extract method（提炼函数）</h3><p>1) 没有局部变量，直接提炼。<br>2) 有局部变量，把这个局部变量作为参数传入被提炼函数<br>3) 如果需要对局部变量赋值，得需要使用remove Assignments to parameters.如果被赋值的局部变量只在被提炼的函数中被赋值，则把这个局部变量声明到被提炼函数中。如果被赋值的局部变量需要在被提炼的函数其它的地方使用，则需要被提炼函数返回一个被修改后的值。如果遇到返回的不止一个值，则最好的方法是再重新提炼一个新的方法，每次只返回一个值最佳。</p>
+<p><code>before</code>:<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">printOwing</span><span class="params">(<span class="keyword">double</span> amount)</span></span>&#123;</div><div class="line">    printBanner();</div><div class="line">    <span class="comment">//print details</span></div><div class="line">    System.out.println(<span class="string">"amount:"</span>+amount);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>after</code>:<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">printOwing</span><span class="params">(<span class="keyword">double</span> amount)</span></span>&#123;</div><div class="line">    printBanner();</div><div class="line">    printDetails(amount);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">printDetails</span><span class="params">(<span class="keyword">double</span> amount)</span></span>&#123;</div><div class="line">    System.out.println(<span class="string">"amount:"</span>+amount);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        
+          <p class="article-more-link">
+            <a href="/2017/01/16/2017-01-16-refactor/#more">More&gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <!--<a data-url="http://yvshuo.github.io/2017/01/16/2017-01-16-refactor/" data-id="cj0p0lymw000iawe9y7w2erem" class="article-share-link">Share</a>-->
+      <!---->
+    </footer>
+  </div>
+  
+</article>
+
+
+
 	<article id="post-2017-01-11-review-git" class="article article-type-post content" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/01/11/2017-01-11-review-git/" class="article-date">
@@ -116,7 +223,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/01/11/2017-01-11-review-git/" data-id="cj0g82ouo000dsle918jk2gov" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/01/11/2017-01-11-review-git/" data-id="cj0p0lymt000fawe917pvcvv5" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -165,7 +272,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2016/11/27/2016-11-27-wxapp/" data-id="cj0g82ouf0005sle9zpnsf4r5" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2016/11/27/2016-11-27-wxapp/" data-id="cj0p0lymr000dawe96wthwuc4" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -210,7 +317,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2016/11/15/2016-11-15-eslint/" data-id="cj0g82oui0007sle9v42dthh7" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2016/11/15/2016-11-15-eslint/" data-id="cj0p0lymo0009awe9pq4ar61i" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -254,96 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2016/10/26/2016-10-26-webpacknote/" data-id="cj0g82ov3000isle92697v5om" class="article-share-link">Share</a>-->
-      <!---->
-    </footer>
-  </div>
-  
-</article>
-
-
-
-	<article id="post-2016-10-11-closure" class="article article-type-post content" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/10/11/2016-10-11-closure/" class="article-date">
-  <time datetime="2016-10-11T15:21:48.000Z" itemprop="datePublished">2016-10-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/11/2016-10-11-closure/">一篇关于javascript闭包的笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天读到了一篇讲<a href="http://web.jobbole.com/88167/">闭包的文章</a>，是我目前看到的最透彻的一篇闭包的讲解。趁热记一下笔记。</p>
-<p>在我以前的认识中，一直觉得闭包就是在js中提供了一种类似于java中get方法的功能，使我们可以通过闭包来访问到函数体内的局部变量。然鹅，我的理解也就顶多意会了闭包的一点皮毛。下面就直接通过代码来记录一下这篇文章中写到的知识点。</p>
-<h3 id="静态作用域的理解"><a href="#静态作用域的理解" class="headerlink" title="静态作用域的理解"></a>静态作用域的理解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">10</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;	</div><div class="line">  <span class="keyword">var</span> y = x + <span class="number">5</span>;	</div><div class="line">  <span class="keyword">return</span> y;	</div><div class="line">&#125;	</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123; 	</div><div class="line">  <span class="keyword">var</span> x = <span class="number">2</span>;	</div><div class="line">  <span class="keyword">return</span> foo();	</div><div class="line">&#125;	</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">main</span>(<span class="params"></span>) </span>&#123;	</div><div class="line">  foo(); <span class="comment">// Static scope: 15; Dynamic scope: 15	</span></div><div class="line">  bar(); <span class="comment">// Static scope: 15; Dynamic scope: 7	</span></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2016/10/11/2016-10-11-closure/#more">More&gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2016/10/11/2016-10-11-closure/" data-id="cj0g82oun0009sle9h4t7qe4k" class="article-share-link">Share</a>-->
-      <!---->
-    </footer>
-  </div>
-  
-</article>
-
-
-
-	<article id="post-2016-10-07-githubssh" class="article article-type-post content" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2016/10/07/2016-10-07-githubssh/" class="article-date">
-  <time datetime="2016-10-07T04:31:27.000Z" itemprop="datePublished">2016-10-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2016/10/07/2016-10-07-githubssh/">配置hexo的一键打包部署</a>
-    </h1>
-  
-
-      </header>
-    
-    
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/hexo/">hexo</a></li></ul>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天研究了一下hexo的自动打包部署，记录一下。</p>
-<h2 id="配置github的ssh"><a href="#配置github的ssh" class="headerlink" title="配置github的ssh"></a>配置github的ssh</h2><h3 id="本地生成公钥"><a href="#本地生成公钥" class="headerlink" title="本地生成公钥"></a>本地生成公钥</h3><p>运行 git Bash 客户端，检查是否已经配置过SSH key。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~/.ssh</div><div class="line">$ ls</div></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/2016/10/07/2016-10-07-githubssh/#more">More&gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2016/10/07/2016-10-07-githubssh/" data-id="cj0g82ou10000sle9vlt3abzd" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2016/10/26/2016-10-26-webpacknote/" data-id="cj0p0lymm0007awe9m8xh479s" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>

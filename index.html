@@ -72,6 +72,95 @@
   </div>
 </div>
 
+	<article id="post-2017-03-25-es6-4" class="article article-type-post content" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/25/2017-03-25-es6-4/" class="article-date">
+  <time datetime="2017-03-25T08:49:49.000Z" itemprop="datePublished">2017-03-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/25/2017-03-25-es6-4/">Promises</a>
+    </h1>
+  
+
+      </header>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/温故而知新/">温故而知新</a></li></ul>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>Promises are a library for asynchronous programming.<br>类似于jQuery里的<code>Deferred</code>对象，Promises提供了异步编程的解决方案，一个简单的例子：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeout</span>(<span class="params">duration = <span class="number">0</span></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">        setTimeout(resolve, duration);</div><div class="line">    &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> p = timeout(<span class="number">1000</span>).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> timeout(<span class="number">2000</span>);</div><div class="line">&#125;).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"hmm"</span>);</div><div class="line">&#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.all([timeout(<span class="number">100</span>), timeout(<span class="number">200</span>)]);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+<p>这种调用方式比起传统的回调函数的方式看起来舒服不止一百倍。<br>
+        
+          <p class="article-more-link">
+            <a href="/2017/03/25/2017-03-25-es6-4/#more">More&gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <!--<a data-url="http://yvshuo.github.io/2017/03/25/2017-03-25-es6-4/" data-id="cj0p0lynn0017awe9qdiqkcti" class="article-share-link">Share</a>-->
+      <!---->
+    </footer>
+  </div>
+  
+</article>
+
+
+
+	<article id="post-2017-03-25-es6-3" class="article article-type-post content" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2017/03/25/2017-03-25-es6-3/" class="article-date">
+  <time datetime="2017-03-25T07:57:37.000Z" itemprop="datePublished">2017-03-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2017/03/25/2017-03-25-es6-3/">Modules</a>
+    </h1>
+  
+
+      </header>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/温故而知新/">温故而知新</a></li></ul>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1、ES6模块化-vs-CommonJS"><a href="#1、ES6模块化-vs-CommonJS" class="headerlink" title="1、ES6模块化 vs. CommonJS"></a>1、ES6模块化 vs. CommonJS</h2><p>ES6在语言层面上提供了模块化的支持，相较与<code>CommonJS</code>和<code>AMD</code>的模块化解决方案，ES6的模块化提供的是编译时的模块化支持，而<code>CommonJS</code>和<code>AMD</code>都是运行时的模块化。<br>ES6的模块方案提供的是对模块的引用，而<code>CommonJS</code>提供的则是一个拷贝。</p>
+<h4 id="CommonJS方式"><a href="#CommonJS方式" class="headerlink" title="CommonJS方式"></a>CommonJS方式</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// lib.js</span></div><div class="line"><span class="keyword">var</span> counter = <span class="number">3</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">incCounter</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  counter++;</div><div class="line">&#125;</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">counter</span>: counter,</div><div class="line">  <span class="attr">incCounter</span>: incCounter,</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// main.js</span></div><div class="line"><span class="keyword">var</span> mod = <span class="built_in">require</span>(<span class="string">'./lib'</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(mod.counter);  <span class="comment">// 3</span></div><div class="line">mod.incCounter();</div><div class="line"><span class="built_in">console</span>.log(mod.counter); <span class="comment">// 3</span></div></pre></td></tr></table></figure>
+<p><code>lib.js</code>模块加载以后，它的内部变化就影响不到输出的<code>mod.counter</code>了。这是因为<code>mod.counter</code>是一个原始类型的值，会被缓存。除非写成一个函数，才能得到内部变动后的值。<br>
+        
+          <p class="article-more-link">
+            <a href="/2017/03/25/2017-03-25-es6-3/#more">More&gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <!--<a data-url="http://yvshuo.github.io/2017/03/25/2017-03-25-es6-3/" data-id="cj0p0lynp0019awe921mo4w3z" class="article-share-link">Share</a>-->
+      <!---->
+    </footer>
+  </div>
+  
+</article>
+
+
+
 	<article id="post-2017-03-19-es6-2" class="article article-type-post content" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2017/03/19/2017-03-19-es6-2/" class="article-date">
@@ -110,7 +199,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/03/19/2017-03-19-es6-2/" data-id="cj0g82ovl000zsle94opnktr0" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/03/19/2017-03-19-es6-2/" data-id="cj0p0lynm0015awe9qazqz0wc" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -158,7 +247,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/03/19/2017-03-19-es6-1/" data-id="cj0g82ovk000ysle9vqz4xp4q" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/03/19/2017-03-19-es6-1/" data-id="cj0p0lynj0013awe9qpp4hvy8" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -203,7 +292,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/02/23/2017-02-23-javarule-9/" data-id="cj0g82ox3001ssle9zn0ho1ar" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/02/23/2017-02-23-javarule-9/" data-id="cj0p0lynh0012awe9wbb6ajan" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -248,97 +337,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/02/23/2017-02-23-javarule-8/" data-id="cj0g82ovi000wsle9qhsmp4b1" class="article-share-link">Share</a>-->
-      <!---->
-    </footer>
-  </div>
-  
-</article>
-
-
-
-	<article id="post-2017-02-22-javarule-7" class="article article-type-post content" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/22/2017-02-22-javarule-7/" class="article-date">
-  <time datetime="2017-02-22T11:53:20.000Z" itemprop="datePublished">2017-02-22</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/22/2017-02-22-javarule-7/">阿里巴巴java开发手册解读7-控制语句</a>
-    </h1>
-  
-
-      </header>
-    
-    
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java文档/">java文档</a></li></ul>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-【强制】在一个-switch-块内-每个-case-要么通过-break-return-等来终止-要么注释说明程序将继续执行到哪一个-case-为止"><a href="#1-【强制】在一个-switch-块内-每个-case-要么通过-break-return-等来终止-要么注释说明程序将继续执行到哪一个-case-为止" class="headerlink" title="1. 【强制】在一个 switch 块内,每个 case 要么通过 break/return 等来终止,要么注释说明程序将继续执行到哪一个 case 为止;"></a>1. 【强制】在一个 switch 块内,每个 case 要么通过 break/return 等来终止,要么注释说明程序将继续执行到哪一个 case 为止;</h3><p>在一个 switch 块内,都必须包含一个 default 语句并且放在最后,即使它什么代码也没有。</p>
-<h3 id="2-【强制】在-if-else-for-while-do-语句中必须使用大括号-即使只有一行代码-避免使用下面的形式"><a href="#2-【强制】在-if-else-for-while-do-语句中必须使用大括号-即使只有一行代码-避免使用下面的形式" class="headerlink" title="2. 【强制】在 if/else/for/while/do 语句中必须使用大括号,即使只有一行代码,避免使用下面的形式:"></a>2. 【强制】在 if/else/for/while/do 语句中必须使用大括号,即使只有一行代码,避免使用下面的形式:</h3><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span> (condition) statements;</div></pre></td></tr></table></figure>
-<h3 id="3-【推荐】推荐尽量少用-else"><a href="#3-【推荐】推荐尽量少用-else" class="headerlink" title="3. 【推荐】推荐尽量少用 else"></a>3. 【推荐】推荐尽量少用 else</h3><p>if-else 的方式可以改写成:<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span>(condition)&#123;</div><div class="line">    ...</div><div class="line">    <span class="keyword">return</span> obj; </div><div class="line">&#125;</div><div class="line"><span class="comment">// 接着写 else 的业务逻辑代码;</span></div></pre></td></tr></table></figure></p>
-<p>说明:如果非得使用if()…else if()…else…方式表达逻辑,【强制】请勿超过3层,超过请使用状态设计模式。<br><code>正例</code>:逻辑上超过 3 层的 if-else 代码可以使用卫语句,或者状态模式来实现。<br>
-        
-          <p class="article-more-link">
-            <a href="/2017/02/22/2017-02-22-javarule-7/#more">More&gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/02/22/2017-02-22-javarule-7/" data-id="cj0g82ox4001usle9apkprmqs" class="article-share-link">Share</a>-->
-      <!---->
-    </footer>
-  </div>
-  
-</article>
-
-
-
-	<article id="post-2017-02-18-javarule-6" class="article article-type-post content" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2017/02/18/2017-02-18-javarule-6/" class="article-date">
-  <time datetime="2017-02-18T08:33:10.000Z" itemprop="datePublished">2017-02-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2017/02/18/2017-02-18-javarule-6/">阿里巴巴java开发手册解读6-并发处理</a>
-    </h1>
-  
-
-      </header>
-    
-    
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/java文档/">java文档</a></li></ul>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-【强制】获取单例对象需要保证线程安全-其中的方法也要保证线程安全。"><a href="#1-【强制】获取单例对象需要保证线程安全-其中的方法也要保证线程安全。" class="headerlink" title="1. 【强制】获取单例对象需要保证线程安全,其中的方法也要保证线程安全。"></a>1. 【强制】获取单例对象需要保证线程安全,其中的方法也要保证线程安全。</h3><p>说明:资源驱动类、工具类、单例工厂类都需要注意。</p>
-<h3 id="2-【强制】创建线程或线程池时请指定有意义的线程名称-方便出错时回溯。"><a href="#2-【强制】创建线程或线程池时请指定有意义的线程名称-方便出错时回溯。" class="headerlink" title="2. 【强制】创建线程或线程池时请指定有意义的线程名称,方便出错时回溯。"></a>2. 【强制】创建线程或线程池时请指定有意义的线程名称,方便出错时回溯。</h3><p><code>正例</code>:<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TimerTaskThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TimerTaskThread</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">super</span>.setName(<span class="string">"TimerTaskThread"</span>); </div><div class="line">    ... </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/2017/02/18/2017-02-18-javarule-6/#more">More&gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/02/18/2017-02-18-javarule-6/" data-id="cj0g82ovf000usle92emsvpmo" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/02/23/2017-02-23-javarule-8/" data-id="cj0p0lyng000zawe9m392r9t5" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
