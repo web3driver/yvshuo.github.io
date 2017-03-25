@@ -25,7 +25,7 @@
 
 下面是摘录加批注。注：引用标签内为批注，字面规则不附批注。
 1. 【强制】 代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束反例:name / __name / $Object / name / name$ / Ob">
-<meta property="og:updated_time" content="2017-02-21T13:12:09.000Z">
+<meta property="og:updated_time" content="2017-03-25T12:35:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="阿里巴巴java开发手册解读1-命名规约">
 <meta name="twitter:description" content="今天拜读了阿里巴巴刚发布的java开发手册，之前做项目时在一些细节的处理上总是不知道如何下手，看完这个手册，收获颇多。附手册全文。
@@ -82,47 +82,47 @@
                 
                     
                     <li>
-                        <a href="/docs/index.html" class="sidebar-link current">阿里巴巴java开发手册解读1-命名规约</a>
+                        <a href="/blog/docs/index.html" class="sidebar-link current">阿里巴巴java开发手册解读1-命名规约</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/docs/2017-02-10-javarule-2.html" class="sidebar-link">阿里巴巴java开发手册解读2-常量定义</a>
+                        <a href="/blog/docs/2017-02-10-javarule-2.html" class="sidebar-link">阿里巴巴java开发手册解读2-常量定义</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/docs/2017-02-10-javarule-3.html" class="sidebar-link">阿里巴巴java开发手册解读3-格式规约</a>
+                        <a href="/blog/docs/2017-02-10-javarule-3.html" class="sidebar-link">阿里巴巴java开发手册解读3-格式规约</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/docs/2017-02-10-javarule-4.html" class="sidebar-link">阿里巴巴java开发手册解读4-OOP 规约</a>
+                        <a href="/blog/docs/2017-02-10-javarule-4.html" class="sidebar-link">阿里巴巴java开发手册解读4-OOP 规约</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/docs/2017-02-17-javarule-5.html" class="sidebar-link">阿里巴巴java开发手册解读5-集合处理</a>
+                        <a href="/blog/docs/2017-02-17-javarule-5.html" class="sidebar-link">阿里巴巴java开发手册解读5-集合处理</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/docs/2017-02-18-javarule-6.html" class="sidebar-link">阿里巴巴java开发手册解读6-并发处理</a>
+                        <a href="/blog/docs/2017-02-18-javarule-6.html" class="sidebar-link">阿里巴巴java开发手册解读6-并发处理</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/docs/2017-02-22-javarule-7.html" class="sidebar-link">阿里巴巴java开发手册解读7-控制语句</a>
+                        <a href="/blog/docs/2017-02-22-javarule-7.html" class="sidebar-link">阿里巴巴java开发手册解读7-控制语句</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/docs/2017-02-23-javarule-8.html" class="sidebar-link">阿里巴巴java开发手册解读8-注释规约</a>
+                        <a href="/blog/docs/2017-02-23-javarule-8.html" class="sidebar-link">阿里巴巴java开发手册解读8-注释规约</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/docs/2017-02-23-javarule-9.html" class="sidebar-link">阿里巴巴java开发手册解读9-其他编程规约</a>
+                        <a href="/blog/docs/2017-02-23-javarule-9.html" class="sidebar-link">阿里巴巴java开发手册解读9-其他编程规约</a>
                     </li>
                 
             </ul>
@@ -137,7 +137,7 @@
       
       <p>今天拜读了阿里巴巴刚发布的java开发手册，之前做项目时在一些细节的处理上总是不知道如何下手，看完这个手册，收获颇多。附手册全文。</p>
 <blockquote>
-<p><a href="/assets/pdf/alijava.pdf">阿里巴巴java开发手册</a></p>
+<p><a href="/blog/assets/pdf/alijava.pdf">阿里巴巴java开发手册</a></p>
 </blockquote>
 <p>下面是摘录加批注。注：引用标签内为批注，字面规则不附批注。</p>
 <h3 id="1-【强制】-代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束"><a href="#1-【强制】-代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束" class="headerlink" title="1. 【强制】 代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束"></a>1. 【强制】 代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束</h3><p><code>反例</code>:<em>name / __name / $Object / name</em> / name$ / Object$</p>
@@ -203,6 +203,18 @@ window.addEventListener('scroll', function () {
 <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
 <script src="/blog/js/script.js"></script>
 <script src="/blog/js/common.js"></script>
+<script>
+
+    let $a = document.querySelectorAll(('.blog p:not(.article-more-link)>a'))
+    $a.forEach(($em) => {
+      $em.setAttribute('target', '_blank')
+    })
+    let $b = document.querySelectorAll(('.docs p>a'))
+    $b.forEach(($em) => {
+      $em.setAttribute('target', '_blank')
+    })
+
+</script>
 
 </body>
 </html>

@@ -73,47 +73,47 @@
                 
                     
                     <li>
-                        <a href="/docs/index.html" class="sidebar-link">阿里巴巴java开发手册解读1-命名规约</a>
+                        <a href="/blog/docs/index.html" class="sidebar-link">阿里巴巴java开发手册解读1-命名规约</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/docs/2017-02-10-javarule-2.html" class="sidebar-link current">阿里巴巴java开发手册解读2-常量定义</a>
+                        <a href="/blog/docs/2017-02-10-javarule-2.html" class="sidebar-link current">阿里巴巴java开发手册解读2-常量定义</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/docs/2017-02-10-javarule-3.html" class="sidebar-link">阿里巴巴java开发手册解读3-格式规约</a>
+                        <a href="/blog/docs/2017-02-10-javarule-3.html" class="sidebar-link">阿里巴巴java开发手册解读3-格式规约</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/docs/2017-02-10-javarule-4.html" class="sidebar-link">阿里巴巴java开发手册解读4-OOP 规约</a>
+                        <a href="/blog/docs/2017-02-10-javarule-4.html" class="sidebar-link">阿里巴巴java开发手册解读4-OOP 规约</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/docs/2017-02-17-javarule-5.html" class="sidebar-link">阿里巴巴java开发手册解读5-集合处理</a>
+                        <a href="/blog/docs/2017-02-17-javarule-5.html" class="sidebar-link">阿里巴巴java开发手册解读5-集合处理</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/docs/2017-02-18-javarule-6.html" class="sidebar-link">阿里巴巴java开发手册解读6-并发处理</a>
+                        <a href="/blog/docs/2017-02-18-javarule-6.html" class="sidebar-link">阿里巴巴java开发手册解读6-并发处理</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/docs/2017-02-22-javarule-7.html" class="sidebar-link">阿里巴巴java开发手册解读7-控制语句</a>
+                        <a href="/blog/docs/2017-02-22-javarule-7.html" class="sidebar-link">阿里巴巴java开发手册解读7-控制语句</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/docs/2017-02-23-javarule-8.html" class="sidebar-link">阿里巴巴java开发手册解读8-注释规约</a>
+                        <a href="/blog/docs/2017-02-23-javarule-8.html" class="sidebar-link">阿里巴巴java开发手册解读8-注释规约</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/docs/2017-02-23-javarule-9.html" class="sidebar-link">阿里巴巴java开发手册解读9-其他编程规约</a>
+                        <a href="/blog/docs/2017-02-23-javarule-9.html" class="sidebar-link">阿里巴巴java开发手册解读9-其他编程规约</a>
                     </li>
                 
             </ul>
@@ -172,6 +172,18 @@ window.addEventListener('scroll', function () {
 <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
 <script src="/blog/js/script.js"></script>
 <script src="/blog/js/common.js"></script>
+<script>
+
+    let $a = document.querySelectorAll(('.blog p:not(.article-more-link)>a'))
+    $a.forEach(($em) => {
+      $em.setAttribute('target', '_blank')
+    })
+    let $b = document.querySelectorAll(('.docs p>a'))
+    $b.forEach(($em) => {
+      $em.setAttribute('target', '_blank')
+    })
+
+</script>
 
 </body>
 </html>

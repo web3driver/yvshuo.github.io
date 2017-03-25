@@ -97,7 +97,9 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>Promises are a library for asynchronous programming.<br>类似于jQuery里的<code>Deferred</code>对象，Promises提供了异步编程的解决方案，一个简单的例子：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeout</span>(<span class="params">duration = <span class="number">0</span></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">        setTimeout(resolve, duration);</div><div class="line">    &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> p = timeout(<span class="number">1000</span>).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> timeout(<span class="number">2000</span>);</div><div class="line">&#125;).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"hmm"</span>);</div><div class="line">&#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.all([timeout(<span class="number">100</span>), timeout(<span class="number">200</span>)]);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
+        <p>一句话。<br><strong>Promises are a library for asynchronous programming.</strong><br>然后再看一个例子：<br><a href="https://yvshuo.github.io/example/promise/">Promise Example</a></p>
+<p>从这个简单的例子中，可以直观的感受到Promise的威力。让异步请求一步一步的进行~</p>
+<p>类似于jQuery里的<code>Deferred</code>对象，Promises提供了异步编程的解决方案，一个简单的例子：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">timeout</span>(<span class="params">duration = <span class="number">0</span></span>) </span>&#123;</div><div class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</div><div class="line">        setTimeout(resolve, duration);</div><div class="line">    &#125;)</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="keyword">var</span> p = timeout(<span class="number">1000</span>).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> timeout(<span class="number">2000</span>);</div><div class="line">&#125;).then(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">throw</span> <span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">"hmm"</span>);</div><div class="line">&#125;).catch(<span class="function"><span class="params">err</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">return</span> <span class="built_in">Promise</span>.all([timeout(<span class="number">100</span>), timeout(<span class="number">200</span>)]);</div><div class="line">&#125;)</div></pre></td></tr></table></figure></p>
 <p>这种调用方式比起传统的回调函数的方式看起来舒服不止一百倍。<br>
         
           <p class="article-more-link">
@@ -377,6 +379,18 @@ window.addEventListener('scroll', function () {
 <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
 <script src="/blog/js/script.js"></script>
 <script src="/blog/js/common.js"></script>
+<script>
+
+    let $a = document.querySelectorAll(('.blog p:not(.article-more-link)>a'))
+    $a.forEach(($em) => {
+      $em.setAttribute('target', '_blank')
+    })
+    let $b = document.querySelectorAll(('.docs p>a'))
+    $b.forEach(($em) => {
+      $em.setAttribute('target', '_blank')
+    })
+
+</script>
 
 </body>
 </html>

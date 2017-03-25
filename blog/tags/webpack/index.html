@@ -118,6 +118,18 @@ window.addEventListener('scroll', function () {
 <script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
 <script src="/blog/js/script.js"></script>
 <script src="/blog/js/common.js"></script>
+<script>
+
+    let $a = document.querySelectorAll(('.blog p:not(.article-more-link)>a'))
+    $a.forEach(($em) => {
+      $em.setAttribute('target', '_blank')
+    })
+    let $b = document.querySelectorAll(('.docs p>a'))
+    $b.forEach(($em) => {
+      $em.setAttribute('target', '_blank')
+    })
+
+</script>
 
 </body>
 </html>
