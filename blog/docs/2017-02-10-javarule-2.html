@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    
+  
+  <title>
+    阿里巴巴java开发手册解读2-常量定义|香辣猪蹄儿
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. 【强制】不允许出现任何魔法值(即未经定义的常量)直接出现在代码中反例: String key=”Id#taobao_”+tradeId;cache.put(key, value);
+
+批注:正确的做法应该是维护一个常量表或者在类起始位置定义常量正解：public static final String PREFIX_TRADEID = &quot;Id#taobao_&quot;;String key=PREF">
+<meta name="keywords">
+<meta property="og:type" content="website">
+<meta property="og:title" content="阿里巴巴java开发手册解读2-常量定义">
+<meta property="og:url" content="http://yvshuo.github.io/docs/2017-02-10-javarule-2.html">
+<meta property="og:site_name" content="香辣猪蹄儿">
+<meta property="og:description" content="1. 【强制】不允许出现任何魔法值(即未经定义的常量)直接出现在代码中反例: String key=”Id#taobao_”+tradeId;cache.put(key, value);
+
+批注:正确的做法应该是维护一个常量表或者在类起始位置定义常量正解：public static final String PREFIX_TRADEID = &quot;Id#taobao_&quot;;String key=PREF">
+<meta property="og:updated_time" content="2017-02-21T13:12:53.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="阿里巴巴java开发手册解读2-常量定义">
+<meta name="twitter:description" content="1. 【强制】不允许出现任何魔法值(即未经定义的常量)直接出现在代码中反例: String key=”Id#taobao_”+tradeId;cache.put(key, value);
+
+批注:正确的做法应该是维护一个常量表或者在类起始位置定义常量正解：public static final String PREFIX_TRADEID = &quot;Id#taobao_&quot;;String key=PREF">
+  
+    <link rel="alternate" href="/atom.xml" title="config.title" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/blog/assets/images/global/favicon.ico" >
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/css/page.css">
+  <script src="/blog/js/vue.min.js"></script>
+  <script>window.PAGE_TYPE = "docs"</script>
+</head>
+<body class="docs">
+  
+  <div id="mobile-bar" >
+  <a class="menu-button"></a>
+  <a class="logo" href="/"></a>
+</div>
+  <div id="header">
+  <a id="logo" href="/">
+    <img src="/blog/img/avatar.jpg">
+    <span>香辣猪蹄儿</span>
+  </a>
+  <ul id="nav">
+    <li><a href="/blog" class="nav-link">首页</a></li>
+<li><a href="/blog/archives" class="nav-link">文章列表</a></li>
+<li><a href="/blog/docs" class="nav-link current">文档</a></li>
+
+  </ul>
+</div>
+
+  <div id="main" class="fix-sidebar">
+      
+  <div class="sidebar">
+    <ul class="main-menu">
+        <li><a href="/blog" class="nav-link">首页</a></li>
+<li><a href="/blog/archives" class="nav-link">文章列表</a></li>
+<li><a href="/blog/docs" class="nav-link current">文档</a></li>
+
+    </ul>
+    
+        <div class="list">
+            <ul class="menu-root">
+                
+                
+                    
+                    <li>
+                        <a href="/docs/index.html" class="sidebar-link">阿里巴巴java开发手册解读1-命名规约</a>
+                    </li>
+                
+                    
+                    <li>
+                        <a href="/docs/2017-02-10-javarule-2.html" class="sidebar-link current">阿里巴巴java开发手册解读2-常量定义</a>
+                    </li>
+                
+                    
+                    <li>
+                        <a href="/docs/2017-02-10-javarule-3.html" class="sidebar-link">阿里巴巴java开发手册解读3-格式规约</a>
+                    </li>
+                
+                    
+                    <li>
+                        <a href="/docs/2017-02-10-javarule-4.html" class="sidebar-link">阿里巴巴java开发手册解读4-OOP 规约</a>
+                    </li>
+                
+                    
+                    <li>
+                        <a href="/docs/2017-02-17-javarule-5.html" class="sidebar-link">阿里巴巴java开发手册解读5-集合处理</a>
+                    </li>
+                
+                    
+                    <li>
+                        <a href="/docs/2017-02-18-javarule-6.html" class="sidebar-link">阿里巴巴java开发手册解读6-并发处理</a>
+                    </li>
+                
+                    
+                    <li>
+                        <a href="/docs/2017-02-22-javarule-7.html" class="sidebar-link">阿里巴巴java开发手册解读7-控制语句</a>
+                    </li>
+                
+                    
+                    <li>
+                        <a href="/docs/2017-02-23-javarule-8.html" class="sidebar-link">阿里巴巴java开发手册解读8-注释规约</a>
+                    </li>
+                
+                    
+                    <li>
+                        <a href="/docs/2017-02-23-javarule-9.html" class="sidebar-link">阿里巴巴java开发手册解读9-其他编程规约</a>
+                    </li>
+                
+            </ul>
+        </div>
+    
+</div>
+
+
+  <div class="content docs with-sidebar">
+      
+        <h1>阿里巴巴java开发手册解读2-常量定义</h1>
+      
+      <h3 id="1-【强制】不允许出现任何魔法值-即未经定义的常量-直接出现在代码中"><a href="#1-【强制】不允许出现任何魔法值-即未经定义的常量-直接出现在代码中" class="headerlink" title="1. 【强制】不允许出现任何魔法值(即未经定义的常量)直接出现在代码中"></a>1. 【强制】不允许出现任何魔法值(即未经定义的常量)直接出现在代码中</h3><p><code>反例</code>: String key=”Id#taobao_”+tradeId;<br>cache.put(key, value);</p>
+<blockquote>
+<p><strong>批注</strong>:<br>正确的做法应该是维护一个常量表或者在类起始位置定义常量<br><code>正解</code>：<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String PREFIX_TRADEID = <span class="string">"Id#taobao_"</span>;</div><div class="line">String key=PREFIX_TRADEID+tradeId;</div><div class="line">cache.put(key, value);</div></pre></td></tr></table></figure></p>
+</blockquote>
+<a id="more"></a>
+<h3 id="2-【强制】long-或者-Long-初始赋值时-必须使用大写的-L-不能是小写的-l-小写容易跟数字-1-混淆-造成误解。"><a href="#2-【强制】long-或者-Long-初始赋值时-必须使用大写的-L-不能是小写的-l-小写容易跟数字-1-混淆-造成误解。" class="headerlink" title="2. 【强制】long 或者 Long 初始赋值时,必须使用大写的 L,不能是小写的 l,小写容易跟数字 1 混淆,造成误解。"></a>2. 【强制】long 或者 Long 初始赋值时,必须使用大写的 L,不能是小写的 l,小写容易跟数字 1 混淆,造成误解。</h3><p>说明:Long a = 2l; 写的是数字的21,还是Long型的2?</p>
+<blockquote>
+<p><strong>批注</strong>:<br>0O0~你能看出我打的是什么嘛→_→</p>
+</blockquote>
+<h3 id="3-【推荐】不要使用一个常量类维护所有常量-应该按常量功能进行归类-分开维护"><a href="#3-【推荐】不要使用一个常量类维护所有常量-应该按常量功能进行归类-分开维护" class="headerlink" title="3. 【推荐】不要使用一个常量类维护所有常量,应该按常量功能进行归类,分开维护"></a>3. 【推荐】不要使用一个常量类维护所有常量,应该按常量功能进行归类,分开维护</h3><p>如:缓存 相关的常量放在类:CacheConsts 下;系统配置相关的常量放在类:ConfigConsts 下。 说明:大而全的常量类,非得使用查找功能才能定位到修改的常量,不利于理解和维护。</p>
+<blockquote>
+<p><strong>批注</strong>:<br>好的系统架构是自注释的，一眼就能看出哪里是干什么。</p>
+</blockquote>
+<h3 id="4-【推荐】常量的复用层次有五层-跨应用共享常量、应用内共享常量、子工程内共享常量、包内共享常量、类内共享常量"><a href="#4-【推荐】常量的复用层次有五层-跨应用共享常量、应用内共享常量、子工程内共享常量、包内共享常量、类内共享常量" class="headerlink" title="4. 【推荐】常量的复用层次有五层:跨应用共享常量、应用内共享常量、子工程内共享常量、包内共享常量、类内共享常量"></a>4. 【推荐】常量的复用层次有五层:跨应用共享常量、应用内共享常量、子工程内共享常量、包内共享常量、类内共享常量</h3><p><strong>1) 跨应用共享常量:放置在二方库中,通常是client.jar中的constant目录下。</strong><br><strong>2) 应用内共享常量:放置在一方库的modules中的constant目录下。</strong><br><code>反例</code>:易懂变量也要统一定义成应用内共享常量,两位攻城师在两个类中分别定义 了 表示“是”的变量:<br>类A中:public static final String YES = “yes”;<br>类B中:public static final String YES = “y”; A.YES.equals(B.YES),预期是 true,但实际返回为 false,导致产生线上问题。<br><strong>3) 子工程内部共享常量:即在当前子工程的constant目录下。</strong><br><strong>4) 包内共享常量:即在当前包下单独的constant目录下。</strong><br><strong>5) 类内共享常量:直接在类内部private static final定义。</strong></p>
+<h3 id="5-【推荐】如果变量值仅在一个范围内变化用-Enum-类"><a href="#5-【推荐】如果变量值仅在一个范围内变化用-Enum-类" class="headerlink" title="5. 【推荐】如果变量值仅在一个范围内变化用 Enum 类"></a>5. 【推荐】如果变量值仅在一个范围内变化用 Enum 类</h3><p>如果还带有名称之外的延伸属性,必须 使用 Enum 类,下面正例中的数字就是延伸信息,表示星期几。<br>正例:public Enum{ MONDAY(1), TUESDAY(2), WEDNESDAY(3), THURSDAY(4), FRIDAY(5), SATURDAY(6), SUNDAY(7);}</p>
+
+      <div class="guide-links">
+        
+        
+        
+          <span>← <a href="/blog/docs/index.html">阿里巴巴java开发手册解读1-命名规约</a></span>
+        
+        
+          <span style="float:right"><a href="/blog/docs/2017-02-10-javarule-3.html">阿里巴巴java开发手册解读3-格式规约</a> →</span>
+        
+      </div>
+  </div>
+
+  </div>
+  
+  
+<script>
+var topScrolled = false
+window.addEventListener('scroll', function () {
+  if (window.pageYOffset > 165 && !topScrolled) {
+    topScrolled = true
+    document.getElementById('mobile-bar').classList.remove('top')
+  } else if (window.pageYOffset <= 165 && topScrolled) {
+    topScrolled = false
+    document.getElementById('mobile-bar').classList.add('top')
+  }
+})
+</script>
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/blog/js/script.js"></script>
+<script src="/blog/js/common.js"></script>
+
+</body>
+</html>
+

@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    
+  
+  <title>
+    Default + Rest + Spread|香辣猪蹄儿
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="function f(x, y=12) &amp;#123;  // y is 12 if not passed (or passed as undefined)  return x + y;&amp;#125;f(3) == 15
+给参数设置默认值。function f(x, ...y) &amp;#123;  // y is an Array  return x * y.length;&amp;#125;f(3, &quot;hell">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Default + Rest + Spread">
+<meta property="og:url" content="http://yvshuo.github.io/2017/03/19/2017-03-19-es6-2/index.html">
+<meta property="og:site_name" content="香辣猪蹄儿">
+<meta property="og:description" content="function f(x, y=12) &amp;#123;  // y is 12 if not passed (or passed as undefined)  return x + y;&amp;#125;f(3) == 15
+给参数设置默认值。function f(x, ...y) &amp;#123;  // y is an Array  return x * y.length;&amp;#125;f(3, &quot;hell">
+<meta property="og:updated_time" content="2017-03-19T05:15:42.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Default + Rest + Spread">
+<meta name="twitter:description" content="function f(x, y=12) &amp;#123;  // y is 12 if not passed (or passed as undefined)  return x + y;&amp;#125;f(3) == 15
+给参数设置默认值。function f(x, ...y) &amp;#123;  // y is an Array  return x * y.length;&amp;#125;f(3, &quot;hell">
+  
+    <link rel="alternate" href="/atom.xml" title="config.title" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/blog/assets/images/global/favicon.ico" >
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/css/page.css">
+  <script src="/blog/js/vue.min.js"></script>
+  <script>window.PAGE_TYPE = ""</script>
+</head>
+<body class="docs">
+  
+  <div id="mobile-bar" >
+  <a class="menu-button"></a>
+  <a class="logo" href="/"></a>
+</div>
+  <div id="header">
+  <a id="logo" href="/">
+    <img src="/blog/img/avatar.jpg">
+    <span>香辣猪蹄儿</span>
+  </a>
+  <ul id="nav">
+    <li><a href="/blog" class="nav-link">首页</a></li>
+<li><a href="/blog/archives" class="nav-link">文章列表</a></li>
+<li><a href="/blog/docs" class="nav-link">文档</a></li>
+
+  </ul>
+</div>
+
+  <div id="main" class="fix-sidebar">
+      
+    <div class="sidebar blog">
+        <ul class="main-menu">
+            <li><a href="/blog" class="nav-link">首页</a></li>
+<li><a href="/blog/archives" class="nav-link">文章列表</a></li>
+<li><a href="/blog/docs" class="nav-link">文档</a></li>
+
+        </ul>
+        <div class="list">
+            <h2>
+                最新文章
+            </h2>
+            <ul style="padding:0">
+            
+            
+                
+                    <li>
+                        <a href="/2017/03/25/2017-03-25-es6-4/" class="sidebar-link">Promises</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/03/25/2017-03-25-es6-3/" class="sidebar-link">Modules</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/03/19/2017-03-19-es6-2/" class="sidebar-link current">Default + Rest + Spread</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/03/19/2017-03-19-es6-1/" class="sidebar-link">Arrows and Lexical This</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/02/23/2017-02-23-javarule-9/" class="sidebar-link">阿里巴巴java开发手册解读9-其他编程规约</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/02/23/2017-02-23-javarule-8/" class="sidebar-link">阿里巴巴java开发手册解读8-注释规约</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/02/22/2017-02-22-javarule-7/" class="sidebar-link">阿里巴巴java开发手册解读7-控制语句</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/02/18/2017-02-18-javarule-6/" class="sidebar-link">阿里巴巴java开发手册解读6-并发处理</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/02/17/2017-02-17-javarule-5/" class="sidebar-link">阿里巴巴java开发手册解读5-集合处理</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/02/13/2017-02-10-javarule-4/" class="sidebar-link">阿里巴巴java开发手册解读4-OOP 规约</a>
+                    </li>
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+            </ul>
+        </div>
+    </div>
+    <div class="content with-sidebar blog post">
+        <h1>Default + Rest + Spread</h1>
+        <h4>Mar 19, 2017</h4>
+        <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, y=<span class="number">12</span></span>) </span>&#123;</div><div class="line">  <span class="comment">// y is 12 if not passed (or passed as undefined)</span></div><div class="line">  <span class="keyword">return</span> x + y;</div><div class="line">&#125;</div><div class="line">f(<span class="number">3</span>) == <span class="number">15</span></div></pre></td></tr></table></figure>
+<p>给参数设置默认值。<br><br><br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, ...y</span>) </span>&#123;</div><div class="line">  <span class="comment">// y is an Array</span></div><div class="line">  <span class="keyword">return</span> x * y.length;</div><div class="line">&#125;</div><div class="line">f(<span class="number">3</span>, <span class="string">"hello"</span>, <span class="literal">true</span>) == <span class="number">6</span></div></pre></td></tr></table></figure></p>
+<p>ES6的Rest参数，类似于java里的接收不定个数的参数。Rest参数可以替代以前的<code>arguments</code>的用法，需要注意的一点就是Rest参数只能在函数参数列表的最后一个。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// error!</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">...x, y</span>) </span>&#123;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>上面这个例子中的Rest参数就会报错。<br><br><br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params">x, y, z</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> x + y + z;</div><div class="line">&#125;</div><div class="line"><span class="comment">// Pass each elem of array as argument</span></div><div class="line">f(...[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>]) == <span class="number">6</span></div></pre></td></tr></table></figure></p>
+<p>展开数组，极其好用的一个功能。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> arr1 = [<span class="string">'a'</span>, <span class="string">'b'</span>];</div><div class="line">  <span class="keyword">const</span> arr2 = [<span class="string">'c'</span>];</div><div class="line">  <span class="keyword">const</span> arr3 = [<span class="string">'d'</span>, <span class="string">'e'</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>]];</div><div class="line">  <span class="keyword">return</span> [...arr1, ...arr2, ...arr3];</div><div class="line">&#125;</div><div class="line"><span class="comment">// return [ "a", "b", "c", "d", "e", [ "a", "b" ] ]</span></div></pre></td></tr></table></figure></p>
+<p>展开数组只能展开一级。</p>
+<blockquote>
+<p>参考文章：<a href="https://babeljs.io/learn-es2015/" target="_blank" rel="external">Learn ES2015</a></p>
+</blockquote>
+
+        <div class="guide-links">
+            
+                <span>← <a href="/blog/2017/03/25/2017-03-25-es6-3/">Modules</a></span>
+            
+            
+                <span style="float:right"><a href="/blog/2017/03/19/2017-03-19-es6-1/">Arrows and Lexical This</a> →</span>
+            
+        </div>
+    </div>
+
+  </div>
+  
+  
+<script>
+var topScrolled = false
+window.addEventListener('scroll', function () {
+  if (window.pageYOffset > 165 && !topScrolled) {
+    topScrolled = true
+    document.getElementById('mobile-bar').classList.remove('top')
+  } else if (window.pageYOffset <= 165 && topScrolled) {
+    topScrolled = false
+    document.getElementById('mobile-bar').classList.add('top')
+  }
+})
+</script>
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/blog/js/script.js"></script>
+<script src="/blog/js/common.js"></script>
+
+</body>
+</html>
+

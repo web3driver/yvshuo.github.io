@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    
+  
+  <title>
+    一篇关于javascript闭包的笔记|香辣猪蹄儿
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="今天读到了一篇讲闭包的文章，是我目前看到的最透彻的一篇闭包的讲解。趁热记一下笔记。
+在我以前的认识中，一直觉得闭包就是在js中提供了一种类似于java中get方法的功能，使我们可以通过闭包来访问到函数体内的局部变量。然鹅，我的理解也就顶多意会了闭包的一点皮毛。下面就直接通过代码来记录一下这篇文章中写到的知识点。
+静态作用域的理解var x = 10;function foo() &amp;#123;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="一篇关于javascript闭包的笔记">
+<meta property="og:url" content="http://yvshuo.github.io/2016/10/11/2016-10-11-closure/index.html">
+<meta property="og:site_name" content="香辣猪蹄儿">
+<meta property="og:description" content="今天读到了一篇讲闭包的文章，是我目前看到的最透彻的一篇闭包的讲解。趁热记一下笔记。
+在我以前的认识中，一直觉得闭包就是在js中提供了一种类似于java中get方法的功能，使我们可以通过闭包来访问到函数体内的局部变量。然鹅，我的理解也就顶多意会了闭包的一点皮毛。下面就直接通过代码来记录一下这篇文章中写到的知识点。
+静态作用域的理解var x = 10;function foo() &amp;#123;">
+<meta property="og:updated_time" content="2016-10-11T16:09:23.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="一篇关于javascript闭包的笔记">
+<meta name="twitter:description" content="今天读到了一篇讲闭包的文章，是我目前看到的最透彻的一篇闭包的讲解。趁热记一下笔记。
+在我以前的认识中，一直觉得闭包就是在js中提供了一种类似于java中get方法的功能，使我们可以通过闭包来访问到函数体内的局部变量。然鹅，我的理解也就顶多意会了闭包的一点皮毛。下面就直接通过代码来记录一下这篇文章中写到的知识点。
+静态作用域的理解var x = 10;function foo() &amp;#123;">
+  
+    <link rel="alternate" href="/atom.xml" title="config.title" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/blog/assets/images/global/favicon.ico" >
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/css/page.css">
+  <script src="/blog/js/vue.min.js"></script>
+  <script>window.PAGE_TYPE = ""</script>
+</head>
+<body class="docs">
+  
+  <div id="mobile-bar" >
+  <a class="menu-button"></a>
+  <a class="logo" href="/"></a>
+</div>
+  <div id="header">
+  <a id="logo" href="/">
+    <img src="/blog/img/avatar.jpg">
+    <span>香辣猪蹄儿</span>
+  </a>
+  <ul id="nav">
+    <li><a href="/blog" class="nav-link">首页</a></li>
+<li><a href="/blog/archives" class="nav-link">文章列表</a></li>
+<li><a href="/blog/docs" class="nav-link">文档</a></li>
+
+  </ul>
+</div>
+
+  <div id="main" class="fix-sidebar">
+      
+    <div class="sidebar blog">
+        <ul class="main-menu">
+            <li><a href="/blog" class="nav-link">首页</a></li>
+<li><a href="/blog/archives" class="nav-link">文章列表</a></li>
+<li><a href="/blog/docs" class="nav-link">文档</a></li>
+
+        </ul>
+        <div class="list">
+            <h2>
+                最新文章
+            </h2>
+            <ul style="padding:0">
+            
+            
+                
+                    <li>
+                        <a href="/2017/03/25/2017-03-25-es6-4/" class="sidebar-link">Promises</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/03/25/2017-03-25-es6-3/" class="sidebar-link">Modules</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/03/19/2017-03-19-es6-2/" class="sidebar-link">Default + Rest + Spread</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/03/19/2017-03-19-es6-1/" class="sidebar-link">Arrows and Lexical This</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/02/23/2017-02-23-javarule-9/" class="sidebar-link">阿里巴巴java开发手册解读9-其他编程规约</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/02/23/2017-02-23-javarule-8/" class="sidebar-link">阿里巴巴java开发手册解读8-注释规约</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/02/22/2017-02-22-javarule-7/" class="sidebar-link">阿里巴巴java开发手册解读7-控制语句</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/02/18/2017-02-18-javarule-6/" class="sidebar-link">阿里巴巴java开发手册解读6-并发处理</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/02/17/2017-02-17-javarule-5/" class="sidebar-link">阿里巴巴java开发手册解读5-集合处理</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/2017/02/13/2017-02-10-javarule-4/" class="sidebar-link">阿里巴巴java开发手册解读4-OOP 规约</a>
+                    </li>
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+            </ul>
+        </div>
+    </div>
+    <div class="content with-sidebar blog post">
+        <h1>一篇关于javascript闭包的笔记</h1>
+        <h4>Oct 11, 2016</h4>
+        <p>今天读到了一篇讲<a href="http://web.jobbole.com/88167/" target="_blank" rel="external">闭包的文章</a>，是我目前看到的最透彻的一篇闭包的讲解。趁热记一下笔记。</p>
+<p>在我以前的认识中，一直觉得闭包就是在js中提供了一种类似于java中get方法的功能，使我们可以通过闭包来访问到函数体内的局部变量。然鹅，我的理解也就顶多意会了闭包的一点皮毛。下面就直接通过代码来记录一下这篇文章中写到的知识点。</p>
+<h3 id="静态作用域的理解"><a href="#静态作用域的理解" class="headerlink" title="静态作用域的理解"></a>静态作用域的理解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">10</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;	</div><div class="line">  <span class="keyword">var</span> y = x + <span class="number">5</span>;	</div><div class="line">  <span class="keyword">return</span> y;	</div><div class="line">&#125;	</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123; 	</div><div class="line">  <span class="keyword">var</span> x = <span class="number">2</span>;	</div><div class="line">  <span class="keyword">return</span> foo();	</div><div class="line">&#125;	</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">main</span>(<span class="params"></span>) </span>&#123;	</div><div class="line">  foo(); <span class="comment">// Static scope: 15; Dynamic scope: 15	</span></div><div class="line">  bar(); <span class="comment">// Static scope: 15; Dynamic scope: 7	</span></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<a id="more"></a>
+<p>现在大部分的程序语言都是使用的静态作用域的规则，基本就是内嵌套作用域规则。</p>
+<blockquote>
+<p><strong>内嵌套作用域规则：</strong><br>由一个声明引进的标识符在这个声明所在的作用域里可见，而且在其内部嵌套的每个作用域里也可见，除非它被嵌套于内部的对同名标识符的另一个声明所掩盖。为了找到某个给定的标识符所引用的对象，应该在当前最内层作用域里查找。如果找到了一个声明，也就可以找到该标识符所引用的对象。否则我们就到直接的外层作用域里去查找，并继续向外顺序地检查外层作用域，直到到达程序的最外嵌套层次，也就是全局对象声明所在的作用域。如果在所有层次上都没有找到有关声明，那么这个程序就有错误。</p>
+</blockquote>
+<p>所以这个程序<code>main()</code>中的<code>foo()</code>和<code>bar()</code>在js中的返回值都是15。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> result = [];	</div><div class="line"><span class="keyword">for</span> (<span class="keyword">var</span> i = <span class="number">0</span>; i &lt; <span class="number">5</span>; i++) &#123;	</div><div class="line">  result[i] = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;	</div><div class="line">    <span class="built_in">console</span>.log(i);	</div><div class="line">  &#125;;	</div><div class="line">&#125;	 	</div><div class="line">result[<span class="number">0</span>](); <span class="comment">// 5, expected 0 	</span></div><div class="line">result[<span class="number">1</span>](); <span class="comment">// 5, expected 1 	</span></div><div class="line">result[<span class="number">2</span>](); <span class="comment">// 5, expected 2 	</span></div><div class="line">result[<span class="number">3</span>](); <span class="comment">// 5, expected 3	</span></div><div class="line">result[<span class="number">4</span>](); <span class="comment">// 5, expected 4</span></div></pre></td></tr></table></figure>
+<p>上面这个程序中日志输出的就都是5。</p>
+<h3 id="保留外部作用域对一个变量的私有引用"><a href="#保留外部作用域对一个变量的私有引用" class="headerlink" title="保留外部作用域对一个变量的私有引用"></a>保留外部作用域对一个变量的私有引用</h3><p>这个就是我之前对闭包的理解。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">secretPassword</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> password = <span class="string">'xh38sk'</span>;</div><div class="line">  <span class="keyword">return</span> &#123;</div><div class="line">    <span class="attr">guessPassword</span>: <span class="function"><span class="keyword">function</span>(<span class="params">guess</span>) </span>&#123;</div><div class="line">      <span class="keyword">if</span> (guess === password) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">      &#125; <span class="keyword">else</span> &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;	</div><div class="line">  &#125;	</div><div class="line">&#125;	</div><div class="line"><span class="keyword">var</span> passwordGame = secretPassword();</div><div class="line">passwordGame.guessPassword(<span class="string">'heyisthisit?'</span>); <span class="comment">// false	</span></div><div class="line">passwordGame.guessPassword(<span class="string">'xh38sk'</span>); <span class="comment">// true</span></div></pre></td></tr></table></figure></p>
+<p>通过闭包，我们可以在<code>secretPassword()</code>函数的外部访问到它的私有变量<code>password</code>。</p>
+<h3 id="每调用一次函数就会创建一个单独的闭包"><a href="#每调用一次函数就会创建一个单独的闭包" class="headerlink" title="每调用一次函数就会创建一个单独的闭包"></a>每调用一次函数就会创建一个单独的闭包</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">iCantThinkOfAName</span>(<span class="params">num, obj</span>) </span>&#123;	</div><div class="line">  <span class="comment">// This array variable, along with the 2 parameters passed in,	</span></div><div class="line">  <span class="comment">// are 'captured' by the nested function 'doSomething'	</span></div><div class="line">  <span class="keyword">var</span> array = [<span class="number">1</span>, <span class="number">2</span>, <span class="number">3</span>];	</div><div class="line">  <span class="function"><span class="keyword">function</span> <span class="title">doSomething</span>(<span class="params">i</span>) </span>&#123;	</div><div class="line">    num += i;	</div><div class="line">    array.push(num);	</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'num: '</span> + num);	</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'array: '</span> + array); 	</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'obj.value: '</span> + obj.value);	</div><div class="line">  &#125;	</div><div class="line">  <span class="keyword">return</span> doSomething;	</div><div class="line">&#125;	</div><div class="line"><span class="keyword">var</span> referenceObject = &#123; <span class="attr">value</span>: <span class="number">10</span> &#125;;	</div><div class="line"><span class="keyword">var</span> foo = iCantThinkOfAName(<span class="number">2</span>, referenceObject); <span class="comment">// closure #1	</span></div><div class="line"><span class="keyword">var</span> bar = iCantThinkOfAName(<span class="number">6</span>, referenceObject); <span class="comment">// closure #2</span></div><div class="line">foo(<span class="number">2</span>);</div><div class="line"><span class="comment">/*</span></div><div class="line">  num: 4</div><div class="line">  array: 1,2,3,4</div><div class="line">  obj.value: 10 	</div><div class="line">*/	</div><div class="line">bar(<span class="number">2</span>);	</div><div class="line"><span class="comment">/*	</span></div><div class="line">  num: 8	</div><div class="line">  array: 1,2,3,8	</div><div class="line">  obj.value: 10	</div><div class="line">*/	</div><div class="line">referenceObject.value++;	</div><div class="line">foo(<span class="number">4</span>);	</div><div class="line"><span class="comment">/*	</span></div><div class="line">  num: 8</div><div class="line">  array: 1,2,3,4,8</div><div class="line">  obj.value: 11 	</div><div class="line">*/	</div><div class="line">bar(<span class="number">4</span>);	</div><div class="line"><span class="comment">/*	</span></div><div class="line">  num: 12	</div><div class="line">  array: 1,2,3,8,12	</div><div class="line">  obj.value: 11	</div><div class="line">*/</div></pre></td></tr></table></figure>
+<p>先得赞一下作者起的这个函数名，<code>iCantThinkOfAName</code>2333333,很喜欢这种画风。顺带提一下今天在github上看到一个开原协议，叫<a href="https://en.wikipedia.org/wiki/WTFPL" target="_blank" rel="external">WTFPL</a>,感兴趣的话可以戳一下这个协议的WIKI链接。全名叫做Do What the Fuck You Want To Public License。哈哈哈哈哈，简直笑尿。</p>
+<p>呐，回到上面的程序。这里就用了闭包的一个很重要的特性，<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> foo = iCantThinkOfAName(<span class="number">2</span>, referenceObject); <span class="comment">// closure #1	</span></div><div class="line"><span class="keyword">var</span> bar = iCantThinkOfAName(<span class="number">6</span>, referenceObject); <span class="comment">// closure #2</span></div></pre></td></tr></table></figure></p>
+<p>上面这两句创建了两个独立的闭包，每个闭包对<code>iCantThinkOfAName</code>函数中<code>array</code>这个私有变量都创建了一个自己独立的引用（这个概念大概不准确，但是大概可以这么类比吧→_→），而且还能保存住自己作用域中的变量，很有点新建一个对象的感觉- -<br>用作者翻译的话来说就是：</p>
+<blockquote>
+<p>每个函数都有一个执行上下文，它包括一个在函数中赋予变量含义的词法环境和对其父环境的引用。因为函数对环境的引用，使它看起来就像是函数“记住了”这个环境（作用域）一样。这就是一个闭包</p>
+</blockquote>
+<p>仿佛明白了一些了不起的道理！厉害！</p>
+
+        <div class="guide-links">
+            
+                <span>← <a href="/blog/2016/10/26/2016-10-26-webpacknote/">webpack简介</a></span>
+            
+            
+                <span style="float:right"><a href="/blog/2016/10/07/2016-10-07-githubssh/">配置hexo的一键打包部署</a> →</span>
+            
+        </div>
+    </div>
+
+  </div>
+  
+  
+<script>
+var topScrolled = false
+window.addEventListener('scroll', function () {
+  if (window.pageYOffset > 165 && !topScrolled) {
+    topScrolled = true
+    document.getElementById('mobile-bar').classList.remove('top')
+  } else if (window.pageYOffset <= 165 && topScrolled) {
+    topScrolled = false
+    document.getElementById('mobile-bar').classList.add('top')
+  }
+})
+</script>
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/blog/js/script.js"></script>
+<script src="/blog/js/common.js"></script>
+
+</body>
+</html>
+
