@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://yvshuo.github.io/"/>
-  <updated>2017-03-26T05:13:17.000Z</updated>
+  <updated>2017-03-26T15:23:01.000Z</updated>
   <id>http://yvshuo.github.io/</id>
   
   <author>
@@ -14,6 +14,35 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>(多图慎入!)类vue官网的hexo主题yvue发布Beta0.1版本</title>
+    <link href="http://yvshuo.github.io/2017/03/26/2017-03-26-hexo-theme-yvue-1/"/>
+    <id>http://yvshuo.github.io/2017/03/26/2017-03-26-hexo-theme-yvue-1/</id>
+    <published>2017-03-26T14:47:32.000Z</published>
+    <updated>2017-03-26T15:23:01.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>因为很喜欢vue网站简洁的风格，大概两个月之前就已经零零散散的完成了这个由<a href="https://github.com/vuejs/vuejs.org" target="_blank" rel="external">vue site</a>修改的主题。因为最开始的想法是自用，所以样式仍然沿用了vue官网的样式，目前只是按照hexo的文档进行了一些主题化的重构。<br><br><br>这个周末又对自己的博客做了一些结构的调整和改动，所以想着干脆把这个自用的主题真正的做成一个HEXO的主题。<br>为了督促自己一把，所以在开发阶段就发布了Beta版本，算是逼着自己不要把这个事情烂尾了吧。<br>目前只有最简单的博客展示功能。</p>
+<h2 id="1、首页"><a href="#1、首页" class="headerlink" title="1、首页"></a>1、首页</h2><h3 id="PC"><a href="#PC" class="headerlink" title="PC"></a>PC</h3><p><img src="/blog/assets/images/2017/03/27/1.png" alt=""> </p>
+<h3 id="mobile"><a href="#mobile" class="headerlink" title="mobile"></a>mobile</h3><p><img src="/blog/assets/images/2017/03/27/5.png" alt=""></p>
+<h2 id="2、sidebar"><a href="#2、sidebar" class="headerlink" title="2、sidebar"></a>2、sidebar</h2><h3 id="PC-1"><a href="#PC-1" class="headerlink" title="PC"></a>PC</h3><p><img src="/blog/assets/images/2017/03/27/4.png" alt=""></p>
+<h3 id="mobile-1"><a href="#mobile-1" class="headerlink" title="mobile"></a>mobile</h3><p><img src="/blog/assets/images/2017/03/27/6.png" alt=""></p>
+<h2 id="3、文章列表"><a href="#3、文章列表" class="headerlink" title="3、文章列表"></a>3、文章列表</h2><h3 id="PC-2"><a href="#PC-2" class="headerlink" title="PC"></a>PC</h3><p><img src="/blog/assets/images/2017/03/27/2.png" alt=""></p>
+<h3 id="mobile-2"><a href="#mobile-2" class="headerlink" title="mobile"></a>mobile</h3><p><img src="/blog/assets/images/2017/03/27/7.png" alt=""></p>
+<h2 id="4、标签列表"><a href="#4、标签列表" class="headerlink" title="4、标签列表"></a>4、标签列表</h2><h3 id="PC-3"><a href="#PC-3" class="headerlink" title="PC"></a>PC</h3><p><img src="/blog/assets/images/2017/03/27/3.png" alt=""></p>
+<h3 id="mobile-3"><a href="#mobile-3" class="headerlink" title="mobile"></a>mobile</h3><p><img src="/blog/assets/images/2017/03/27/8.png" alt=""></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;因为很喜欢vue网站简洁的风格，大概两个月之前就已经零零散散的完成了这个由&lt;a href=&quot;https://github.com/vuejs/vuejs.org&quot; target=&quot;_blank&quot; rel=&quot;external&quot;&gt;vue site&lt;/a&gt;修改的主题。因为最开始的
+    
+    </summary>
+    
+    
+      <category term="hexo" scheme="http://yvshuo.github.io/tags/hexo/"/>
+    
+  </entry>
   
   <entry>
     <title>Promises</title>
@@ -1127,7 +1156,7 @@
     <link href="http://yvshuo.github.io/2016/10/06/2016-10-06-create/"/>
     <id>http://yvshuo.github.io/2016/10/06/2016-10-06-create/</id>
     <published>2016-10-05T16:40:58.000Z</published>
-    <updated>2017-02-21T12:08:39.000Z</updated>
+    <updated>2017-03-26T15:07:25.000Z</updated>
     
     <content type="html"><![CDATA[<p>工作已经一年了，想着该稍微停下来总结一下了。恰巧印象笔记开始限终端限流量。于是就有了写博客记录一下日常感想，同时将之前的一些笔记迁移到博客的想法。</p>
 <p>在github闲逛的时候看到了<a href="https://litten.github.io/" target="_blank" rel="external">Litten</a>的博客，很是喜欢。于是发现了<a href="https://hexo.io/" target="_blank" rel="external">hexo</a>,各种特性都让我甚是喜欢，就这么对Hexo一见钟情了。在知乎上搜到了一篇介绍<a href="https://www.zhihu.com/question/24422335" target="_blank" rel="external">hexo主题</a>的回答,一圈看下来，还是比较喜欢<a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">Yilia</a>这个主题，也就是我最早看到的Litten开发的~缘分啊，（逃</p>
@@ -1167,7 +1196,7 @@
     </summary>
     
     
-      <category term="java" scheme="http://yvshuo.github.io/tags/java/"/>
+      <category term="hexo" scheme="http://yvshuo.github.io/tags/hexo/"/>
     
   </entry>
   

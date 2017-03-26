@@ -870,6 +870,9 @@ ul.demo li {
 }
 .content img {
   max-width: 100%;
+  display: block;
+  clear: both;
+  margin: auto;
 }
 .content span.light {
   color: #7f8c8d;
