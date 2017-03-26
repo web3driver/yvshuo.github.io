@@ -13,7 +13,7 @@
 <meta name="keywords">
 <meta property="og:type" content="website">
 <meta property="og:title" content="阿里巴巴java开发手册解读7-控制语句">
-<meta property="og:url" content="http://yvshuo.github.io/docs/2017-02-22-javarule-7.html">
+<meta property="og:url" content="http://yvshuo.github.io/docs/alibaba/2017-02-22-javarule-7.html">
 <meta property="og:site_name" content="香辣猪蹄儿">
 <meta property="og:description" content="1. 【强制】在一个 switch 块内,每个 case 要么通过 break/return 等来终止,要么注释说明程序将继续执行到哪一个 case 为止;在一个 switch 块内,都必须包含一个 default 语句并且放在最后,即使它什么代码也没有。
 2. 【强制】在 if/else/for/while/do 语句中必须使用大括号,即使只有一行代码,避免使用下面的形式:if (conditi">
@@ -40,6 +40,9 @@
   <div id="mobile-bar" >
   <a class="menu-button"></a>
   <a class="logo" href="/"></a>
+  
+    <a class="back" href="javascript:history.go(-1)"></a>
+  
 </div>
   <div id="header">
   <a id="logo" href="/">
@@ -49,8 +52,14 @@
   <ul id="nav">
     <li><a href="/blog" class="nav-link">首页</a></li>
 <li><a href="/blog/archives" class="nav-link">文章列表</a></li>
-<li><a href="/blog/docs" class="nav-link current">文档</a></li>
-
+<li><a href="/blog/tags" class="nav-link">标签列表</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link current">文档</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="/blog/docs/alibaba" class="nav-link">阿里巴巴java开发手册解读</a></li>
+    <li><a href="/blog/docs/es6" class="nav-link">ES6温故而知新</a></li>
+  </ul>
+</li>
   </ul>
 </div>
 
@@ -60,57 +69,64 @@
     <ul class="main-menu">
         <li><a href="/blog" class="nav-link">首页</a></li>
 <li><a href="/blog/archives" class="nav-link">文章列表</a></li>
-<li><a href="/blog/docs" class="nav-link current">文档</a></li>
-
+<li><a href="/blog/tags" class="nav-link">标签列表</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link current">文档</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="/blog/docs/alibaba" class="nav-link">阿里巴巴java开发手册解读</a></li>
+    <li><a href="/blog/docs/es6" class="nav-link">ES6温故而知新</a></li>
+  </ul>
+</li>
     </ul>
     
         <div class="list">
             <ul class="menu-root">
                 
                 
+                
                     
                     <li>
-                        <a href="/blog/docs/index.html" class="sidebar-link">阿里巴巴java开发手册解读1-命名规约</a>
+                        <a href="/blog/docs/alibaba/index.html" class="sidebar-link">阿里巴巴java开发手册解读1-命名规约</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/blog/docs/2017-02-10-javarule-2.html" class="sidebar-link">阿里巴巴java开发手册解读2-常量定义</a>
+                        <a href="/blog/docs/alibaba/2017-02-10-javarule-2.html" class="sidebar-link">阿里巴巴java开发手册解读2-常量定义</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/blog/docs/2017-02-10-javarule-3.html" class="sidebar-link">阿里巴巴java开发手册解读3-格式规约</a>
+                        <a href="/blog/docs/alibaba/2017-02-10-javarule-3.html" class="sidebar-link">阿里巴巴java开发手册解读3-格式规约</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/blog/docs/2017-02-10-javarule-4.html" class="sidebar-link">阿里巴巴java开发手册解读4-OOP 规约</a>
+                        <a href="/blog/docs/alibaba/2017-02-10-javarule-4.html" class="sidebar-link">阿里巴巴java开发手册解读4-OOP 规约</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/blog/docs/2017-02-17-javarule-5.html" class="sidebar-link">阿里巴巴java开发手册解读5-集合处理</a>
+                        <a href="/blog/docs/alibaba/2017-02-17-javarule-5.html" class="sidebar-link">阿里巴巴java开发手册解读5-集合处理</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/blog/docs/2017-02-18-javarule-6.html" class="sidebar-link">阿里巴巴java开发手册解读6-并发处理</a>
+                        <a href="/blog/docs/alibaba/2017-02-18-javarule-6.html" class="sidebar-link">阿里巴巴java开发手册解读6-并发处理</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/blog/docs/2017-02-22-javarule-7.html" class="sidebar-link current">阿里巴巴java开发手册解读7-控制语句</a>
+                        <a href="/blog/docs/alibaba/2017-02-22-javarule-7.html" class="sidebar-link current">阿里巴巴java开发手册解读7-控制语句</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/blog/docs/2017-02-23-javarule-8.html" class="sidebar-link">阿里巴巴java开发手册解读8-注释规约</a>
+                        <a href="/blog/docs/alibaba/2017-02-23-javarule-8.html" class="sidebar-link">阿里巴巴java开发手册解读8-注释规约</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/blog/docs/2017-02-23-javarule-9.html" class="sidebar-link">阿里巴巴java开发手册解读9-其他编程规约</a>
+                        <a href="/blog/docs/alibaba/2017-02-23-javarule-9.html" class="sidebar-link">阿里巴巴java开发手册解读9-其他编程规约</a>
                     </li>
                 
             </ul>
@@ -123,7 +139,8 @@
       
         <h1>阿里巴巴java开发手册解读7-控制语句</h1>
       
-      <h3 id="1-【强制】在一个-switch-块内-每个-case-要么通过-break-return-等来终止-要么注释说明程序将继续执行到哪一个-case-为止"><a href="#1-【强制】在一个-switch-块内-每个-case-要么通过-break-return-等来终止-要么注释说明程序将继续执行到哪一个-case-为止" class="headerlink" title="1. 【强制】在一个 switch 块内,每个 case 要么通过 break/return 等来终止,要么注释说明程序将继续执行到哪一个 case 为止;"></a>1. 【强制】在一个 switch 块内,每个 case 要么通过 break/return 等来终止,要么注释说明程序将继续执行到哪一个 case 为止;</h3><p>在一个 switch 块内,都必须包含一个 default 语句并且放在最后,即使它什么代码也没有。</p>
+      
+        <h3 id="1-【强制】在一个-switch-块内-每个-case-要么通过-break-return-等来终止-要么注释说明程序将继续执行到哪一个-case-为止"><a href="#1-【强制】在一个-switch-块内-每个-case-要么通过-break-return-等来终止-要么注释说明程序将继续执行到哪一个-case-为止" class="headerlink" title="1. 【强制】在一个 switch 块内,每个 case 要么通过 break/return 等来终止,要么注释说明程序将继续执行到哪一个 case 为止;"></a>1. 【强制】在一个 switch 块内,每个 case 要么通过 break/return 等来终止,要么注释说明程序将继续执行到哪一个 case 为止;</h3><p>在一个 switch 块内,都必须包含一个 default 语句并且放在最后,即使它什么代码也没有。</p>
 <h3 id="2-【强制】在-if-else-for-while-do-语句中必须使用大括号-即使只有一行代码-避免使用下面的形式"><a href="#2-【强制】在-if-else-for-while-do-语句中必须使用大括号-即使只有一行代码-避免使用下面的形式" class="headerlink" title="2. 【强制】在 if/else/for/while/do 语句中必须使用大括号,即使只有一行代码,避免使用下面的形式:"></a>2. 【强制】在 if/else/for/while/do 语句中必须使用大括号,即使只有一行代码,避免使用下面的形式:</h3><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span> (condition) statements;</div></pre></td></tr></table></figure>
 <h3 id="3-【推荐】推荐尽量少用-else"><a href="#3-【推荐】推荐尽量少用-else" class="headerlink" title="3. 【推荐】推荐尽量少用 else"></a>3. 【推荐】推荐尽量少用 else</h3><p>if-else 的方式可以改写成:<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span>(condition)&#123;</div><div class="line">    ...</div><div class="line">    <span class="keyword">return</span> obj; </div><div class="line">&#125;</div><div class="line"><span class="comment">// 接着写 else 的业务逻辑代码;</span></div></pre></td></tr></table></figure></p>
 <p>说明:如果非得使用if()…else if()…else…方式表达逻辑,【强制】请勿超过3层,超过请使用状态设计模式。<br><code>正例</code>:逻辑上超过 3 层的 if-else 代码可以使用卫语句,或者状态模式来实现。<br><a id="more"></a></p>
@@ -133,16 +150,17 @@
 <h3 id="6-【推荐】接口入参保护-这种场景常见的是用于做批量操作的接口。"><a href="#6-【推荐】接口入参保护-这种场景常见的是用于做批量操作的接口。" class="headerlink" title="6. 【推荐】接口入参保护,这种场景常见的是用于做批量操作的接口。"></a>6. 【推荐】接口入参保护,这种场景常见的是用于做批量操作的接口。</h3><h3 id="7-【参考】方法中需要进行参数校验的场景"><a href="#7-【参考】方法中需要进行参数校验的场景" class="headerlink" title="7. 【参考】方法中需要进行参数校验的场景:"></a>7. 【参考】方法中需要进行参数校验的场景:</h3><p><strong>1) 调用频次低的方法。</strong><br><strong>2) 执行时间开销很大的方法,参数校验时间几乎可以忽略不计,但如果因为参数错误导致中间执行回退,或者错误,那得不偿失。</strong><br><strong>3) 需要极高稳定性和可用性的方法。</strong><br><strong>4) 对外提供的开放接口,不管是RPC/API/HTTP接口。</strong><br><strong>5) 敏感权限入口。</strong></p>
 <h3 id="8-【参考】方法中不需要参数校验的场景"><a href="#8-【参考】方法中不需要参数校验的场景" class="headerlink" title="8. 【参考】方法中不需要参数校验的场景:"></a>8. 【参考】方法中不需要参数校验的场景:</h3><p><strong>1) 极有可能被循环调用的方法,不建议对参数进行校验。但在方法说明里必须注明外部参数检查。</strong><br><strong>2) 底层的方法调用频度都比较高,一般不校验。毕竟是像纯净水过滤的最后一道,参数错误不太可能到底层才会暴露问题。一般 DAO 层与 Service 层都在同一个应用中,部署在同一台服务器中,所以 DAO 的参数校验,可以省略。</strong><br><strong>3) 被声明成private只会被自己代码所调用的方法,如果能够确定调用方法的代码传入参数已经做过检查或者肯定不会有问题,此时可以不校验参数。</strong></p>
 
-      <div class="guide-links">
+        <div class="guide-links">
         
         
         
-          <span>← <a href="/blog/docs/2017-02-18-javarule-6.html">阿里巴巴java开发手册解读6-并发处理</a></span>
+          <span>← <a href="/blog/docs/alibaba/2017-02-18-javarule-6.html">阿里巴巴java开发手册解读6-并发处理</a></span>
         
         
-          <span style="float:right"><a href="/blog/docs/2017-02-23-javarule-8.html">阿里巴巴java开发手册解读8-注释规约</a> →</span>
+          <span style="float:right"><a href="/blog/docs/alibaba/2017-02-23-javarule-8.html">阿里巴巴java开发手册解读8-注释规约</a> →</span>
         
       </div>
+      
   </div>
 
   </div>
@@ -165,12 +183,8 @@ window.addEventListener('scroll', function () {
 <script src="/blog/js/common.js"></script>
 <script>
 
-    let $a = document.querySelectorAll(('.blog p:not(.article-more-link)>a'))
+    let $a = document.querySelectorAll('.blog p:not(.article-more-link)>a,.content.docs p>a,.article-inner p:not(.article-more-link)>a')
     $a.forEach(($em) => {
-      $em.setAttribute('target', '_blank')
-    })
-    let $b = document.querySelectorAll(('.docs p>a'))
-    $b.forEach(($em) => {
       $em.setAttribute('target', '_blank')
     })
 

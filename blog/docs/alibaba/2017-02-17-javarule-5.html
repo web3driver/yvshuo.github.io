@@ -12,7 +12,7 @@
 <meta name="keywords">
 <meta property="og:type" content="website">
 <meta property="og:title" content="阿里巴巴java开发手册解读5-集合处理">
-<meta property="og:url" content="http://yvshuo.github.io/docs/2017-02-17-javarule-5.html">
+<meta property="og:url" content="http://yvshuo.github.io/docs/alibaba/2017-02-17-javarule-5.html">
 <meta property="og:site_name" content="香辣猪蹄儿">
 <meta property="og:description" content="1. 【强制】关于 hashCode 和 equals 的处理,遵循如下规则:1) 只要重写equals,就必须重写hashCode。2) 因为Set存储的是不重复的对象,依据hashCode和equals进行判断,所以Set存储的对象必须重写这两个方法。3) 如果自定义对象做为Map的键,那么必须重写hashCode和equals。正例:String 重写了 hashCode 和 equals">
 <meta property="og:updated_time" content="2017-03-16T13:13:56.000Z">
@@ -37,6 +37,9 @@
   <div id="mobile-bar" >
   <a class="menu-button"></a>
   <a class="logo" href="/"></a>
+  
+    <a class="back" href="javascript:history.go(-1)"></a>
+  
 </div>
   <div id="header">
   <a id="logo" href="/">
@@ -46,8 +49,14 @@
   <ul id="nav">
     <li><a href="/blog" class="nav-link">首页</a></li>
 <li><a href="/blog/archives" class="nav-link">文章列表</a></li>
-<li><a href="/blog/docs" class="nav-link current">文档</a></li>
-
+<li><a href="/blog/tags" class="nav-link">标签列表</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link current">文档</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="/blog/docs/alibaba" class="nav-link">阿里巴巴java开发手册解读</a></li>
+    <li><a href="/blog/docs/es6" class="nav-link">ES6温故而知新</a></li>
+  </ul>
+</li>
   </ul>
 </div>
 
@@ -57,57 +66,64 @@
     <ul class="main-menu">
         <li><a href="/blog" class="nav-link">首页</a></li>
 <li><a href="/blog/archives" class="nav-link">文章列表</a></li>
-<li><a href="/blog/docs" class="nav-link current">文档</a></li>
-
+<li><a href="/blog/tags" class="nav-link">标签列表</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link current">文档</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="/blog/docs/alibaba" class="nav-link">阿里巴巴java开发手册解读</a></li>
+    <li><a href="/blog/docs/es6" class="nav-link">ES6温故而知新</a></li>
+  </ul>
+</li>
     </ul>
     
         <div class="list">
             <ul class="menu-root">
                 
                 
+                
                     
                     <li>
-                        <a href="/blog/docs/index.html" class="sidebar-link">阿里巴巴java开发手册解读1-命名规约</a>
+                        <a href="/blog/docs/alibaba/index.html" class="sidebar-link">阿里巴巴java开发手册解读1-命名规约</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/blog/docs/2017-02-10-javarule-2.html" class="sidebar-link">阿里巴巴java开发手册解读2-常量定义</a>
+                        <a href="/blog/docs/alibaba/2017-02-10-javarule-2.html" class="sidebar-link">阿里巴巴java开发手册解读2-常量定义</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/blog/docs/2017-02-10-javarule-3.html" class="sidebar-link">阿里巴巴java开发手册解读3-格式规约</a>
+                        <a href="/blog/docs/alibaba/2017-02-10-javarule-3.html" class="sidebar-link">阿里巴巴java开发手册解读3-格式规约</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/blog/docs/2017-02-10-javarule-4.html" class="sidebar-link">阿里巴巴java开发手册解读4-OOP 规约</a>
+                        <a href="/blog/docs/alibaba/2017-02-10-javarule-4.html" class="sidebar-link">阿里巴巴java开发手册解读4-OOP 规约</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/blog/docs/2017-02-17-javarule-5.html" class="sidebar-link current">阿里巴巴java开发手册解读5-集合处理</a>
+                        <a href="/blog/docs/alibaba/2017-02-17-javarule-5.html" class="sidebar-link current">阿里巴巴java开发手册解读5-集合处理</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/blog/docs/2017-02-18-javarule-6.html" class="sidebar-link">阿里巴巴java开发手册解读6-并发处理</a>
+                        <a href="/blog/docs/alibaba/2017-02-18-javarule-6.html" class="sidebar-link">阿里巴巴java开发手册解读6-并发处理</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/blog/docs/2017-02-22-javarule-7.html" class="sidebar-link">阿里巴巴java开发手册解读7-控制语句</a>
+                        <a href="/blog/docs/alibaba/2017-02-22-javarule-7.html" class="sidebar-link">阿里巴巴java开发手册解读7-控制语句</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/blog/docs/2017-02-23-javarule-8.html" class="sidebar-link">阿里巴巴java开发手册解读8-注释规约</a>
+                        <a href="/blog/docs/alibaba/2017-02-23-javarule-8.html" class="sidebar-link">阿里巴巴java开发手册解读8-注释规约</a>
                     </li>
                 
                     
                     <li>
-                        <a href="/blog/docs/2017-02-23-javarule-9.html" class="sidebar-link">阿里巴巴java开发手册解读9-其他编程规约</a>
+                        <a href="/blog/docs/alibaba/2017-02-23-javarule-9.html" class="sidebar-link">阿里巴巴java开发手册解读9-其他编程规约</a>
                     </li>
                 
             </ul>
@@ -120,7 +136,8 @@
       
         <h1>阿里巴巴java开发手册解读5-集合处理</h1>
       
-      <h3 id="1-【强制】关于-hashCode-和-equals-的处理-遵循如下规则"><a href="#1-【强制】关于-hashCode-和-equals-的处理-遵循如下规则" class="headerlink" title="1. 【强制】关于 hashCode 和 equals 的处理,遵循如下规则:"></a>1. 【强制】关于 hashCode 和 equals 的处理,遵循如下规则:</h3><p><strong>1) 只要重写equals,就必须重写hashCode。</strong><br><strong>2) 因为Set存储的是不重复的对象,依据hashCode和equals进行判断,所以Set存储的对象必须重写这两个方法。</strong><br><strong>3) 如果自定义对象做为Map的键,那么必须重写hashCode和equals。</strong><br><code>正例</code>:String 重写了 hashCode 和 equals 方法,所以我们可以非常愉快地使用 String 对象 作为 key 来使用。</p>
+      
+        <h3 id="1-【强制】关于-hashCode-和-equals-的处理-遵循如下规则"><a href="#1-【强制】关于-hashCode-和-equals-的处理-遵循如下规则" class="headerlink" title="1. 【强制】关于 hashCode 和 equals 的处理,遵循如下规则:"></a>1. 【强制】关于 hashCode 和 equals 的处理,遵循如下规则:</h3><p><strong>1) 只要重写equals,就必须重写hashCode。</strong><br><strong>2) 因为Set存储的是不重复的对象,依据hashCode和equals进行判断,所以Set存储的对象必须重写这两个方法。</strong><br><strong>3) 如果自定义对象做为Map的键,那么必须重写hashCode和equals。</strong><br><code>正例</code>:String 重写了 hashCode 和 equals 方法,所以我们可以非常愉快地使用 String 对象 作为 key 来使用。</p>
 <h3 id="2-【强制】ArrayList的subList结果不可强转成ArrayList"><a href="#2-【强制】ArrayList的subList结果不可强转成ArrayList" class="headerlink" title="2. 【强制】ArrayList的subList结果不可强转成ArrayList"></a>2. 【强制】ArrayList的subList结果不可强转成ArrayList</h3><p>否则会抛出ClassCastException 异常:java.util.RandomAccessSubList cannot be cast to java.util.ArrayList ;<br>说明:subList 返回的是 ArrayList 的内部类 SubList,并不是 ArrayList ,而是 ArrayList 的一个视图,对于SubList子列表的所有操作最终会反映到原列表上。</p>
 <h3 id="3-【强制】在-subList-场景中-高度注意对原集合元素个数的修改"><a href="#3-【强制】在-subList-场景中-高度注意对原集合元素个数的修改" class="headerlink" title="3. 【强制】在 subList 场景中,高度注意对原集合元素个数的修改"></a>3. 【强制】在 subList 场景中,高度注意对原集合元素个数的修改</h3><p>该修改会导致子列表的遍历、增 加、删除均产生ConcurrentModificationException 异常。<br><a id="more"></a></p>
 <h3 id="4-【强制】使用集合转数组的方法-必须使用集合的toArray-T-array-传入的是类型完全一样的数组-大小就是-list-size-。"><a href="#4-【强制】使用集合转数组的方法-必须使用集合的toArray-T-array-传入的是类型完全一样的数组-大小就是-list-size-。" class="headerlink" title="4. 【强制】使用集合转数组的方法,必须使用集合的toArray(T[] array),传入的是类型完全一样的数组,大小就是 list.size()。"></a>4. 【强制】使用集合转数组的方法,必须使用集合的toArray(T[] array),传入的是类型完全一样的数组,大小就是 list.size()。</h3><p><code>反例</code>:直接使用 toArray 无参方法存在问题,此方法返回值只能是 Object[]类,若强转其它 类型数组将出现 ClassCastException 错误。<br><code>正例</code>:<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line">List&lt;String&gt; list = <span class="keyword">new</span> ArrayList&lt;String&gt;(<span class="number">2</span>);</div><div class="line">list.add(<span class="string">"guan"</span>);</div><div class="line">list.add(<span class="string">"bao"</span>);</div><div class="line">String[] array = <span class="keyword">new</span> String[list.size()];</div><div class="line">array = list.toArray(array);</div></pre></td></tr></table></figure></p>
@@ -178,16 +195,17 @@
 <p><code>反例</code>: 由于 HashMap 的干扰,很多人认为 ConcurrentHashMap 是可以置入 null 值,注意存储 null 值时会抛出 NPE 异常。</p>
 <h3 id="12-【参考】合理利用好集合的有序性-sort-和稳定性-order-避免集合的无序性-unsort-和-不稳定性-unorder-带来的负面影响。"><a href="#12-【参考】合理利用好集合的有序性-sort-和稳定性-order-避免集合的无序性-unsort-和-不稳定性-unorder-带来的负面影响。" class="headerlink" title="12. 【参考】合理利用好集合的有序性(sort)和稳定性(order),避免集合的无序性(unsort)和 不稳定性(unorder)带来的负面影响。"></a>12. 【参考】合理利用好集合的有序性(sort)和稳定性(order),避免集合的无序性(unsort)和 不稳定性(unorder)带来的负面影响。</h3><p>说明:稳定性指集合每次遍历的元素次序是一定的。有序性是指遍历的结果是按某种比较规则 依次排列的。<br>如:ArrayList 是 order/unsort;HashMap 是 unorder/unsort;TreeSet 是 order/sort。</p>
 <h3 id="13-【参考】利用-Set-元素唯一的特性-可以快速对一个集合进行去重操作-避免使用-List-的-contains-方法进行遍历、对比、去重操作。"><a href="#13-【参考】利用-Set-元素唯一的特性-可以快速对一个集合进行去重操作-避免使用-List-的-contains-方法进行遍历、对比、去重操作。" class="headerlink" title="13. 【参考】利用 Set 元素唯一的特性,可以快速对一个集合进行去重操作,避免使用 List 的 contains 方法进行遍历、对比、去重操作。"></a>13. 【参考】利用 Set 元素唯一的特性,可以快速对一个集合进行去重操作,避免使用 List 的 contains 方法进行遍历、对比、去重操作。</h3>
-      <div class="guide-links">
+        <div class="guide-links">
         
         
         
-          <span>← <a href="/blog/docs/2017-02-10-javarule-4.html">阿里巴巴java开发手册解读4-OOP 规约</a></span>
+          <span>← <a href="/blog/docs/alibaba/2017-02-10-javarule-4.html">阿里巴巴java开发手册解读4-OOP 规约</a></span>
         
         
-          <span style="float:right"><a href="/blog/docs/2017-02-18-javarule-6.html">阿里巴巴java开发手册解读6-并发处理</a> →</span>
+          <span style="float:right"><a href="/blog/docs/alibaba/2017-02-18-javarule-6.html">阿里巴巴java开发手册解读6-并发处理</a> →</span>
         
       </div>
+      
   </div>
 
   </div>
@@ -210,12 +228,8 @@ window.addEventListener('scroll', function () {
 <script src="/blog/js/common.js"></script>
 <script>
 
-    let $a = document.querySelectorAll(('.blog p:not(.article-more-link)>a'))
+    let $a = document.querySelectorAll('.blog p:not(.article-more-link)>a,.content.docs p>a,.article-inner p:not(.article-more-link)>a')
     $a.forEach(($em) => {
-      $em.setAttribute('target', '_blank')
-    })
-    let $b = document.querySelectorAll(('.docs p>a'))
-    $b.forEach(($em) => {
       $em.setAttribute('target', '_blank')
     })
 

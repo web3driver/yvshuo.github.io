@@ -42,6 +42,9 @@
   <div id="mobile-bar" >
   <a class="menu-button"></a>
   <a class="logo" href="/"></a>
+  
+    <a class="back" href="javascript:history.go(-1)"></a>
+  
 </div>
   <div id="header">
   <a id="logo" href="/">
@@ -51,8 +54,14 @@
   <ul id="nav">
     <li><a href="/blog" class="nav-link">首页</a></li>
 <li><a href="/blog/archives" class="nav-link">文章列表</a></li>
-<li><a href="/blog/docs" class="nav-link">文档</a></li>
-
+<li><a href="/blog/tags" class="nav-link">标签列表</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">文档</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="/blog/docs/alibaba" class="nav-link">阿里巴巴java开发手册解读</a></li>
+    <li><a href="/blog/docs/es6" class="nav-link">ES6温故而知新</a></li>
+  </ul>
+</li>
   </ul>
 </div>
 
@@ -62,8 +71,14 @@
         <ul class="main-menu">
             <li><a href="/blog" class="nav-link">首页</a></li>
 <li><a href="/blog/archives" class="nav-link">文章列表</a></li>
-<li><a href="/blog/docs" class="nav-link">文档</a></li>
-
+<li><a href="/blog/tags" class="nav-link">标签列表</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">文档</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="/blog/docs/alibaba" class="nav-link">阿里巴巴java开发手册解读</a></li>
+    <li><a href="/blog/docs/es6" class="nav-link">ES6温故而知新</a></li>
+  </ul>
+</li>
         </ul>
         <div class="list">
             <h2>
@@ -159,7 +174,7 @@
     </div>
     <div class="content with-sidebar blog post">
         <h1>阿里巴巴java开发手册解读2-常量定义</h1>
-        <h4>2月 10, 2017</h4>
+        <h4>Feb 10, 2017</h4>
         <h3 id="1-【强制】不允许出现任何魔法值-即未经定义的常量-直接出现在代码中"><a href="#1-【强制】不允许出现任何魔法值-即未经定义的常量-直接出现在代码中" class="headerlink" title="1. 【强制】不允许出现任何魔法值(即未经定义的常量)直接出现在代码中"></a>1. 【强制】不允许出现任何魔法值(即未经定义的常量)直接出现在代码中</h3><p><code>反例</code>: String key=”Id#taobao_”+tradeId;<br>cache.put(key, value);</p>
 <blockquote>
 <p><strong>批注</strong>:<br>正确的做法应该是维护一个常量表或者在类起始位置定义常量<br><code>正解</code>：<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String PREFIX_TRADEID = <span class="string">"Id#taobao_"</span>;</div><div class="line">String key=PREFIX_TRADEID+tradeId;</div><div class="line">cache.put(key, value);</div></pre></td></tr></table></figure></p>
@@ -206,12 +221,8 @@ window.addEventListener('scroll', function () {
 <script src="/blog/js/common.js"></script>
 <script>
 
-    let $a = document.querySelectorAll(('.blog p:not(.article-more-link)>a'))
+    let $a = document.querySelectorAll('.blog p:not(.article-more-link)>a,.content.docs p>a,.article-inner p:not(.article-more-link)>a')
     $a.forEach(($em) => {
-      $em.setAttribute('target', '_blank')
-    })
-    let $b = document.querySelectorAll(('.docs p>a'))
-    $b.forEach(($em) => {
       $em.setAttribute('target', '_blank')
     })
 

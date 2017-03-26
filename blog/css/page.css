@@ -424,6 +424,17 @@ body.docs #nav {
   font-size: 24px;
   content: '\f0c9';
 }
+#mobile-bar .back {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 8px;
+  right: 12px;
+}
+#mobile-bar .back:before {
+  font-size: 24px;
+  content: '\f053';
+}
 #mobile-bar .logo {
   position: absolute;
   width: 30px;
@@ -821,6 +832,13 @@ ul.demo li {
 }
 .article-tag-list li a {
   color: #e96900;
+}
+.tag-cloud-tags {
+  text-align: center;
+}
+.tag-cloud-tags a {
+  word-break: normal;
+  margin-left: 0.5em;
 }
 .content {
   position: relative;
