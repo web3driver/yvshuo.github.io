@@ -159,7 +159,7 @@
     </div>
     <div class="content with-sidebar blog post">
         <h1>阿里巴巴java开发手册解读2-常量定义</h1>
-        <h4>Feb 10, 2017</h4>
+        <h4>2月 10, 2017</h4>
         <h3 id="1-【强制】不允许出现任何魔法值-即未经定义的常量-直接出现在代码中"><a href="#1-【强制】不允许出现任何魔法值-即未经定义的常量-直接出现在代码中" class="headerlink" title="1. 【强制】不允许出现任何魔法值(即未经定义的常量)直接出现在代码中"></a>1. 【强制】不允许出现任何魔法值(即未经定义的常量)直接出现在代码中</h3><p><code>反例</code>: String key=”Id#taobao_”+tradeId;<br>cache.put(key, value);</p>
 <blockquote>
 <p><strong>批注</strong>:<br>正确的做法应该是维护一个常量表或者在类起始位置定义常量<br><code>正解</code>：<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String PREFIX_TRADEID = <span class="string">"Id#taobao_"</span>;</div><div class="line">String key=PREFIX_TRADEID+tradeId;</div><div class="line">cache.put(key, value);</div></pre></td></tr></table></figure></p>

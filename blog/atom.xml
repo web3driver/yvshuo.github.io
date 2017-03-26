@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://yvshuo.github.io/"/>
-  <updated>2017-03-25T13:08:17.000Z</updated>
+  <updated>2017-03-26T05:13:17.000Z</updated>
   <id>http://yvshuo.github.io/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yvshuo.github.io/2017/03/25/2017-03-25-es6-4/"/>
     <id>http://yvshuo.github.io/2017/03/25/2017-03-25-es6-4/</id>
     <published>2017-03-25T08:49:49.000Z</published>
-    <updated>2017-03-25T13:08:17.000Z</updated>
+    <updated>2017-03-26T05:13:17.000Z</updated>
     
     <content type="html"><![CDATA[<p>一句话。<br><strong>Promises are a library for asynchronous programming.</strong><br>然后再看一个例子：<br><a href="https://yvshuo.github.io/example/promise/">Promise Example</a></p>
 <p>从这个简单的例子中，可以直观的感受到Promise的威力。让异步请求一步一步的进行~</p>
@@ -28,8 +28,8 @@
 <p>这种调用方式比起传统的回调函数的方式看起来舒服不止一百倍。<br><a id="more"></a></p>
 <h2 id="1、Promise对象的三种状态"><a href="#1、Promise对象的三种状态" class="headerlink" title="1、Promise对象的三种状态"></a>1、Promise对象的三种状态</h2><ul>
 <li>Pending 进行中</li>
-<li>Resolve 已完成</li>
-<li>reject 已失败<br>类比于回调函数中的写法,resolve类似于success的回调，reject类似于fail的回调，Promise对象状态的变化就两种，一种从<code>Pending</code>进入<code>Resolve</code>,一种从<code>Pending</code>进入<code>Reject</code>。<br><code>Promise.prototype.then()</code>提供了两个回调的参数，<code>then(resolve, reject)</code>，但是更好的一种写法是在<code>Promise.prototype.catch()</code>中来写失败的回调，这样可以让程序读起来更舒服。<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> someAsyncThing = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">    <span class="comment">// 下面一行会报错，因为x没有声明</span></div><div class="line">    resolve(x + <span class="number">2</span>);</div><div class="line">  &#125;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">someAsyncThing()</div><div class="line">.catch(<span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'oh no'</span>, error);</div><div class="line">&#125;)</div><div class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'carry on'</span>);</div><div class="line">&#125;);</div><div class="line"><span class="comment">// oh no [ReferenceError: x is not defined]</span></div><div class="line"><span class="comment">// carry on</span></div></pre></td></tr></table></figure>
+<li>Resolve/fullfill 已完成</li>
+<li>reject 已失败<br><img src="/blog/assets/images/2017/03/26/1.png" alt="Promise状态示例图"><br>类比于回调函数中的写法,resolve类似于success的回调，reject类似于fail的回调，Promise对象状态的变化就两种，一种从<code>Pending</code>进入<code>Resolve</code>,一种从<code>Pending</code>进入<code>Reject</code>。<br><code>Promise.prototype.then()</code>提供了两个回调的参数，<code>then(resolve, reject)</code>，但是更好的一种写法是在<code>Promise.prototype.catch()</code>中来写失败的回调，这样可以让程序读起来更舒服。<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> someAsyncThing = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">    <span class="comment">// 下面一行会报错，因为x没有声明</span></div><div class="line">    resolve(x + <span class="number">2</span>);</div><div class="line">  &#125;);</div><div class="line">&#125;;</div><div class="line"></div><div class="line">someAsyncThing()</div><div class="line">.catch(<span class="function"><span class="keyword">function</span>(<span class="params">error</span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'oh no'</span>, error);</div><div class="line">&#125;)</div><div class="line">.then(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="built_in">console</span>.log(<span class="string">'carry on'</span>);</div><div class="line">&#125;);</div><div class="line"><span class="comment">// oh no [ReferenceError: x is not defined]</span></div><div class="line"><span class="comment">// carry on</span></div></pre></td></tr></table></figure>
 </li>
 </ul>
 <p><code>Promise.prototype.catch()</code>返回的仍然是一个<code>Promise</code>对象，后面可以接着调用<code>then</code>方法。</p>
