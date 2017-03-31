@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://yvshuo.github.io/"/>
-  <updated>2017-03-31T16:19:06.000Z</updated>
+  <updated>2017-03-31T16:22:15.000Z</updated>
   <id>http://yvshuo.github.io/</id>
   
   <author>
@@ -20,16 +20,16 @@
     <link href="http://yvshuo.github.io/2017/04/01/2017-04-01-easytiny-1/"/>
     <id>http://yvshuo.github.io/2017/04/01/2017-04-01-easytiny-1/</id>
     <published>2017-03-31T16:04:06.000Z</published>
-    <updated>2017-03-31T16:19:06.000Z</updated>
+    <updated>2017-03-31T16:22:15.000Z</updated>
     
     <content type="html"><![CDATA[<p>写了个批量压缩图片的命令行小工具 <code>easytiny</code>。使用这个工具就不用再每次都往 tinypng 网站上托图片压缩了。</p>
 <p>首先需要去<a href="https://tinypng.com/developers" target="_blank" rel="external">tinypng</a>的网站上申请一个API KEY。</p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ npm install -g easytiny</div><div class="line">$ easytiny config <span class="built_in">set</span> key XXXXXXXXXXXX</div></pre></td></tr></table></figure>
-<p>这个 XXXXXXX就是你申请的API KEY。每个月有500次的压缩图片的次数限制，但是可以用多个邮箱申请多个KEY，所以还是能轻松满足个人日常需求的。<br>就可以使用了。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ npm start</div></pre></td></tr></table></figure></p>
-<p>默认模式下是会把压缩后的文件放到当前目录的一个新的文件夹里。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ npm start -o</div></pre></td></tr></table></figure></p>
-<p>直接覆盖原始图片。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ npm start -r</div></pre></td></tr></table></figure></p>
-<p>按照提示在压缩过程中对图片的大小进行调整。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ npm start <span class="_">-f</span></div></pre></td></tr></table></figure></p>
-<p>强制压缩模式，不逼逼，直接开始压缩。详细说明文档直接戳<a href="https://github.com/yvshuo/easytiny/blob/master/README.md" target="_blank" rel="external">easytiny</a>。</p>
+<p>这个 XXXXXXX就是你申请的API KEY。每个月有500次的压缩图片的次数限制，但是可以用多个邮箱申请多个KEY，所以还是能轻松满足个人日常需求的。<br>就可以使用了。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ easytiny start</div></pre></td></tr></table></figure></p>
+<p>默认模式下是会把压缩后的文件放到当前目录的一个新的文件夹里。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ easytiny start -o</div></pre></td></tr></table></figure></p>
+<p>直接覆盖原始图片。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ easytiny start -r</div></pre></td></tr></table></figure></p>
+<p>按照提示在压缩过程中对图片的大小进行调整。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ easytiny start <span class="_">-f</span></div></pre></td></tr></table></figure></p>
+<p>强制压缩模式，不逼逼，直接开始压缩。详细说明文档直接戳 <a href="https://github.com/yvshuo/easytiny/blob/master/README.md" target="_blank" rel="external">easytiny README</a>。</p>
 <p>请无视我蹩脚的英语- -</p>
 ]]></content>
     
