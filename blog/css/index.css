@@ -424,6 +424,17 @@ body.docs #nav {
   font-size: 24px;
   content: '\f0c9';
 }
+#mobile-bar .back {
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  top: 8px;
+  right: 12px;
+}
+#mobile-bar .back:before {
+  font-size: 24px;
+  content: '\f053';
+}
 #mobile-bar .logo {
   position: absolute;
   width: 30px;

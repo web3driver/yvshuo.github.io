@@ -87,6 +87,51 @@
   </div>
 </div>
 
+	<article id="post-2017-02-23-javarule-9" class="article article-type-post content" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2017/02/23/2017-02-23-javarule-9/" class="article-date">
+  <time datetime="2017-02-23T14:23:22.000Z" itemprop="datePublished">2017-02-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/02/23/2017-02-23-javarule-9/">阿里巴巴java开发手册解读9-其他编程规约</a>
+    </h1>
+  
+
+      </header>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java文档/">java文档</a></li></ul>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-【强制】在使用正则表达式时-利用好其预编译功能-可以有效加快正则匹配速度。"><a href="#1-【强制】在使用正则表达式时-利用好其预编译功能-可以有效加快正则匹配速度。" class="headerlink" title="1. 【强制】在使用正则表达式时,利用好其预编译功能,可以有效加快正则匹配速度。"></a>1. 【强制】在使用正则表达式时,利用好其预编译功能,可以有效加快正则匹配速度。</h3><p>说明:不要在方法体内定义:<code>Pattern pattern = Pattern.compile(规则);</code></p>
+<h3 id="2-【强制】velocity-调用-POJO-类的属性时-建议直接使用属性名取值即可-模板引擎会自动按规范调用-POJO-的-getXxx-如果是-boolean-基本数据类型变量-boolean-命名不需要加-is-前缀-会自动调用-isXxx-方法。"><a href="#2-【强制】velocity-调用-POJO-类的属性时-建议直接使用属性名取值即可-模板引擎会自动按规范调用-POJO-的-getXxx-如果是-boolean-基本数据类型变量-boolean-命名不需要加-is-前缀-会自动调用-isXxx-方法。" class="headerlink" title="2. 【强制】velocity 调用 POJO 类的属性时,建议直接使用属性名取值即可,模板引擎会自动按规范调用 POJO 的 getXxx(),如果是 boolean 基本数据类型变量(boolean 命名不需要加 is 前缀),会自动调用 isXxx()方法。"></a>2. 【强制】velocity 调用 POJO 类的属性时,建议直接使用属性名取值即可,模板引擎会自动按规范调用 POJO 的 getXxx(),如果是 boolean 基本数据类型变量(boolean 命名不需要加 is 前缀),会自动调用 isXxx()方法。</h3><p>说明:注意如果是 Boolean 包装类对象,优先调用 getXxx()的方法。</p>
+<h3 id="3-【强制】后台输送给页面的变量必须加-var-——中间的感叹号。"><a href="#3-【强制】后台输送给页面的变量必须加-var-——中间的感叹号。" class="headerlink" title="3. 【强制】后台输送给页面的变量必须加$!{var}——中间的感叹号。"></a>3. 【强制】后台输送给页面的变量必须加$!{var}——中间的感叹号。</h3><p>说明:如果 var=null 或者不存在,那么${var}会直接显示在页面上。</p>
+<h3 id="4-【强制】注意-Math-random-这个方法返回是-double-类型-注意取值的范围-0≤x-lt-1-能够取到零值-注意除零异常-如果想获取整数类型的随机数-不要将-x-放大-10-的若干倍然后取整-直接使用-Random-对象的-nextInt-或者-nextLong-方法。"><a href="#4-【强制】注意-Math-random-这个方法返回是-double-类型-注意取值的范围-0≤x-lt-1-能够取到零值-注意除零异常-如果想获取整数类型的随机数-不要将-x-放大-10-的若干倍然后取整-直接使用-Random-对象的-nextInt-或者-nextLong-方法。" class="headerlink" title="4. 【强制】注意 Math.random() 这个方法返回是 double 类型,注意取值的范围 0≤x&lt;1(能够取到零值,注意除零异常),如果想获取整数类型的随机数,不要将 x 放大 10 的若干倍然后取整,直接使用 Random 对象的 nextInt 或者 nextLong 方法。"></a>4. 【强制】注意 Math.random() 这个方法返回是 double 类型,注意取值的范围 0≤x&lt;1(能够取到零值,注意除零异常),如果想获取整数类型的随机数,不要将 x 放大 10 的若干倍然后取整,直接使用 Random 对象的 nextInt 或者 nextLong 方法。</h3><h3 id="5-【强制】获取当前毫秒数-System-currentTimeMillis-而不是-new-Date-getTime"><a href="#5-【强制】获取当前毫秒数-System-currentTimeMillis-而不是-new-Date-getTime" class="headerlink" title="5. 【强制】获取当前毫秒数 System.currentTimeMillis(); 而不是 new Date().getTime();"></a>5. 【强制】获取当前毫秒数 System.currentTimeMillis(); 而不是 new Date().getTime();</h3><p>说明:如果想获取更加精确的纳秒级时间值,用 System.nanoTime()。在 JDK8 中,针对统计 时间等场景,推荐使用 Instant 类。</p>
+<h3 id="6-【推荐】尽量不要在-vm-中加入变量声明、逻辑运算符-更不要在-vm-模板中加入任何复杂的逻辑。"><a href="#6-【推荐】尽量不要在-vm-中加入变量声明、逻辑运算符-更不要在-vm-模板中加入任何复杂的逻辑。" class="headerlink" title="6. 【推荐】尽量不要在 vm 中加入变量声明、逻辑运算符,更不要在 vm 模板中加入任何复杂的逻辑。"></a>6. 【推荐】尽量不要在 vm 中加入变量声明、逻辑运算符,更不要在 vm 模板中加入任何复杂的逻辑。</h3><h3 id="7-【推荐】任何数据结构的构造或初始化-都应指定大小-避免数据结构无限增长吃光内存。"><a href="#7-【推荐】任何数据结构的构造或初始化-都应指定大小-避免数据结构无限增长吃光内存。" class="headerlink" title="7. 【推荐】任何数据结构的构造或初始化,都应指定大小,避免数据结构无限增长吃光内存。"></a>7. 【推荐】任何数据结构的构造或初始化,都应指定大小,避免数据结构无限增长吃光内存。</h3><h3 id="8-【推荐】对于“明确停止使用的代码和配置”-如方法、变量、类、配置文件、动态配置属性等要坚决从程序中清理出去-避免造成过多垃圾。"><a href="#8-【推荐】对于“明确停止使用的代码和配置”-如方法、变量、类、配置文件、动态配置属性等要坚决从程序中清理出去-避免造成过多垃圾。" class="headerlink" title="8. 【推荐】对于“明确停止使用的代码和配置”,如方法、变量、类、配置文件、动态配置属性等要坚决从程序中清理出去,避免造成过多垃圾。"></a>8. 【推荐】对于“明确停止使用的代码和配置”,如方法、变量、类、配置文件、动态配置属性等要坚决从程序中清理出去,避免造成过多垃圾。</h3><blockquote>
+<p><strong>后记：</strong><br>仔细的读了这个java手册好几遍，对于规范java编程确实有很好的指导意义。作为一名只是略懂java的前端狗，还有很多地方不懂。除了编程规约外的其他几个规约待后续学习后再填坑。这个系列解读也会随着自己java学习的不断深入持续更新。干巴得</p>
+</blockquote>
+
+      
+    </div>
+    <footer class="article-footer">
+      <!--<a data-url="http://yvshuo.github.io/blog/2017/02/23/2017-02-23-javarule-9/" data-id="cj0y1b768001bpie96fhnxogk" class="article-share-link">Share</a>-->
+      <!---->
+    </footer>
+  </div>
+  
+</article>
+
+
+
 	<article id="post-2017-02-23-javarule-8" class="article article-type-post content" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2017/02/23/2017-02-23-javarule-8/" class="article-date">
@@ -123,7 +168,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2017/02/23/2017-02-23-javarule-8/" data-id="cj0qtgua1000yuoe951khyv9c" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/blog/2017/02/23/2017-02-23-javarule-8/" data-id="cj0y1b75s000rpie9w79yw8np" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -169,7 +214,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2017/02/22/2017-02-22-javarule-7/" data-id="cj0qtgua80017uoe9lssexrd3" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/blog/2017/02/22/2017-02-22-javarule-7/" data-id="cj0y1b75r000qpie9oxm03rnq" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -213,7 +258,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2017/02/18/2017-02-18-javarule-6/" data-id="cj0qtgua50012uoe9bwubehuf" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/blog/2017/02/18/2017-02-18-javarule-6/" data-id="cj0y1b75w000upie9lnt0669u" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -258,7 +303,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2017/02/17/2017-02-17-javarule-5/" data-id="cj0qtgu9z000wuoe9zy0cvgms" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/blog/2017/02/17/2017-02-17-javarule-5/" data-id="cj0y1b75y000zpie9tnyqkat3" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -304,57 +349,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2017/02/13/2017-02-10-javarule-4/" data-id="cj0qtgu9x000uuoe9ussprtse" class="article-share-link">Share</a>-->
-      <!---->
-    </footer>
-  </div>
-  
-</article>
-
-
-
-	<article id="post-2017-02-10-javarule-3" class="article article-type-post content" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2017/02/10/2017-02-10-javarule-3/" class="article-date">
-  <time datetime="2017-02-10T01:35:25.000Z" itemprop="datePublished">2017-02-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/02/10/2017-02-10-javarule-3/">阿里巴巴java开发手册解读3-格式规约</a>
-    </h1>
-  
-
-      </header>
-    
-    
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java文档/">java文档</a></li></ul>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-【强制】大括号的使用约定"><a href="#1-【强制】大括号的使用约定" class="headerlink" title="1. 【强制】大括号的使用约定"></a>1. 【强制】大括号的使用约定</h3><p>如果是大括号内为空,则简洁地写成{}即可,不需要换行;如果 是非空代码块则:<br><strong>1) 左大括号前不换行</strong><br><strong>2) 左大括号后换行</strong></p>
-<blockquote>
-<p><strong>批注</strong>:<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span> (a &lt; 0) &#123;</div><div class="line">    // <span class="keyword">do</span> something 1</div><div class="line">&#125;</div><div class="line"><span class="keyword">if</span> (a &gt; 0) &#123;</div><div class="line">    // <span class="keyword">do</span> something 2</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-</blockquote>
-<p><strong>3) 右大括号前换行</strong><br><strong>4) 右大括号后还有else等代码则不换行;表示终止右大括号后必须换行</strong></p>
-<blockquote>
-<p><strong>批注</strong>:<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span> (a &lt; 0) &#123;</div><div class="line">    // <span class="keyword">do</span> something 1</div><div class="line">&#125; <span class="keyword">else</span> &#123;</div><div class="line">    // <span class="keyword">do</span> something 2</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-</blockquote>
-        
-          <p class="article-more-link">
-            <a href="/blog/2017/02/10/2017-02-10-javarule-3/#more">More&gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2017/02/10/2017-02-10-javarule-3/" data-id="cj0qtgu9k000suoe9sqokhe7z" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/blog/2017/02/13/2017-02-10-javarule-4/" data-id="cj0y1b75m000npie9tndy5cm1" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
