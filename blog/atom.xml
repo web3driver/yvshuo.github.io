@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://yvshuo.github.io/"/>
-  <updated>2017-03-31T16:54:17.000Z</updated>
+  <updated>2017-04-27T14:40:02.000Z</updated>
   <id>http://yvshuo.github.io/</id>
   
   <author>
@@ -14,6 +14,60 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>js作用域链</title>
+    <link href="http://yvshuo.github.io/2017/04/27/2017-04-27-scopechain/"/>
+    <id>http://yvshuo.github.io/2017/04/27/2017-04-27-scopechain/</id>
+    <published>2017-04-27T13:13:55.000Z</published>
+    <updated>2017-04-27T14:40:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="1-Scope-Chain"><a href="#1-Scope-Chain" class="headerlink" title="1. Scope Chain"></a>1. Scope Chain</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> cao = <span class="number">1</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(cao);</div><div class="line">    <span class="keyword">var</span> cao = <span class="number">2</span>;</div><div class="line">&#125;</div><div class="line">f();</div><div class="line"><span class="built_in">console</span>.log(cao);</div></pre></td></tr></table></figure>
+<p>输出的结果是什么呢？<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">undefined</div><div class="line">1</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>搬出小红书的概念定义：</p>
+<blockquote>
+<ol>
+<li>每个函数都有自己的执行环境。当执行流进入一个函数时,函数的环境就会被推入一个环境栈中。 而在函数执行之后,栈将其环境弹出,把控制权返回给之前的执行环境。</li>
+<li>当代码在一个环境中执行时,会创建变量对象的一个作用域链(scope chain)。作用域链的用途,是保证对执行环境有权访问的所有变量和函数的有序访问。作用域链的前端,始终都是当前执行的代码所在环境的变量对象。如果这个环境是函数,则将其活动对象(activation object)作为变量对象。活动对象在最开始时只包含一个变量,即 arguments 对象(这个对象在全局环境中是不存在的)。作用域链中的下一个变量对象来自包含(外部)环境,而再下一个变量对象则来自下一个包含环境。这样,一直延续到全局执行环境;全局执行环境的变量对象始终都是作用域链中的最后一个对象。</li>
+</ol>
+</blockquote>
+<p>最佳实践都告诉我们js编程应该在函数的最开始声明变量，可是在遵守这个规则的时候，之前却一直不明白为什么要这样做。上面的例子就是一个违反最佳实践后的奇怪场景：在全局环境中声明了一个变量，然后在函数中调用了这个全局变量。如果在之后不巧又声明了一个同名的局部变量，前面对全局变量的引用就出现了奇怪的undefined。<br>在严格模式或者eslint中，重复声明都会报错。所以上面的例子可以作为是一道对js作用域链加深理解的题目。</p>
+<p>上面这个例子的分析：<br>step1: 这段代码共有两个执行环境：全局环境和f()的局部环境<br>step2: 全局环境中有一个变量<code>cao</code> 和 一个函数 <code>f()</code><br>step3: f()中有一个变量<code>cao</code></p>
+<blockquote>
+<p>这里需要注意的就是在js的作用域中，var 声明的变量提升提升的是变量的声明，并不会把变量的赋值也提升上来</p>
+</blockquote>
+<p>step4: f()函数执行到<code>console.log(cao)</code>这一句时，先在作用域链最顶端查找，也就是f()内部这个作用域，因为<code>var cao = 2;</code>被提升，而此时还没有被赋值，所以此时<code>cao</code>是<code>undefined</code>，f()内的代码等同于<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> cao;</div><div class="line">    <span class="built_in">console</span>.log(cao);</div><div class="line">    cao = <span class="number">2</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>step5: f()执行完后，对应的f()的执行环境从环境栈中弹出，进入全局执行环境。此时在f()内的变量被js的垃圾回收标记为可清除<br>step6: 执行到最后一句，<code>console.log(cao)</code>在全局作用域中查找，打印出<code>cao</code>的值 1</p>
+<h3 id="2-函数声明的提升"><a href="#2-函数声明的提升" class="headerlink" title="2. 函数声明的提升"></a>2. 函数声明的提升</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">f();</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'cao'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个是常见的写法。输出<code>cao</code>。但是为什么可以这样写？因为在进入执行环境的时候，会把执行环境中var声明的变量还有声明的函数首先存在所在环境的变量对象中。需要注意的是，只有这种函数声明形式，才能被提升。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">f();</div><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'cao'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个就会直接抛异常了。因为f的声明提升了，赋值并没有提升。所以f最开始时是<code>undefined</code>，并不是一个函数，所以直接抛异常。</p>
+<h3 id="3-js垃圾回收机制"><a href="#3-js垃圾回收机制" class="headerlink" title="3. js垃圾回收机制"></a>3. js垃圾回收机制</h3><ul>
+<li>标记清除</li>
+</ul>
+<p>当变量进入执行环境时，标记这个变量正在被这个执行环境使用，离开执行环境时，标记变量离开了这个执行环境。离开当前执行环境的变量，就可以被回收了。</p>
+<ul>
+<li>引用计数</li>
+</ul>
+<p>引用计数的含义是跟踪记录每 个值被引用的次数。当声明了一个变量并将一个引用类型值赋给该变量时,则这个值的引用次数就是 1。 如果同一个值又被赋给另一个变量,则该值的引用次数加 1。相反,如果包含对这个值引用的变量又取 得了另外一个值,则这个值的引用次数减 1。当这个值的引用次数变成 0 时,则说明没有办法再访问这 个值了,因而就可以将其占用的内存空间回收回来。</p>
+<blockquote>
+<p>引用计数的垃圾回收机制在循环引用时会无法正常工作，因为互相引用导致变量的引用计数一直不会变为0.也就无法回收，最终导致内存溢出。IE9以下就因为其BOM和DOM对象使用的COM采用了引用计数而存在内存泄漏的问题。IE9之后已修复这个问题。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.getElementById(<span class="string">"some_element"</span>);</div><div class="line"><span class="keyword">var</span> myObject = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">myObject.element = element;</div><div class="line">element.someObject = myObject;</div></pre></td></tr></table></figure>
+<p>这个例子在一个 DOM 元素(element)与一个原生 JavaScript 对象(myObject)之间创建了循环引用。<br>IE9之后，已经没有此问题。其他的一些现代浏览器都是采用的标记清除的垃圾回收机制，都不会存在内存泄漏的问题。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h3 id=&quot;1-Scope-Chain&quot;&gt;&lt;a href=&quot;#1-Scope-Chain&quot; class=&quot;headerlink&quot; title=&quot;1. Scope Chain&quot;&gt;&lt;/a&gt;1. Scope Chain&lt;/h3&gt;&lt;figure class=&quot;highlight javascript&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; cao = &lt;span class=&quot;number&quot;&gt;1&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;function&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;function&lt;/span&gt; &lt;span class=&quot;title&quot;&gt;f&lt;/span&gt;(&lt;span class=&quot;params&quot;&gt;&lt;/span&gt;) &lt;/span&gt;&amp;#123;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(cao);&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;    &lt;span class=&quot;keyword&quot;&gt;var&lt;/span&gt; cao = &lt;span class=&quot;number&quot;&gt;2&lt;/span&gt;;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&amp;#125;&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;f();&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;&lt;span class=&quot;built_in&quot;&gt;console&lt;/span&gt;.log(cao);&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;
+&lt;p&gt;输出的结果是什么呢？&lt;br&gt;&lt;figure class=&quot;highlight bash&quot;&gt;&lt;table&gt;&lt;tr&gt;&lt;td class=&quot;code&quot;&gt;&lt;pre&gt;&lt;div class=&quot;line&quot;&gt;undefined&lt;/div&gt;&lt;div class=&quot;line&quot;&gt;1&lt;/div&gt;&lt;/pre&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/figure&gt;&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="javascript" scheme="http://yvshuo.github.io/tags/javascript/"/>
+    
+  </entry>
   
   <entry>
     <title>easytiny 简易说明</title>

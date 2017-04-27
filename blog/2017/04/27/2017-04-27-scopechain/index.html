@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    
+  
+  <title>
+    js作用域链|香辣猪蹄儿
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="1. Scope Chainvar cao = 1;function f() &amp;#123;    console.log(cao);    var cao = 2;&amp;#125;f();console.log(cao);
+输出的结果是什么呢？undefined1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js作用域链">
+<meta property="og:url" content="http://yvshuo.github.io/2017/04/27/2017-04-27-scopechain/index.html">
+<meta property="og:site_name" content="香辣猪蹄儿">
+<meta property="og:description" content="1. Scope Chainvar cao = 1;function f() &amp;#123;    console.log(cao);    var cao = 2;&amp;#125;f();console.log(cao);
+输出的结果是什么呢？undefined1">
+<meta property="og:updated_time" content="2017-04-27T14:40:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js作用域链">
+<meta name="twitter:description" content="1. Scope Chainvar cao = 1;function f() &amp;#123;    console.log(cao);    var cao = 2;&amp;#125;f();console.log(cao);
+输出的结果是什么呢？undefined1">
+  
+    <link rel="alternate" href="/atom.xml" title="config.title" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/blog/assets/images/global/favicon.ico" >
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/css/page.css">
+  <script src="/blog/js/vue.min.js"></script>
+  <script>window.PAGE_TYPE = ""</script>
+</head>
+<body class="docs">
+  
+  <div id="mobile-bar" >
+  <a class="menu-button"></a>
+  <a class="logo" href="/"></a>
+  
+    <a class="back" href="javascript:history.go(-1)"></a>
+  
+</div>
+  <div id="header">
+  <a id="logo" href="/">
+    <img src="/blog/img/avatar.jpg">
+    <span>香辣猪蹄儿</span>
+  </a>
+  <ul id="nav">
+    <li><a href="/blog" class="nav-link">首页</a></li>
+<li><a href="/blog/archives" class="nav-link">文章列表</a></li>
+<li><a href="/blog/tags" class="nav-link">标签列表</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">文档</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="/blog/docs/alibaba" class="nav-link">阿里巴巴java开发手册解读</a></li>
+    <li><a href="/blog/docs/es6" class="nav-link">ES6温故而知新</a></li>
+  </ul>
+</li>
+  </ul>
+</div>
+
+  <div id="main" class="fix-sidebar">
+      
+    <div class="sidebar blog">
+        <ul class="main-menu">
+            <li><a href="/blog" class="nav-link">首页</a></li>
+<li><a href="/blog/archives" class="nav-link">文章列表</a></li>
+<li><a href="/blog/tags" class="nav-link">标签列表</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">文档</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="/blog/docs/alibaba" class="nav-link">阿里巴巴java开发手册解读</a></li>
+    <li><a href="/blog/docs/es6" class="nav-link">ES6温故而知新</a></li>
+  </ul>
+</li>
+        </ul>
+        <div class="list">
+            <h2>
+                最新文章
+            </h2>
+            <ul style="padding:0">
+            
+            
+                
+                    <li>
+                        <a href="/blog/2017/04/27/2017-04-27-scopechain/" class="sidebar-link current">js作用域链</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2017/04/01/2017-04-01-easytiny-1/" class="sidebar-link">easytiny 简易说明</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2017/03/26/2017-03-26-hexo-theme-yvue-1/" class="sidebar-link">(多图慎入!)类vue官网的hexo主题yvue发布Beta0.1版本</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2017/03/25/2017-03-25-es6-4/" class="sidebar-link">Promises</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2017/03/25/2017-03-25-es6-3/" class="sidebar-link">Modules</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2017/03/19/2017-03-19-es6-2/" class="sidebar-link">Default + Rest + Spread</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2017/03/19/2017-03-19-es6-1/" class="sidebar-link">Arrows and Lexical This</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2017/02/23/2017-02-23-javarule-9/" class="sidebar-link">阿里巴巴java开发手册解读9-其他编程规约</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2017/02/23/2017-02-23-javarule-8/" class="sidebar-link">阿里巴巴java开发手册解读8-注释规约</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2017/02/22/2017-02-22-javarule-7/" class="sidebar-link">阿里巴巴java开发手册解读7-控制语句</a>
+                    </li>
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+            </ul>
+        </div>
+    </div>
+    <div class="content with-sidebar blog post">
+        <h1>js作用域链</h1>
+        <h4>4月 27, 2017</h4>
+        <h3 id="1-Scope-Chain"><a href="#1-Scope-Chain" class="headerlink" title="1. Scope Chain"></a>1. Scope Chain</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> cao = <span class="number">1</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(cao);</div><div class="line">    <span class="keyword">var</span> cao = <span class="number">2</span>;</div><div class="line">&#125;</div><div class="line">f();</div><div class="line"><span class="built_in">console</span>.log(cao);</div></pre></td></tr></table></figure>
+<p>输出的结果是什么呢？<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">undefined</div><div class="line">1</div></pre></td></tr></table></figure></p>
+<a id="more"></a>
+<p>搬出小红书的概念定义：</p>
+<blockquote>
+<ol>
+<li>每个函数都有自己的执行环境。当执行流进入一个函数时,函数的环境就会被推入一个环境栈中。 而在函数执行之后,栈将其环境弹出,把控制权返回给之前的执行环境。</li>
+<li>当代码在一个环境中执行时,会创建变量对象的一个作用域链(scope chain)。作用域链的用途,是保证对执行环境有权访问的所有变量和函数的有序访问。作用域链的前端,始终都是当前执行的代码所在环境的变量对象。如果这个环境是函数,则将其活动对象(activation object)作为变量对象。活动对象在最开始时只包含一个变量,即 arguments 对象(这个对象在全局环境中是不存在的)。作用域链中的下一个变量对象来自包含(外部)环境,而再下一个变量对象则来自下一个包含环境。这样,一直延续到全局执行环境;全局执行环境的变量对象始终都是作用域链中的最后一个对象。</li>
+</ol>
+</blockquote>
+<p>最佳实践都告诉我们js编程应该在函数的最开始声明变量，可是在遵守这个规则的时候，之前却一直不明白为什么要这样做。上面的例子就是一个违反最佳实践后的奇怪场景：在全局环境中声明了一个变量，然后在函数中调用了这个全局变量。如果在之后不巧又声明了一个同名的局部变量，前面对全局变量的引用就出现了奇怪的undefined。<br>在严格模式或者eslint中，重复声明都会报错。所以上面的例子可以作为是一道对js作用域链加深理解的题目。</p>
+<p>上面这个例子的分析：<br>step1: 这段代码共有两个执行环境：全局环境和f()的局部环境<br>step2: 全局环境中有一个变量<code>cao</code> 和 一个函数 <code>f()</code><br>step3: f()中有一个变量<code>cao</code></p>
+<blockquote>
+<p>这里需要注意的就是在js的作用域中，var 声明的变量提升提升的是变量的声明，并不会把变量的赋值也提升上来</p>
+</blockquote>
+<p>step4: f()函数执行到<code>console.log(cao)</code>这一句时，先在作用域链最顶端查找，也就是f()内部这个作用域，因为<code>var cao = 2;</code>被提升，而此时还没有被赋值，所以此时<code>cao</code>是<code>undefined</code>，f()内的代码等同于<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> cao;</div><div class="line">    <span class="built_in">console</span>.log(cao);</div><div class="line">    cao = <span class="number">2</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>step5: f()执行完后，对应的f()的执行环境从环境栈中弹出，进入全局执行环境。此时在f()内的变量被js的垃圾回收标记为可清除<br>step6: 执行到最后一句，<code>console.log(cao)</code>在全局作用域中查找，打印出<code>cao</code>的值 1</p>
+<h3 id="2-函数声明的提升"><a href="#2-函数声明的提升" class="headerlink" title="2. 函数声明的提升"></a>2. 函数声明的提升</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">f();</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'cao'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个是常见的写法。输出<code>cao</code>。但是为什么可以这样写？因为在进入执行环境的时候，会把执行环境中var声明的变量还有声明的函数首先存在所在环境的变量对象中。需要注意的是，只有这种函数声明形式，才能被提升。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">f();</div><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'cao'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>这个就会直接抛异常了。因为f的声明提升了，赋值并没有提升。所以f最开始时是<code>undefined</code>，并不是一个函数，所以直接抛异常。</p>
+<h3 id="3-js垃圾回收机制"><a href="#3-js垃圾回收机制" class="headerlink" title="3. js垃圾回收机制"></a>3. js垃圾回收机制</h3><ul>
+<li>标记清除</li>
+</ul>
+<p>当变量进入执行环境时，标记这个变量正在被这个执行环境使用，离开执行环境时，标记变量离开了这个执行环境。离开当前执行环境的变量，就可以被回收了。</p>
+<ul>
+<li>引用计数</li>
+</ul>
+<p>引用计数的含义是跟踪记录每 个值被引用的次数。当声明了一个变量并将一个引用类型值赋给该变量时,则这个值的引用次数就是 1。 如果同一个值又被赋给另一个变量,则该值的引用次数加 1。相反,如果包含对这个值引用的变量又取 得了另外一个值,则这个值的引用次数减 1。当这个值的引用次数变成 0 时,则说明没有办法再访问这 个值了,因而就可以将其占用的内存空间回收回来。</p>
+<blockquote>
+<p>引用计数的垃圾回收机制在循环引用时会无法正常工作，因为互相引用导致变量的引用计数一直不会变为0.也就无法回收，最终导致内存溢出。IE9以下就因为其BOM和DOM对象使用的COM采用了引用计数而存在内存泄漏的问题。IE9之后已修复这个问题。</p>
+</blockquote>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> element = <span class="built_in">document</span>.getElementById(<span class="string">"some_element"</span>);</div><div class="line"><span class="keyword">var</span> myObject = <span class="keyword">new</span> <span class="built_in">Object</span>();</div><div class="line">myObject.element = element;</div><div class="line">element.someObject = myObject;</div></pre></td></tr></table></figure>
+<p>这个例子在一个 DOM 元素(element)与一个原生 JavaScript 对象(myObject)之间创建了循环引用。<br>IE9之后，已经没有此问题。其他的一些现代浏览器都是采用的标记清除的垃圾回收机制，都不会存在内存泄漏的问题。</p>
+
+        <div class="guide-links">
+            
+            
+                <span style="float:right"><a href="/blog/2017/04/01/2017-04-01-easytiny-1/">easytiny 简易说明</a> →</span>
+            
+        </div>
+    </div>
+
+  </div>
+  
+  
+<script>
+var topScrolled = false
+window.addEventListener('scroll', function () {
+  if (window.pageYOffset > 165 && !topScrolled) {
+    topScrolled = true
+    document.getElementById('mobile-bar').classList.remove('top')
+  } else if (window.pageYOffset <= 165 && topScrolled) {
+    topScrolled = false
+    document.getElementById('mobile-bar').classList.add('top')
+  }
+})
+</script>
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/blog/js/script.js"></script>
+<script src="/blog/js/common.js"></script>
+<script>
+
+    let $a = document.querySelectorAll('.blog p:not(.article-more-link)>a,.content.docs p>a,.article-inner p:not(.article-more-link)>a')
+    $a.forEach(($em) => {
+      $em.setAttribute('target', '_blank')
+    })
+
+</script>
+
+</body>
+</html>
+
