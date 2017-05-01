@@ -8,18 +8,18 @@
     js作用域链|香辣猪蹄儿
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. Scope Chainvar cao = 1;function f() &amp;#123;    console.log(cao);    var cao = 2;&amp;#125;f();console.log(cao);
+  <meta name="description" content="1. Scope Chainvar test = 1;function f() &amp;#123;    console.log(test);    var test = 2;&amp;#125;f();console.log(test);
 输出的结果是什么呢？undefined1">
 <meta property="og:type" content="article">
 <meta property="og:title" content="js作用域链">
 <meta property="og:url" content="http://yvshuo.github.io/2017/04/27/2017-04-27-scopechain/index.html">
 <meta property="og:site_name" content="香辣猪蹄儿">
-<meta property="og:description" content="1. Scope Chainvar cao = 1;function f() &amp;#123;    console.log(cao);    var cao = 2;&amp;#125;f();console.log(cao);
+<meta property="og:description" content="1. Scope Chainvar test = 1;function f() &amp;#123;    console.log(test);    var test = 2;&amp;#125;f();console.log(test);
 输出的结果是什么呢？undefined1">
-<meta property="og:updated_time" content="2017-04-27T14:40:02.000Z">
+<meta property="og:updated_time" content="2017-05-01T11:17:28.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js作用域链">
-<meta name="twitter:description" content="1. Scope Chainvar cao = 1;function f() &amp;#123;    console.log(cao);    var cao = 2;&amp;#125;f();console.log(cao);
+<meta name="twitter:description" content="1. Scope Chainvar test = 1;function f() &amp;#123;    console.log(test);    var test = 2;&amp;#125;f();console.log(test);
 输出的结果是什么呢？undefined1">
   
     <link rel="alternate" href="/atom.xml" title="config.title" type="application/atom+xml">
@@ -177,8 +177,8 @@
     </div>
     <div class="content with-sidebar blog post">
         <h1>js作用域链</h1>
-        <h4>4月 27, 2017</h4>
-        <h3 id="1-Scope-Chain"><a href="#1-Scope-Chain" class="headerlink" title="1. Scope Chain"></a>1. Scope Chain</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> cao = <span class="number">1</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(cao);</div><div class="line">    <span class="keyword">var</span> cao = <span class="number">2</span>;</div><div class="line">&#125;</div><div class="line">f();</div><div class="line"><span class="built_in">console</span>.log(cao);</div></pre></td></tr></table></figure>
+        <h4>Apr 27, 2017</h4>
+        <h3 id="1-Scope-Chain"><a href="#1-Scope-Chain" class="headerlink" title="1. Scope Chain"></a>1. Scope Chain</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> test = <span class="number">1</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(test);</div><div class="line">    <span class="keyword">var</span> test = <span class="number">2</span>;</div><div class="line">&#125;</div><div class="line">f();</div><div class="line"><span class="built_in">console</span>.log(test);</div></pre></td></tr></table></figure>
 <p>输出的结果是什么呢？<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">undefined</div><div class="line">1</div></pre></td></tr></table></figure></p>
 <a id="more"></a>
 <p>搬出小红书的概念定义：</p>
@@ -189,14 +189,14 @@
 </ol>
 </blockquote>
 <p>最佳实践都告诉我们js编程应该在函数的最开始声明变量，可是在遵守这个规则的时候，之前却一直不明白为什么要这样做。上面的例子就是一个违反最佳实践后的奇怪场景：在全局环境中声明了一个变量，然后在函数中调用了这个全局变量。如果在之后不巧又声明了一个同名的局部变量，前面对全局变量的引用就出现了奇怪的undefined。<br>在严格模式或者eslint中，重复声明都会报错。所以上面的例子可以作为是一道对js作用域链加深理解的题目。</p>
-<p>上面这个例子的分析：<br>step1: 这段代码共有两个执行环境：全局环境和f()的局部环境<br>step2: 全局环境中有一个变量<code>cao</code> 和 一个函数 <code>f()</code><br>step3: f()中有一个变量<code>cao</code></p>
+<p>上面这个例子的分析：<br>step1: 这段代码共有两个执行环境：全局环境和f()的局部环境<br>step2: 全局环境中有一个变量<code>test</code> 和 一个函数 <code>f()</code><br>step3: f()中有一个变量<code>test</code></p>
 <blockquote>
 <p>这里需要注意的就是在js的作用域中，var 声明的变量提升提升的是变量的声明，并不会把变量的赋值也提升上来</p>
 </blockquote>
-<p>step4: f()函数执行到<code>console.log(cao)</code>这一句时，先在作用域链最顶端查找，也就是f()内部这个作用域，因为<code>var cao = 2;</code>被提升，而此时还没有被赋值，所以此时<code>cao</code>是<code>undefined</code>，f()内的代码等同于<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> cao;</div><div class="line">    <span class="built_in">console</span>.log(cao);</div><div class="line">    cao = <span class="number">2</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p>step5: f()执行完后，对应的f()的执行环境从环境栈中弹出，进入全局执行环境。此时在f()内的变量被js的垃圾回收标记为可清除<br>step6: 执行到最后一句，<code>console.log(cao)</code>在全局作用域中查找，打印出<code>cao</code>的值 1</p>
-<h3 id="2-函数声明的提升"><a href="#2-函数声明的提升" class="headerlink" title="2. 函数声明的提升"></a>2. 函数声明的提升</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">f();</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'cao'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
-<p>这个是常见的写法。输出<code>cao</code>。但是为什么可以这样写？因为在进入执行环境的时候，会把执行环境中var声明的变量还有声明的函数首先存在所在环境的变量对象中。需要注意的是，只有这种函数声明形式，才能被提升。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">f();</div><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'cao'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>step4: f()函数执行到<code>console.log(test)</code>这一句时，先在作用域链最顶端查找，也就是f()内部这个作用域，因为<code>var test = 2;</code>被提升，而此时还没有被赋值，所以此时<code>test</code>是<code>undefined</code>，f()内的代码等同于<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="keyword">var</span> test;</div><div class="line">    <span class="built_in">console</span>.log(test);</div><div class="line">    test = <span class="number">2</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>step5: f()执行完后，对应的f()的执行环境从环境栈中弹出，进入全局执行环境。此时在f()内的变量被js的垃圾回收标记为可清除<br>step6: 执行到最后一句，<code>console.log(test)</code>在全局作用域中查找，打印出<code>test</code>的值 1</p>
+<h3 id="2-函数声明的提升"><a href="#2-函数声明的提升" class="headerlink" title="2. 函数声明的提升"></a>2. 函数声明的提升</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">f();</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'test'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<p>这个是常见的写法。输出<code>test</code>。但是为什么可以这样写？因为在进入执行环境的时候，会把执行环境中var声明的变量还有声明的函数首先存在所在环境的变量对象中。需要注意的是，只有这种函数声明形式，才能被提升。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">f();</div><div class="line"><span class="keyword">var</span> f = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</div><div class="line">    <span class="built_in">console</span>.log(<span class="string">'test'</span>);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>这个就会直接抛异常了。因为f的声明提升了，赋值并没有提升。所以f最开始时是<code>undefined</code>，并不是一个函数，所以直接抛异常。</p>
 <h3 id="3-js垃圾回收机制"><a href="#3-js垃圾回收机制" class="headerlink" title="3. js垃圾回收机制"></a>3. js垃圾回收机制</h3><ul>
 <li>标记清除</li>
