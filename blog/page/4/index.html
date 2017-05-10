@@ -87,6 +87,62 @@
   </div>
 </div>
 
+	<article id="post-2017-01-16-refactor" class="article article-type-post content" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2017/01/16/2017-01-16-refactor/" class="article-date">
+  <time datetime="2017-01-16T03:03:47.000Z" itemprop="datePublished">2017-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/01/16/2017-01-16-refactor/">重构—重新组织函数</a>
+    </h1>
+  
+
+      </header>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/重构/">重构</a></li></ul>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>上次单位人力让挑书，然后选了这本《重构-改善既有代码的设计》这本书，作者Martin Fowler是ThoughtWorks公司的首席科学家。虽然书写于很多年前，但是很多思想在编程中依然非常实用。书里主要是讲的各种重构的手法，但是我觉得看完之后，个人感觉更重要的是告诉自己在写代码的过程中如何从源头上注意一些问题，让自己的代码更合理，更优美。最初选这本书也是因为觉得需要超脱语言的层面去理解一些编程的宏观的一些东西，不然总是觉得自己像个机器一样，写着代码，却不懂怎么写更好，为什么别人都那样分层。书已经看了一遍，似乎明白了一些哪些代码好一些、哪些代码差一点。<br>最近再一边读一边记下这个系列的读书笔记，算是记录吧~</p>
+<h2 id="1-代码的坏味道"><a href="#1-代码的坏味道" class="headerlink" title="1. 代码的坏味道"></a>1. 代码的坏味道</h2><ul>
+<li>重复代码：如果在两个不相关的类中出现了重复的相同功能的函数，就应该考虑新建一个独立的类将这个重复的函数提炼出去。</li>
+<li>过长函数：写代码的过程中，有一个原则。<strong>代码块越小，代码的功能就越容易管理，代码的处理和移动也就越轻松。</strong></li>
+<li>过大的类：一个类的代码太多的话，最后就会变成一坨，嗯。尽量将特别大的类进行分解。</li>
+<li>过长的参数列:拆成bean。</li>
+<li>switch泛滥：作者的建议是少用switch，在使用switch的地方考虑使用多态来解决。</li>
+<li>数据泥团：数据成群的绑在一起。正确的做法是将总是绑定在一起的数据放到一个对象里。</li>
+<li>发散式变化：多种变化都对应同一个类的修改。这种情况下需要考虑将这个类拆开，尽量每种变化只对应一个类的修改。</li>
+<li>霰弹式修改：这个类一旦变化，会引发多个类的修改。这种情况下应该尽量将所有需要修改的方法放到一个类里。</li>
+</ul>
+<h2 id="2-重新组织函数"><a href="#2-重新组织函数" class="headerlink" title="2. 重新组织函数"></a>2. 重新组织函数</h2><h3 id="2-1-extract-method（提炼函数）"><a href="#2-1-extract-method（提炼函数）" class="headerlink" title="2.1 extract method（提炼函数）"></a>2.1 extract method（提炼函数）</h3><p>1) 没有局部变量，直接提炼。<br>2) 有局部变量，把这个局部变量作为参数传入被提炼函数<br>3) 如果需要对局部变量赋值，得需要使用remove Assignments to parameters.如果被赋值的局部变量只在被提炼的函数中被赋值，则把这个局部变量声明到被提炼函数中。如果被赋值的局部变量需要在被提炼的函数其它的地方使用，则需要被提炼函数返回一个被修改后的值。如果遇到返回的不止一个值，则最好的方法是再重新提炼一个新的方法，每次只返回一个值最佳。</p>
+<p><code>before</code>:<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">printOwing</span><span class="params">(<span class="keyword">double</span> amount)</span></span>&#123;</div><div class="line">    printBanner();</div><div class="line">    <span class="comment">//print details</span></div><div class="line">    System.out.println(<span class="string">"amount:"</span>+amount);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>after</code>:<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">printOwing</span><span class="params">(<span class="keyword">double</span> amount)</span></span>&#123;</div><div class="line">    printBanner();</div><div class="line">    printDetails(amount);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">printDetails</span><span class="params">(<span class="keyword">double</span> amount)</span></span>&#123;</div><div class="line">    System.out.println(<span class="string">"amount:"</span>+amount);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        
+          <p class="article-more-link">
+            <a href="/blog/2017/01/16/2017-01-16-refactor/#more">More&gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <!--<a data-url="http://yvshuo.github.io/blog/2017/01/16/2017-01-16-refactor/" data-id="cj2j0hrvq00056xe9spb1icr0" class="article-share-link">Share</a>-->
+      <!---->
+    </footer>
+  </div>
+  
+</article>
+
+
+
 	<article id="post-2017-01-11-review-git" class="article article-type-post content" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2017/01/11/2017-01-11-review-git/" class="article-date">
@@ -131,7 +187,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2017/01/11/2017-01-11-review-git/" data-id="cj2igpy2o000a2ne91xqys3if" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/blog/2017/01/11/2017-01-11-review-git/" data-id="cj2j0hrvn00036xe9zt2x7svp" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -180,7 +236,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2016/11/27/2016-11-27-wxapp/" data-id="cj2igpy3u000g2ne9j04b6ovq" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/blog/2016/11/27/2016-11-27-wxapp/" data-id="cj2j0hrvo00046xe9kloombwg" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -225,7 +281,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2016/11/15/2016-11-15-eslint/" data-id="cj2igpy3s000e2ne9yfwx34li" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/blog/2016/11/15/2016-11-15-eslint/" data-id="cj2j0hrw2000g6xe9s5i2zm19" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -269,7 +325,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2016/10/26/2016-10-26-webpacknote/" data-id="cj2igpy2h00052ne9x0jgxa3j" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/blog/2016/10/26/2016-10-26-webpacknote/" data-id="cj2j0hrvz000b6xe9fji4mjih" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -314,51 +370,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2016/10/11/2016-10-11-closure/" data-id="cj2igpy2f00032ne9bty9aq8r" class="article-share-link">Share</a>-->
-      <!---->
-    </footer>
-  </div>
-  
-</article>
-
-
-
-	<article id="post-2016-10-07-githubssh" class="article article-type-post content" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2016/10/07/2016-10-07-githubssh/" class="article-date">
-  <time datetime="2016-10-07T04:31:27.000Z" itemprop="datePublished">2016-10-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/10/07/2016-10-07-githubssh/">配置hexo的一键打包部署</a>
-    </h1>
-  
-
-      </header>
-    
-    
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/hexo/">hexo</a></li></ul>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天研究了一下hexo的自动打包部署，记录一下。</p>
-<h2 id="配置github的ssh"><a href="#配置github的ssh" class="headerlink" title="配置github的ssh"></a>配置github的ssh</h2><h3 id="本地生成公钥"><a href="#本地生成公钥" class="headerlink" title="本地生成公钥"></a>本地生成公钥</h3><p>运行 git Bash 客户端，检查是否已经配置过SSH key。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~/.ssh</div><div class="line">$ ls</div></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/blog/2016/10/07/2016-10-07-githubssh/#more">More&gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2016/10/07/2016-10-07-githubssh/" data-id="cj2igpy2j00072ne9ly4wy1vb" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/blog/2016/10/11/2016-10-11-closure/" data-id="cj2j0hrvi00016xe97ayig5oz" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>

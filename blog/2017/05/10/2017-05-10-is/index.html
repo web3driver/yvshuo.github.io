@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    
+  
+  <title>
+    javascript常见判断研究|香辣猪蹄儿
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="我的参考对象是 is 这个被经常使用的npm包。
+在研究这个包之前，先看一看最新版本的ECMASCRIPT对类型的基本介绍：
+
+The ECMAScript language types are Undefined, Null, Boolean, String, Symbol, Number, and Object.Undefined : The Undefined type has exactl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="javascript常见判断研究">
+<meta property="og:url" content="http://yvshuo.github.io/2017/05/10/2017-05-10-is/index.html">
+<meta property="og:site_name" content="香辣猪蹄儿">
+<meta property="og:description" content="我的参考对象是 is 这个被经常使用的npm包。
+在研究这个包之前，先看一看最新版本的ECMASCRIPT对类型的基本介绍：
+
+The ECMAScript language types are Undefined, Null, Boolean, String, Symbol, Number, and Object.Undefined : The Undefined type has exactl">
+<meta property="og:updated_time" content="2017-05-10T16:35:39.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="javascript常见判断研究">
+<meta name="twitter:description" content="我的参考对象是 is 这个被经常使用的npm包。
+在研究这个包之前，先看一看最新版本的ECMASCRIPT对类型的基本介绍：
+
+The ECMAScript language types are Undefined, Null, Boolean, String, Symbol, Number, and Object.Undefined : The Undefined type has exactl">
+  
+    <link rel="alternate" href="/atom.xml" title="config.title" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/blog/assets/images/global/favicon.ico" >
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/css/page.css">
+  <script src="/blog/js/vue.min.js"></script>
+  <script>window.PAGE_TYPE = ""</script>
+</head>
+<body class="docs">
+  
+  <div id="mobile-bar" >
+  <a class="menu-button"></a>
+  <a class="logo" href="/"></a>
+  
+    <a class="back" href="javascript:history.go(-1)"></a>
+  
+</div>
+  <div id="header">
+  <a id="logo" href="/">
+    <img src="/blog/img/avatar.jpg">
+    <span>香辣猪蹄儿</span>
+  </a>
+  <ul id="nav">
+    <li><a href="/blog" class="nav-link">首页</a></li>
+<li><a href="/blog/archives" class="nav-link">文章列表</a></li>
+<li><a href="/blog/tags" class="nav-link">标签列表</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">文档</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="/blog/docs/alibaba" class="nav-link">阿里巴巴java开发手册解读</a></li>
+    <li><a href="/blog/docs/es6" class="nav-link">ES6温故而知新</a></li>
+  </ul>
+</li>
+  </ul>
+</div>
+
+  <div id="main" class="fix-sidebar">
+      
+    <div class="sidebar blog">
+        <ul class="main-menu">
+            <li><a href="/blog" class="nav-link">首页</a></li>
+<li><a href="/blog/archives" class="nav-link">文章列表</a></li>
+<li><a href="/blog/tags" class="nav-link">标签列表</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">文档</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="/blog/docs/alibaba" class="nav-link">阿里巴巴java开发手册解读</a></li>
+    <li><a href="/blog/docs/es6" class="nav-link">ES6温故而知新</a></li>
+  </ul>
+</li>
+        </ul>
+        <div class="list">
+            <h2>
+                最新文章
+            </h2>
+            <ul style="padding:0">
+            
+            
+                
+                    <li>
+                        <a href="/blog/2017/05/10/2017-05-10-is/" class="sidebar-link current">javascript常见判断研究</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2017/05/10/2017-05-10-NaN/" class="sidebar-link">说一说数组去重</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2017/04/27/2017-04-27-scopechain/" class="sidebar-link">js作用域链</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2017/04/01/2017-04-01-easytiny-1/" class="sidebar-link">easytiny 简易说明</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2017/03/26/2017-03-26-hexo-theme-yvue-1/" class="sidebar-link">(多图慎入!)类vue官网的hexo主题yvue发布Beta0.1版本</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2017/03/25/2017-03-25-es6-4/" class="sidebar-link">Promises</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2017/03/25/2017-03-25-es6-3/" class="sidebar-link">Modules</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2017/03/19/2017-03-19-es6-2/" class="sidebar-link">Default + Rest + Spread</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2017/03/19/2017-03-19-es6-1/" class="sidebar-link">Arrows and Lexical This</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2017/02/23/2017-02-23-javarule-9/" class="sidebar-link">阿里巴巴java开发手册解读9-其他编程规约</a>
+                    </li>
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+            </ul>
+        </div>
+    </div>
+    <div class="content with-sidebar blog post">
+        <h1>javascript常见判断研究</h1>
+        <h4>5月 10, 2017</h4>
+        <p>我的参考对象是 <a href="https://github.com/enricomarino/is" target="_blank" rel="external">is</a> 这个被经常使用的npm包。</p>
+<p>在研究这个包之前，先看一看最新版本的ECMASCRIPT对类型的基本介绍：</p>
+<blockquote>
+<p>The ECMAScript language types are Undefined, Null, Boolean, String, Symbol, Number, and Object.<br><code>Undefined</code> : The Undefined type has exactly one value, called undefined. Any variable that has not been assigned a value has the value undefined.<br><code>Null</code> : The Null type has exactly one value, called null.<br><code>Boolean</code> : The Boolean type represents a logical entity having two values, called true and false.<br><code>String</code> : The String type is the set of all ordered sequences of zero or more 16-bit unsigned integer values (“elements”) up to a maximum length of 253-1 elements.<br><code>Symbol</code> : The Symbol type is the set of all non-String values that may be used as the key of an Object property.<br><code>Number</code> : The Number type has exactly 18437736874454810627 (that is, 264-253+3) values, representing the double-precision 64-bit format IEEE 754-2008 values as specified in the IEEE Standard for Binary Floating-Point Arithmetic, except that the 9007199254740990 (that is, 253-2) distinct “Not-a-Number” values of the IEEE Standard are represented in ECMAScript as a single special NaN value. There are two other special values, called positive Infinity and negative Infinity.<br><code>Object</code> : An Object is logically a collection of properties.</p>
+<p><em>引自 <a href="https://tc39.github.io/ecma262/" target="_blank" rel="external">https://tc39.github.io/ecma262/</a></em></p>
+</blockquote>
+<a id="more"></a>
+<h3 id="1、基本判断"><a href="#1、基本判断" class="headerlink" title="1、基本判断"></a>1、基本判断</h3><ul>
+<li><p>undefined<br>虽然<code>Object.prototype.toString.call(undefined) === &#39;[object Undefined]&#39;</code>可以返回true,但是对于未定义的变量会报错，所以还是使用typeof来判断。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isUndefined</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="keyword">typeof</span> value === <span class="string">'undefined'</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>null</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">注意 <span class="string">`typeof null`</span>是<span class="string">`object`</span>。</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isNull</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> value === <span class="literal">null</span>;</div><div class="line">&#125;;</div></pre></td></tr></table></figure>
+</li>
+<li><p>boolean</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isBoolean</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">'[object Boolean]'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>string</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isString</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">'[object String]'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>number</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isNumber</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">'[object Number]'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>object</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isObject</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">'[object Object]'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>function</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isFunction</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> isAlert = <span class="keyword">typeof</span> <span class="built_in">window</span> !== <span class="string">'undefined'</span> &amp;&amp; value === <span class="built_in">window</span>.alert;</div><div class="line">  <span class="keyword">if</span> (isAlert) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">var</span> str = <span class="built_in">Object</span>.prototype.toString.call(value);</div><div class="line">  <span class="keyword">return</span> str === <span class="string">'[object Function]'</span> || str === <span class="string">'[object GeneratorFunction]'</span> || str === <span class="string">'[object AsyncFunction]'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>regExp</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isRegExp</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">'[object RegExp]'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>array</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArray</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> <span class="built_in">Object</span>.prototype.toString.call(value) === <span class="string">'[object Array]'</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+<h3 id="2、特殊的一些判断"><a href="#2、特殊的一些判断" class="headerlink" title="2、特殊的一些判断"></a>2、特殊的一些判断</h3><ul>
+<li><p>判断一个值是否为空</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isEmpty</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">  <span class="keyword">var</span> type = <span class="built_in">Object</span>.prototype.toString.call(value);</div><div class="line">  <span class="keyword">var</span> key;</div><div class="line">  <span class="keyword">if</span> (type === <span class="string">'[object Array]'</span> || type === <span class="string">'[object Arguments]'</span> || type === <span class="string">'[object String]'</span>) &#123;</div><div class="line">    <span class="keyword">return</span> value.length === <span class="number">0</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (type === <span class="string">'[object Object]'</span>) &#123;</div><div class="line">    <span class="keyword">for</span> (key <span class="keyword">in</span> value) &#123;</div><div class="line">      <span class="keyword">if</span> (<span class="built_in">Object</span>.prototype.hasOwnProperty.call(value, key)) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> !value;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+<li><p>判断两个值是否相等</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isEqual</span> (<span class="params">value, other</span>) </span>&#123;</div><div class="line">  <span class="comment">// 基本类型直接判断</span></div><div class="line">  <span class="keyword">if</span> (value === other) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">var</span> type = <span class="built_in">Object</span>.prototype.toString.call(value);</div><div class="line">  <span class="keyword">var</span> key;</div><div class="line">  <span class="keyword">if</span> (type !== <span class="built_in">Object</span>.prototype.toString.call(other)) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// 遍历key和值，都相等的话相等</span></div><div class="line">  <span class="keyword">if</span> (type === <span class="string">'[object Object]'</span>) &#123;</div><div class="line">    <span class="keyword">for</span> (key <span class="keyword">in</span> value) &#123;</div><div class="line">      <span class="keyword">if</span> (!isEqual(value[key], other[key]) || !(key <span class="keyword">in</span> other)) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (key <span class="keyword">in</span> other) &#123;</div><div class="line">      <span class="keyword">if</span> (!is.equal(value[key], other[key]) || !(key <span class="keyword">in</span> value)) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (type === <span class="string">'[object Array]'</span>) &#123;</div><div class="line">    key = value.length;</div><div class="line">    <span class="keyword">if</span> (key !== other.length) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span> (key--) &#123;</div><div class="line">      <span class="keyword">if</span> (!isEqual(value[key], other[key])) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// 这个。。见仁见智吧</span></div><div class="line">  <span class="keyword">if</span> (type === <span class="string">'[object Function]'</span>) &#123;</div><div class="line">    <span class="keyword">return</span> value.prototype === other.prototype;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (type === <span class="string">'[object Date]'</span>) &#123;</div><div class="line">    <span class="keyword">return</span> value.getTime() === other.getTime();</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
+</ul>
+
+        <div class="guide-links">
+            
+            
+                <span style="float:right"><a href="/blog/2017/05/10/2017-05-10-NaN/">说一说数组去重</a> →</span>
+            
+        </div>
+    </div>
+
+  </div>
+  
+  
+<script>
+var topScrolled = false
+window.addEventListener('scroll', function () {
+  if (window.pageYOffset > 165 && !topScrolled) {
+    topScrolled = true
+    document.getElementById('mobile-bar').classList.remove('top')
+  } else if (window.pageYOffset <= 165 && topScrolled) {
+    topScrolled = false
+    document.getElementById('mobile-bar').classList.add('top')
+  }
+})
+</script>
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/blog/js/script.js"></script>
+<script src="/blog/js/common.js"></script>
+<script>
+
+    let $a = document.querySelectorAll('.blog p:not(.article-more-link)>a,.content.docs p>a,.article-inner p:not(.article-more-link)>a')
+    $a.forEach(($em) => {
+      $em.setAttribute('target', '_blank')
+    })
+
+</script>
+
+</body>
+</html>
+
