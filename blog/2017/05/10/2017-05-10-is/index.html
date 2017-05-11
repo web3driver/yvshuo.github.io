@@ -20,7 +20,7 @@ The ECMAScript language types are Undefined, Null, Boolean, String, Symbol, Numb
 在研究这个包之前，先看一看最新版本的ECMASCRIPT对类型的基本介绍：
 
 The ECMAScript language types are Undefined, Null, Boolean, String, Symbol, Number, and Object.Undefined : The Undefined type has exactl">
-<meta property="og:updated_time" content="2017-05-10T16:35:39.000Z">
+<meta property="og:updated_time" content="2017-05-11T13:52:03.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="javascript常见判断研究">
 <meta name="twitter:description" content="我的参考对象是 is 这个被经常使用的npm包。
@@ -187,7 +187,7 @@ The ECMAScript language types are Undefined, Null, Boolean, String, Symbol, Numb
     </div>
     <div class="content with-sidebar blog post">
         <h1>javascript常见判断研究</h1>
-        <h4>5月 10, 2017</h4>
+        <h4>May 10, 2017</h4>
         <p>我的参考对象是 <a href="https://github.com/enricomarino/is" target="_blank" rel="external">is</a> 这个被经常使用的npm包。</p>
 <p>在研究这个包之前，先看一看最新版本的ECMASCRIPT对类型的基本介绍：</p>
 <blockquote>
@@ -231,7 +231,37 @@ The ECMAScript language types are Undefined, Null, Boolean, String, Symbol, Numb
 <li><p>判断两个值是否相等</p>
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isEqual</span> (<span class="params">value, other</span>) </span>&#123;</div><div class="line">  <span class="comment">// 基本类型直接判断</span></div><div class="line">  <span class="keyword">if</span> (value === other) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">var</span> type = <span class="built_in">Object</span>.prototype.toString.call(value);</div><div class="line">  <span class="keyword">var</span> key;</div><div class="line">  <span class="keyword">if</span> (type !== <span class="built_in">Object</span>.prototype.toString.call(other)) &#123;</div><div class="line">    <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// 遍历key和值，都相等的话相等</span></div><div class="line">  <span class="keyword">if</span> (type === <span class="string">'[object Object]'</span>) &#123;</div><div class="line">    <span class="keyword">for</span> (key <span class="keyword">in</span> value) &#123;</div><div class="line">      <span class="keyword">if</span> (!isEqual(value[key], other[key]) || !(key <span class="keyword">in</span> other)) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">for</span> (key <span class="keyword">in</span> other) &#123;</div><div class="line">      <span class="keyword">if</span> (!is.equal(value[key], other[key]) || !(key <span class="keyword">in</span> value)) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (type === <span class="string">'[object Array]'</span>) &#123;</div><div class="line">    key = value.length;</div><div class="line">    <span class="keyword">if</span> (key !== other.length) &#123;</div><div class="line">      <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">while</span> (key--) &#123;</div><div class="line">      <span class="keyword">if</span> (!isEqual(value[key], other[key])) &#123;</div><div class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">      &#125;</div><div class="line">    &#125;</div><div class="line">    <span class="keyword">return</span> <span class="literal">true</span>;</div><div class="line">  &#125;</div><div class="line">  <span class="comment">// 这个。。见仁见智吧</span></div><div class="line">  <span class="keyword">if</span> (type === <span class="string">'[object Function]'</span>) &#123;</div><div class="line">    <span class="keyword">return</span> value.prototype === other.prototype;</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">if</span> (type === <span class="string">'[object Date]'</span>) &#123;</div><div class="line">    <span class="keyword">return</span> value.getTime() === other.getTime();</div><div class="line">  &#125;</div><div class="line">  <span class="keyword">return</span> <span class="literal">false</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
 </li>
+<li><p>检测类数组对象<br>因为标准里对类数组的定义并不是很明确，所以我还是更倾向于犀牛书里的这个检验方法。</p>
+<figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">isArrayLike</span> (<span class="params">value</span>) </span>&#123;</div><div class="line">  <span class="keyword">return</span> !!value &amp;&amp; <span class="keyword">typeof</span> value === <span class="string">'object'</span></div><div class="line">    &amp;&amp; <span class="built_in">Object</span>.prototype.hasOwnProperty.call(value, <span class="string">'length'</span>)</div><div class="line">    &amp;&amp; <span class="built_in">Object</span>.prototype.toString.call(value.length) === <span class="string">'[object Number]'</span></div><div class="line">    &amp;&amp; <span class="built_in">isFinite</span>(value.length)</div><div class="line">    &amp;&amp; value.length % <span class="number">1</span> === <span class="number">0</span></div><div class="line">    &amp;&amp; value.length &gt;= <span class="number">0</span></div><div class="line">    &amp;&amp; value.length &lt; <span class="number">2</span>^<span class="number">53</span> - <span class="number">1</span>;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+</li>
 </ul>
+<p><code>is</code>库中并没有校验<code>length</code>的属性是否为整数，然后我给作者提了一个PR，和其中一位作者有了 <a href="https://github.com/enricomarino/is/pull/31" target="_blank" rel="external">#31</a>里的讨论。。。<br>他说因为标准里会把array-like数组的length属性转成整数，所以并不需要这样的校验。</p>
+<blockquote>
+<p>This is a great intuition to spot - but this isn’t actually required; the spec coerces non-integers to integers (see <a href="https://tc39.github.io/ecma262/#sec-createlistfromarraylike" target="_blank" rel="external">https://tc39.github.io/ecma262/#sec-createlistfromarraylike</a> step 3), so { length: 1.2, 0: ‘a’ } is a perfectly valid arraylike.</p>
+<p><em><a href="https://github.com/enricomarino/is/pull/31" target="_blank" rel="external">https://github.com/enricomarino/is/pull/31</a></em></p>
+</blockquote>
+<p>其实我心里还是有些不明白的，既然标准里使用length属性时候会规定执行<code>tolength</code>，那么标准里的tolength是这么说的：</p>
+<blockquote>
+<p>The abstract operation ToLength converts argument to an integer suitable for use as the length of an array-like object. It performs the following steps:</p>
+<ol>
+<li>Let len be ? ToInteger(argument). // 转成整数</li>
+<li>If len ≤ +0, return +0. // 转成+0</li>
+<li>Return min(len, 2^53-1). // 取有限位</li>
+</ol>
+<p><em><a href="https://tc39.github.io/ecma262/#sec-tolength" target="_blank" rel="external">https://tc39.github.io/ecma262/#sec-tolength</a></em></p>
+</blockquote>
+<p>再看看<code>tointeger</code>:</p>
+<blockquote>
+<p>The abstract operation ToInteger converts argument to an integral numeric value. This abstract operation functions as follows:</p>
+<ol>
+<li>Let number be ? ToNumber(argument).</li>
+<li>If number is NaN, return +0.</li>
+<li>If number is +0, -0, +∞, or -∞, return number.</li>
+<li>Return the number value that is the same sign as number and whose magnitude is floor(abs(number)).</li>
+</ol>
+<p><em><a href="https://tc39.github.io/ecma262/#sec-tointeger" target="_blank" rel="external">https://tc39.github.io/ecma262/#sec-tointeger</a></em></p>
+</blockquote>
+<p>那么按照他的说法，我们也不需要校验这个数是否为正以及是否有限了。<br>于是又追了一个问题。<br>个人认为，虽然说js编译器可能不会在意你的类数组的length是否为一些奇怪的属性或值，但是我觉得正常情况下，length是这些值的话还是显得有些奇怪。所以我觉得还是应该都校验一下。以及希望ECMA262啥时候能给一个标准的array-like的定义。</p>
 
         <div class="guide-links">
             
