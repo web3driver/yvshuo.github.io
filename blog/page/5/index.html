@@ -87,6 +87,51 @@
   </div>
 </div>
 
+	<article id="post-2016-10-11-closure" class="article article-type-post content" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2016/10/11/2016-10-11-closure/" class="article-date">
+  <time datetime="2016-10-11T15:21:48.000Z" itemprop="datePublished">2016-10-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/10/11/2016-10-11-closure/">一篇关于javascript闭包的笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/js/">js</a></li></ul>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>今天读到了一篇讲<a href="http://web.jobbole.com/88167/">闭包的文章</a>，是我目前看到的最透彻的一篇闭包的讲解。趁热记一下笔记。</p>
+<p>在我以前的认识中，一直觉得闭包就是在js中提供了一种类似于java中get方法的功能，使我们可以通过闭包来访问到函数体内的局部变量。然鹅，我的理解也就顶多意会了闭包的一点皮毛。下面就直接通过代码来记录一下这篇文章中写到的知识点。</p>
+<h3 id="静态作用域的理解"><a href="#静态作用域的理解" class="headerlink" title="静态作用域的理解"></a>静态作用域的理解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">10</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;	</div><div class="line">  <span class="keyword">var</span> y = x + <span class="number">5</span>;	</div><div class="line">  <span class="keyword">return</span> y;	</div><div class="line">&#125;	</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123; 	</div><div class="line">  <span class="keyword">var</span> x = <span class="number">2</span>;	</div><div class="line">  <span class="keyword">return</span> foo();	</div><div class="line">&#125;	</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">main</span>(<span class="params"></span>) </span>&#123;	</div><div class="line">  foo(); <span class="comment">// Static scope: 15; Dynamic scope: 15	</span></div><div class="line">  bar(); <span class="comment">// Static scope: 15; Dynamic scope: 7	</span></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/blog/2016/10/11/2016-10-11-closure/#more">More&gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <!--<a data-url="http://yvshuo.github.io/blog/2016/10/11/2016-10-11-closure/" data-id="cj2uo0pwp0003she91gvf5dxs" class="article-share-link">Share</a>-->
+      <!---->
+    </footer>
+  </div>
+  
+</article>
+
+
+
 	<article id="post-2016-10-07-githubssh" class="article article-type-post content" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2016/10/07/2016-10-07-githubssh/" class="article-date">
@@ -122,7 +167,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2016/10/07/2016-10-07-githubssh/" data-id="cj2j0hrve00006xe9s5ybwcug" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/blog/2016/10/07/2016-10-07-githubssh/" data-id="cj2uo0pw70000she97sww66l8" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -168,7 +213,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2016/10/06/2016-10-06-create/" data-id="cj2j0hrvv00096xe9vn1phk3e" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/blog/2016/10/06/2016-10-06-create/" data-id="cj2uo0pwt0005she9i3oygbzl" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
