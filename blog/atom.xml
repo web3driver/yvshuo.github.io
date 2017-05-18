@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://yvshuo.github.io/"/>
-  <updated>2017-05-18T17:09:23.000Z</updated>
+  <updated>2017-05-18T17:21:03.000Z</updated>
   <id>http://yvshuo.github.io/</id>
   
   <author>
@@ -20,16 +20,16 @@
     <link href="http://yvshuo.github.io/2017/05/19/2017-05-19-kotlin/"/>
     <id>http://yvshuo.github.io/2017/05/19/2017-05-19-kotlin/</id>
     <published>2017-05-18T16:15:54.000Z</published>
-    <updated>2017-05-18T17:09:23.000Z</updated>
+    <updated>2017-05-18T17:21:03.000Z</updated>
     
     <content type="html"><![CDATA[<p>昨天的Google2017 I/O大会上公布了安卓O版本，最惹人注目的就是新增了对kotlin的支持。本文是对官网一篇入门资源文章的翻译。<br>原文地址(需要科学上网)：<em><a href="https://developer.android.com/kotlin/resources.html" target="_blank" rel="external">https://developer.android.com/kotlin/resources.html</a></em></p>
 <h2 id="文档"><a href="#文档" class="headerlink" title="文档"></a>文档</h2><ul>
 <li><a href="https://kotlinlang.org/" target="_blank" rel="external">Kotlinlang.org</a>：<code>Kotlin</code>的官方网站。包含从<a href="https://kotlinlang.org/docs/reference/basic-syntax.html" target="_blank" rel="external">基本语法入门</a>到<a href="https://kotlinlang.org/api/latest/jvm/stdlib/index.html" target="_blank" rel="external">标准库文档</a>的所有信息。</li>
-<li><p><a href="https://try.kotlinlang.org/" target="_blank" rel="external">Kotlin Koans Online</a>:提供一系列的在线练习题来帮助学习<code>Kotlin</code>的语法。</p>
-<a id="more"></a>
-<h2 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h2></li>
-<li><p><a href="https://www.youtube.com/results?search_query=Kotlin+on+Android" target="_blank" rel="external">YouTube</a>:使用“Kotlin on Android”作为关键字搜索可以找到很多高质量的技术话题。</p>
+<li><a href="https://try.kotlinlang.org/" target="_blank" rel="external">Kotlin Koans Online</a>:提供一系列的在线练习题来帮助学习<code>Kotlin</code>的语法。<a id="more"></a>
 </li>
+</ul>
+<h2 id="视频"><a href="#视频" class="headerlink" title="视频"></a>视频</h2><ul>
+<li><a href="https://www.youtube.com/results?search_query=Kotlin+on+Android" target="_blank" rel="external">YouTube</a>:使用“Kotlin on Android”作为关键字搜索可以找到很多高质量的技术话题。</li>
 <li><a href="http://shop.oreilly.com/product/0636920052982.do" target="_blank" rel="external">O’Reilly course</a>:一个8小时的<code>Kotlin</code>课程，“Introduction to Kotlin Programming”，由 JerBrains 的一个开发工程师制作。需要交钱订阅，提供10天的免费体验。</li>
 <li><a href="https://teamtreehouse.com/library/kotlin-for-java-developers" target="_blank" rel="external">Treehouse course</a>:”Kotlin for Java Developers”，包含<code>Kotlin</code>在安卓上的使用。需要交钱订阅，提供7天的免费体验。</li>
 <li><a href="https://www.udemy.com/kotlin-course/" target="_blank" rel="external">Udemy course</a>:”Kotlin for Beginners”，从入门开始教<code>Kotlin</code>。需要交钱订阅。新的学生可以打折。</li>
@@ -74,7 +74,7 @@
       &lt;p&gt;昨天的Google2017 I/O大会上公布了安卓O版本，最惹人注目的就是新增了对kotlin的支持。本文是对官网一篇入门资源文章的翻译。&lt;br&gt;原文地址(需要科学上网)：&lt;em&gt;&lt;a href=&quot;https://developer.android.com/kotlin/resources.html&quot;&gt;https://developer.android.com/kotlin/resources.html&lt;/a&gt;&lt;/em&gt;&lt;/p&gt;
 &lt;h2 id=&quot;文档&quot;&gt;&lt;a href=&quot;#文档&quot; class=&quot;headerlink&quot; title=&quot;文档&quot;&gt;&lt;/a&gt;文档&lt;/h2&gt;&lt;ul&gt;
 &lt;li&gt;&lt;a href=&quot;https://kotlinlang.org/&quot;&gt;Kotlinlang.org&lt;/a&gt;：&lt;code&gt;Kotlin&lt;/code&gt;的官方网站。包含从&lt;a href=&quot;https://kotlinlang.org/docs/reference/basic-syntax.html&quot;&gt;基本语法入门&lt;/a&gt;到&lt;a href=&quot;https://kotlinlang.org/api/latest/jvm/stdlib/index.html&quot;&gt;标准库文档&lt;/a&gt;的所有信息。&lt;/li&gt;
-&lt;li&gt;&lt;p&gt;&lt;a href=&quot;https://try.kotlinlang.org/&quot;&gt;Kotlin Koans Online&lt;/a&gt;:提供一系列的在线练习题来帮助学习&lt;code&gt;Kotlin&lt;/code&gt;的语法。&lt;/p&gt;
+&lt;li&gt;&lt;a href=&quot;https://try.kotlinlang.org/&quot;&gt;Kotlin Koans Online&lt;/a&gt;:提供一系列的在线练习题来帮助学习&lt;code&gt;Kotlin&lt;/code&gt;的语法。
     
     </summary>
     
