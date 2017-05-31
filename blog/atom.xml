@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://yvshuo.github.io/"/>
-  <updated>2017-05-18T17:21:03.000Z</updated>
+  <updated>2017-05-31T14:46:19.000Z</updated>
   <id>http://yvshuo.github.io/</id>
   
   <author>
@@ -14,6 +14,36 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>六一</title>
+    <link href="http://yvshuo.github.io/2017/05/31/2017-05-31-sixone-md/"/>
+    <id>http://yvshuo.github.io/2017/05/31/2017-05-31-sixone-md/</id>
+    <published>2017-05-31T14:23:44.000Z</published>
+    <updated>2017-05-31T14:46:19.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>刚刚听完尤大的知乎live，近距离的了解了一个框架作者对于前端框架中涉及到的一些问题的理解。深深的觉得前端知识体系的浩大。</p>
+<p>处在这个前端发展的大潮中，作为一名小小的前端er，有时候会很迷茫。但是也很庆幸能见证前端的不断发展。</p>
+<p>当前端只是需要满足页面展示需求的时候，可能我一个jquery+CSS就能很好的满足自己的业务需求。</p>
+<p>而现在的前端已经变成了一个有庞大工程化体系的东西，有的工具负责构建，有的工具负责代码质量控制，还有的工具负责代码优化。每一个领域都在纵向上向着更深层次发展。</p>
+<p>面对着繁杂的框架和工具，希望自己能了解这些框架和工具背后的思想，解决了什么问题，还有哪些其他方案，各有什么优缺点，适用于什么范围…等等。</p>
+<p>没有一劳永逸的技术方案，只有适合某个场景的解决方式。</p>
+<p>前端路漫漫，需要不停的学习。<br>打好基础，多问为什么。<br>不要被工具和库束缚，不光是用，更要知为何用。</p>
+<p>写在17年六一前，写给仍在前端路上蹒跚学步的自己。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;刚刚听完尤大的知乎live，近距离的了解了一个框架作者对于前端框架中涉及到的一些问题的理解。深深的觉得前端知识体系的浩大。&lt;/p&gt;
+&lt;p&gt;处在这个前端发展的大潮中，作为一名小小的前端er，有时候会很迷茫。但是也很庆幸能见证前端的不断发展。&lt;/p&gt;
+&lt;p&gt;当前端只是需要满足页
+    
+    </summary>
+    
+    
+      <category term="杂" scheme="http://yvshuo.github.io/tags/%E6%9D%82/"/>
+    
+  </entry>
   
   <entry>
     <title>kotlin学习资源</title>
