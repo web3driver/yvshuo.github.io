@@ -190,7 +190,16 @@
     </div>
     <div class="content with-sidebar blog post">
         <h1>阿里巴巴java开发手册解读2-常量定义</h1>
-        <h4>Feb 10, 2017</h4>
+        <h4>Feb 10, 2017
+            
+            
+                <span id="/blog/2017/02/10/2017-02-10-javarule-2/" class="leancloud_visitors" data-flag-title="阿里巴巴java开发手册解读2-常量定义">
+                    <span class="leancloud-visitors-count"></span>
+                </span>
+            
+        </h4>
+        
+        
         <h3 id="1-【强制】不允许出现任何魔法值-即未经定义的常量-直接出现在代码中"><a href="#1-【强制】不允许出现任何魔法值-即未经定义的常量-直接出现在代码中" class="headerlink" title="1. 【强制】不允许出现任何魔法值(即未经定义的常量)直接出现在代码中"></a>1. 【强制】不允许出现任何魔法值(即未经定义的常量)直接出现在代码中</h3><p><code>反例</code>: String key=”Id#taobao_”+tradeId;<br>cache.put(key, value);</p>
 <blockquote>
 <p><strong>批注</strong>:<br>正确的做法应该是维护一个常量表或者在类起始位置定义常量<br><code>正解</code>：<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">final</span> String PREFIX_TRADEID = <span class="string">"Id#taobao_"</span>;</div><div class="line">String key=PREFIX_TRADEID+tradeId;</div><div class="line">cache.put(key, value);</div></pre></td></tr></table></figure></p>
@@ -243,6 +252,115 @@ window.addEventListener('scroll', function () {
     })
 
 </script>
+
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("HmeL0Aj2Mp5kT83LC723uQtt-gzGzoHsz", "0dnLgsnCdC4dFXd4wMci4Nyn");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
 
 </body>
 </html>

@@ -187,7 +187,16 @@
     </div>
     <div class="content with-sidebar blog post">
         <h1>使用hexo在github上搭建博客的记录</h1>
-        <h4>Oct 6, 2016</h4>
+        <h4>Oct 6, 2016
+            
+            
+                <span id="/blog/2016/10/06/2016-10-06-create/" class="leancloud_visitors" data-flag-title="使用hexo在github上搭建博客的记录">
+                    <span class="leancloud-visitors-count"></span>
+                </span>
+            
+        </h4>
+        
+        
         <p>工作已经一年了，想着该稍微停下来总结一下了。恰巧印象笔记开始限终端限流量。于是就有了写博客记录一下日常感想，同时将之前的一些笔记迁移到博客的想法。</p>
 <p>在github闲逛的时候看到了<a href="https://litten.github.io/" target="_blank" rel="external">Litten</a>的博客，很是喜欢。于是发现了<a href="https://hexo.io/" target="_blank" rel="external">hexo</a>,各种特性都让我甚是喜欢，就这么对Hexo一见钟情了。在知乎上搜到了一篇介绍<a href="https://www.zhihu.com/question/24422335" target="_blank" rel="external">hexo主题</a>的回答,一圈看下来，还是比较喜欢<a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="external">Yilia</a>这个主题，也就是我最早看到的Litten开发的~缘分啊，（逃</p>
 <p>于是果断决定使用这个主题，计划着先直接用着，后续有时间的话自己也试着DIY一下自己的主题。</p>
@@ -249,6 +258,115 @@ window.addEventListener('scroll', function () {
     })
 
 </script>
+
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("HmeL0Aj2Mp5kT83LC723uQtt-gzGzoHsz", "0dnLgsnCdC4dFXd4wMci4Nyn");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
 
 </body>
 </html>

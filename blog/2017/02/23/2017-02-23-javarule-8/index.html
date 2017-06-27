@@ -187,7 +187,16 @@
     </div>
     <div class="content with-sidebar blog post">
         <h1>阿里巴巴java开发手册解读8-注释规约</h1>
-        <h4>Feb 23, 2017</h4>
+        <h4>Feb 23, 2017
+            
+            
+                <span id="/blog/2017/02/23/2017-02-23-javarule-8/" class="leancloud_visitors" data-flag-title="阿里巴巴java开发手册解读8-注释规约">
+                    <span class="leancloud-visitors-count"></span>
+                </span>
+            
+        </h4>
+        
+        
         <h3 id="1-【强制】类、类属性、类方法的注释必须使用-Javadoc-规范-使用-内容-格式-不得使用-xxx-方式。"><a href="#1-【强制】类、类属性、类方法的注释必须使用-Javadoc-规范-使用-内容-格式-不得使用-xxx-方式。" class="headerlink" title="1. 【强制】类、类属性、类方法的注释必须使用 Javadoc 规范,使用/*内容/格式,不得使用 //xxx 方式。"></a>1. 【强制】类、类属性、类方法的注释必须使用 Javadoc 规范,使用/<em>*内容</em>/格式,不得使用 //xxx 方式。</h3><p>说明:在 IDE 编辑窗口中,Javadoc 方式会提示相关注释,生成 Javadoc 可以正确输出相应注释;<br>在 IDE 中,工程调用方法时,不进入方法即可悬浮提示方法、参数、返回值的意义,提高阅读效率。</p>
 <h3 id="2-【强制】所有的抽象方法-包括接口中的方法-必须要用-Javadoc-注释、除了返回值、参数、异常说明外-还必须指出该方法做什么事情-实现什么功能。"><a href="#2-【强制】所有的抽象方法-包括接口中的方法-必须要用-Javadoc-注释、除了返回值、参数、异常说明外-还必须指出该方法做什么事情-实现什么功能。" class="headerlink" title="2. 【强制】所有的抽象方法(包括接口中的方法)必须要用 Javadoc 注释、除了返回值、参数、异常说明外,还必须指出该方法做什么事情,实现什么功能。"></a>2. 【强制】所有的抽象方法(包括接口中的方法)必须要用 Javadoc 注释、除了返回值、参数、异常说明外,还必须指出该方法做什么事情,实现什么功能。</h3><p>说明:对子类的实现要求,或者调用注意事项,请一并说明。</p>
 <h3 id="3-【强制】所有的类都必须添加创建者信息。"><a href="#3-【强制】所有的类都必须添加创建者信息。" class="headerlink" title="3. 【强制】所有的类都必须添加创建者信息。"></a>3. 【强制】所有的类都必须添加创建者信息。</h3><h3 id="4-【强制】方法内部单行注释-在被注释语句上方另起一行-使用-注释。方法内部多行注释使用-注释-注意与代码对齐。"><a href="#4-【强制】方法内部单行注释-在被注释语句上方另起一行-使用-注释。方法内部多行注释使用-注释-注意与代码对齐。" class="headerlink" title="4. 【强制】方法内部单行注释,在被注释语句上方另起一行,使用//注释。方法内部多行注释使用/ /注释,注意与代码对齐。"></a>4. 【强制】方法内部单行注释,在被注释语句上方另起一行,使用//注释。方法内部多行注释使用/<em> </em>/注释,注意与代码对齐。</h3><h3 id="5-【强制】所有的枚举类型字段必须要有注释-说明每个数据项的用途。"><a href="#5-【强制】所有的枚举类型字段必须要有注释-说明每个数据项的用途。" class="headerlink" title="5. 【强制】所有的枚举类型字段必须要有注释,说明每个数据项的用途。"></a>5. 【强制】所有的枚举类型字段必须要有注释,说明每个数据项的用途。</h3><h3 id="6-【推荐】与其“半吊子”英文来注释-不如用中文注释把问题说清楚。专有名词与关键字保持英文原文即可。"><a href="#6-【推荐】与其“半吊子”英文来注释-不如用中文注释把问题说清楚。专有名词与关键字保持英文原文即可。" class="headerlink" title="6. 【推荐】与其“半吊子”英文来注释,不如用中文注释把问题说清楚。专有名词与关键字保持英文原文即可。"></a>6. 【推荐】与其“半吊子”英文来注释,不如用中文注释把问题说清楚。专有名词与关键字保持英文原文即可。</h3><p><code>反例</code>:“TCP 连接超时”解释成“传输控制协议连接超时”,理解反而费脑筋。<br><a id="more"></a></p>
@@ -234,6 +243,115 @@ window.addEventListener('scroll', function () {
     })
 
 </script>
+
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("HmeL0Aj2Mp5kT83LC723uQtt-gzGzoHsz", "0dnLgsnCdC4dFXd4wMci4Nyn");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
 
 </body>
 </html>

@@ -187,7 +187,16 @@
     </div>
     <div class="content with-sidebar blog post">
         <h1>阿里巴巴java开发手册解读9-其他编程规约</h1>
-        <h4>Feb 23, 2017</h4>
+        <h4>Feb 23, 2017
+            
+            
+                <span id="/blog/2017/02/23/2017-02-23-javarule-9/" class="leancloud_visitors" data-flag-title="阿里巴巴java开发手册解读9-其他编程规约">
+                    <span class="leancloud-visitors-count"></span>
+                </span>
+            
+        </h4>
+        
+        
         <h3 id="1-【强制】在使用正则表达式时-利用好其预编译功能-可以有效加快正则匹配速度。"><a href="#1-【强制】在使用正则表达式时-利用好其预编译功能-可以有效加快正则匹配速度。" class="headerlink" title="1. 【强制】在使用正则表达式时,利用好其预编译功能,可以有效加快正则匹配速度。"></a>1. 【强制】在使用正则表达式时,利用好其预编译功能,可以有效加快正则匹配速度。</h3><p>说明:不要在方法体内定义:<code>Pattern pattern = Pattern.compile(规则);</code></p>
 <h3 id="2-【强制】velocity-调用-POJO-类的属性时-建议直接使用属性名取值即可-模板引擎会自动按规范调用-POJO-的-getXxx-如果是-boolean-基本数据类型变量-boolean-命名不需要加-is-前缀-会自动调用-isXxx-方法。"><a href="#2-【强制】velocity-调用-POJO-类的属性时-建议直接使用属性名取值即可-模板引擎会自动按规范调用-POJO-的-getXxx-如果是-boolean-基本数据类型变量-boolean-命名不需要加-is-前缀-会自动调用-isXxx-方法。" class="headerlink" title="2. 【强制】velocity 调用 POJO 类的属性时,建议直接使用属性名取值即可,模板引擎会自动按规范调用 POJO 的 getXxx(),如果是 boolean 基本数据类型变量(boolean 命名不需要加 is 前缀),会自动调用 isXxx()方法。"></a>2. 【强制】velocity 调用 POJO 类的属性时,建议直接使用属性名取值即可,模板引擎会自动按规范调用 POJO 的 getXxx(),如果是 boolean 基本数据类型变量(boolean 命名不需要加 is 前缀),会自动调用 isXxx()方法。</h3><p>说明:注意如果是 Boolean 包装类对象,优先调用 getXxx()的方法。</p>
 <h3 id="3-【强制】后台输送给页面的变量必须加-var-——中间的感叹号。"><a href="#3-【强制】后台输送给页面的变量必须加-var-——中间的感叹号。" class="headerlink" title="3. 【强制】后台输送给页面的变量必须加$!{var}——中间的感叹号。"></a>3. 【强制】后台输送给页面的变量必须加$!{var}——中间的感叹号。</h3><p>说明:如果 var=null 或者不存在,那么${var}会直接显示在页面上。</p>
@@ -232,6 +241,115 @@ window.addEventListener('scroll', function () {
     })
 
 </script>
+
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("HmeL0Aj2Mp5kT83LC723uQtt-gzGzoHsz", "0dnLgsnCdC4dFXd4wMci4Nyn");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
 
 </body>
 </html>
