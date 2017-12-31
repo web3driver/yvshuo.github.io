@@ -14,7 +14,7 @@
 <meta property="og:url" content="http://yvshuo.github.io/2017/10/27/2017-10-27-refactor-review/index.html">
 <meta property="og:site_name" content="香辣猪蹄儿">
 <meta property="og:description" content="最近在对一个很老的PC项目部分代码重构。看了一眼最早的一次提交记录是2011年的。。。到现在已经有16000多次的提交- -经历过的人少说也有将近20。所以重构的过程实在是艰辛。所以说为什么之前都说要有代码规范，现在为什么要有各种各样的lint以及引入强类型的typescript。经历过这种重构之后才会有切身的体会。哭一会去。">
-<meta property="og:updated_time" content="2017-12-31T15:58:50.000Z">
+<meta property="og:updated_time" content="2017-12-31T16:08:43.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="重构项目总结">
 <meta name="twitter:description" content="最近在对一个很老的PC项目部分代码重构。看了一眼最早的一次提交记录是2011年的。。。到现在已经有16000多次的提交- -经历过的人少说也有将近20。所以重构的过程实在是艰辛。所以说为什么之前都说要有代码规范，现在为什么要有各种各样的lint以及引入强类型的typescript。经历过这种重构之后才会有切身的体会。哭一会去。">
@@ -186,7 +186,7 @@
     </div>
     <div class="content with-sidebar blog post">
         <h1>重构项目总结</h1>
-        <h4>10月 27, 2017
+        <h4>Oct 27, 2017
             
             
                 <span id="/blog/2017/10/27/2017-10-27-refactor-review/" class="leancloud_visitors" data-flag-title="重构项目总结">
@@ -210,6 +210,8 @@
 <p>就可以统一写成一样的。当然，这个例子只是一种比较简单的情况，有些复杂的if-else嵌套，其实很多都是可以用数学知识稍微推算一下重写一下的。</p>
 <h4 id="flag区分不易抽出的深层逻辑"><a href="#flag区分不易抽出的深层逻辑" class="headerlink" title="flag区分不易抽出的深层逻辑"></a>flag区分不易抽出的深层逻辑</h4><p>有些逻辑颗粒度本身就已经很小，很难再进一步单独抽出，这种就需要用flag来区分一下。</p>
 <h4 id="extend单独写独有逻辑"><a href="#extend单独写独有逻辑" class="headerlink" title="extend单独写独有逻辑"></a>extend单独写独有逻辑</h4><p>譬如一个子类继承的父类的一个 <code>func</code> 方法，但是自己又有一些独有的逻辑功能，就可以写一个 <code>func_extend</code> 的方法来写这一块的逻辑。当然，父类得留这段逻辑的口子。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">func () &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">  func_extend &amp;&amp; func_extend();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<h4 id="合并init、initEvent、initParams等主逻辑分支代码"><a href="#合并init、initEvent、initParams等主逻辑分支代码" class="headerlink" title="合并init、initEvent、initParams等主逻辑分支代码"></a>合并init、initEvent、initParams等主逻辑分支代码</h4><p>这里差不多就是主干逻辑了，和上面的方法类似。唯一需要注意的就是之前在构造函数里声明的一些成员变量提出到initParams里时的顺序。保证用的时候能调用到。</p>
+<h3 id="3-小结"><a href="#3-小结" class="headerlink" title="3. 小结"></a>3. 小结</h3><p>其实上面的这些总结很早前就写完了，博客也很久没更新了。不是没有东西可写，而是这半年深度思考了一些，也真正意义上的用到了一些前端新的技术。发这篇文章的时间已经是2018年了。准备最近把博客捡起来了，另外也会把博客代码重写一下，迁到react。加油了，2018，一切又是崭新的~</p>
 
         <div class="guide-links">
             
