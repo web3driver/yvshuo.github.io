@@ -5,22 +5,19 @@
     
   
   <title>
-    阿里巴巴java开发手册解读7-控制语句|香辣猪蹄儿
+    重构项目总结|香辣猪蹄儿
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1. 【强制】在一个 switch 块内,每个 case 要么通过 break/return 等来终止,要么注释说明程序将继续执行到哪一个 case 为止;在一个 switch 块内,都必须包含一个 default 语句并且放在最后,即使它什么代码也没有。
-2. 【强制】在 if/else/for/while/do 语句中必须使用大括号,即使只有一行代码,避免使用下面的形式:if (conditi">
+  <meta name="description" content="最近在对一个很老的PC项目部分代码重构。看了一眼最早的一次提交记录是2011年的。。。到现在已经有16000多次的提交- -经历过的人少说也有将近20。所以重构的过程实在是艰辛。所以说为什么之前都说要有代码规范，现在为什么要有各种各样的lint以及引入强类型的typescript。经历过这种重构之后才会有切身的体会。哭一会去。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="阿里巴巴java开发手册解读7-控制语句">
-<meta property="og:url" content="http://yvshuo.github.io/2017/02/22/2017-02-22-javarule-7/index.html">
+<meta property="og:title" content="重构项目总结">
+<meta property="og:url" content="http://yvshuo.github.io/2017/10/27/2017-10-27-refactor-review/index.html">
 <meta property="og:site_name" content="香辣猪蹄儿">
-<meta property="og:description" content="1. 【强制】在一个 switch 块内,每个 case 要么通过 break/return 等来终止,要么注释说明程序将继续执行到哪一个 case 为止;在一个 switch 块内,都必须包含一个 default 语句并且放在最后,即使它什么代码也没有。
-2. 【强制】在 if/else/for/while/do 语句中必须使用大括号,即使只有一行代码,避免使用下面的形式:if (conditi">
-<meta property="og:updated_time" content="2017-03-16T13:42:44.000Z">
+<meta property="og:description" content="最近在对一个很老的PC项目部分代码重构。看了一眼最早的一次提交记录是2011年的。。。到现在已经有16000多次的提交- -经历过的人少说也有将近20。所以重构的过程实在是艰辛。所以说为什么之前都说要有代码规范，现在为什么要有各种各样的lint以及引入强类型的typescript。经历过这种重构之后才会有切身的体会。哭一会去。">
+<meta property="og:updated_time" content="2017-12-31T15:58:50.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="阿里巴巴java开发手册解读7-控制语句">
-<meta name="twitter:description" content="1. 【强制】在一个 switch 块内,每个 case 要么通过 break/return 等来终止,要么注释说明程序将继续执行到哪一个 case 为止;在一个 switch 块内,都必须包含一个 default 语句并且放在最后,即使它什么代码也没有。
-2. 【强制】在 if/else/for/while/do 语句中必须使用大括号,即使只有一行代码,避免使用下面的形式:if (conditi">
+<meta name="twitter:title" content="重构项目总结">
+<meta name="twitter:description" content="最近在对一个很老的PC项目部分代码重构。看了一眼最早的一次提交记录是2011年的。。。到现在已经有16000多次的提交- -经历过的人少说也有将近20。所以重构的过程实在是艰辛。所以说为什么之前都说要有代码规范，现在为什么要有各种各样的lint以及引入强类型的typescript。经历过这种重构之后才会有切身的体会。哭一会去。">
   
     <link rel="alternate" href="/atom.xml" title="config.title" type="application/atom+xml">
   
@@ -86,7 +83,7 @@
             
                 
                     <li>
-                        <a href="/blog/2017/10/27/2017-10-27-refactor-review/" class="sidebar-link">重构项目总结</a>
+                        <a href="/blog/2017/10/27/2017-10-27-refactor-review/" class="sidebar-link current">重构项目总结</a>
                     </li>
                 
             
@@ -188,33 +185,36 @@
         </div>
     </div>
     <div class="content with-sidebar blog post">
-        <h1>阿里巴巴java开发手册解读7-控制语句</h1>
-        <h4>Feb 22, 2017
+        <h1>重构项目总结</h1>
+        <h4>10月 27, 2017
             
             
-                <span id="/blog/2017/02/22/2017-02-22-javarule-7/" class="leancloud_visitors" data-flag-title="阿里巴巴java开发手册解读7-控制语句">
+                <span id="/blog/2017/10/27/2017-10-27-refactor-review/" class="leancloud_visitors" data-flag-title="重构项目总结">
                     <span class="leancloud-visitors-count"></span>
                 </span>
             
         </h4>
         
         
-        <h3 id="1-【强制】在一个-switch-块内-每个-case-要么通过-break-return-等来终止-要么注释说明程序将继续执行到哪一个-case-为止"><a href="#1-【强制】在一个-switch-块内-每个-case-要么通过-break-return-等来终止-要么注释说明程序将继续执行到哪一个-case-为止" class="headerlink" title="1. 【强制】在一个 switch 块内,每个 case 要么通过 break/return 等来终止,要么注释说明程序将继续执行到哪一个 case 为止;"></a>1. 【强制】在一个 switch 块内,每个 case 要么通过 break/return 等来终止,要么注释说明程序将继续执行到哪一个 case 为止;</h3><p>在一个 switch 块内,都必须包含一个 default 语句并且放在最后,即使它什么代码也没有。</p>
-<h3 id="2-【强制】在-if-else-for-while-do-语句中必须使用大括号-即使只有一行代码-避免使用下面的形式"><a href="#2-【强制】在-if-else-for-while-do-语句中必须使用大括号-即使只有一行代码-避免使用下面的形式" class="headerlink" title="2. 【强制】在 if/else/for/while/do 语句中必须使用大括号,即使只有一行代码,避免使用下面的形式:"></a>2. 【强制】在 if/else/for/while/do 语句中必须使用大括号,即使只有一行代码,避免使用下面的形式:</h3><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span> (condition) statements;</div></pre></td></tr></table></figure>
-<h3 id="3-【推荐】推荐尽量少用-else"><a href="#3-【推荐】推荐尽量少用-else" class="headerlink" title="3. 【推荐】推荐尽量少用 else"></a>3. 【推荐】推荐尽量少用 else</h3><p>if-else 的方式可以改写成:<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span>(condition)&#123;</div><div class="line">    ...</div><div class="line">    <span class="keyword">return</span> obj; </div><div class="line">&#125;</div><div class="line"><span class="comment">// 接着写 else 的业务逻辑代码;</span></div></pre></td></tr></table></figure></p>
-<p>说明:如果非得使用if()…else if()…else…方式表达逻辑,【强制】请勿超过3层,超过请使用状态设计模式。<br><code>正例</code>:逻辑上超过 3 层的 if-else 代码可以使用卫语句,或者状态模式来实现。<br><a id="more"></a></p>
-<h3 id="4-【推荐】除常用方法-如-getXxx-isXxx-等外-不要在条件判断中执行其它复杂的语句-将复杂逻辑判断的结果赋值给一个有意义的布尔变量名-以提高可读性。"><a href="#4-【推荐】除常用方法-如-getXxx-isXxx-等外-不要在条件判断中执行其它复杂的语句-将复杂逻辑判断的结果赋值给一个有意义的布尔变量名-以提高可读性。" class="headerlink" title="4. 【推荐】除常用方法(如 getXxx/isXxx)等外,不要在条件判断中执行其它复杂的语句,将复杂逻辑判断的结果赋值给一个有意义的布尔变量名,以提高可读性。"></a>4. 【推荐】除常用方法(如 getXxx/isXxx)等外,不要在条件判断中执行其它复杂的语句,将复杂逻辑判断的结果赋值给一个有意义的布尔变量名,以提高可读性。</h3><p>说明:很多 if 语句内的逻辑相当复杂,阅读者需要分析条件表达式的最终结果,才能明确什么样的条件执行什么样的语句,那么,如果阅读者分析逻辑表达式错误呢?<br><code>正例</code>:<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="comment">//伪代码如下</span></div><div class="line"><span class="keyword">boolean</span> existed = (file.open(fileName, <span class="string">"w"</span>) != <span class="keyword">null</span>) &amp;&amp; (...) || (...); </div><div class="line"><span class="keyword">if</span> (existed) &#123;</div><div class="line">    ... </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<p><code>反例</code>:<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span> ((file.open(fileName, <span class="string">"w"</span>) != <span class="keyword">null</span>) &amp;&amp; (...) || (...)) &#123; </div><div class="line">    ...</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-<h3 id="5-【推荐】循环体中的语句要考量性能"><a href="#5-【推荐】循环体中的语句要考量性能" class="headerlink" title="5. 【推荐】循环体中的语句要考量性能"></a>5. 【推荐】循环体中的语句要考量性能</h3><p>以下操作尽量移至循环体外处理,如定义对象、变量、获取数据库连接,进行不必要的 try-catch 操作(这个 try-catch 是否可以移至循环体外)。</p>
-<h3 id="6-【推荐】接口入参保护-这种场景常见的是用于做批量操作的接口。"><a href="#6-【推荐】接口入参保护-这种场景常见的是用于做批量操作的接口。" class="headerlink" title="6. 【推荐】接口入参保护,这种场景常见的是用于做批量操作的接口。"></a>6. 【推荐】接口入参保护,这种场景常见的是用于做批量操作的接口。</h3><h3 id="7-【参考】方法中需要进行参数校验的场景"><a href="#7-【参考】方法中需要进行参数校验的场景" class="headerlink" title="7. 【参考】方法中需要进行参数校验的场景:"></a>7. 【参考】方法中需要进行参数校验的场景:</h3><p><strong>1) 调用频次低的方法。</strong><br><strong>2) 执行时间开销很大的方法,参数校验时间几乎可以忽略不计,但如果因为参数错误导致中间执行回退,或者错误,那得不偿失。</strong><br><strong>3) 需要极高稳定性和可用性的方法。</strong><br><strong>4) 对外提供的开放接口,不管是RPC/API/HTTP接口。</strong><br><strong>5) 敏感权限入口。</strong></p>
-<h3 id="8-【参考】方法中不需要参数校验的场景"><a href="#8-【参考】方法中不需要参数校验的场景" class="headerlink" title="8. 【参考】方法中不需要参数校验的场景:"></a>8. 【参考】方法中不需要参数校验的场景:</h3><p><strong>1) 极有可能被循环调用的方法,不建议对参数进行校验。但在方法说明里必须注明外部参数检查。</strong><br><strong>2) 底层的方法调用频度都比较高,一般不校验。毕竟是像纯净水过滤的最后一道,参数错误不太可能到底层才会暴露问题。一般 DAO 层与 Service 层都在同一个应用中,部署在同一台服务器中,所以 DAO 的参数校验,可以省略。</strong><br><strong>3) 被声明成private只会被自己代码所调用的方法,如果能够确定调用方法的代码传入参数已经做过检查或者肯定不会有问题,此时可以不校验参数。</strong></p>
+        <p>最近在对一个很老的PC项目部分代码重构。看了一眼最早的一次提交记录是2011年的。。。到现在已经有16000多次的提交- -经历过的人少说也有将近20。所以重构的过程实在是艰辛。所以说为什么之前都说要有代码规范，现在为什么要有各种各样的lint以及引入强类型的typescript。经历过这种重构之后才会有切身的体会。哭一会去。</p>
+<a id="more"></a>
+<h3 id="1-重构时遇到的问题"><a href="#1-重构时遇到的问题" class="headerlink" title="1. 重构时遇到的问题"></a>1. 重构时遇到的问题</h3><p>需要被重构的代码大部分是基于prototype写的，每个小功能挂在一个命名空间下，然后这些会统一挂在一个统一的window对象下。</p>
+<h4 id="全局变量的问题"><a href="#全局变量的问题" class="headerlink" title="全局变量的问题"></a>全局变量的问题</h4><p>没有模块化。所以代码里好一点的情况是会从同一的namespace下取全局变量，不好的情况下就是一个很随意的命名，然后让人完全弄不清楚这个变量是哪里来的。</p>
+<h4 id="重复代码的问题"><a href="#重复代码的问题" class="headerlink" title="重复代码的问题"></a>重复代码的问题</h4><p>类似功能的代码在多个地方重复出现。估计是之前哪位不靠谱的人“ctrl+c、ctrl+v”编程，明明很相似的功能，结果直接把整个大类拷贝过来然后overwrite小功能。这样造成的结果就是，随着功能的不断迭代，这些最初很少的overwrite的功能不断的增多，出现在各个方法个不同if-else分支里，最终导致现在的代码很难按照正常的手段来重构。不能重构带来的问题就是对一个相似的功能需要在多个子类中写逻辑。维护起来非常麻烦。</p>
+<h4 id="缺少合理的设计模式"><a href="#缺少合理的设计模式" class="headerlink" title="缺少合理的设计模式"></a>缺少合理的设计模式</h4><p>正是因为没有在写这一块业务逻辑时候好好的设计一下代码，所以最终代码混乱不堪到影响维护以致需要大面积重构。真的是只有经历过这种让人抓狂的重构，才能明白代码模块化还有分层的重要性。你每一次随意的“ctrl+c、ctrl+v”都是对后来维护这段代码的人的一种折磨。。。</p>
+<h3 id="2-重构的步骤"><a href="#2-重构的步骤" class="headerlink" title="2. 重构的步骤"></a>2. 重构的步骤</h3><p>一开始走了一些弯路，试过将功能函数拆成纯函数，然后通过提取这些纯函数将公共功能抽出。也试过用组合继承把公共方法抽出，然后子类直接继承父类的方法并overwrite自己独有的方法。后来发现，还是用“单继承”比较好。子类深拷贝一份父类，这样可以共用父类和子类的this，就不用去烦恼原来namespace里那些挂在各个子类里的不同的this了。</p>
+<h4 id="抽出事件函数"><a href="#抽出事件函数" class="headerlink" title="抽出事件函数"></a>抽出事件函数</h4><p>代码里的事件函数是初始化时就注册了的，和代码的执行顺序无关。所以可以把每一个事件函数单独抽成一个函数，放在一个地方统一调用，相同功能的函数取一样的名字，这样后面就可以合并这些同一功能的函数。</p>
+<h4 id="拆分长面条函数"><a href="#拆分长面条函数" class="headerlink" title="拆分长面条函数"></a>拆分长面条函数</h4><p>有的函数一个函数就几百行，这种就需要把里面的逻辑分支尽可能的拆成小函数，这样才能把类似的逻辑抽出。</p>
+<h4 id="重写相同功能的函数"><a href="#重写相同功能的函数" class="headerlink" title="重写相同功能的函数"></a>重写相同功能的函数</h4><p>在不改变逻辑的情况下重写相同功能的函数。这种情况就是为了保持代码的一致，好方便最后统一抽出。例如：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> a = func();</div><div class="line"><span class="keyword">if</span> (a === <span class="literal">true</span>) &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>和<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span> (func() === <span class="literal">true</span>) &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>就可以统一写成一样的。当然，这个例子只是一种比较简单的情况，有些复杂的if-else嵌套，其实很多都是可以用数学知识稍微推算一下重写一下的。</p>
+<h4 id="flag区分不易抽出的深层逻辑"><a href="#flag区分不易抽出的深层逻辑" class="headerlink" title="flag区分不易抽出的深层逻辑"></a>flag区分不易抽出的深层逻辑</h4><p>有些逻辑颗粒度本身就已经很小，很难再进一步单独抽出，这种就需要用flag来区分一下。</p>
+<h4 id="extend单独写独有逻辑"><a href="#extend单独写独有逻辑" class="headerlink" title="extend单独写独有逻辑"></a>extend单独写独有逻辑</h4><p>譬如一个子类继承的父类的一个 <code>func</code> 方法，但是自己又有一些独有的逻辑功能，就可以写一个 <code>func_extend</code> 的方法来写这一块的逻辑。当然，父类得留这段逻辑的口子。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">func () &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">  func_extend &amp;&amp; func_extend();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 
         <div class="guide-links">
             
-                <span>← <a href="/blog/2017/02/23/2017-02-23-javarule-8/">阿里巴巴java开发手册解读8-注释规约</a></span>
             
-            
-                <span style="float:right"><a href="/blog/2017/02/18/2017-02-18-javarule-6/">阿里巴巴java开发手册解读6-并发处理</a> →</span>
+                <span style="float:right"><a href="/blog/2017/06/10/2017-06-10-vod/">腾讯云视频点播接口开发记录</a> →</span>
             
         </div>
     </div>

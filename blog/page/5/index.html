@@ -87,6 +87,55 @@
   </div>
 </div>
 
+	<article id="post-2016-11-27-wxapp" class="article article-type-post content" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2016/11/27/2016-11-27-wxapp/" class="article-date">
+  <time datetime="2016-11-27T03:03:47.000Z" itemprop="datePublished">2016-11-27</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2016/11/27/2016-11-27-wxapp/">微信小程序初体验</a>
+    </h1>
+  
+
+      </header>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/微信小程序/">微信小程序</a></li></ul>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>p.s. 这篇文章是一个月之前写的，因为最近忙于其他项目，所以一直没来维护这个博客~微信小程序貌似也有了新的更新。先把这篇贴上，后续填坑23333</p>
+<p>利用周末时间基于cnode社区的api撸了一发微信小程序，记录一下。</p>
+<h3 id="1、开发环境"><a href="#1、开发环境" class="headerlink" title="1、开发环境"></a>1、开发环境</h3><p>微信mac版开发工具0.11.112301<br>下载地址：<a href="https://servicewechat.com/wxa-dev-logic/download_redirect?type=darwin&amp;from=mpwiki&amp;t=20161122">使劲戳我</a><br>其他版本下载地址：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=20161122">继续戳我</a></p>
+<h3 id="2、项目创建"><a href="#2、项目创建" class="headerlink" title="2、项目创建"></a>2、项目创建</h3><p>扫码登录后按下图输入创建项目<br><img src="/blog/assets/images/2016/11/27/1.png" alt=""></p>
+<p>创建项目后界面的样子和默认的文件目录结构<br><img src="/blog/assets/images/2016/11/27/2.png" alt=""></p>
+<p>分析下目录结构<br><img src="/blog/assets/images/2016/11/27/3.png" alt=""><br><code>pages</code>目录下有两个页面，<code>index</code>和<code>logs</code>。<code>.js</code>文件是负责处理该页面的逻辑，<code>.wxml</code>负责视图以及绑定一些交互事件，<code>.wxss</code>来写css样式，<code>.json</code>用来配置一些配置参数或者定义一些静态常量。<br><code>utils</code>目录下是一个工具类。根目录下的<code>app.js</code>是小程序的入口文件，用来注册app。<code>app.json</code>可以用来配置全局常量，<code>app.wxss</code>用来配置项目的公用样式。</p>
+<p>初始程序提供了一个从<code>index</code>页面到<code>logs</code>页面的跳转<br><img src="/blog/assets/images/2016/11/27/4.png" alt=""><br><code>index.wxml</code>中绑定的<code>bindViewTab</code>函数就是前面在<code>index.js</code>中标出的那个函数。函数中调用微信小程序的api定义了一个跳转<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">bindViewTap: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    wx.navigateTo(&#123;</div><div class="line">      <span class="attr">url</span>: <span class="string">'../logs/logs'</span></div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        
+          <p class="article-more-link">
+            <a href="/blog/2016/11/27/2016-11-27-wxapp/#more">More&gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <!--<a data-url="http://yvshuo.github.io/blog/2016/11/27/2016-11-27-wxapp/" data-id="cjbuyxsvi0009tvs6ptkmddlh" class="article-share-link">Share</a>-->
+      <!---->
+    </footer>
+  </div>
+  
+</article>
+
+
+
 	<article id="post-2016-11-15-eslint" class="article article-type-post content" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2016/11/15/2016-11-15-eslint/" class="article-date">
@@ -123,7 +172,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2016/11/15/2016-11-15-eslint/" data-id="cj3r3myxr000ab5e9mt327kn8" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/blog/2016/11/15/2016-11-15-eslint/" data-id="cjbuyxsvf0006tvs6ah3404qq" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -167,7 +216,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2016/10/26/2016-10-26-webpacknote/" data-id="cj3r3myxl0006b5e9nntxc18y" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/blog/2016/10/26/2016-10-26-webpacknote/" data-id="cjbuyxsvb0005tvs61ya0hw7j" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -212,7 +261,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2016/10/11/2016-10-11-closure/" data-id="cj3r3mywz0001b5e98m8vqzzv" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/blog/2016/10/11/2016-10-11-closure/" data-id="cjbuyxsuz0002tvs6ypqbe1ug" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -256,7 +305,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2016/10/07/2016-10-07-githubssh/" data-id="cj3r3myxx000db5e9b3n3rvg6" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/blog/2016/10/07/2016-10-07-githubssh/" data-id="cjbuyxsv60004tvs61vdxw6ie" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -302,7 +351,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2016/10/06/2016-10-06-create/" data-id="cj3r3mywv0000b5e9va1vcpl7" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/blog/2016/10/06/2016-10-06-create/" data-id="cjbuyxsus0000tvs67z2iyo6m" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -322,7 +371,7 @@
   
 <div id="footer">
 	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260544287'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260544287' type='text/javascript'%3E%3C/script%3E"));</script>
-	&copy;2017 yvshuo
+	&copy;2018 yvshuo
 	<br>
 	Powered by <a href="https://github.com/yvshuo/hexo-theme-yvue" target="_blank">Yvue</a>
 </div>

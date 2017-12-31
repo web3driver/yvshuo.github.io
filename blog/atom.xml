@@ -5,7 +5,7 @@
   <link href="/blog/atom.xml" rel="self"/>
   
   <link href="http://yvshuo.github.io/"/>
-  <updated>2017-06-10T10:47:52.000Z</updated>
+  <updated>2017-12-31T15:58:50.000Z</updated>
   <id>http://yvshuo.github.io/</id>
   
   <author>
@@ -14,6 +14,40 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>重构项目总结</title>
+    <link href="http://yvshuo.github.io/2017/10/27/2017-10-27-refactor-review/"/>
+    <id>http://yvshuo.github.io/2017/10/27/2017-10-27-refactor-review/</id>
+    <published>2017-10-27T06:46:30.000Z</published>
+    <updated>2017-12-31T15:58:50.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>最近在对一个很老的PC项目部分代码重构。看了一眼最早的一次提交记录是2011年的。。。到现在已经有16000多次的提交- -经历过的人少说也有将近20。所以重构的过程实在是艰辛。所以说为什么之前都说要有代码规范，现在为什么要有各种各样的lint以及引入强类型的typescript。经历过这种重构之后才会有切身的体会。哭一会去。</p>
+<a id="more"></a>
+<h3 id="1-重构时遇到的问题"><a href="#1-重构时遇到的问题" class="headerlink" title="1. 重构时遇到的问题"></a>1. 重构时遇到的问题</h3><p>需要被重构的代码大部分是基于prototype写的，每个小功能挂在一个命名空间下，然后这些会统一挂在一个统一的window对象下。</p>
+<h4 id="全局变量的问题"><a href="#全局变量的问题" class="headerlink" title="全局变量的问题"></a>全局变量的问题</h4><p>没有模块化。所以代码里好一点的情况是会从同一的namespace下取全局变量，不好的情况下就是一个很随意的命名，然后让人完全弄不清楚这个变量是哪里来的。</p>
+<h4 id="重复代码的问题"><a href="#重复代码的问题" class="headerlink" title="重复代码的问题"></a>重复代码的问题</h4><p>类似功能的代码在多个地方重复出现。估计是之前哪位不靠谱的人“ctrl+c、ctrl+v”编程，明明很相似的功能，结果直接把整个大类拷贝过来然后overwrite小功能。这样造成的结果就是，随着功能的不断迭代，这些最初很少的overwrite的功能不断的增多，出现在各个方法个不同if-else分支里，最终导致现在的代码很难按照正常的手段来重构。不能重构带来的问题就是对一个相似的功能需要在多个子类中写逻辑。维护起来非常麻烦。</p>
+<h4 id="缺少合理的设计模式"><a href="#缺少合理的设计模式" class="headerlink" title="缺少合理的设计模式"></a>缺少合理的设计模式</h4><p>正是因为没有在写这一块业务逻辑时候好好的设计一下代码，所以最终代码混乱不堪到影响维护以致需要大面积重构。真的是只有经历过这种让人抓狂的重构，才能明白代码模块化还有分层的重要性。你每一次随意的“ctrl+c、ctrl+v”都是对后来维护这段代码的人的一种折磨。。。</p>
+<h3 id="2-重构的步骤"><a href="#2-重构的步骤" class="headerlink" title="2. 重构的步骤"></a>2. 重构的步骤</h3><p>一开始走了一些弯路，试过将功能函数拆成纯函数，然后通过提取这些纯函数将公共功能抽出。也试过用组合继承把公共方法抽出，然后子类直接继承父类的方法并overwrite自己独有的方法。后来发现，还是用“单继承”比较好。子类深拷贝一份父类，这样可以共用父类和子类的this，就不用去烦恼原来namespace里那些挂在各个子类里的不同的this了。</p>
+<h4 id="抽出事件函数"><a href="#抽出事件函数" class="headerlink" title="抽出事件函数"></a>抽出事件函数</h4><p>代码里的事件函数是初始化时就注册了的，和代码的执行顺序无关。所以可以把每一个事件函数单独抽成一个函数，放在一个地方统一调用，相同功能的函数取一样的名字，这样后面就可以合并这些同一功能的函数。</p>
+<h4 id="拆分长面条函数"><a href="#拆分长面条函数" class="headerlink" title="拆分长面条函数"></a>拆分长面条函数</h4><p>有的函数一个函数就几百行，这种就需要把里面的逻辑分支尽可能的拆成小函数，这样才能把类似的逻辑抽出。</p>
+<h4 id="重写相同功能的函数"><a href="#重写相同功能的函数" class="headerlink" title="重写相同功能的函数"></a>重写相同功能的函数</h4><p>在不改变逻辑的情况下重写相同功能的函数。这种情况就是为了保持代码的一致，好方便最后统一抽出。例如：<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> a = func();</div><div class="line"><span class="keyword">if</span> (a === <span class="literal">true</span>) &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>和<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span> (func() === <span class="literal">true</span>) &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>就可以统一写成一样的。当然，这个例子只是一种比较简单的情况，有些复杂的if-else嵌套，其实很多都是可以用数学知识稍微推算一下重写一下的。</p>
+<h4 id="flag区分不易抽出的深层逻辑"><a href="#flag区分不易抽出的深层逻辑" class="headerlink" title="flag区分不易抽出的深层逻辑"></a>flag区分不易抽出的深层逻辑</h4><p>有些逻辑颗粒度本身就已经很小，很难再进一步单独抽出，这种就需要用flag来区分一下。</p>
+<h4 id="extend单独写独有逻辑"><a href="#extend单独写独有逻辑" class="headerlink" title="extend单独写独有逻辑"></a>extend单独写独有逻辑</h4><p>譬如一个子类继承的父类的一个 <code>func</code> 方法，但是自己又有一些独有的逻辑功能，就可以写一个 <code>func_extend</code> 的方法来写这一块的逻辑。当然，父类得留这段逻辑的口子。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">func () &#123;</div><div class="line">  <span class="comment">// ...</span></div><div class="line">  func_extend &amp;&amp; func_extend();</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;最近在对一个很老的PC项目部分代码重构。看了一眼最早的一次提交记录是2011年的。。。到现在已经有16000多次的提交- -经历过的人少说也有将近20。所以重构的过程实在是艰辛。所以说为什么之前都说要有代码规范，现在为什么要有各种各样的lint以及引入强类型的typescript。经历过这种重构之后才会有切身的体会。哭一会去。&lt;/p&gt;
+    
+    </summary>
+    
+    
+      <category term="重构" scheme="http://yvshuo.github.io/tags/%E9%87%8D%E6%9E%84/"/>
+    
+  </entry>
   
   <entry>
     <title>腾讯云视频点播接口开发记录</title>
@@ -39,7 +73,7 @@
 <h2 id="5、接收转码成功的回调"><a href="#5、接收转码成功的回调" class="headerlink" title="5、接收转码成功的回调"></a>5、接收转码成功的回调</h2><p>服务端:<br><figure class="highlight php"><table><tr><td class="code"><pre><div class="line"><span class="meta">&lt;?php</span></div><div class="line"><span class="keyword">require_once</span>(<span class="string">'../libs/constants.php'</span>); </div><div class="line">$jsonOne = file_get_contents(<span class="string">'php://input'</span>); <span class="comment">// 服务端的回调信息</span></div><div class="line">$res = json_decode($jsonOne,<span class="keyword">true</span>); <span class="comment">// 转成json后按自己需要存数据库或执行其他操作</span></div></pre></td></tr></table></figure></p>
 <p>因为转码接口调用是有每分钟100次的调用次数限制的，正常情况应该是在服务端维护一个需要转码的队列，然后执行定时任务。不过我这里图简单，就是直接客户端来主动发起转码请求。这种方式其实是有一定问题的，如果被人知道了这个接口，疯狂调用，转码服务就崩了。。。所以如果是大项目的话，还是建议用消息队列的方式来做这块。不过我也是自己加了监控，监控回调接口，将回调信息存在系统日志里，防止接口被攻击。转码这个回调的作用就是通知转码成功，然后就可以把视频挂出去了。</p>
 <p>回调这块还需要在控制台配置一下回调地址。<br><img src="/blog/assets/images/2017/06/10/1.png" alt=""></p>
-<h2 id="6、客户端播放"><a href="#6、客户端播放" class="headerlink" title="6、客户端播放"></a>6、客户端播放</h2><p>详细的说明在<a href="https://www.qcloud.com/document/product/454/7503" target="_blank" rel="external">这里</a>。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&lt;script src=<span class="string">"//imgcache.qq.com/open/qcloud/video/vcplayer/TcPlayer.js"</span> charset=<span class="string">"utf-8"</span>&gt;&lt;/script&gt;;</div><div class="line">&lt;div class="videoStyle" id="video"&gt;&lt;/div&gt;</div><div class="line">&lt;script&gt;</div><div class="line"><span class="keyword">new</span> qcVideo.Player(<span class="string">"video"</span>, &#123;</div><div class="line">    <span class="string">"file_id"</span>: <span class="string">"要播放的视频fileid"</span>,</div><div class="line">    <span class="string">"app_id"</span>: <span class="string">"腾讯云点播账号的appId"</span>,</div><div class="line">    <span class="string">"width"</span>:<span class="number">640</span>,</div><div class="line">    <span class="string">"height"</span>:<span class="number">480</span></div><div class="line">&#125;);</div><div class="line">&lt;/script&gt;</div></pre></td></tr></table></figure></p>
+<h2 id="6、客户端播放"><a href="#6、客户端播放" class="headerlink" title="6、客户端播放"></a>6、客户端播放</h2><p>详细的说明在<a href="https://www.qcloud.com/document/product/454/7503" target="_blank" rel="external">这里</a>。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line">&lt;script src=<span class="string">"//imgcache.qq.com/open/qcloud/video/vcplayer/TcPlayer.js"</span> charset=<span class="string">"utf-8"</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span>;</div><div class="line"><span class="xml"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"videoStyle"</span> <span class="attr">id</span>=<span class="string">"video"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span></div><div class="line">&lt;script&gt;</div><div class="line"><span class="keyword">new</span> qcVideo.Player(<span class="string">"video"</span>, &#123;</div><div class="line">    <span class="string">"file_id"</span>: <span class="string">"要播放的视频fileid"</span>,</div><div class="line">    <span class="string">"app_id"</span>: <span class="string">"腾讯云点播账号的appId"</span>,</div><div class="line">    <span class="string">"width"</span>:<span class="number">640</span>,</div><div class="line">    <span class="string">"height"</span>:<span class="number">480</span></div><div class="line">&#125;);</div><div class="line"><span class="xml"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span></div></pre></td></tr></table></figure></p>
 <h2 id="7、总结"><a href="#7、总结" class="headerlink" title="7、总结"></a>7、总结</h2><p>总体来说，目前的使用效果还是不错的，转码后的视频在手机和PC上播放都没有问题，基本满足了项目的需求，大大缩短了项目工期。前后台所有的开发总共就一个多星期，还只是业余时间。使用体验很棒~</p>
 ]]></content>
     
