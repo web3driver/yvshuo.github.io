@@ -8,22 +8,18 @@
     使用ESLint检查语法和代码风格|香辣猪蹄儿
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="在学习ECMAScript6的过程中发现了一个代码风格和语法的检查工具，ESLint，记录一下。
-安装这里记录的安装方法是通过npm的安装，所以前提条件是已经安装了npm。如果没有安装的话，建议直接安装nvm，可以方便的切换node的版本。npm i -g eslint
-通过以上命令即可完成eslint CLI的安装。">
+  <meta name="description" content="在学习ECMAScript6的过程中发现了一个代码风格和语法的检查工具，ESLint，记录一下。 安装这里记录的安装方法是通过npm的安装，所以前提条件是已经安装了npm。如果没有安装的话，建议直接安装nvm，可以方便的切换node的版本。npm i -g eslint 通过以上命令即可完成eslint CLI的安装。">
+<meta name="keywords" content="js">
 <meta property="og:type" content="article">
 <meta property="og:title" content="使用ESLint检查语法和代码风格">
 <meta property="og:url" content="http://yvshuo.github.io/2016/11/15/2016-11-15-eslint/index.html">
 <meta property="og:site_name" content="香辣猪蹄儿">
-<meta property="og:description" content="在学习ECMAScript6的过程中发现了一个代码风格和语法的检查工具，ESLint，记录一下。
-安装这里记录的安装方法是通过npm的安装，所以前提条件是已经安装了npm。如果没有安装的话，建议直接安装nvm，可以方便的切换node的版本。npm i -g eslint
-通过以上命令即可完成eslint CLI的安装。">
-<meta property="og:updated_time" content="2016-11-15T15:29:24.000Z">
+<meta property="og:description" content="在学习ECMAScript6的过程中发现了一个代码风格和语法的检查工具，ESLint，记录一下。 安装这里记录的安装方法是通过npm的安装，所以前提条件是已经安装了npm。如果没有安装的话，建议直接安装nvm，可以方便的切换node的版本。npm i -g eslint 通过以上命令即可完成eslint CLI的安装。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-10-22T03:33:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="使用ESLint检查语法和代码风格">
-<meta name="twitter:description" content="在学习ECMAScript6的过程中发现了一个代码风格和语法的检查工具，ESLint，记录一下。
-安装这里记录的安装方法是通过npm的安装，所以前提条件是已经安装了npm。如果没有安装的话，建议直接安装nvm，可以方便的切换node的版本。npm i -g eslint
-通过以上命令即可完成eslint CLI的安装。">
+<meta name="twitter:description" content="在学习ECMAScript6的过程中发现了一个代码风格和语法的检查工具，ESLint，记录一下。 安装这里记录的安装方法是通过npm的安装，所以前提条件是已经安装了npm。如果没有安装的话，建议直接安装nvm，可以方便的切换node的版本。npm i -g eslint 通过以上命令即可完成eslint CLI的安装。">
   
     <link rel="alternate" href="/atom.xml" title="config.title" type="application/atom+xml">
   
@@ -89,6 +85,12 @@
             
                 
                     <li>
+                        <a href="/blog/2018/01/26/2018-01-26-vba/" class="sidebar-link">给前端er的EXCEL VBA编程快速入门手册</a>
+                    </li>
+                
+            
+                
+                    <li>
                         <a href="/blog/2017/10/27/2017-10-27-refactor-review/" class="sidebar-link">重构项目总结</a>
                     </li>
                 
@@ -141,10 +143,6 @@
                     </li>
                 
             
-                
-                    <li>
-                        <a href="/blog/2017/03/25/2017-03-25-es6-4/" class="sidebar-link">Promises</a>
-                    </li>
                 
             
                 
@@ -208,7 +206,7 @@
 <a id="more"></a>
 <h3 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h3><p>ESLint的运行格式如下：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">eslint [options] [file|dir|glob]*</div></pre></td></tr></table></figure></p>
 <p>以下的几种方式都是可行的：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">eslint file1.js file2.js</div><div class="line">eslint lib/**</div><div class="line">eslint <span class="string">"lib/**"</span></div></pre></td></tr></table></figure></p>
-<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><p>以下的内容可以通过eslint -h来查阅<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">eslint [options] file.js [file.js] [dir]</div><div class="line">Basic configuration:</div><div class="line">  -c, --config path::String    Use configuration from this file or shareable config</div><div class="line">  --no-eslintrc                Disable use of configuration from .eslintrc</div><div class="line">  --env [String]               Specify environments</div><div class="line">  --ext [String]               Specify JavaScript file extensions - default: .js</div><div class="line">  --global [String]            Define global variables</div><div class="line">  --parser String              Specify the parser to be used</div><div class="line">  --parser-options Object      Specify parser options</div><div class="line">Caching:</div><div class="line">  --cache                      Only check changed files - default: <span class="literal">false</span></div><div class="line">  --cache-file path::String    Path to the cache file. Deprecated: use --cache-location - default: .eslintcache</div><div class="line">  --cache-location path::String  Path to the cache file or directory</div><div class="line">Specifying rules and plugins:</div><div class="line">  --rulesdir [path::String]    Use additional rules from this directory</div><div class="line">  --plugin [String]            Specify plugins</div><div class="line">  --rule Object                Specify rules</div><div class="line">Ignoring files:</div><div class="line">  --ignore-path path::String   Specify path of ignore file</div><div class="line">  --no-ignore                  Disable use of ignore files and patterns</div><div class="line">  --ignore-pattern [String]    Pattern of files to ignore (<span class="keyword">in</span> addition to those <span class="keyword">in</span> .eslintignore)</div><div class="line">Using stdin:</div><div class="line">  --stdin                      Lint code provided on &lt;STDIN&gt; - default: <span class="literal">false</span></div><div class="line">  --stdin-filename String      Specify filename to process STDIN as</div><div class="line">Handling warnings:</div><div class="line">  --quiet                      Report errors only - default: <span class="literal">false</span></div><div class="line">  --max-warnings Int           Number of warnings to trigger nonzero <span class="built_in">exit</span> code - default: -1</div><div class="line">Output:</div><div class="line">  -o, --output-file path::String  Specify file to write report to</div><div class="line">  <span class="_">-f</span>, --format String          Use a specific output format - default: stylish</div><div class="line">  --color, --no-color          Force enabling/disabling of color</div><div class="line">Miscellaneous:</div><div class="line">  --init                       Run config initialization wizard - default: <span class="literal">false</span></div><div class="line">  --fix                        Automatically fix problems</div><div class="line">  --debug                      Output debugging information</div><div class="line">  -h, --help                   Show <span class="built_in">help</span></div><div class="line">  -v, --version                Output the version number</div><div class="line">  --no-inline-config           Prevent comments from changing config or rules</div><div class="line">  --print-config path::String  Print the configuration <span class="keyword">for</span> the given file</div></pre></td></tr></table></figure></p>
+<h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><p>以下的内容可以通过eslint -h来查阅<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">eslint [options] file.js [file.js] [dir]</div><div class="line">Basic configuration:</div><div class="line">  -c, --config path::String    Use configuration from this file or shareable config</div><div class="line">  --no-eslintrc                Disable use of configuration from .eslintrc</div><div class="line">  --env [String]               Specify environments</div><div class="line">  --ext [String]               Specify JavaScript file extensions - default: .js</div><div class="line">  --global [String]            Define global variables</div><div class="line">  --parser String              Specify the parser to be used</div><div class="line">  --parser-options Object      Specify parser options</div><div class="line">Caching:</div><div class="line">  --cache                      Only check changed files - default: <span class="literal">false</span></div><div class="line">  --cache-file path::String    Path to the cache file. Deprecated: use --cache-location - default: .eslintcache</div><div class="line">  --cache-location path::String  Path to the cache file or directory</div><div class="line">Specifying rules and plugins:</div><div class="line">  --rulesdir [path::String]    Use additional rules from this directory</div><div class="line">  --plugin [String]            Specify plugins</div><div class="line">  --rule Object                Specify rules</div><div class="line">Ignoring files:</div><div class="line">  --ignore-path path::String   Specify path of ignore file</div><div class="line">  --no-ignore                  Disable use of ignore files and patterns</div><div class="line">  --ignore-pattern [String]    Pattern of files to ignore (<span class="keyword">in</span> addition to those <span class="keyword">in</span> .eslintignore)</div><div class="line">Using stdin:</div><div class="line">  --stdin                      Lint code provided on &lt;STDIN&gt; - default: <span class="literal">false</span></div><div class="line">  --stdin-filename String      Specify filename to process STDIN as</div><div class="line">Handling warnings:</div><div class="line">  --quiet                      Report errors only - default: <span class="literal">false</span></div><div class="line">  --max-warnings Int           Number of warnings to trigger nonzero <span class="built_in">exit</span> code - default: -1</div><div class="line">Output:</div><div class="line">  -o, --output-file path::String  Specify file to write report to</div><div class="line">  -f, --format String          Use a specific output format - default: stylish</div><div class="line">  --color, --no-color          Force enabling/disabling of color</div><div class="line">Miscellaneous:</div><div class="line">  --init                       Run config initialization wizard - default: <span class="literal">false</span></div><div class="line">  --fix                        Automatically fix problems</div><div class="line">  --debug                      Output debugging information</div><div class="line">  -h, --<span class="built_in">help</span>                   Show <span class="built_in">help</span></div><div class="line">  -v, --version                Output the version number</div><div class="line">  --no-inline-config           Prevent comments from changing config or rules</div><div class="line">  --<span class="built_in">print</span>-config path::String  Print the configuration <span class="keyword">for</span> the given file</div></pre></td></tr></table></figure></p>
 <p>例子：<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">eslint --ext .jsx --ext .js file.js</div><div class="line">eslint --ext .jsx,.js file.js</div></pre></td></tr></table></figure></p>
 <h3 id="基本配置"><a href="#基本配置" class="headerlink" title="基本配置"></a>基本配置</h3><ul>
 <li>-c,–config<br>这个选项能给ESLint指定一个附加的配置文件。<br><em>例子：</em><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">eslint -c ~/my-eslint.json file.js</div></pre></td></tr></table></figure>
@@ -260,7 +258,7 @@
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">eslint -o ./<span class="built_in">test</span>/test.html</div></pre></td></tr></table></figure>
 </li>
 <li><p>-f, –format<br>指定report输出的格式，可选格式为<code>checkstyle</code>，<code>codeframe</code>，<code>compact</code>，<code>html</code>，<code>jslint-xml</code>，<code>json</code>，<code>junit</code>，<code>stylish (the default)</code>，<code>table</code>，<code>tap</code>，<code>unix</code>，<code>visualstudio</code>。<br><em>例子：</em></p>
-<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">eslint <span class="_">-f</span> compact file.js</div></pre></td></tr></table></figure>
+<figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">eslint -f compact file.js</div></pre></td></tr></table></figure>
 </li>
 <li><p>–color, –no-color<br>指定report的颜色<br><em>例子：</em></p>
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">eslint --color file.js | cat</div><div class="line">eslint --no-color file.js</div></pre></td></tr></table></figure>

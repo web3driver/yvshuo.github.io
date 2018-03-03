@@ -8,19 +8,18 @@
     Modules|香辣猪蹄儿
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="1、ES6模块化 vs. CommonJSES6在语言层面上提供了模块化的支持，相较与CommonJS和AMD的模块化解决方案，ES6的模块化提供的是编译时的模块化支持，而CommonJS和AMD都是运行时的模块化。ES6的模块方案提供的是对模块的引用，而CommonJS提供的则是一个拷贝。
-CommonJS方式// lib.jsvar counter = 3;function incCounte">
+  <meta name="description" content="1、ES6模块化 vs. CommonJSES6在语言层面上提供了模块化的支持，相较与CommonJS和AMD的模块化解决方案，ES6的模块化提供的是编译时的模块化支持，而CommonJS和AMD都是运行时的模块化。ES6的模块方案提供的是对模块的引用，而CommonJS提供的则是一个拷贝。 CommonJS方式// lib.jsvar counter = 3;function incCounte">
+<meta name="keywords" content="温故而知新,ES6">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Modules">
 <meta property="og:url" content="http://yvshuo.github.io/2017/03/25/2017-03-25-es6-3/index.html">
 <meta property="og:site_name" content="香辣猪蹄儿">
-<meta property="og:description" content="1、ES6模块化 vs. CommonJSES6在语言层面上提供了模块化的支持，相较与CommonJS和AMD的模块化解决方案，ES6的模块化提供的是编译时的模块化支持，而CommonJS和AMD都是运行时的模块化。ES6的模块方案提供的是对模块的引用，而CommonJS提供的则是一个拷贝。
-CommonJS方式// lib.jsvar counter = 3;function incCounte">
-<meta property="og:updated_time" content="2017-03-25T08:48:56.000Z">
+<meta property="og:description" content="1、ES6模块化 vs. CommonJSES6在语言层面上提供了模块化的支持，相较与CommonJS和AMD的模块化解决方案，ES6的模块化提供的是编译时的模块化支持，而CommonJS和AMD都是运行时的模块化。ES6的模块方案提供的是对模块的引用，而CommonJS提供的则是一个拷贝。 CommonJS方式// lib.jsvar counter = 3;function incCounte">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2017-10-22T03:33:39.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Modules">
-<meta name="twitter:description" content="1、ES6模块化 vs. CommonJSES6在语言层面上提供了模块化的支持，相较与CommonJS和AMD的模块化解决方案，ES6的模块化提供的是编译时的模块化支持，而CommonJS和AMD都是运行时的模块化。ES6的模块方案提供的是对模块的引用，而CommonJS提供的则是一个拷贝。
-CommonJS方式// lib.jsvar counter = 3;function incCounte">
+<meta name="twitter:description" content="1、ES6模块化 vs. CommonJSES6在语言层面上提供了模块化的支持，相较与CommonJS和AMD的模块化解决方案，ES6的模块化提供的是编译时的模块化支持，而CommonJS和AMD都是运行时的模块化。ES6的模块方案提供的是对模块的引用，而CommonJS提供的则是一个拷贝。 CommonJS方式// lib.jsvar counter = 3;function incCounte">
   
     <link rel="alternate" href="/atom.xml" title="config.title" type="application/atom+xml">
   
@@ -86,6 +85,12 @@ CommonJS方式// lib.jsvar counter = 3;function incCounte">
             
                 
                     <li>
+                        <a href="/blog/2018/01/26/2018-01-26-vba/" class="sidebar-link">给前端er的EXCEL VBA编程快速入门手册</a>
+                    </li>
+                
+            
+                
+                    <li>
                         <a href="/blog/2017/10/27/2017-10-27-refactor-review/" class="sidebar-link">重构项目总结</a>
                     </li>
                 
@@ -138,10 +143,6 @@ CommonJS方式// lib.jsvar counter = 3;function incCounte">
                     </li>
                 
             
-                
-                    <li>
-                        <a href="/blog/2017/03/25/2017-03-25-es6-4/" class="sidebar-link">Promises</a>
-                    </li>
                 
             
                 
@@ -200,8 +201,8 @@ CommonJS方式// lib.jsvar counter = 3;function incCounte">
         
         
         <h2 id="1、ES6模块化-vs-CommonJS"><a href="#1、ES6模块化-vs-CommonJS" class="headerlink" title="1、ES6模块化 vs. CommonJS"></a>1、ES6模块化 vs. CommonJS</h2><p>ES6在语言层面上提供了模块化的支持，相较与<code>CommonJS</code>和<code>AMD</code>的模块化解决方案，ES6的模块化提供的是编译时的模块化支持，而<code>CommonJS</code>和<code>AMD</code>都是运行时的模块化。<br>ES6的模块方案提供的是对模块的引用，而<code>CommonJS</code>提供的则是一个拷贝。</p>
-<h4 id="CommonJS方式"><a href="#CommonJS方式" class="headerlink" title="CommonJS方式"></a>CommonJS方式</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// lib.js</span></div><div class="line"><span class="keyword">var</span> counter = <span class="number">3</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">incCounter</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  counter++;</div><div class="line">&#125;</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  <span class="attr">counter</span>: counter,</div><div class="line">  <span class="attr">incCounter</span>: incCounter,</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// main.js</span></div><div class="line"><span class="keyword">var</span> mod = <span class="built_in">require</span>(<span class="string">'./lib'</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(mod.counter);  <span class="comment">// 3</span></div><div class="line">mod.incCounter();</div><div class="line"><span class="built_in">console</span>.log(mod.counter); <span class="comment">// 3</span></div></pre></td></tr></table></figure>
-<p><code>lib.js</code>模块加载以后，它的内部变化就影响不到输出的<code>mod.counter</code>了。这是因为<code>mod.counter</code>是一个原始类型的值，会被缓存。除非写成一个函数，才能得到内部变动后的值。<br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// lib.js</span></div><div class="line"><span class="keyword">var</span> counter = <span class="number">3</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">incCounter</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  counter++;</div><div class="line">&#125;</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  get counter() &#123;</div><div class="line">    <span class="keyword">return</span> counter</div><div class="line">  &#125;,</div><div class="line">  <span class="attr">incCounter</span>: incCounter,</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<h4 id="CommonJS方式"><a href="#CommonJS方式" class="headerlink" title="CommonJS方式"></a>CommonJS方式</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// lib.js</span></div><div class="line"><span class="keyword">var</span> counter = <span class="number">3</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">incCounter</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  counter++;</div><div class="line">&#125;</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  counter: counter,</div><div class="line">  incCounter: incCounter,</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// main.js</span></div><div class="line"><span class="keyword">var</span> mod = <span class="built_in">require</span>(<span class="string">'./lib'</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(mod.counter);  <span class="comment">// 3</span></div><div class="line">mod.incCounter();</div><div class="line"><span class="built_in">console</span>.log(mod.counter); <span class="comment">// 3</span></div></pre></td></tr></table></figure>
+<p><code>lib.js</code>模块加载以后，它的内部变化就影响不到输出的<code>mod.counter</code>了。这是因为<code>mod.counter</code>是一个原始类型的值，会被缓存。除非写成一个函数，才能得到内部变动后的值。<br><a id="more"></a><br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// lib.js</span></div><div class="line"><span class="keyword">var</span> counter = <span class="number">3</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">incCounter</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  counter++;</div><div class="line">&#125;</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  get counter() &#123;</div><div class="line">    <span class="keyword">return</span> counter</div><div class="line">  &#125;,</div><div class="line">  incCounter: incCounter,</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
 <p>这种情况下就可以得到内部变动后的值。</p>
 <h4 id="ES6模块"><a href="#ES6模块" class="headerlink" title="ES6模块"></a>ES6模块</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// lib.js</span></div><div class="line"><span class="keyword">export</span> <span class="keyword">let</span> counter = <span class="number">3</span>;</div><div class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">incCounter</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  counter++;</div><div class="line">&#125;</div><div class="line"></div><div class="line"><span class="comment">// main.js</span></div><div class="line"><span class="keyword">import</span> &#123; counter, incCounter &#125; <span class="keyword">from</span> <span class="string">'./lib'</span>;</div><div class="line"><span class="built_in">console</span>.log(counter); <span class="comment">// 3</span></div><div class="line">incCounter();</div><div class="line"><span class="built_in">console</span>.log(counter); <span class="comment">// 4</span></div></pre></td></tr></table></figure>
 <p>ES6 模块是动态引用，并且不会缓存值，模块里面的变量绑定其所在的模块。</p>
