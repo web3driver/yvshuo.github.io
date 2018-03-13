@@ -17,7 +17,7 @@
 <meta property="og:description" content="最近研究了一下自己的服务器 log ，然后发现了大量的22端口暴力连接的日志，于是我就封了22端口。今天又查了一下 nginx 的 access.log,竟然又发现了大量的嗅探攻击。于是决定好好的把服务器弄一下。都是一些比较初级的防护，这里记录一下。我的操作系统是CentOS 7.2。 1. 关闭并只打开指定端口服务器的端口一定要处于可控的状态，所以我选择只对外暴露指定端口。因为是远程ssh到云服">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yvshuo.github.io/blog/assets/images/2018/03/13/1.jpeg">
-<meta property="og:updated_time" content="2018-03-13T15:57:08.000Z">
+<meta property="og:updated_time" content="2018-03-13T15:59:37.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux服务器初级防护">
 <meta name="twitter:description" content="最近研究了一下自己的服务器 log ，然后发现了大量的22端口暴力连接的日志，于是我就封了22端口。今天又查了一下 nginx 的 access.log,竟然又发现了大量的嗅探攻击。于是决定好好的把服务器弄一下。都是一些比较初级的防护，这里记录一下。我的操作系统是CentOS 7.2。 1. 关闭并只打开指定端口服务器的端口一定要处于可控的状态，所以我选择只对外暴露指定端口。因为是远程ssh到云服">
@@ -198,7 +198,7 @@
     </div>
     <div class="content with-sidebar blog post">
         <h1>linux服务器初级防护</h1>
-        <h4>3月 13, 2018
+        <h4>Mar 13, 2018
             
             
                 <span id="/blog/2018/03/13/2018-03-13-banip/" class="leancloud_visitors" data-flag-title="linux服务器初级防护">
@@ -211,6 +211,7 @@
         <p>最近研究了一下自己的服务器 log ，然后发现了大量的22端口暴力连接的日志，于是我就封了22端口。今天又查了一下 nginx 的 <code>access.log</code>,竟然又发现了大量的嗅探攻击。于是决定好好的把服务器弄一下。都是一些比较初级的防护，这里记录一下。我的操作系统是CentOS 7.2。</p>
 <h2 id="1-关闭并只打开指定端口"><a href="#1-关闭并只打开指定端口" class="headerlink" title="1. 关闭并只打开指定端口"></a>1. 关闭并只打开指定端口</h2><p>服务器的端口一定要处于可控的状态，所以我选择只对外暴露指定端口。因为是远程ssh到云服务器的，所以下面的操作一定要<strong>提前做好快照备份</strong>，以防操作不慎关掉了ssh端口就歇菜了。</p>
 <h3 id="1-1-查看所有端口的状态"><a href="#1-1-查看所有端口的状态" class="headerlink" title="1.1 查看所有端口的状态"></a>1.1 查看所有端口的状态</h3><p>CentOS7 默认的防火墙是firewalle而不是iptables，所以我们首先安装<code>iptable</code>, <code>iptable-service</code>。</p>
+<a id="more"></a>
 <figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment">#先检查是否安装了iptables</span></div><div class="line">service iptables status</div><div class="line"><span class="comment">#安装iptables</span></div><div class="line">yum install -y iptables</div><div class="line"><span class="comment">#升级iptables</span></div><div class="line">yum update iptables </div><div class="line"><span class="comment">#安装iptables-services</span></div><div class="line">yum install iptables-services</div></pre></td></tr></table></figure>
 <p>禁用/停用自带的firewalld服务<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment">#停止firewalld服务</span></div><div class="line">systemctl stop firewalld</div><div class="line"><span class="comment">#禁用firewalld服务</span></div><div class="line">systemctl mask firewalld</div></pre></td></tr></table></figure></p>
 <p>查看现有的iptables规则<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">iptables -L -n</div></pre></td></tr></table></figure></p>
