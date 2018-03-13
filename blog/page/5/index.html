@@ -92,6 +92,62 @@
   </div>
 </div>
 
+	<article id="post-2017-01-16-refactor" class="article article-type-post content" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2017/01/16/2017-01-16-refactor/" class="article-date">
+  <time datetime="2017-01-16T03:03:47.000Z" itemprop="datePublished">2017-01-16</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/01/16/2017-01-16-refactor/">重构—重新组织函数</a>
+    </h1>
+  
+
+      </header>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/重构/">重构</a></li></ul>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>上次单位人力让挑书，然后选了这本《重构-改善既有代码的设计》这本书，作者Martin Fowler是ThoughtWorks公司的首席科学家。虽然书写于很多年前，但是很多思想在编程中依然非常实用。书里主要是讲的各种重构的手法，但是我觉得看完之后，个人感觉更重要的是告诉自己在写代码的过程中如何从源头上注意一些问题，让自己的代码更合理，更优美。最初选这本书也是因为觉得需要超脱语言的层面去理解一些编程的宏观的一些东西，不然总是觉得自己像个机器一样，写着代码，却不懂怎么写更好，为什么别人都那样分层。书已经看了一遍，似乎明白了一些哪些代码好一些、哪些代码差一点。<br>最近再一边读一边记下这个系列的读书笔记，算是记录吧~</p>
+<h2 id="1-代码的坏味道"><a href="#1-代码的坏味道" class="headerlink" title="1. 代码的坏味道"></a>1. 代码的坏味道</h2><ul>
+<li>重复代码：如果在两个不相关的类中出现了重复的相同功能的函数，就应该考虑新建一个独立的类将这个重复的函数提炼出去。</li>
+<li>过长函数：写代码的过程中，有一个原则。<strong>代码块越小，代码的功能就越容易管理，代码的处理和移动也就越轻松。</strong></li>
+<li>过大的类：一个类的代码太多的话，最后就会变成一坨，嗯。尽量将特别大的类进行分解。</li>
+<li>过长的参数列:拆成bean。</li>
+<li>switch泛滥：作者的建议是少用switch，在使用switch的地方考虑使用多态来解决。</li>
+<li>数据泥团：数据成群的绑在一起。正确的做法是将总是绑定在一起的数据放到一个对象里。</li>
+<li>发散式变化：多种变化都对应同一个类的修改。这种情况下需要考虑将这个类拆开，尽量每种变化只对应一个类的修改。</li>
+<li>霰弹式修改：这个类一旦变化，会引发多个类的修改。这种情况下应该尽量将所有需要修改的方法放到一个类里。</li>
+</ul>
+<h2 id="2-重新组织函数"><a href="#2-重新组织函数" class="headerlink" title="2. 重新组织函数"></a>2. 重新组织函数</h2><h3 id="2-1-extract-method（提炼函数）"><a href="#2-1-extract-method（提炼函数）" class="headerlink" title="2.1 extract method（提炼函数）"></a>2.1 extract method（提炼函数）</h3><p>1) 没有局部变量，直接提炼。<br>2) 有局部变量，把这个局部变量作为参数传入被提炼函数<br>3) 如果需要对局部变量赋值，得需要使用remove Assignments to parameters.如果被赋值的局部变量只在被提炼的函数中被赋值，则把这个局部变量声明到被提炼函数中。如果被赋值的局部变量需要在被提炼的函数其它的地方使用，则需要被提炼函数返回一个被修改后的值。如果遇到返回的不止一个值，则最好的方法是再重新提炼一个新的方法，每次只返回一个值最佳。</p>
+<p><code>before</code>:<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">printOwing</span><span class="params">(<span class="keyword">double</span> amount)</span></span>&#123;</div><div class="line">    printBanner();</div><div class="line">    <span class="comment">//print details</span></div><div class="line">    System.out.println(<span class="string">"amount:"</span>+amount);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p><code>after</code>:<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">printOwing</span><span class="params">(<span class="keyword">double</span> amount)</span></span>&#123;</div><div class="line">    printBanner();</div><div class="line">    printDetails(amount);</div><div class="line">&#125;</div><div class="line"><span class="function"><span class="keyword">void</span> <span class="title">printDetails</span><span class="params">(<span class="keyword">double</span> amount)</span></span>&#123;</div><div class="line">    System.out.println(<span class="string">"amount:"</span>+amount);</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+        
+          <p class="article-more-link">
+            <a href="/blog/2017/01/16/2017-01-16-refactor/#more">More&gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <!--<a data-url="http://yvshuo.github.io/2017/01/16/2017-01-16-refactor/" data-id="cjepubaoh000cqss6648f2dtu" class="article-share-link">Share</a>-->
+      <!---->
+    </footer>
+  </div>
+  
+</article>
+
+
+
 	<article id="post-2017-01-11-review-git" class="article article-type-post content" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2017/01/11/2017-01-11-review-git/" class="article-date">
@@ -117,7 +173,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>单位用的svn，一个多月不用git，发现有些命令就忘了- -所以这是一篇git操作备忘。主要内容转载自<a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="external">常用 Git 命令清单</a>。</p>
+        <p>单位用的svn，一个多月不用git，发现有些命令就忘了- -所以这是一篇git操作备忘。主要内容转载自<a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="noopener">常用 Git 命令清单</a>。</p>
 <h2 id="1-git基本示意"><a href="#1-git基本示意" class="headerlink" title="1. git基本示意"></a>1. git基本示意</h2><p><img src="/blog/assets/images/2017/01/11/1.png" alt="git示意图"></p>
 <blockquote>
 <ul>
@@ -136,7 +192,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/01/11/2017-01-11-review-git/" data-id="cjeat17np000908s6ubxer2tt" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/01/11/2017-01-11-review-git/" data-id="cjepubaoe0008qss62wdtp4re" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -172,7 +228,7 @@
       
         <p>p.s. 这篇文章是一个月之前写的，因为最近忙于其他项目，所以一直没来维护这个博客~微信小程序貌似也有了新的更新。先把这篇贴上，后续填坑23333</p>
 <p>利用周末时间基于cnode社区的api撸了一发微信小程序，记录一下。</p>
-<h3 id="1、开发环境"><a href="#1、开发环境" class="headerlink" title="1、开发环境"></a>1、开发环境</h3><p>微信mac版开发工具0.11.112301<br>下载地址：<a href="https://servicewechat.com/wxa-dev-logic/download_redirect?type=darwin&amp;from=mpwiki&amp;t=20161122" target="_blank" rel="external">使劲戳我</a><br>其他版本下载地址：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=20161122" target="_blank" rel="external">继续戳我</a></p>
+<h3 id="1、开发环境"><a href="#1、开发环境" class="headerlink" title="1、开发环境"></a>1、开发环境</h3><p>微信mac版开发工具0.11.112301<br>下载地址：<a href="https://servicewechat.com/wxa-dev-logic/download_redirect?type=darwin&amp;from=mpwiki&amp;t=20161122" target="_blank" rel="noopener">使劲戳我</a><br>其他版本下载地址：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=20161122" target="_blank" rel="noopener">继续戳我</a></p>
 <h3 id="2、项目创建"><a href="#2、项目创建" class="headerlink" title="2、项目创建"></a>2、项目创建</h3><p>扫码登录后按下图输入创建项目<br><img src="/blog/assets/images/2016/11/27/1.png" alt=""></p>
 <p>创建项目后界面的样子和默认的文件目录结构<br><img src="/blog/assets/images/2016/11/27/2.png" alt=""></p>
 <p>分析下目录结构<br><img src="/blog/assets/images/2016/11/27/3.png" alt=""><br><code>pages</code>目录下有两个页面，<code>index</code>和<code>logs</code>。<code>.js</code>文件是负责处理该页面的逻辑，<code>.wxml</code>负责视图以及绑定一些交互事件，<code>.wxss</code>来写css样式，<code>.json</code>用来配置一些配置参数或者定义一些静态常量。<br><code>utils</code>目录下是一个工具类。根目录下的<code>app.js</code>是小程序的入口文件，用来注册app。<code>app.json</code>可以用来配置全局常量，<code>app.wxss</code>用来配置项目的公用样式。</p>
@@ -185,7 +241,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2016/11/27/2016-11-27-wxapp/" data-id="cjeat17nl000808s6lkkphzua" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2016/11/27/2016-11-27-wxapp/" data-id="cjepubaoa0005qss6uj206lgf" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -219,7 +275,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在学习ECMAScript6的过程中发现了一个代码风格和语法的检查工具，<a href="http://eslint.org/docs/user-guide/command-line-interface" target="_blank" rel="external">ESLint</a>，记录一下。</p>
+        <p>在学习ECMAScript6的过程中发现了一个代码风格和语法的检查工具，<a href="http://eslint.org/docs/user-guide/command-line-interface" target="_blank" rel="noopener">ESLint</a>，记录一下。</p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>这里记录的安装方法是通过npm的安装，所以前提条件是已经安装了npm。如果没有安装的话，建议直接安装nvm，可以方便的切换node的版本。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">npm i -g eslint</div></pre></td></tr></table></figure></p>
 <p>通过以上命令即可完成eslint CLI的安装。</p>
         
@@ -230,7 +286,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2016/11/15/2016-11-15-eslint/" data-id="cjeat17nh000508s6x3m2t98i" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2016/11/15/2016-11-15-eslint/" data-id="cjepubaog0009qss6g8d4ift5" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -274,7 +330,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2016/10/26/2016-10-26-webpacknote/" data-id="cjeat17nd000408s6593w0hv3" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2016/10/26/2016-10-26-webpacknote/" data-id="cjepubao90004qss6zfd3rps1" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -308,7 +364,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>今天读到了一篇讲<a href="http://web.jobbole.com/88167/" target="_blank" rel="external">闭包的文章</a>，是我目前看到的最透彻的一篇闭包的讲解。趁热记一下笔记。</p>
+        <p>今天读到了一篇讲<a href="http://web.jobbole.com/88167/" target="_blank" rel="noopener">闭包的文章</a>，是我目前看到的最透彻的一篇闭包的讲解。趁热记一下笔记。</p>
 <p>在我以前的认识中，一直觉得闭包就是在js中提供了一种类似于java中get方法的功能，使我们可以通过闭包来访问到函数体内的局部变量。然鹅，我的理解也就顶多意会了闭包的一点皮毛。下面就直接通过代码来记录一下这篇文章中写到的知识点。</p>
 <h3 id="静态作用域的理解"><a href="#静态作用域的理解" class="headerlink" title="静态作用域的理解"></a>静态作用域的理解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">10</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;	</div><div class="line">  <span class="keyword">var</span> y = x + <span class="number">5</span>;	</div><div class="line">  <span class="keyword">return</span> y;	</div><div class="line">&#125;	</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123; 	</div><div class="line">  <span class="keyword">var</span> x = <span class="number">2</span>;	</div><div class="line">  <span class="keyword">return</span> foo();	</div><div class="line">&#125;	</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">main</span>(<span class="params"></span>) </span>&#123;	</div><div class="line">  foo(); <span class="comment">// Static scope: 15; Dynamic scope: 15	</span></div><div class="line">  bar(); <span class="comment">// Static scope: 15; Dynamic scope: 7	</span></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
         
@@ -319,51 +375,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2016/10/11/2016-10-11-closure/" data-id="cjeat17nb000308s6v01dx7j3" class="article-share-link">Share</a>-->
-      <!---->
-    </footer>
-  </div>
-  
-</article>
-
-
-
-	<article id="post-2016-10-07-githubssh" class="article article-type-post content" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2016/10/07/2016-10-07-githubssh/" class="article-date">
-  <time datetime="2016-10-07T04:31:27.000Z" itemprop="datePublished">2016-10-07</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/10/07/2016-10-07-githubssh/">配置hexo的一键打包部署</a>
-    </h1>
-  
-
-      </header>
-    
-    
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/hexo/">hexo</a></li></ul>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天研究了一下hexo的自动打包部署，记录一下。</p>
-<h2 id="配置github的ssh"><a href="#配置github的ssh" class="headerlink" title="配置github的ssh"></a>配置github的ssh</h2><h3 id="本地生成公钥"><a href="#本地生成公钥" class="headerlink" title="本地生成公钥"></a>本地生成公钥</h3><p>运行 git Bash 客户端，检查是否已经配置过SSH key。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ <span class="built_in">cd</span> ~/.ssh</div><div class="line">$ ls</div></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/blog/2016/10/07/2016-10-07-githubssh/#more">More&gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2016/10/07/2016-10-07-githubssh/" data-id="cjeat17n5000108s6sbaimv5z" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2016/10/11/2016-10-11-closure/" data-id="cjepubao80003qss6w5prx9ih" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>

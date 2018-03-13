@@ -91,6 +91,12 @@
             
                 
                     <li>
+                        <a href="/blog/2018/03/13/2018-03-13-banip/" class="sidebar-link">linux服务器初级防护</a>
+                    </li>
+                
+            
+                
+                    <li>
                         <a href="/blog/2018/01/26/2018-01-26-vba/" class="sidebar-link">给前端er的EXCEL VBA编程快速入门手册</a>
                     </li>
                 
@@ -143,10 +149,6 @@
                     </li>
                 
             
-                
-                    <li>
-                        <a href="/blog/2017/03/26/2017-03-26-hexo-theme-yvue-1/" class="sidebar-link">(多图慎入!)类vue官网的hexo主题yvue发布Beta0.1版本</a>
-                    </li>
                 
             
                 
@@ -230,7 +232,7 @@
 <h3 id="Promise-race"><a href="#Promise-race" class="headerlink" title="Promise.race()"></a>Promise.race()</h3><p>和<code>Promise.all()</code>相对，这个方法类似于<code>Array.some()</code>方法，有一个参数的状态改变后，<code>Promise.race()</code>对象的状态就会改变。<br><code>race</code>这个方法名也很有意思，所有参数比赛，然后最先改变状态的那个参数返回的<code>Promise</code>对象就会作为<code>Promise.race()</code>的返回值。<br>这个方法比较有用的一个使用方法就是设定异步请求的最大延时。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> p = <span class="built_in">Promise</span>.race([</div><div class="line">  fetch(<span class="string">'/resource-that-may-take-a-while'</span>),</div><div class="line">  <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'request timeout'</span>)), <span class="number">5000</span>)</div><div class="line">  &#125;)</div><div class="line">]);</div><div class="line">p.then(<span class="function"><span class="params">response</span> =&gt;</span> <span class="built_in">console</span>.log(response));</div><div class="line">p.catch(<span class="function"><span class="params">error</span> =&gt;</span> <span class="built_in">console</span>.log(error));</div></pre></td></tr></table></figure></p>
 <p>上面的函数就为<code>fetch</code>方法设定了5秒的延时。</p>
 <h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><blockquote>
-<p>1、<a href="https://babeljs.io/learn-es2015/" target="_blank" rel="external">Learn ES2015</a><br>2、<a href="http://es6.ruanyifeng.com/#docs/promise" target="_blank" rel="external">Promise对象</a><br>3、<a href="https://developers.google.com/web/fundamentals/getting-started/primers/promises" target="_blank" rel="external">JavaScript Promises: an Introduction</a></p>
+<p>1、<a href="https://babeljs.io/learn-es2015/" target="_blank" rel="noopener">Learn ES2015</a><br>2、<a href="http://es6.ruanyifeng.com/#docs/promise" target="_blank" rel="noopener">Promise对象</a><br>3、<a href="https://developers.google.com/web/fundamentals/getting-started/primers/promises" target="_blank" rel="noopener">JavaScript Promises: an Introduction</a></p>
 </blockquote>
 
         <div class="guide-links">

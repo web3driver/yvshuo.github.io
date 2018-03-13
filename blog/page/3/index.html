@@ -92,6 +92,51 @@
   </div>
 </div>
 
+	<article id="post-2017-03-25-es6-3" class="article article-type-post content" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2017/03/25/2017-03-25-es6-3/" class="article-date">
+  <time datetime="2017-03-25T07:57:37.000Z" itemprop="datePublished">2017-03-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/03/25/2017-03-25-es6-3/">Modules</a>
+    </h1>
+  
+
+      </header>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/ES6/">ES6</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/温故而知新/">温故而知新</a></li></ul>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="1、ES6模块化-vs-CommonJS"><a href="#1、ES6模块化-vs-CommonJS" class="headerlink" title="1、ES6模块化 vs. CommonJS"></a>1、ES6模块化 vs. CommonJS</h2><p>ES6在语言层面上提供了模块化的支持，相较与<code>CommonJS</code>和<code>AMD</code>的模块化解决方案，ES6的模块化提供的是编译时的模块化支持，而<code>CommonJS</code>和<code>AMD</code>都是运行时的模块化。<br>ES6的模块方案提供的是对模块的引用，而<code>CommonJS</code>提供的则是一个拷贝。</p>
+<h4 id="CommonJS方式"><a href="#CommonJS方式" class="headerlink" title="CommonJS方式"></a>CommonJS方式</h4><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// lib.js</span></div><div class="line"><span class="keyword">var</span> counter = <span class="number">3</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">incCounter</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  counter++;</div><div class="line">&#125;</div><div class="line"><span class="built_in">module</span>.exports = &#123;</div><div class="line">  counter: counter,</div><div class="line">  incCounter: incCounter,</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// main.js</span></div><div class="line"><span class="keyword">var</span> mod = <span class="built_in">require</span>(<span class="string">'./lib'</span>);</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(mod.counter);  <span class="comment">// 3</span></div><div class="line">mod.incCounter();</div><div class="line"><span class="built_in">console</span>.log(mod.counter); <span class="comment">// 3</span></div></pre></td></tr></table></figure>
+<p><code>lib.js</code>模块加载以后，它的内部变化就影响不到输出的<code>mod.counter</code>了。这是因为<code>mod.counter</code>是一个原始类型的值，会被缓存。除非写成一个函数，才能得到内部变动后的值。<br>
+        
+          <p class="article-more-link">
+            <a href="/blog/2017/03/25/2017-03-25-es6-3/#more">More&gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <!--<a data-url="http://yvshuo.github.io/2017/03/25/2017-03-25-es6-3/" data-id="cjepubap1000yqss66i32xmhp" class="article-share-link">Share</a>-->
+      <!---->
+    </footer>
+  </div>
+  
+</article>
+
+
+
 	<article id="post-2017-03-19-es6-2" class="article article-type-post content" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2017/03/19/2017-03-19-es6-2/" class="article-date">
@@ -124,13 +169,13 @@
 <p>展开数组，极其好用的一个功能。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">f</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">const</span> arr1 = [<span class="string">'a'</span>, <span class="string">'b'</span>];</div><div class="line">  <span class="keyword">const</span> arr2 = [<span class="string">'c'</span>];</div><div class="line">  <span class="keyword">const</span> arr3 = [<span class="string">'d'</span>, <span class="string">'e'</span>, [<span class="string">'a'</span>, <span class="string">'b'</span>]];</div><div class="line">  <span class="keyword">return</span> [...arr1, ...arr2, ...arr3];</div><div class="line">&#125;</div><div class="line"><span class="comment">// return [ "a", "b", "c", "d", "e", [ "a", "b" ] ]</span></div></pre></td></tr></table></figure></p>
 <p>展开数组只能展开一级。</p>
 <blockquote>
-<p>参考文章：<a href="https://babeljs.io/learn-es2015/" target="_blank" rel="external">Learn ES2015</a></p>
+<p>参考文章：<a href="https://babeljs.io/learn-es2015/" target="_blank" rel="noopener">Learn ES2015</a></p>
 </blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/03/19/2017-03-19-es6-2/" data-id="cjeat17op000x08s67mb722xv" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/03/19/2017-03-19-es6-2/" data-id="cjepubaoy000xqss6os1enmx6" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -172,13 +217,13 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Lexical arguments</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">square</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> example = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">let</span> numbers = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> number <span class="keyword">of</span> <span class="built_in">arguments</span>) &#123;</div><div class="line">      numbers.push(number * number);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> numbers;</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> example();</div><div class="line">&#125;</div><div class="line"></div><div class="line">square(<span class="number">2</span>, <span class="number">4</span>, <span class="number">7.5</span>, <span class="number">8</span>, <span class="number">11.5</span>, <span class="number">21</span>); <span class="comment">// returns: [4, 16, 56.25, 64, 132.25, 441]</span></div></pre></td></tr></table></figure>
 <p>箭头函数和它的父函数共享一个<code>arguments</code>变量。</p>
 <blockquote>
-<p>参考文章：<a href="https://babeljs.io/learn-es2015/" target="_blank" rel="external">Learn ES2015</a></p>
+<p>参考文章：<a href="https://babeljs.io/learn-es2015/" target="_blank" rel="noopener">Learn ES2015</a></p>
 </blockquote>
 
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/03/19/2017-03-19-es6-1/" data-id="cjeat17on000u08s60iw7rzap" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/03/19/2017-03-19-es6-1/" data-id="cjepubaox000uqss6pj42ltsd" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -223,7 +268,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/02/23/2017-02-23-javarule-9/" data-id="cjeat17ok000t08s6p7ncr6rf" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/02/23/2017-02-23-javarule-9/" data-id="cjepubaow000tqss646qsfl69" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -268,7 +313,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/02/23/2017-02-23-javarule-8/" data-id="cjeat17oi000r08s60lqu802l" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/02/23/2017-02-23-javarule-8/" data-id="cjepubaou000qqss6a778hnqv" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -314,51 +359,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/02/22/2017-02-22-javarule-7/" data-id="cjeat17oe000p08s62yeiclzr" class="article-share-link">Share</a>-->
-      <!---->
-    </footer>
-  </div>
-  
-</article>
-
-
-
-	<article id="post-2017-02-18-javarule-6" class="article article-type-post content" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2017/02/18/2017-02-18-javarule-6/" class="article-date">
-  <time datetime="2017-02-18T08:33:10.000Z" itemprop="datePublished">2017-02-18</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/02/18/2017-02-18-javarule-6/">阿里巴巴java开发手册解读6-并发处理</a>
-    </h1>
-  
-
-      </header>
-    
-    
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java文档/">java文档</a></li></ul>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="1-【强制】获取单例对象需要保证线程安全-其中的方法也要保证线程安全。"><a href="#1-【强制】获取单例对象需要保证线程安全-其中的方法也要保证线程安全。" class="headerlink" title="1. 【强制】获取单例对象需要保证线程安全,其中的方法也要保证线程安全。"></a>1. 【强制】获取单例对象需要保证线程安全,其中的方法也要保证线程安全。</h3><p>说明:资源驱动类、工具类、单例工厂类都需要注意。</p>
-<h3 id="2-【强制】创建线程或线程池时请指定有意义的线程名称-方便出错时回溯。"><a href="#2-【强制】创建线程或线程池时请指定有意义的线程名称-方便出错时回溯。" class="headerlink" title="2. 【强制】创建线程或线程池时请指定有意义的线程名称,方便出错时回溯。"></a>2. 【强制】创建线程或线程池时请指定有意义的线程名称,方便出错时回溯。</h3><p><code>正例</code>:<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">TimerTaskThread</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</div><div class="line">    <span class="function"><span class="keyword">public</span> <span class="title">TimerTaskThread</span><span class="params">()</span></span>&#123;</div><div class="line">    <span class="keyword">super</span>.setName(<span class="string">"TimerTaskThread"</span>); </div><div class="line">    ... </div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
-        
-          <p class="article-more-link">
-            <a href="/blog/2017/02/18/2017-02-18-javarule-6/#more">More&gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/02/18/2017-02-18-javarule-6/" data-id="cjeat17oc000n08s6jipdw9jc" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/02/22/2017-02-22-javarule-7/" data-id="cjepubaos000pqss6xsmmpkhh" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>

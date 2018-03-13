@@ -125,7 +125,7 @@
 <figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="comment">// Lexical arguments</span></div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">square</span>(<span class="params"></span>) </span>&#123;</div><div class="line">  <span class="keyword">let</span> example = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</div><div class="line">    <span class="keyword">let</span> numbers = [];</div><div class="line">    <span class="keyword">for</span> (<span class="keyword">let</span> number <span class="keyword">of</span> <span class="built_in">arguments</span>) &#123;</div><div class="line">      numbers.push(number * number);</div><div class="line">    &#125;</div><div class="line"></div><div class="line">    <span class="keyword">return</span> numbers;</div><div class="line">  &#125;;</div><div class="line"></div><div class="line">  <span class="keyword">return</span> example();</div><div class="line">&#125;</div><div class="line"></div><div class="line">square(<span class="number">2</span>, <span class="number">4</span>, <span class="number">7.5</span>, <span class="number">8</span>, <span class="number">11.5</span>, <span class="number">21</span>); <span class="comment">// returns: [4, 16, 56.25, 64, 132.25, 441]</span></div></pre></td></tr></table></figure>
 <p>箭头函数和它的父函数共享一个<code>arguments</code>变量。</p>
 <blockquote>
-<p>参考文章：<a href="https://babeljs.io/learn-es2015/" target="_blank" rel="external">Learn ES2015</a></p>
+<p>参考文章：<a href="https://babeljs.io/learn-es2015/" target="_blank" rel="noopener">Learn ES2015</a></p>
 </blockquote>
 
         <div class="guide-links">
