@@ -92,6 +92,52 @@
   </div>
 </div>
 
+	<article id="post-2017-02-22-javarule-7" class="article article-type-post content" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/blog/2017/02/22/2017-02-22-javarule-7/" class="article-date">
+  <time datetime="2017-02-22T11:53:20.000Z" itemprop="datePublished">2017-02-22</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/blog/2017/02/22/2017-02-22-javarule-7/">阿里巴巴java开发手册解读7-控制语句</a>
+    </h1>
+  
+
+      </header>
+    
+    
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java文档/">java文档</a></li></ul>
+
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h3 id="1-【强制】在一个-switch-块内-每个-case-要么通过-break-return-等来终止-要么注释说明程序将继续执行到哪一个-case-为止"><a href="#1-【强制】在一个-switch-块内-每个-case-要么通过-break-return-等来终止-要么注释说明程序将继续执行到哪一个-case-为止" class="headerlink" title="1. 【强制】在一个 switch 块内,每个 case 要么通过 break/return 等来终止,要么注释说明程序将继续执行到哪一个 case 为止;"></a>1. 【强制】在一个 switch 块内,每个 case 要么通过 break/return 等来终止,要么注释说明程序将继续执行到哪一个 case 为止;</h3><p>在一个 switch 块内,都必须包含一个 default 语句并且放在最后,即使它什么代码也没有。</p>
+<h3 id="2-【强制】在-if-else-for-while-do-语句中必须使用大括号-即使只有一行代码-避免使用下面的形式"><a href="#2-【强制】在-if-else-for-while-do-语句中必须使用大括号-即使只有一行代码-避免使用下面的形式" class="headerlink" title="2. 【强制】在 if/else/for/while/do 语句中必须使用大括号,即使只有一行代码,避免使用下面的形式:"></a>2. 【强制】在 if/else/for/while/do 语句中必须使用大括号,即使只有一行代码,避免使用下面的形式:</h3><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span> (condition) statements;</div></pre></td></tr></table></figure>
+<h3 id="3-【推荐】推荐尽量少用-else"><a href="#3-【推荐】推荐尽量少用-else" class="headerlink" title="3. 【推荐】推荐尽量少用 else"></a>3. 【推荐】推荐尽量少用 else</h3><p>if-else 的方式可以改写成:<br><figure class="highlight java"><table><tr><td class="code"><pre><div class="line"><span class="keyword">if</span>(condition)&#123;</div><div class="line">    ...</div><div class="line">    <span class="keyword">return</span> obj; </div><div class="line">&#125;</div><div class="line"><span class="comment">// 接着写 else 的业务逻辑代码;</span></div></pre></td></tr></table></figure></p>
+<p>说明:如果非得使用if()…else if()…else…方式表达逻辑,【强制】请勿超过3层,超过请使用状态设计模式。<br><code>正例</code>:逻辑上超过 3 层的 if-else 代码可以使用卫语句,或者状态模式来实现。<br>
+        
+          <p class="article-more-link">
+            <a href="/blog/2017/02/22/2017-02-22-javarule-7/#more">More&gt;&gt;</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <!--<a data-url="http://yvshuo.github.io/2017/02/22/2017-02-22-javarule-7/" data-id="cjgokf28s000pn607qbfit7z4" class="article-share-link">Share</a>-->
+      <!---->
+    </footer>
+  </div>
+  
+</article>
+
+
+
 	<article id="post-2017-02-18-javarule-6" class="article article-type-post content" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2017/02/18/2017-02-18-javarule-6/" class="article-date">
@@ -127,7 +173,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/02/18/2017-02-18-javarule-6/" data-id="cjepubaon000hqss65mhnc3sv" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/02/18/2017-02-18-javarule-6/" data-id="cjgokf28l000nn607euprbig1" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -172,7 +218,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/02/17/2017-02-17-javarule-5/" data-id="cjepubaop000lqss6rog3r3ff" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/02/17/2017-02-17-javarule-5/" data-id="cjgokf28k000ln607mf7eemc4" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -218,7 +264,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/02/13/2017-02-10-javarule-4/" data-id="cjepubaoo000jqss638dscqyh" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/02/13/2017-02-10-javarule-4/" data-id="cjgokf28j000jn6073g2atlys" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -268,7 +314,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/02/10/2017-02-10-javarule-3/" data-id="cjepubaom000fqss63er2ci6u" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/02/10/2017-02-10-javarule-3/" data-id="cjgokf28h000hn607trku2atk" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -314,58 +360,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/02/10/2017-02-10-javarule-2/" data-id="cjepubaok000dqss64e397kyh" class="article-share-link">Share</a>-->
-      <!---->
-    </footer>
-  </div>
-  
-</article>
-
-
-
-	<article id="post-2017-02-09-javarule-1" class="article article-type-post content" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2017/02/09/2017-02-09-javarule-1/" class="article-date">
-  <time datetime="2017-02-09T14:43:47.000Z" itemprop="datePublished">2017-02-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2017/02/09/2017-02-09-javarule-1/">阿里巴巴java开发手册解读1-命名规约</a>
-    </h1>
-  
-
-      </header>
-    
-    
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java/">java</a></li><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/java文档/">java文档</a></li></ul>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>今天拜读了阿里巴巴刚发布的java开发手册，之前做项目时在一些细节的处理上总是不知道如何下手，看完这个手册，收获颇多。附手册全文。</p>
-<blockquote>
-<p><a href="/blog/assets/pdf/alijava.pdf">阿里巴巴java开发手册</a></p>
-</blockquote>
-<p>下面是摘录加批注。注：引用标签内为批注，字面规则不附批注。</p>
-<h3 id="1-【强制】-代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束"><a href="#1-【强制】-代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束" class="headerlink" title="1. 【强制】 代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束"></a>1. 【强制】 代码中的命名均不能以下划线或美元符号开始，也不能以下划线或美元符号结束</h3><p><code>反例</code>:<em>name / __name / $Object / name</em> / name$ / Object$</p>
-<blockquote>
-<p><strong>批注</strong>:<br>javascript表示不服！</p>
-</blockquote>
-        
-          <p class="article-more-link">
-            <a href="/blog/2017/02/09/2017-02-09-javarule-1/#more">More&gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2017/02/09/2017-02-09-javarule-1/" data-id="cjepubaor000nqss6r98tb2xs" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/02/10/2017-02-10-javarule-2/" data-id="cjgokf28g000fn607kfa3aeti" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>

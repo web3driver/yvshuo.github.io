@@ -2,6 +2,13 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>http://yvshuo.github.io/2018/03/15/2018-03-15-Sequelize/</loc>
+    
+    <lastmod>2018-05-07T09:57:16.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yvshuo.github.io/2018/03/13/2018-03-13-banip/</loc>
     
     <lastmod>2018-03-13T15:59:37.000Z</lastmod>
@@ -30,13 +37,6 @@
   </url>
   
   <url>
-    <loc>http://yvshuo.github.io/2016/11/27/2016-11-27-wxapp/</loc>
-    
-    <lastmod>2017-10-22T03:33:39.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yvshuo.github.io/2017/01/11/2017-01-11-review-git/</loc>
     
     <lastmod>2017-10-22T03:33:39.000Z</lastmod>
@@ -44,7 +44,7 @@
   </url>
   
   <url>
-    <loc>http://yvshuo.github.io/2016/11/15/2016-11-15-eslint/</loc>
+    <loc>http://yvshuo.github.io/2016/11/27/2016-11-27-wxapp/</loc>
     
     <lastmod>2017-10-22T03:33:39.000Z</lastmod>
     
@@ -52,6 +52,13 @@
   
   <url>
     <loc>http://yvshuo.github.io/2017/01/16/2017-01-16-refactor/</loc>
+    
+    <lastmod>2017-10-22T03:33:39.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yvshuo.github.io/2017/02/09/2017-02-09-javarule-1/</loc>
     
     <lastmod>2017-10-22T03:33:39.000Z</lastmod>
     
@@ -72,13 +79,6 @@
   </url>
   
   <url>
-    <loc>http://yvshuo.github.io/2017/02/18/2017-02-18-javarule-6/</loc>
-    
-    <lastmod>2017-10-22T03:33:39.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yvshuo.github.io/2017/02/13/2017-02-10-javarule-4/</loc>
     
     <lastmod>2017-10-22T03:33:39.000Z</lastmod>
@@ -93,7 +93,7 @@
   </url>
   
   <url>
-    <loc>http://yvshuo.github.io/2017/02/09/2017-02-09-javarule-1/</loc>
+    <loc>http://yvshuo.github.io/2017/02/18/2017-02-18-javarule-6/</loc>
     
     <lastmod>2017-10-22T03:33:39.000Z</lastmod>
     
@@ -226,6 +226,13 @@
   </url>
   
   <url>
+    <loc>http://yvshuo.github.io/2016/11/15/2016-11-15-eslint/</loc>
+    
+    <lastmod>2017-10-22T03:33:39.000Z</lastmod>
+    
+  </url>
+  
+  <url>
     <loc>http://yvshuo.github.io/tags/index.html</loc>
     
     <lastmod>2017-10-22T03:33:39.000Z</lastmod>
@@ -240,13 +247,6 @@
   </url>
   
   <url>
-    <loc>http://yvshuo.github.io/docs/alibaba/2017-02-10-javarule-4.html</loc>
-    
-    <lastmod>2017-10-22T03:33:39.000Z</lastmod>
-    
-  </url>
-  
-  <url>
     <loc>http://yvshuo.github.io/docs/alibaba/2017-02-10-javarule-3.html</loc>
     
     <lastmod>2017-10-22T03:33:39.000Z</lastmod>
@@ -254,14 +254,14 @@
   </url>
   
   <url>
-    <loc>http://yvshuo.github.io/docs/alibaba/2017-02-17-javarule-5.html</loc>
+    <loc>http://yvshuo.github.io/docs/alibaba/2017-02-10-javarule-4.html</loc>
     
     <lastmod>2017-10-22T03:33:39.000Z</lastmod>
     
   </url>
   
   <url>
-    <loc>http://yvshuo.github.io/docs/alibaba/2017-02-22-javarule-7.html</loc>
+    <loc>http://yvshuo.github.io/docs/alibaba/2017-02-17-javarule-5.html</loc>
     
     <lastmod>2017-10-22T03:33:39.000Z</lastmod>
     
@@ -282,7 +282,7 @@
   </url>
   
   <url>
-    <loc>http://yvshuo.github.io/docs/es6/2017-03-19-es6-2.html</loc>
+    <loc>http://yvshuo.github.io/docs/alibaba/2017-02-22-javarule-7.html</loc>
     
     <lastmod>2017-10-22T03:33:39.000Z</lastmod>
     
@@ -296,7 +296,7 @@
   </url>
   
   <url>
-    <loc>http://yvshuo.github.io/docs/alibaba/index.html</loc>
+    <loc>http://yvshuo.github.io/docs/es6/2017-03-19-es6-2.html</loc>
     
     <lastmod>2017-10-22T03:33:39.000Z</lastmod>
     
@@ -310,7 +310,7 @@
   </url>
   
   <url>
-    <loc>http://yvshuo.github.io/docs/es6/2017-03-25-es6-4.html</loc>
+    <loc>http://yvshuo.github.io/docs/alibaba/index.html</loc>
     
     <lastmod>2017-10-22T03:33:39.000Z</lastmod>
     
@@ -318,6 +318,13 @@
   
   <url>
     <loc>http://yvshuo.github.io/docs/es6/index.html</loc>
+    
+    <lastmod>2017-10-22T03:33:39.000Z</lastmod>
+    
+  </url>
+  
+  <url>
+    <loc>http://yvshuo.github.io/docs/es6/2017-03-25-es6-4.html</loc>
     
     <lastmod>2017-10-22T03:33:39.000Z</lastmod>
     
