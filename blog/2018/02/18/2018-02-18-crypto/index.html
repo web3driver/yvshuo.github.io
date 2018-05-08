@@ -1,0 +1,381 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+    
+  
+  <title>
+    nodejs中的加解密能力|香辣猪蹄儿
+  </title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Crypto 库是 nodejs 提供的一个加解密的库，通过这个库，我们可以在 nodejs 中实现常用的一些加解密的功能。Crypto 是利用OpenSSL库来实现它的加密技术的，提供了一系列的hash算法、hmac、cipher、decipher、sign、verify等方法。这篇文章我想从一些常用的应用场景来列举我们为什么要用这些方法，以及何时用这些方法。">
+<meta name="keywords" content="nodejs,信息安全">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nodejs中的加解密能力">
+<meta property="og:url" content="http://yvshuo.github.io/2018/02/18/2018-02-18-crypto/index.html">
+<meta property="og:site_name" content="香辣猪蹄儿">
+<meta property="og:description" content="Crypto 库是 nodejs 提供的一个加解密的库，通过这个库，我们可以在 nodejs 中实现常用的一些加解密的功能。Crypto 是利用OpenSSL库来实现它的加密技术的，提供了一系列的hash算法、hmac、cipher、decipher、sign、verify等方法。这篇文章我想从一些常用的应用场景来列举我们为什么要用这些方法，以及何时用这些方法。">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yvshuo.github.io/blog/assets/images/2018/02/18/1.png">
+<meta property="og:updated_time" content="2018-05-08T12:45:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="nodejs中的加解密能力">
+<meta name="twitter:description" content="Crypto 库是 nodejs 提供的一个加解密的库，通过这个库，我们可以在 nodejs 中实现常用的一些加解密的功能。Crypto 是利用OpenSSL库来实现它的加密技术的，提供了一系列的hash算法、hmac、cipher、decipher、sign、verify等方法。这篇文章我想从一些常用的应用场景来列举我们为什么要用这些方法，以及何时用这些方法。">
+<meta name="twitter:image" content="http://yvshuo.github.io/blog/assets/images/2018/02/18/1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="config.title" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/blog/assets/images/global/favicon.ico" >
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/blog/css/page.css">
+  <script src="https://cdn.ravenjs.com/3.19.1/raven.min.js" crossorigin="anonymous"></script>
+  <script>
+    Raven.config('http://aef818609cfb452f9f065e7e6362ef39@sentry.yvshuo.me/3').install()
+  </script>
+  <script src="/blog/js/vue.min.js"></script>
+  <script>window.PAGE_TYPE = ""</script>
+</head>
+<body class="docs">
+  
+  <div id="mobile-bar" >
+  <a class="menu-button"></a>
+  <a class="logo" href="/"></a>
+  
+    <a class="back" href="javascript:history.go(-1)"></a>
+  
+</div>
+  <div id="header">
+  <a id="logo" href="/">
+    <img src="/blog/img/avatar.jpg">
+    <span>香辣猪蹄儿</span>
+  </a>
+  <ul id="nav">
+    <li><a href="/blog" class="nav-link">首页</a></li>
+<li><a href="/blog/archives" class="nav-link">文章列表</a></li>
+<li><a href="/blog/tags" class="nav-link">标签列表</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">文档</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="/blog/docs/alibaba" class="nav-link">阿里巴巴java开发手册解读</a></li>
+    <li><a href="/blog/docs/es6" class="nav-link">ES6温故而知新</a></li>
+  </ul>
+</li>
+  </ul>
+</div>
+
+  <div id="main" class="fix-sidebar">
+      
+    <div class="sidebar blog">
+        <ul class="main-menu">
+            <li><a href="/blog" class="nav-link">首页</a></li>
+<li><a href="/blog/archives" class="nav-link">文章列表</a></li>
+<li><a href="/blog/tags" class="nav-link">标签列表</a></li>
+<li class="nav-dropdown-container">
+  <a class="nav-link">文档</a><span class="arrow"></span>
+  <ul class="nav-dropdown">
+    <li><a href="/blog/docs/alibaba" class="nav-link">阿里巴巴java开发手册解读</a></li>
+    <li><a href="/blog/docs/es6" class="nav-link">ES6温故而知新</a></li>
+  </ul>
+</li>
+        </ul>
+        <div class="list">
+            <h2>
+                最新文章
+            </h2>
+            <ul style="padding:0">
+            
+            
+                
+                    <li>
+                        <a href="/blog/2018/03/15/2018-03-15-Sequelize/" class="sidebar-link">Sequelize使用报告</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2018/03/13/2018-03-13-banip/" class="sidebar-link">linux服务器初级防护</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2018/02/18/2018-02-18-crypto/" class="sidebar-link current">nodejs中的加解密能力</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2018/01/26/2018-01-26-vba/" class="sidebar-link">给前端er的EXCEL VBA编程快速入门手册</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2017/10/27/2017-10-27-refactor-review/" class="sidebar-link">重构项目总结</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2017/06/10/2017-06-10-vod/" class="sidebar-link">腾讯云视频点播接口开发记录</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2017/05/31/2017-05-31-sixone-md/" class="sidebar-link">六一</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2017/05/19/2017-05-19-kotlin/" class="sidebar-link">kotlin学习资源</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2017/05/10/2017-05-10-is/" class="sidebar-link">javascript常见判断研究</a>
+                    </li>
+                
+            
+                
+                    <li>
+                        <a href="/blog/2017/05/10/2017-05-10-NaN/" class="sidebar-link">说一说数组去重</a>
+                    </li>
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+                
+            
+            </ul>
+        </div>
+    </div>
+    <div class="content with-sidebar blog post">
+        <h1>nodejs中的加解密能力</h1>
+        <h4>2月 18, 2018
+            
+            
+                <span id="/blog/2018/02/18/2018-02-18-crypto/" class="leancloud_visitors" data-flag-title="nodejs中的加解密能力">
+                    <span class="leancloud-visitors-count"></span>
+                </span>
+            
+        </h4>
+        
+        
+        <p><a href="https://nodejs.org/api/crypto.html" target="_blank" rel="noopener">Crypto</a> 库是 nodejs 提供的一个加解密的库，通过这个库，我们可以在 nodejs 中实现常用的一些加解密的功能。Crypto 是利用OpenSSL库来实现它的加密技术的，提供了一系列的hash算法、hmac、cipher、decipher、sign、verify等方法。这篇文章我想从一些常用的应用场景来列举我们为什么要用这些方法，以及何时用这些方法。</p>
+<a id="more"></a>
+<h2 id="1、-Class-Hash"><a href="#1、-Class-Hash" class="headerlink" title="1、 Class: Hash"></a>1、 Class: Hash</h2><p>实现如常见的md5、sha1等单向加密。我们通常会在密码存储中使用，避免密码明文存储带来风险。<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">'crypto'</span>);</div><div class="line"><span class="comment">// 创建一个hash实例，</span></div><div class="line"><span class="keyword">const</span> hash = crypto.createHash(<span class="string">'sha256'</span>);</div><div class="line"><span class="comment">// 以流的形式来写入数据</span></div><div class="line">hash.on(<span class="string">'readable'</span>, () =&gt; &#123;</div><div class="line">  <span class="keyword">const</span> data = hash.read();</div><div class="line">  <span class="keyword">if</span> (data) &#123;</div><div class="line">    <span class="built_in">console</span>.log(data.toString(<span class="string">'hex'</span>));</div><div class="line">    <span class="comment">// Prints:</span></div><div class="line">    <span class="comment">//   6a2da20943931e9834fc12cfe5bb47bbd9ae43489a30726962b576f4e3993e50</span></div><div class="line">  &#125;</div><div class="line">&#125;);</div><div class="line"></div><div class="line">hash.write(<span class="string">'some data to hash'</span>);</div><div class="line">hash.end();</div></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">'crypto'</span>);</div><div class="line"><span class="keyword">const</span> hash = crypto.createHash(<span class="string">'sha256'</span>);</div><div class="line"></div><div class="line">hash.update(<span class="string">'some data to hash'</span>); <span class="comment">// update写入数据</span></div><div class="line"><span class="built_in">console</span>.log(hash.digest(<span class="string">'hex'</span>)); <span class="comment">// digest按指定编码格式生成数据</span></div><div class="line"><span class="comment">// Prints:</span></div><div class="line"><span class="comment">//   6a2da20943931e9834fc12cfe5bb47bbd9ae43489a30726962b576f4e3993e50</span></div></pre></td></tr></table></figure>
+<h2 id="2、-Class-Hmac"><a href="#2、-Class-Hmac" class="headerlink" title="2、 Class: Hmac"></a>2、 Class: Hmac</h2><p>密码直接使用md5、sha1等算法加密后，如果数据库被攻破，仍然很容易被破解。因为有<a href="https://zh.wikipedia.org/wiki/%E5%BD%A9%E8%99%B9%E8%A1%A8" target="_blank" rel="noopener">彩虹表</a>这种东西的存在。这个时候通常就需要salt算法，在加密的源数据中加‘盐’。<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">//////////////////////////////</span></div><div class="line"><span class="comment">// salt算法</span></div><div class="line"><span class="comment">//////////////////////////////</span></div><div class="line"><span class="keyword">var</span> crypto = <span class="built_in">require</span>(<span class="string">'crypto'</span>);</div><div class="line"><span class="keyword">var</span> md5 = crypto.createHash(<span class="string">'md5'</span>);</div><div class="line"><span class="keyword">var</span> txt = <span class="string">"123465"</span>;</div><div class="line"></div><div class="line">md5.update(txt);</div><div class="line"><span class="built_in">console</span>.log(md5.digest(<span class="string">'hex'</span>));</div><div class="line"></div><div class="line">md5 = crypto.createHash(<span class="string">'md5'</span>);</div><div class="line"><span class="keyword">var</span> salt = <span class="string">"abcdefghijklmnopqrstuvwxyz"</span>;</div><div class="line">md5.update(txt+salt); <span class="comment">// 加盐</span></div><div class="line"><span class="built_in">console</span>.log(md5.digest(<span class="string">'hex'</span>));</div></pre></td></tr></table></figure></p>
+<p>这样就如果只是数据库被攻破而salt安全的话，密文仍然无法被破获。<br>Hmac就是内置的自动加盐的方法。<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">'crypto'</span>);</div><div class="line"><span class="keyword">const</span> hmac = crypto.createHmac(<span class="string">'sha256'</span>, <span class="string">'a secret'</span>); </div><div class="line"></div><div class="line">hmac.update(<span class="string">'some data to hash'</span>);</div><div class="line"><span class="built_in">console</span>.log(hmac.digest(<span class="string">'hex'</span>));</div><div class="line"><span class="comment">// Prints:</span></div><div class="line"><span class="comment">//   7fd04df92f636fd450bc841c9418e5825c17f33ad9c87c518115a45971f7f77e</span></div></pre></td></tr></table></figure></p>
+<h2 id="3、-Class-Cipher-和-Class-Decipher"><a href="#3、-Class-Cipher-和-Class-Decipher" class="headerlink" title="3、 Class: Cipher 和 Class: Decipher"></a>3、 Class: Cipher 和 Class: Decipher</h2><p>上面的hash和hmac适用的是单向加密，即我只是为了不让密文明文存储，使用的时候只需要校验加密后的密文是否符合要求，并以此来判断最初的密文是否对应。实际应用中，除了这种场景外，更多的情况是我们对通信内容进行加密以避免通信内容被截获。所以除了加密外，还需要解密。这种加解密分为对称加密和非对称加密两种。<br>对称加密就是加密和解密是同一个密钥，常见的对称加密算法就是AES。<code>Cipher</code> 和 <code>Decipher</code> 就提供了这种加解密的功能。<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 加密</span></div><div class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">'crypto'</span>);</div><div class="line"><span class="keyword">const</span> cipher = crypto.createCipher(<span class="string">'aes192'</span>, <span class="string">'a password'</span>);</div><div class="line"></div><div class="line"><span class="keyword">let</span> encrypted = cipher.update(<span class="string">'some clear text data'</span>, <span class="string">'utf8'</span>, <span class="string">'hex'</span>);</div><div class="line">encrypted += cipher.final(<span class="string">'hex'</span>);</div><div class="line"><span class="built_in">console</span>.log(encrypted);</div><div class="line"><span class="comment">// Prints: ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504</span></div></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 解密</span></div><div class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">'crypto'</span>);</div><div class="line"><span class="keyword">const</span> decipher = crypto.createDecipher(<span class="string">'aes192'</span>, <span class="string">'a password'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> encrypted =</div><div class="line">    <span class="string">'ca981be48e90867604588e75d04feabb63cc007a8f8ad89b10616ed84d815504'</span>;</div><div class="line"><span class="keyword">let</span> decrypted = decipher.update(encrypted, <span class="string">'hex'</span>, <span class="string">'utf8'</span>);</div><div class="line">decrypted += decipher.final(<span class="string">'utf8'</span>);</div><div class="line"><span class="built_in">console</span>.log(decrypted);</div><div class="line"><span class="comment">// Prints: some clear text data</span></div></pre></td></tr></table></figure>
+<h2 id="4、crypto-publicEncrypt-amp-amp-crypto-privateDecrypt-和-crypto-privateEncrypt-amp-amp-crypto-publicDecrypt"><a href="#4、crypto-publicEncrypt-amp-amp-crypto-privateDecrypt-和-crypto-privateEncrypt-amp-amp-crypto-publicDecrypt" class="headerlink" title="4、crypto.publicEncrypt &amp;&amp; crypto.privateDecrypt 和 crypto.privateEncrypt &amp;&amp; crypto.publicDecrypt"></a>4、crypto.publicEncrypt &amp;&amp; crypto.privateDecrypt 和 crypto.privateEncrypt &amp;&amp; crypto.publicDecrypt</h2><p>上面的这种对称加密，加密和解密用的是同一个密钥，只要有一方密钥丢失，就可以轻松解密。所以在通信加密中，正常用的都是非对称加密。用私钥加密，用配对的公钥解密，公钥和私钥在不同的两个人手上，缺少任意一个，都无法完成整个加解密过程。配对的公钥和私钥可以使用工具来生成，如openssl。如果你配过github等托管仓库的ssh，应该知道我说的是什么。<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// utils.js</span></div><div class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">'crypto'</span>);</div><div class="line"></div><div class="line"><span class="comment">// 加密方法</span></div><div class="line">exports.encrypt = <span class="function">(<span class="params">data, key</span>) =&gt;</span> &#123;</div><div class="line">  <span class="comment">// 注意，第二个参数是Buffer类型</span></div><div class="line">  <span class="keyword">return</span> crypto.publicEncrypt(key, Buffer.from(data));</div><div class="line">&#125;;</div><div class="line"></div><div class="line"><span class="comment">// 解密方法</span></div><div class="line">exports.decrypt = <span class="function">(<span class="params">encrypted, key</span>) =&gt;</span> &#123;</div><div class="line">  <span class="comment">// 注意，encrypted是Buffer类型</span></div><div class="line">  <span class="keyword">return</span> crypto.privateDecrypt(key, encrypted);</div><div class="line">&#125;;</div></pre></td></tr></table></figure></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> utils = <span class="built_in">require</span>(<span class="string">'./utils'</span>);</div><div class="line"><span class="keyword">const</span> keys = <span class="built_in">require</span>(<span class="string">'./keys'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> plainText = <span class="string">'你好，我是程序猿小卡'</span>;</div><div class="line"><span class="keyword">const</span> crypted = utils.encrypt(plainText, keys.pubKey); <span class="comment">// 加密</span></div><div class="line"><span class="keyword">const</span> decrypted = utils.decrypt(crypted, keys.privKey); <span class="comment">// 解密</span></div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(decrypted.toString()); <span class="comment">// 你好，我是程序猿小卡</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line">exports.privKey = <span class="string">`-----BEGIN RSA PRIVATE KEY-----</span></div><div class="line"><span class="string">MIICXQIBAAKBgQDFWnl8fChyKI/Tgo1ILB+IlGr8ZECKnnO8XRDwttBbf5EmG0qV</span></div><div class="line"><span class="string">8gs0aGkh649rb75I+tMu2JSNuVj61CncL/7Ct2kAZ6CZZo1vYgtzhlFnxd4V7Ra+</span></div><div class="line"><span class="string">aIwLZaXT/h3eE+/cFsL4VAJI5wXh4Mq4Vtu7uEjeogAOgXACaIqiFyrk3wIDAQAB</span></div><div class="line"><span class="string">AoGBAKdrunYlqfY2fNUVAqAAdnvaVOxqa+psw4g/d3iNzjJhBRTLwDl2TZUXImEZ</span></div><div class="line"><span class="string">QeEFueqVhoROTa/xVg/r3tshiD/QC71EfmPVBjBQJJIvJUbjtZJ/O+L2WxqzSvqe</span></div><div class="line"><span class="string">wzYaTm6Te3kZeG/cULNMIL+xU7XsUmslbGPAurYmHA1jNKFpAkEA48aUogSv8VFn</span></div><div class="line"><span class="string">R2QuYmilz20LkCzffK2aq2+9iSz1ZjCvo+iuFt71Y3+etWomzcZCuJ5sn0w7lcSx</span></div><div class="line"><span class="string">nqyzCFDspQJBAN3O2VdQF3gua0Q5VHmK9AvsoXLmCfRa1RiKuFOtrtC609RfX4DC</span></div><div class="line"><span class="string">FxDxH09UVu/8Hmdau8t6OFExcBriIYJQwDMCQQCZLjFDDHfuiFo2js8K62mnJ6SB</span></div><div class="line"><span class="string">H0xlIrND2+/RUuTuBov4ZUC+rM7GTUtEodDazhyM4C4Yq0HfJNp25Zm5XALpAkBG</span></div><div class="line"><span class="string">atLpO04YI3R+dkzxQUH1PyyKU6m5X9TjM7cNKcikD4wMkjK5p+S2xjYQc1AeZEYq</span></div><div class="line"><span class="string">vc187dJPRIi4oC3PN1+tAkBuW51/5vBj+zmd73mVcTt28OmSKOX6kU29F0lvEh8I</span></div><div class="line"><span class="string">oHiLOo285vG5ZtmXiY58tAiPVQXa7eU8hPQHTHWa9qp6</span></div><div class="line"><span class="string">-----END RSA PRIVATE KEY-----</span></div><div class="line"><span class="string">`</span>;</div><div class="line"></div><div class="line">exports.pubKey = <span class="string">`-----BEGIN PUBLIC KEY-----</span></div><div class="line"><span class="string">MIGfMA0GCSqGSIb3DQEBAQUAA4GNADCBiQKBgQDFWnl8fChyKI/Tgo1ILB+IlGr8</span></div><div class="line"><span class="string">ZECKnnO8XRDwttBbf5EmG0qV8gs0aGkh649rb75I+tMu2JSNuVj61CncL/7Ct2kA</span></div><div class="line"><span class="string">Z6CZZo1vYgtzhlFnxd4V7Ra+aIwLZaXT/h3eE+/cFsL4VAJI5wXh4Mq4Vtu7uEje</span></div><div class="line"><span class="string">ogAOgXACaIqiFyrk3wIDAQAB</span></div><div class="line"><span class="string">-----END PUBLIC KEY-----</span></div><div class="line"><span class="string">`</span>;</div></pre></td></tr></table></figure>
+<h2 id="5、Class-Sign-和-Class-Verify"><a href="#5、Class-Sign-和-Class-Verify" class="headerlink" title="5、Class: Sign 和 Class: Verify"></a>5、Class: Sign 和 Class: Verify</h2><p>除了对数据进行加解密外，很多时候我们还需要判断数据是否完整，确认数据在传输过程中没有被篡改。这里常规的做法就是使用数字签名。没错，https就是这种场景的一个常见应用。<br><img src="/blog/assets/images/2018/02/18/1.png" alt=""></p>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 签名</span></div><div class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">'crypto'</span>);</div><div class="line"><span class="keyword">const</span> sign = crypto.createSign(<span class="string">'SHA256'</span>);</div><div class="line"></div><div class="line">sign.update(<span class="string">'some data to sign'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> privateKey = getPrivateKeySomehow(); <span class="comment">// 获取你的私钥</span></div><div class="line"><span class="built_in">console</span>.log(sign.sign(privateKey, <span class="string">'hex'</span>));</div><div class="line"><span class="comment">// Prints: the calculated signature</span></div></pre></td></tr></table></figure>
+<figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="comment">// 校验</span></div><div class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">'crypto'</span>);</div><div class="line"><span class="keyword">const</span> verify = crypto.createVerify(<span class="string">'SHA256'</span>);</div><div class="line"></div><div class="line">verify.update(<span class="string">'some data to sign'</span>);</div><div class="line"></div><div class="line"><span class="keyword">const</span> publicKey = getPublicKeySomehow(); <span class="comment">// 获取你的公钥</span></div><div class="line"><span class="keyword">const</span> signature = getSignatureToVerify(); <span class="comment">// 用私钥签名后的密文</span></div><div class="line"><span class="built_in">console</span>.log(verify.verify(publicKey, signature));</div><div class="line"><span class="comment">// Prints: true or false</span></div></pre></td></tr></table></figure>
+<p>像这个发放公钥和私钥的人在https中就是受信任的证书颁发机构，它来保证公钥和私钥的配对以及不将私钥透露给第三方并承担相应的法律责任。</p>
+<h2 id="6、Class-DiffieHellman"><a href="#6、Class-DiffieHellman" class="headerlink" title="6、Class: DiffieHellman"></a>6、Class: DiffieHellman</h2><p>最后再提一嘴 <code>Diffie-Hellman</code>。 DH协议是一个密钥交换协议，可以让双方在不泄露密钥的情况下协商出一个密钥。<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">'crypto'</span>);</div><div class="line"></div><div class="line"><span class="comment">// xiaoming's keys:</span></div><div class="line"><span class="keyword">var</span> ming = crypto.createDiffieHellman(<span class="number">512</span>);</div><div class="line"><span class="keyword">var</span> ming_keys = ming.generateKeys();</div><div class="line"></div><div class="line"><span class="keyword">var</span> prime = ming.getPrime();</div><div class="line"><span class="keyword">var</span> generator = ming.getGenerator();</div><div class="line"></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'Prime: '</span> + prime.toString(<span class="string">'hex'</span>));</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'Generator: '</span> + generator.toString(<span class="string">'hex'</span>));</div><div class="line"></div><div class="line"><span class="comment">// xiaohong's keys:</span></div><div class="line"><span class="keyword">var</span> hong = crypto.createDiffieHellman(prime, generator);</div><div class="line"><span class="keyword">var</span> hong_keys = hong.generateKeys();</div><div class="line"></div><div class="line"><span class="comment">// exchange and generate secret:</span></div><div class="line"><span class="keyword">var</span> ming_secret = ming.computeSecret(hong_keys);</div><div class="line"><span class="keyword">var</span> hong_secret = hong.computeSecret(ming_keys);</div><div class="line"></div><div class="line"><span class="comment">// print secret:</span></div><div class="line"><span class="built_in">console</span>.log(<span class="string">'Secret of Xiao Ming: '</span> + ming_secret.toString(<span class="string">'hex'</span>));</div><div class="line"><span class="built_in">console</span>.log(<span class="string">'Secret of Xiao Hong: '</span> + hong_secret.toString(<span class="string">'hex'</span>));</div></pre></td></tr></table></figure></p>
+<h2 id="7、参考资料"><a href="#7、参考资料" class="headerlink" title="7、参考资料"></a>7、参考资料</h2><p>1、<a href="https://nodejs.org/api/crypto.html" target="_blank" rel="noopener">nodejs crypto官方文档</a><br>2、<a href="http://blog.fens.me/nodejs-crypto/" target="_blank" rel="noopener">Node.js加密算法库Crypto</a><br>3、<a href="https://my.oschina.net/shede333/blog/359290" target="_blank" rel="noopener">SSH HTTPS 公钥、秘钥、对称加密、非对称加密、 总结理解</a><br>4、<a href="https://www.cnblogs.com/chyingp/p/nodejs-asymmetric-enc-dec.html" target="_blank" rel="noopener">Node.js进阶：5分钟入门非对称加密方法</a><br>5、<a href="https://www.liaoxuefeng.com/wiki/001434446689867b27157e896e74d51a89c25cc8b43bdb3000/001434501504929883d11d84a1541c6907eefd792c0da51000" target="_blank" rel="noopener">廖雪峰的官方网站-crypto</a><br>6、<a href="https://zh.wikipedia.org/wiki/%E5%BD%A9%E8%99%B9%E8%A1%A8" target="_blank" rel="noopener">维基百科-彩虹表</a></p>
+
+        <div class="guide-links">
+            
+                <span>← <a href="/blog/2018/03/13/2018-03-13-banip/">linux服务器初级防护</a></span>
+            
+            
+                <span style="float:right"><a href="/blog/2018/01/26/2018-01-26-vba/">给前端er的EXCEL VBA编程快速入门手册</a> →</span>
+            
+        </div>
+    </div>
+
+  </div>
+  
+  
+<script>
+var topScrolled = false
+window.addEventListener('scroll', function () {
+  if (window.pageYOffset > 165 && !topScrolled) {
+    topScrolled = true
+    document.getElementById('mobile-bar').classList.remove('top')
+  } else if (window.pageYOffset <= 165 && topScrolled) {
+    topScrolled = false
+    document.getElementById('mobile-bar').classList.add('top')
+  }
+})
+</script>
+<script src="//cdn.bootcss.com/jquery/2.0.3/jquery.min.js"></script>
+<script src="/blog/js/script.js"></script>
+<script src="/blog/js/common.js"></script>
+<script>
+
+    let $a = document.querySelectorAll('.blog p:not(.article-more-link)>a,.content.docs p>a,.article-inner p:not(.article-more-link)>a')
+    $a.forEach(($em) => {
+      $em.setAttribute('target', '_blank')
+    })
+
+</script>
+
+
+  
+  <script src="https://cdn1.lncld.net/static/js/av-core-mini-0.6.1.js"></script>
+  <script>AV.initialize("HmeL0Aj2Mp5kT83LC723uQtt-gzGzoHsz", "0dnLgsnCdC4dFXd4wMci4Nyn");</script>
+  <script>
+    function showTime(Counter) {
+      var query = new AV.Query(Counter);
+      var entries = [];
+      var $visitors = $(".leancloud_visitors");
+
+      $visitors.each(function () {
+        entries.push( $(this).attr("id").trim() );
+      });
+
+      query.containedIn('url', entries);
+      query.find()
+        .done(function (results) {
+          var COUNT_CONTAINER_REF = '.leancloud-visitors-count';
+
+          if (results.length === 0) {
+            $visitors.find(COUNT_CONTAINER_REF).text(0);
+            return;
+          }
+
+          for (var i = 0; i < results.length; i++) {
+            var item = results[i];
+            var url = item.get('url');
+            var time = item.get('time');
+            var element = document.getElementById(url);
+
+            $(element).find(COUNT_CONTAINER_REF).text(time);
+          }
+          for(var i = 0; i < entries.length; i++) {
+            var url = entries[i];
+            var element = document.getElementById(url);
+            var countSpan = $(element).find(COUNT_CONTAINER_REF);
+            if( countSpan.text() == '') {
+              countSpan.text(0);
+            }
+          }
+        })
+        .fail(function (object, error) {
+          console.log("Error: " + error.code + " " + error.message);
+        });
+    }
+
+    function addCount(Counter) {
+      var $visitors = $(".leancloud_visitors");
+      var url = $visitors.attr('id').trim();
+      var title = $visitors.attr('data-flag-title').trim();
+      var query = new AV.Query(Counter);
+
+      query.equalTo("url", url);
+      query.find({
+        success: function(results) {
+          if (results.length > 0) {
+            var counter = results[0];
+            counter.fetchWhenSave(true);
+            counter.increment("time");
+            counter.save(null, {
+              success: function(counter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(counter.get('time'));
+              },
+              error: function(counter, error) {
+                console.log('Failed to save Visitor num, with error message: ' + error.message);
+              }
+            });
+          } else {
+            var newcounter = new Counter();
+            /* Set ACL */
+            var acl = new AV.ACL();
+            acl.setPublicReadAccess(true);
+            acl.setPublicWriteAccess(true);
+            newcounter.setACL(acl);
+            /* End Set ACL */
+            newcounter.set("title", title);
+            newcounter.set("url", url);
+            newcounter.set("time", 1);
+            newcounter.save(null, {
+              success: function(newcounter) {
+                var $element = $(document.getElementById(url));
+                $element.find('.leancloud-visitors-count').text(newcounter.get('time'));
+              },
+              error: function(newcounter, error) {
+                console.log('Failed to create');
+              }
+            });
+          }
+        },
+        error: function(error) {
+          console.log('Error:' + error.code + " " + error.message);
+        }
+      });
+    }
+
+    $(function() {
+      var Counter = AV.Object.extend("Counter");
+      if ($('.leancloud_visitors').length == 1) {
+        addCount(Counter);
+      } else if ($('.post-title-link').length > 1) {
+        showTime(Counter);
+      }
+    });
+  </script>
+
+
+
+
+</body>
+</html>
+
