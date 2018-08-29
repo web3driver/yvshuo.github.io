@@ -14,7 +14,6 @@
 <meta property="og:url" content="http://yvshuo.github.io/page/6/index.html">
 <meta property="og:site_name" content="香辣猪蹄儿">
 <meta property="og:description" content="余硕的个人博客。认认真真写代码，开开心心吃猪蹄。">
-<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="香辣猪蹄儿">
 <meta name="twitter:description" content="余硕的个人博客。认认真真写代码，开开心心吃猪蹄。">
@@ -28,10 +27,6 @@
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/blog/css/page.css">
-  <script src="https://cdn.ravenjs.com/3.19.1/raven.min.js" crossorigin="anonymous"></script>
-  <script>
-    Raven.config('http://aef818609cfb452f9f065e7e6362ef39@sentry.yvshuo.me/3').install()
-  </script>
   <script src="/blog/js/vue.min.js"></script>
   <script>window.PAGE_TYPE = ""</script>
 </head>
@@ -92,50 +87,6 @@
   </div>
 </div>
 
-	<article id="post-2016-10-26-webpacknote" class="article article-type-post content" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/blog/2016/10/26/2016-10-26-webpacknote/" class="article-date">
-  <time datetime="2016-10-26T15:21:48.000Z" itemprop="datePublished">2016-10-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/blog/2016/10/26/2016-10-26-webpacknote/">webpack简介</a>
-    </h1>
-  
-
-      </header>
-    
-    
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/blog/tags/webpack/">webpack</a></li></ul>
-
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>最近一直在研究vue，顺带着研究了一下webpack。本文只是一篇简短的记录，后续会继续更新一些webpack深入的学习笔记。</p>
-<h3 id="webpack概述"><a href="#webpack概述" class="headerlink" title="webpack概述"></a>webpack概述</h3><p>简单的说，webpack是一个前端的打包工具。它做的事情就是将你项目中使用的各种前端模块打包到一起，转换为合适的格式发布。通过使用webpack，可以将各种其他格式，如<code>scss</code>、<code>typescript</code>等拓展类型的语言转换为可运行的javascript。配合webpack的核心<code>loaders</code>和<code>plugins</code>，可以灵活的实现各种需求，非常的强力！<br>
-        
-          <p class="article-more-link">
-            <a href="/blog/2016/10/26/2016-10-26-webpacknote/#more">More&gt;&gt;</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2016/10/26/2016-10-26-webpacknote/" data-id="cjgxhuiok00053b07zx0j4h4p" class="article-share-link">Share</a>-->
-      <!---->
-    </footer>
-  </div>
-  
-</article>
-
-
-
 	<article id="post-2016-10-11-closure" class="article article-type-post content" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/blog/2016/10/11/2016-10-11-closure/" class="article-date">
@@ -161,7 +112,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>今天读到了一篇讲<a href="http://web.jobbole.com/88167/" target="_blank" rel="noopener">闭包的文章</a>，是我目前看到的最透彻的一篇闭包的讲解。趁热记一下笔记。</p>
+        <p>今天读到了一篇讲<a href="http://web.jobbole.com/88167/">闭包的文章</a>，是我目前看到的最透彻的一篇闭包的讲解。趁热记一下笔记。</p>
 <p>在我以前的认识中，一直觉得闭包就是在js中提供了一种类似于java中get方法的功能，使我们可以通过闭包来访问到函数体内的局部变量。然鹅，我的理解也就顶多意会了闭包的一点皮毛。下面就直接通过代码来记录一下这篇文章中写到的知识点。</p>
 <h3 id="静态作用域的理解"><a href="#静态作用域的理解" class="headerlink" title="静态作用域的理解"></a>静态作用域的理解</h3><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">var</span> x = <span class="number">10</span>;</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">foo</span>(<span class="params"></span>) </span>&#123;	</div><div class="line">  <span class="keyword">var</span> y = x + <span class="number">5</span>;	</div><div class="line">  <span class="keyword">return</span> y;	</div><div class="line">&#125;	</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">bar</span>(<span class="params"></span>) </span>&#123; 	</div><div class="line">  <span class="keyword">var</span> x = <span class="number">2</span>;	</div><div class="line">  <span class="keyword">return</span> foo();	</div><div class="line">&#125;	</div><div class="line"><span class="function"><span class="keyword">function</span> <span class="title">main</span>(<span class="params"></span>) </span>&#123;	</div><div class="line">  foo(); <span class="comment">// Static scope: 15; Dynamic scope: 15	</span></div><div class="line">  bar(); <span class="comment">// Static scope: 15; Dynamic scope: 7	</span></div><div class="line">  <span class="keyword">return</span> <span class="number">0</span>;	</div><div class="line">&#125;</div></pre></td></tr></table></figure>
         
@@ -172,7 +123,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2016/10/11/2016-10-11-closure/" data-id="cjgxhuioj00043b07lfyoym3w" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/blog/2016/10/11/2016-10-11-closure/" data-id="cjbuyxsuz0002tvs6ypqbe1ug" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -216,7 +167,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2016/10/07/2016-10-07-githubssh/" data-id="cjgxhuiof00023b07t3esp5u0" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/blog/2016/10/07/2016-10-07-githubssh/" data-id="cjbuyxsv60004tvs61vdxw6ie" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -251,7 +202,7 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>工作已经一年了，想着该稍微停下来总结一下了。恰巧印象笔记开始限终端限流量。于是就有了写博客记录一下日常感想，同时将之前的一些笔记迁移到博客的想法。</p>
-<p>在github闲逛的时候看到了<a href="https://litten.github.io/" target="_blank" rel="noopener">Litten</a>的博客，很是喜欢。于是发现了<a href="https://hexo.io/" target="_blank" rel="noopener">hexo</a>,各种特性都让我甚是喜欢，就这么对Hexo一见钟情了。在知乎上搜到了一篇介绍<a href="https://www.zhihu.com/question/24422335" target="_blank" rel="noopener">hexo主题</a>的回答,一圈看下来，还是比较喜欢<a href="https://github.com/litten/hexo-theme-yilia" target="_blank" rel="noopener">Yilia</a>这个主题，也就是我最早看到的Litten开发的~缘分啊，（逃</p>
+<p>在github闲逛的时候看到了<a href="https://litten.github.io/">Litten</a>的博客，很是喜欢。于是发现了<a href="https://hexo.io/">hexo</a>,各种特性都让我甚是喜欢，就这么对Hexo一见钟情了。在知乎上搜到了一篇介绍<a href="https://www.zhihu.com/question/24422335">hexo主题</a>的回答,一圈看下来，还是比较喜欢<a href="https://github.com/litten/hexo-theme-yilia">Yilia</a>这个主题，也就是我最早看到的Litten开发的~缘分啊，（逃</p>
 <p>于是果断决定使用这个主题，计划着先直接用着，后续有时间的话自己也试着DIY一下自己的主题。</p>
 <p>废话不多说了，简单的记录一下第一次搭建Hexo博客的过程。</p>
         
@@ -262,7 +213,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/2016/10/06/2016-10-06-create/" data-id="cjgxhuiob00003b07gbq5gn7k" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/blog/2016/10/06/2016-10-06-create/" data-id="cjbuyxsus0000tvs67z2iyo6m" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>

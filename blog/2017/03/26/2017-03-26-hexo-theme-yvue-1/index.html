@@ -9,13 +9,11 @@
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="因为很喜欢vue网站简洁的风格，大概两个月之前就已经零零散散的完成了这个由vue site修改的主题。因为最开始的想法是自用，所以样式仍然沿用了vue官网的样式，目前只是按照hexo的文档进行了一些主题化的重构。这个周末又对自己的博客做了一些结构的调整和改动，所以想着干脆把这个自用的主题真正的做成一个HEXO的主题。为了督促自己一把，所以在开发阶段就发布了Beta版本，算是逼着自己不要把这个事情烂">
-<meta name="keywords" content="hexo">
 <meta property="og:type" content="article">
 <meta property="og:title" content="(多图慎入!)类vue官网的hexo主题yvue发布Beta0.1版本">
 <meta property="og:url" content="http://yvshuo.github.io/2017/03/26/2017-03-26-hexo-theme-yvue-1/index.html">
 <meta property="og:site_name" content="香辣猪蹄儿">
 <meta property="og:description" content="因为很喜欢vue网站简洁的风格，大概两个月之前就已经零零散散的完成了这个由vue site修改的主题。因为最开始的想法是自用，所以样式仍然沿用了vue官网的样式，目前只是按照hexo的文档进行了一些主题化的重构。这个周末又对自己的博客做了一些结构的调整和改动，所以想着干脆把这个自用的主题真正的做成一个HEXO的主题。为了督促自己一把，所以在开发阶段就发布了Beta版本，算是逼着自己不要把这个事情烂">
-<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yvshuo.github.io/blog/assets/images/2017/03/27/1.png">
 <meta property="og:image" content="http://yvshuo.github.io/blog/assets/images/2017/03/27/5.png">
 <meta property="og:image" content="http://yvshuo.github.io/blog/assets/images/2017/03/27/4.png">
@@ -24,7 +22,7 @@
 <meta property="og:image" content="http://yvshuo.github.io/blog/assets/images/2017/03/27/7.png">
 <meta property="og:image" content="http://yvshuo.github.io/blog/assets/images/2017/03/27/3.png">
 <meta property="og:image" content="http://yvshuo.github.io/blog/assets/images/2017/03/27/8.png">
-<meta property="og:updated_time" content="2017-10-22T03:33:39.000Z">
+<meta property="og:updated_time" content="2017-03-26T15:34:10.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="(多图慎入!)类vue官网的hexo主题yvue发布Beta0.1版本">
 <meta name="twitter:description" content="因为很喜欢vue网站简洁的风格，大概两个月之前就已经零零散散的完成了这个由vue site修改的主题。因为最开始的想法是自用，所以样式仍然沿用了vue官网的样式，目前只是按照hexo的文档进行了一些主题化的重构。这个周末又对自己的博客做了一些结构的调整和改动，所以想着干脆把这个自用的主题真正的做成一个HEXO的主题。为了督促自己一把，所以在开发阶段就发布了Beta版本，算是逼着自己不要把这个事情烂">
@@ -39,10 +37,6 @@
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/blog/css/page.css">
-  <script src="https://cdn.ravenjs.com/3.19.1/raven.min.js" crossorigin="anonymous"></script>
-  <script>
-    Raven.config('http://aef818609cfb452f9f065e7e6362ef39@sentry.yvshuo.me/3').install()
-  </script>
   <script src="/blog/js/vue.min.js"></script>
   <script>window.PAGE_TYPE = ""</script>
 </head>
@@ -110,12 +104,6 @@
             
                 
                     <li>
-                        <a href="/blog/2018/02/18/2018-02-18-crypto/" class="sidebar-link">nodejs中的加解密能力</a>
-                    </li>
-                
-            
-                
-                    <li>
                         <a href="/blog/2018/01/26/2018-01-26-vba/" class="sidebar-link">给前端er的EXCEL VBA编程快速入门手册</a>
                     </li>
                 
@@ -156,6 +144,10 @@
                     </li>
                 
             
+                
+                    <li>
+                        <a href="/blog/2017/04/27/2017-04-27-scopechain/" class="sidebar-link">js作用域链</a>
+                    </li>
                 
             
                 
@@ -219,7 +211,7 @@
         </h4>
         
         
-        <p>因为很喜欢vue网站简洁的风格，大概两个月之前就已经零零散散的完成了这个由<a href="https://github.com/vuejs/vuejs.org" target="_blank" rel="noopener">vue site</a>修改的主题。因为最开始的想法是自用，所以样式仍然沿用了vue官网的样式，目前只是按照hexo的文档进行了一些主题化的重构。<br><br><br>这个周末又对自己的博客做了一些结构的调整和改动，所以想着干脆把这个自用的主题真正的做成一个HEXO的主题。<br>为了督促自己一把，所以在开发阶段就发布了Beta版本，算是逼着自己不要把这个事情烂尾了吧。<br>目前只有最简单的博客展示功能。<br><a id="more"></a></p>
+        <p>因为很喜欢vue网站简洁的风格，大概两个月之前就已经零零散散的完成了这个由<a href="https://github.com/vuejs/vuejs.org" target="_blank" rel="external">vue site</a>修改的主题。因为最开始的想法是自用，所以样式仍然沿用了vue官网的样式，目前只是按照hexo的文档进行了一些主题化的重构。<br><br><br>这个周末又对自己的博客做了一些结构的调整和改动，所以想着干脆把这个自用的主题真正的做成一个HEXO的主题。<br>为了督促自己一把，所以在开发阶段就发布了Beta版本，算是逼着自己不要把这个事情烂尾了吧。<br>目前只有最简单的博客展示功能。<br><a id="more"></a></p>
 <h2 id="1、首页"><a href="#1、首页" class="headerlink" title="1、首页"></a>1、首页</h2><h3 id="PC"><a href="#PC" class="headerlink" title="PC"></a>PC</h3><p><img src="/blog/assets/images/2017/03/27/1.png" alt=""> </p>
 <h3 id="mobile"><a href="#mobile" class="headerlink" title="mobile"></a>mobile</h3><p><img src="/blog/assets/images/2017/03/27/5.png" alt=""></p>
 <h2 id="2、sidebar"><a href="#2、sidebar" class="headerlink" title="2、sidebar"></a>2、sidebar</h2><h3 id="PC-1"><a href="#PC-1" class="headerlink" title="PC"></a>PC</h3><p><img src="/blog/assets/images/2017/03/27/4.png" alt=""></p>
@@ -229,7 +221,7 @@
 <h2 id="4、标签列表"><a href="#4、标签列表" class="headerlink" title="4、标签列表"></a>4、标签列表</h2><h3 id="PC-3"><a href="#PC-3" class="headerlink" title="PC"></a>PC</h3><p><img src="/blog/assets/images/2017/03/27/3.png" alt=""></p>
 <h3 id="mobile-3"><a href="#mobile-3" class="headerlink" title="mobile"></a>mobile</h3><p><img src="/blog/assets/images/2017/03/27/8.png" alt=""></p>
 <h2 id="5、安装方式"><a href="#5、安装方式" class="headerlink" title="5、安装方式"></a>5、安装方式</h2><p>目前这个主题仍然处于开发状态！所以直接拿去用应该还会有很多坑~<br>如果你想试一试的话。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">$ git <span class="built_in">clone</span> https://github.com/yvshuo/hexo-theme-yvue.git themes/yvue</div></pre></td></tr></table></figure></p>
-<p>然后<br>参考<a href="https://github.com/yvshuo/hexo-theme-yvue" target="_blank" rel="noopener">yvue说明文档</a>吧~</p>
+<p>然后<br>参考<a href="https://github.com/yvshuo/hexo-theme-yvue" target="_blank" rel="external">yvue说明文档</a>吧~</p>
 
         <div class="guide-links">
             

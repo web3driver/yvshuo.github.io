@@ -9,14 +9,12 @@
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta name="description" content="过年期间帮朋友做了一个简单的excel处理数据的功能，因为涉及到递归和比较复杂的数据处理，没法通过一般的excel函数实现功能。所以最后选择了excel内置的vba脚本来实现。这里记录下一些vba基本的东西，通过跟熟悉的js来对比，可以让前端er快速上手。在开发之前，建议所有的编程放在vscode等编辑器上进行，然后在粘贴到excel的Visual Basic编辑器里调试。因为excel内置的编辑">
-<meta name="keywords" content="vba">
 <meta property="og:type" content="article">
 <meta property="og:title" content="给前端er的EXCEL VBA编程快速入门手册">
 <meta property="og:url" content="http://yvshuo.github.io/2018/01/26/2018-01-26-vba/index.html">
 <meta property="og:site_name" content="香辣猪蹄儿">
 <meta property="og:description" content="过年期间帮朋友做了一个简单的excel处理数据的功能，因为涉及到递归和比较复杂的数据处理，没法通过一般的excel函数实现功能。所以最后选择了excel内置的vba脚本来实现。这里记录下一些vba基本的东西，通过跟熟悉的js来对比，可以让前端er快速上手。在开发之前，建议所有的编程放在vscode等编辑器上进行，然后在粘贴到excel的Visual Basic编辑器里调试。因为excel内置的编辑">
-<meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2018-03-03T05:13:04.000Z">
+<meta property="og:updated_time" content="2018-08-29T03:23:49.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="给前端er的EXCEL VBA编程快速入门手册">
 <meta name="twitter:description" content="过年期间帮朋友做了一个简单的excel处理数据的功能，因为涉及到递归和比较复杂的数据处理，没法通过一般的excel函数实现功能。所以最后选择了excel内置的vba脚本来实现。这里记录下一些vba基本的东西，通过跟熟悉的js来对比，可以让前端er快速上手。在开发之前，建议所有的编程放在vscode等编辑器上进行，然后在粘贴到excel的Visual Basic编辑器里调试。因为excel内置的编辑">
@@ -30,10 +28,6 @@
     <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
   
   <link rel="stylesheet" href="/blog/css/page.css">
-  <script src="https://cdn.ravenjs.com/3.19.1/raven.min.js" crossorigin="anonymous"></script>
-  <script>
-    Raven.config('http://aef818609cfb452f9f065e7e6362ef39@sentry.yvshuo.me/3').install()
-  </script>
   <script src="/blog/js/vue.min.js"></script>
   <script>window.PAGE_TYPE = ""</script>
 </head>
@@ -101,12 +95,6 @@
             
                 
                     <li>
-                        <a href="/blog/2018/02/18/2018-02-18-crypto/" class="sidebar-link">nodejs中的加解密能力</a>
-                    </li>
-                
-            
-                
-                    <li>
                         <a href="/blog/2018/01/26/2018-01-26-vba/" class="sidebar-link current">给前端er的EXCEL VBA编程快速入门手册</a>
                     </li>
                 
@@ -147,6 +135,10 @@
                     </li>
                 
             
+                
+                    <li>
+                        <a href="/blog/2017/04/27/2017-04-27-scopechain/" class="sidebar-link">js作用域链</a>
+                    </li>
                 
             
                 
@@ -343,12 +335,12 @@
 </table>
 <p>总之，强列推荐Range对象，在excel里用起来非常方便。</p>
 <h2 id="3-参考资料"><a href="#3-参考资料" class="headerlink" title="3. 参考资料"></a>3. 参考资料</h2><blockquote>
-<p>1、<a href="http://club.excelhome.net/thread-395683-1-1.html" target="_blank" rel="noopener">VBA常用技巧代码解析</a><br>2、excel帮助文档（在windows的excel里点帮助就能找到，相当全了）</p>
+<p>1、<a href="http://club.excelhome.net/thread-395683-1-1.html" target="_blank" rel="external">VBA常用技巧代码解析</a><br>2、excel帮助文档（在windows的excel里点帮助就能找到，相当全了）</p>
 </blockquote>
 
         <div class="guide-links">
             
-                <span>← <a href="/blog/2018/02/18/2018-02-18-crypto/">nodejs中的加解密能力</a></span>
+                <span>← <a href="/blog/2018/03/13/2018-03-13-banip/">linux服务器初级防护</a></span>
             
             
                 <span style="float:right"><a href="/blog/2017/10/27/2017-10-27-refactor-review/">重构项目总结</a> →</span>
