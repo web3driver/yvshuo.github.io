@@ -8,19 +8,24 @@
     Promises|香辣猪蹄儿
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="一句话。Promises are a library for asynchronous programming.然后再看一个例子：Promise Example 从这个简单的例子中，可以直观的感受到Promise的威力。让异步请求一步一步的进行~ 类似于jQuery里的Deferred对象，Promises提供了异步编程的解决方案，一个简单的例子：function timeout(duration">
-<meta name="keywords" content="温故而知新,ES6">
+  <meta name="description" content="一句话。Promises are a library for asynchronous programming.然后再看一个例子：Promise Example
+从这个简单的例子中，可以直观的感受到Promise的威力。让异步请求一步一步的进行~
+类似于jQuery里的Deferred对象，Promises提供了异步编程的解决方案，一个简单的例子：function timeout(duration">
+<meta name="keywords">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Promises">
 <meta property="og:url" content="http://yvshuo.github.io/docs/es6/2017-03-25-es6-4.html">
 <meta property="og:site_name" content="香辣猪蹄儿">
-<meta property="og:description" content="一句话。Promises are a library for asynchronous programming.然后再看一个例子：Promise Example 从这个简单的例子中，可以直观的感受到Promise的威力。让异步请求一步一步的进行~ 类似于jQuery里的Deferred对象，Promises提供了异步编程的解决方案，一个简单的例子：function timeout(duration">
-<meta property="og:locale" content="zh-CN">
+<meta property="og:description" content="一句话。Promises are a library for asynchronous programming.然后再看一个例子：Promise Example
+从这个简单的例子中，可以直观的感受到Promise的威力。让异步请求一步一步的进行~
+类似于jQuery里的Deferred对象，Promises提供了异步编程的解决方案，一个简单的例子：function timeout(duration">
 <meta property="og:image" content="http://yvshuo.github.io/blog/assets/images/2017/03/26/1.png">
-<meta property="og:updated_time" content="2017-10-22T03:33:39.000Z">
+<meta property="og:updated_time" content="2017-03-26T06:32:58.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Promises">
-<meta name="twitter:description" content="一句话。Promises are a library for asynchronous programming.然后再看一个例子：Promise Example 从这个简单的例子中，可以直观的感受到Promise的威力。让异步请求一步一步的进行~ 类似于jQuery里的Deferred对象，Promises提供了异步编程的解决方案，一个简单的例子：function timeout(duration">
+<meta name="twitter:description" content="一句话。Promises are a library for asynchronous programming.然后再看一个例子：Promise Example
+从这个简单的例子中，可以直观的感受到Promise的威力。让异步请求一步一步的进行~
+类似于jQuery里的Deferred对象，Promises提供了异步编程的解决方案，一个简单的例子：function timeout(duration">
 <meta name="twitter:image" content="http://yvshuo.github.io/blog/assets/images/2017/03/26/1.png">
   
     <link rel="alternate" href="/atom.xml" title="config.title" type="application/atom+xml">
@@ -143,7 +148,7 @@
 <h3 id="Promise-race"><a href="#Promise-race" class="headerlink" title="Promise.race()"></a>Promise.race()</h3><p>和<code>Promise.all()</code>相对，这个方法类似于<code>Array.some()</code>方法，有一个参数的状态改变后，<code>Promise.race()</code>对象的状态就会改变。<br><code>race</code>这个方法名也很有意思，所有参数比赛，然后最先改变状态的那个参数返回的<code>Promise</code>对象就会作为<code>Promise.race()</code>的返回值。<br>这个方法比较有用的一个使用方法就是设定异步请求的最大延时。<br><figure class="highlight javascript"><table><tr><td class="code"><pre><div class="line"><span class="keyword">const</span> p = <span class="built_in">Promise</span>.race([</div><div class="line">  fetch(<span class="string">'/resource-that-may-take-a-while'</span>),</div><div class="line">  <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</div><div class="line">    setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> reject(<span class="keyword">new</span> <span class="built_in">Error</span>(<span class="string">'request timeout'</span>)), <span class="number">5000</span>)</div><div class="line">  &#125;)</div><div class="line">]);</div><div class="line">p.then(<span class="function"><span class="params">response</span> =&gt;</span> <span class="built_in">console</span>.log(response));</div><div class="line">p.catch(<span class="function"><span class="params">error</span> =&gt;</span> <span class="built_in">console</span>.log(error));</div></pre></td></tr></table></figure></p>
 <p>上面的函数就为<code>fetch</code>方法设定了5秒的延时。</p>
 <h3 id="参考文章"><a href="#参考文章" class="headerlink" title="参考文章"></a>参考文章</h3><blockquote>
-<p>1、<a href="https://babeljs.io/learn-es2015/" target="_blank" rel="noopener">Learn ES2015</a><br>2、<a href="http://es6.ruanyifeng.com/#docs/promise" target="_blank" rel="noopener">Promise对象</a><br>3、<a href="https://developers.google.com/web/fundamentals/getting-started/primers/promises" target="_blank" rel="noopener">JavaScript Promises: an Introduction</a></p>
+<p>1、<a href="https://babeljs.io/learn-es2015/" target="_blank" rel="external">Learn ES2015</a><br>2、<a href="http://es6.ruanyifeng.com/#docs/promise" target="_blank" rel="external">Promise对象</a><br>3、<a href="https://developers.google.com/web/fundamentals/getting-started/primers/promises" target="_blank" rel="external">JavaScript Promises: an Introduction</a></p>
 </blockquote>
 
         <div class="guide-links">
