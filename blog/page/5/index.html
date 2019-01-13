@@ -14,6 +14,7 @@
 <meta property="og:url" content="http://yvshuo.github.io/page/5/index.html">
 <meta property="og:site_name" content="香辣猪蹄儿">
 <meta property="og:description" content="余硕的个人博客。认认真真写代码，开开心心吃猪蹄。">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="香辣猪蹄儿">
 <meta name="twitter:description" content="余硕的个人博客。认认真真写代码，开开心心吃猪蹄。">
@@ -133,7 +134,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2017/02/09/2017-02-09-javarule-1/" data-id="cjbuyxsvq000etvs60ses9pgw" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/02/09/2017-02-09-javarule-1/" data-id="cjqumlujj000dols6ixi4nyos" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -189,7 +190,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2017/01/16/2017-01-16-refactor/" data-id="cjbuyxsvp000ctvs67h5w1yaj" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/01/16/2017-01-16-refactor/" data-id="cjqumlujm000gols6f479zd89" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -223,7 +224,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>单位用的svn，一个多月不用git，发现有些命令就忘了- -所以这是一篇git操作备忘。主要内容转载自<a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html">常用 Git 命令清单</a>。</p>
+        <p>单位用的svn，一个多月不用git，发现有些命令就忘了- -所以这是一篇git操作备忘。主要内容转载自<a href="http://www.ruanyifeng.com/blog/2015/12/git-cheat-sheet.html" target="_blank" rel="noopener">常用 Git 命令清单</a>。</p>
 <h2 id="1-git基本示意"><a href="#1-git基本示意" class="headerlink" title="1. git基本示意"></a>1. git基本示意</h2><p><img src="/blog/assets/images/2017/01/11/1.png" alt="git示意图"></p>
 <blockquote>
 <ul>
@@ -242,7 +243,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2017/01/11/2017-01-11-review-git/" data-id="cjbuyxsvm000atvs6pea0v93a" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/01/11/2017-01-11-review-git/" data-id="cjqumluje0006ols6njmvnt4f" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -278,11 +279,11 @@
       
         <p>p.s. 这篇文章是一个月之前写的，因为最近忙于其他项目，所以一直没来维护这个博客~微信小程序貌似也有了新的更新。先把这篇贴上，后续填坑23333</p>
 <p>利用周末时间基于cnode社区的api撸了一发微信小程序，记录一下。</p>
-<h3 id="1、开发环境"><a href="#1、开发环境" class="headerlink" title="1、开发环境"></a>1、开发环境</h3><p>微信mac版开发工具0.11.112301<br>下载地址：<a href="https://servicewechat.com/wxa-dev-logic/download_redirect?type=darwin&amp;from=mpwiki&amp;t=20161122">使劲戳我</a><br>其他版本下载地址：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=20161122">继续戳我</a></p>
+<h3 id="1、开发环境"><a href="#1、开发环境" class="headerlink" title="1、开发环境"></a>1、开发环境</h3><p>微信mac版开发工具0.11.112301<br>下载地址：<a href="https://servicewechat.com/wxa-dev-logic/download_redirect?type=darwin&amp;from=mpwiki&amp;t=20161122" target="_blank" rel="noopener">使劲戳我</a><br>其他版本下载地址：<a href="https://mp.weixin.qq.com/debug/wxadoc/dev/devtools/download.html?t=20161122" target="_blank" rel="noopener">继续戳我</a></p>
 <h3 id="2、项目创建"><a href="#2、项目创建" class="headerlink" title="2、项目创建"></a>2、项目创建</h3><p>扫码登录后按下图输入创建项目<br><img src="/blog/assets/images/2016/11/27/1.png" alt=""></p>
 <p>创建项目后界面的样子和默认的文件目录结构<br><img src="/blog/assets/images/2016/11/27/2.png" alt=""></p>
 <p>分析下目录结构<br><img src="/blog/assets/images/2016/11/27/3.png" alt=""><br><code>pages</code>目录下有两个页面，<code>index</code>和<code>logs</code>。<code>.js</code>文件是负责处理该页面的逻辑，<code>.wxml</code>负责视图以及绑定一些交互事件，<code>.wxss</code>来写css样式，<code>.json</code>用来配置一些配置参数或者定义一些静态常量。<br><code>utils</code>目录下是一个工具类。根目录下的<code>app.js</code>是小程序的入口文件，用来注册app。<code>app.json</code>可以用来配置全局常量，<code>app.wxss</code>用来配置项目的公用样式。</p>
-<p>初始程序提供了一个从<code>index</code>页面到<code>logs</code>页面的跳转<br><img src="/blog/assets/images/2016/11/27/4.png" alt=""><br><code>index.wxml</code>中绑定的<code>bindViewTab</code>函数就是前面在<code>index.js</code>中标出的那个函数。函数中调用微信小程序的api定义了一个跳转<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">bindViewTap: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    wx.navigateTo(&#123;</div><div class="line">      <span class="attr">url</span>: <span class="string">'../logs/logs'</span></div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
+<p>初始程序提供了一个从<code>index</code>页面到<code>logs</code>页面的跳转<br><img src="/blog/assets/images/2016/11/27/4.png" alt=""><br><code>index.wxml</code>中绑定的<code>bindViewTab</code>函数就是前面在<code>index.js</code>中标出的那个函数。函数中调用微信小程序的api定义了一个跳转<br><figure class="highlight js"><table><tr><td class="code"><pre><div class="line">bindViewTap: <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</div><div class="line">    wx.navigateTo(&#123;</div><div class="line">      url: <span class="string">'../logs/logs'</span></div><div class="line">    &#125;)</div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
         
           <p class="article-more-link">
             <a href="/blog/2016/11/27/2016-11-27-wxapp/#more">More&gt;&gt;</a>
@@ -291,7 +292,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2016/11/27/2016-11-27-wxapp/" data-id="cjbuyxsvi0009tvs6ptkmddlh" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2016/11/27/2016-11-27-wxapp/" data-id="cjqumlujh0009ols6isip095e" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -325,7 +326,7 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>在学习ECMAScript6的过程中发现了一个代码风格和语法的检查工具，<a href="http://eslint.org/docs/user-guide/command-line-interface">ESLint</a>，记录一下。</p>
+        <p>在学习ECMAScript6的过程中发现了一个代码风格和语法的检查工具，<a href="http://eslint.org/docs/user-guide/command-line-interface" target="_blank" rel="noopener">ESLint</a>，记录一下。</p>
 <h3 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h3><p>这里记录的安装方法是通过npm的安装，所以前提条件是已经安装了npm。如果没有安装的话，建议直接安装nvm，可以方便的切换node的版本。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">npm i -g eslint</div></pre></td></tr></table></figure></p>
 <p>通过以上命令即可完成eslint CLI的安装。</p>
         
@@ -336,7 +337,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2016/11/15/2016-11-15-eslint/" data-id="cjbuyxsvf0006tvs6ah3404qq" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2016/11/15/2016-11-15-eslint/" data-id="cjqumlujd0005ols66nf5lka3" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -380,7 +381,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2016/10/26/2016-10-26-webpacknote/" data-id="cjbuyxsvb0005tvs61ya0hw7j" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2016/10/26/2016-10-26-webpacknote/" data-id="cjqumluji000aols6m5mx1qey" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -400,7 +401,7 @@
   
 <div id="footer">
 	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260544287'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260544287' type='text/javascript'%3E%3C/script%3E"));</script>
-	&copy;2018 yvshuo
+	&copy;2019 yvshuo
 	<br>
 	Powered by <a href="https://github.com/yvshuo/hexo-theme-yvue" target="_blank">Yvue</a>
 </div>

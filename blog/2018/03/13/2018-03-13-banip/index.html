@@ -8,20 +8,19 @@
     linux服务器初级防护|香辣猪蹄儿
   </title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="最近研究了一下自己的服务器 log ，然后发现了大量的22端口暴力连接的日志，于是我就封了22端口。今天又查了一下 nginx 的 access.log,竟然又发现了大量的嗅探攻击。于是决定好好的把服务器弄一下。都是一些比较初级的防护，这里记录一下。我的操作系统是CentOS 7.2。
-1. 关闭并只打开指定端口服务器的端口一定要处于可控的状态，所以我选择只对外暴露指定端口。因为是远程ssh到云服">
+  <meta name="description" content="最近研究了一下自己的服务器 log ，然后发现了大量的22端口暴力连接的日志，于是我就封了22端口。今天又查了一下 nginx 的 access.log,竟然又发现了大量的嗅探攻击。于是决定好好的把服务器弄一下。都是一些比较初级的防护，这里记录一下。我的操作系统是CentOS 7.2。 1. 关闭并只打开指定端口服务器的端口一定要处于可控的状态，所以我选择只对外暴露指定端口。因为是远程ssh到云服">
+<meta name="keywords" content="linux,运维">
 <meta property="og:type" content="article">
 <meta property="og:title" content="linux服务器初级防护">
 <meta property="og:url" content="http://yvshuo.github.io/2018/03/13/2018-03-13-banip/index.html">
 <meta property="og:site_name" content="香辣猪蹄儿">
-<meta property="og:description" content="最近研究了一下自己的服务器 log ，然后发现了大量的22端口暴力连接的日志，于是我就封了22端口。今天又查了一下 nginx 的 access.log,竟然又发现了大量的嗅探攻击。于是决定好好的把服务器弄一下。都是一些比较初级的防护，这里记录一下。我的操作系统是CentOS 7.2。
-1. 关闭并只打开指定端口服务器的端口一定要处于可控的状态，所以我选择只对外暴露指定端口。因为是远程ssh到云服">
+<meta property="og:description" content="最近研究了一下自己的服务器 log ，然后发现了大量的22端口暴力连接的日志，于是我就封了22端口。今天又查了一下 nginx 的 access.log,竟然又发现了大量的嗅探攻击。于是决定好好的把服务器弄一下。都是一些比较初级的防护，这里记录一下。我的操作系统是CentOS 7.2。 1. 关闭并只打开指定端口服务器的端口一定要处于可控的状态，所以我选择只对外暴露指定端口。因为是远程ssh到云服">
+<meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http://yvshuo.github.io/blog/assets/images/2018/03/13/1.jpeg">
-<meta property="og:updated_time" content="2018-08-29T03:23:49.000Z">
+<meta property="og:updated_time" content="2019-01-13T07:44:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="linux服务器初级防护">
-<meta name="twitter:description" content="最近研究了一下自己的服务器 log ，然后发现了大量的22端口暴力连接的日志，于是我就封了22端口。今天又查了一下 nginx 的 access.log,竟然又发现了大量的嗅探攻击。于是决定好好的把服务器弄一下。都是一些比较初级的防护，这里记录一下。我的操作系统是CentOS 7.2。
-1. 关闭并只打开指定端口服务器的端口一定要处于可控的状态，所以我选择只对外暴露指定端口。因为是远程ssh到云服">
+<meta name="twitter:description" content="最近研究了一下自己的服务器 log ，然后发现了大量的22端口暴力连接的日志，于是我就封了22端口。今天又查了一下 nginx 的 access.log,竟然又发现了大量的嗅探攻击。于是决定好好的把服务器弄一下。都是一些比较初级的防护，这里记录一下。我的操作系统是CentOS 7.2。 1. 关闭并只打开指定端口服务器的端口一定要处于可控的状态，所以我选择只对外暴露指定端口。因为是远程ssh到云服">
 <meta name="twitter:image" content="http://yvshuo.github.io/blog/assets/images/2018/03/13/1.jpeg">
   
     <link rel="alternate" href="/atom.xml" title="config.title" type="application/atom+xml">
@@ -331,10 +330,10 @@
 <p>添加被禁的ip<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">ipset add banip 101.226.35.225</div></pre></td></tr></table></figure></p>
 <p>这时候就会看到<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">Name: banip</div><div class="line">Type: <span class="built_in">hash</span>:net</div><div class="line">Revision: 3</div><div class="line">Header: family inet hashsize 1024 maxelem 65536</div><div class="line">Size <span class="keyword">in</span> memory: 16816</div><div class="line">References: 0</div><div class="line">Members:</div><div class="line">101.226.35.225</div></pre></td></tr></table></figure></p>
 <p>说明已经添加成功了。<br>这时候我们再把这个规则添加到iptables上就可以了<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">iptables -I INPUT -m <span class="built_in">set</span> --match-set banip src -j DROP</div></pre></td></tr></table></figure></p>
-<p>持久化<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">ipset save banip <span class="_">-f</span> banip.txt</div></pre></td></tr></table></figure></p>
-<p>以后需要还原的话就是<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">ipset restore <span class="_">-f</span> banip.txt</div></pre></td></tr></table></figure></p>
+<p>持久化<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">ipset save banip -f banip.txt</div></pre></td></tr></table></figure></p>
+<p>以后需要还原的话就是<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">ipset restore -f banip.txt</div></pre></td></tr></table></figure></p>
 <p>改完iptables后别忘了保存。</p>
-<h3 id="3-2-批量封掉危险的ip"><a href="#3-2-批量封掉危险的ip" class="headerlink" title="3.2 批量封掉危险的ip"></a>3.2 批量封掉危险的ip</h3><p>这个需要感谢社区，这些危险的ip是基于<a href="https://www.iblocklist.com/lists.php" target="_blank" rel="external">iblocklist.com</a>维护的列表。<br>为了获取这里的列表，我们需要安装一个小工具。<br>首先是安装python-pip。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">yum install python-pip</div></pre></td></tr></table></figure></p>
+<h3 id="3-2-批量封掉危险的ip"><a href="#3-2-批量封掉危险的ip" class="headerlink" title="3.2 批量封掉危险的ip"></a>3.2 批量封掉危险的ip</h3><p>这个需要感谢社区，这些危险的ip是基于<a href="https://www.iblocklist.com/lists.php" target="_blank" rel="noopener">iblocklist.com</a>维护的列表。<br>为了获取这里的列表，我们需要安装一个小工具。<br>首先是安装python-pip。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">yum install python-pip</div></pre></td></tr></table></figure></p>
 <p>这个默认源非常慢，类似于npm。我们需要给设置一个国内镜像。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line"><span class="comment">#打开下面的路径下的指定文件，没有的话自己创建一个</span></div><div class="line">vim ~/.pip/pip.conf</div></pre></td></tr></table></figure></p>
 <p>赋值下面的配置<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">[global]</div><div class="line">trusted-host =  mirrors.aliyun.com</div><div class="line">index-url = http://mirrors.aliyun.com/pypi/simple</div></pre></td></tr></table></figure></p>
 <p>保存并退出。<br>然后安装<code>iblocklist2ipset</code>。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">pip install iblocklist2ipset</div></pre></td></tr></table></figure></p>
@@ -343,7 +342,7 @@
 <p>保存退出。我们的服务器加固工程就此初步完成了~以后需要开放的端口再单独打开就好了。</p>
 <h2 id="4-防止ip访问80端口"><a href="#4-防止ip访问80端口" class="headerlink" title="4. 防止ip访问80端口"></a>4. 防止ip访问80端口</h2><p>上面说的嗅探通常都是批量扫ip，所以我们需要禁止ip访问我们的服务器。<br>很简单，在nginx配置中添加下面这个server配置。<br><figure class="highlight bash"><table><tr><td class="code"><pre><div class="line">server &#123;</div><div class="line">    listen       80;</div><div class="line">    listen       [::]:80;</div><div class="line">    server_name  XXXXX.XX.XX; <span class="comment"># 这写正常的server域名</span></div><div class="line"></div><div class="line">    <span class="comment"># 这写你正常的server配置</span></div><div class="line">&#125;</div><div class="line">server &#123;</div><div class="line">    listen       80 default_server;</div><div class="line">    listen       [::]:80 default_server;</div><div class="line">    server_name  _;</div><div class="line"></div><div class="line">    <span class="built_in">return</span> 403; <span class="comment"># 除了指定域名外，一律返回403</span></div><div class="line">&#125;</div></pre></td></tr></table></figure></p>
 <p>OK，到这里应该就能屏蔽掉大部分打散弹的低级攻击者了~</p>
-<h2 id="4-参考资料"><a href="#4-参考资料" class="headerlink" title="4. 参考资料"></a>4. 参考资料</h2><p>1.<a href="https://www.cnblogs.com/kreo/p/4368811.html" target="_blank" rel="external">CentOS7安装iptables防火墙</a><br>2.<a href="http://www.04007.cn/article/295.html" target="_blank" rel="external">禁止直接通过IP地址访问网站的Nginx配置</a><br>3.<a href="https://www.frozentux.net/iptables-tutorial/cn/iptables-tutorial-cn-1.1.19.html" target="_blank" rel="external">Iptables 指南 1.1.19</a><br>4.<a href="https://linux.cn/article-4904-1.html" target="_blank" rel="external">如何在 Linux 下大量屏蔽恶意 IP 地址</a></p>
+<h2 id="4-参考资料"><a href="#4-参考资料" class="headerlink" title="4. 参考资料"></a>4. 参考资料</h2><p>1.<a href="https://www.cnblogs.com/kreo/p/4368811.html" target="_blank" rel="noopener">CentOS7安装iptables防火墙</a><br>2.<a href="http://www.04007.cn/article/295.html" target="_blank" rel="noopener">禁止直接通过IP地址访问网站的Nginx配置</a><br>3.<a href="https://www.frozentux.net/iptables-tutorial/cn/iptables-tutorial-cn-1.1.19.html" target="_blank" rel="noopener">Iptables 指南 1.1.19</a><br>4.<a href="https://linux.cn/article-4904-1.html" target="_blank" rel="noopener">如何在 Linux 下大量屏蔽恶意 IP 地址</a></p>
 
         <div class="guide-links">
             

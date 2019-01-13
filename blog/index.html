@@ -14,6 +14,7 @@
 <meta property="og:url" content="http://yvshuo.github.io/index.html">
 <meta property="og:site_name" content="香辣猪蹄儿">
 <meta property="og:description" content="余硕的个人博客。认认真真写代码，开开心心吃猪蹄。">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="香辣猪蹄儿">
 <meta name="twitter:description" content="余硕的个人博客。认认真真写代码，开开心心吃猪蹄。">
@@ -114,8 +115,8 @@
 
     <div class="article-entry" itemprop="articleBody">
       
-        <p>最近在试水阿里的 node 服务端框架 <code>egg</code>，所以摸了一下 node 服务端相关的技术。等项目做完后会好好总结一下 egg 相关的使用经验。这篇文章是为了记录 node 端的 ORM 库：<a href="http://docs.sequelizejs.com/"><code>Sequelize</code></a>。如果是速查的话，请直接翻到文章最后，从官方文档中整理了<a href="#4-sequelizejs常用基本用法速查表">常用功能速查表</a>。</p>
-<h2 id="1-Sequelize-的用途"><a href="#1-Sequelize-的用途" class="headerlink" title="1. Sequelize 的用途"></a>1. Sequelize 的用途</h2><p>之所以要使用<code>Sequelize</code>的用途,是因为我用的是 mysql。而在 node 端要使用 mysql 的话，最常用的库就是<a href="https://www.npmjs.com/package/mysql">mysql</a>。这个库提供了基本的操作 mysql 的数据库的能力，类似于 java 的 JDBC。这时候聪明的你就会想到，在 java 里，大多数情况下，我们并不会手撸 mysql，而是使用一些进一步封装过得如 Hibernate、mybatis 这样的专门来撸数据持久层代码的库。这种封装我们称之为 ORM（Object Relational Mapping）。简单的说就是把关系数据库的表映射到对象上~有了这种 ORM 的库，我们就不需要手撸 sql 了，用操作对象的方式就可以撸数据库了。<code>Sequelize</code>就是 node 服务端最著名的 ORM 库。</p>
+        <p>最近在试水阿里的 node 服务端框架 <code>egg</code>，所以摸了一下 node 服务端相关的技术。等项目做完后会好好总结一下 egg 相关的使用经验。这篇文章是为了记录 node 端的 ORM 库：<a href="http://docs.sequelizejs.com/" target="_blank" rel="noopener"><code>Sequelize</code></a>。如果是速查的话，请直接翻到文章最后，从官方文档中整理了<a href="#4-sequelizejs常用基本用法速查表">常用功能速查表</a>。</p>
+<h2 id="1-Sequelize-的用途"><a href="#1-Sequelize-的用途" class="headerlink" title="1. Sequelize 的用途"></a>1. Sequelize 的用途</h2><p>之所以要使用<code>Sequelize</code>的用途,是因为我用的是 mysql。而在 node 端要使用 mysql 的话，最常用的库就是<a href="https://www.npmjs.com/package/mysql" target="_blank" rel="noopener">mysql</a>。这个库提供了基本的操作 mysql 的数据库的能力，类似于 java 的 JDBC。这时候聪明的你就会想到，在 java 里，大多数情况下，我们并不会手撸 mysql，而是使用一些进一步封装过得如 Hibernate、mybatis 这样的专门来撸数据持久层代码的库。这种封装我们称之为 ORM（Object Relational Mapping）。简单的说就是把关系数据库的表映射到对象上~有了这种 ORM 的库，我们就不需要手撸 sql 了，用操作对象的方式就可以撸数据库了。<code>Sequelize</code>就是 node 服务端最著名的 ORM 库。</p>
         
           <p class="article-more-link">
             <a href="/blog/2018/03/15/2018-03-15-Sequelize/#more">More&gt;&gt;</a>
@@ -124,7 +125,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2018/03/15/2018-03-15-Sequelize/" data-id="cjlekt8630008pis62o89xo9z" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2018/03/15/2018-03-15-Sequelize/" data-id="cjqumlukb001qols61bg1i3lu" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -169,7 +170,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2018/03/13/2018-03-13-banip/" data-id="cjlekt85w0001pis63wgnilfh" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2018/03/13/2018-03-13-banip/" data-id="cjqumluka001ools6t9us2rmb" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -212,7 +213,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2018/01/26/2018-01-26-vba/" data-id="cjlekt85s0000pis64q2thshr" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2018/01/26/2018-01-26-vba/" data-id="cjqumluk9001mols6xt054z8t" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -255,7 +256,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2017/10/27/2017-10-27-refactor-review/" data-id="cjbuyxswv001jtvs6x6k11yr8" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/10/27/2017-10-27-refactor-review/" data-id="cjqumluk8001kols6ggm5bad7" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -298,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2017/06/10/2017-06-10-vod/" data-id="cjbuyxsws001htvs68y5mlyu5" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/06/10/2017-06-10-vod/" data-id="cjqumluk7001iols646jwqybw" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -344,7 +345,7 @@
       
     </div>
     <footer class="article-footer">
-      <!--<a data-url="http://yvshuo.github.io/blog/2017/05/31/2017-05-31-sixone-md/" data-id="cjbuyxswq001ftvs6ds89ykn0" class="article-share-link">Share</a>-->
+      <!--<a data-url="http://yvshuo.github.io/2017/05/31/2017-05-31-sixone-md/" data-id="cjqumluk2001bols672c4gp71" class="article-share-link">Share</a>-->
       <!---->
     </footer>
   </div>
@@ -364,7 +365,7 @@
   
 <div id="footer">
 	<script type="text/javascript">var cnzz_protocol = (("https:" == document.location.protocol) ? " https://" : " http://");document.write(unescape("%3Cspan id='cnzz_stat_icon_1260544287'%3E%3C/span%3E%3Cscript src='" + cnzz_protocol + "s4.cnzz.com/z_stat.php%3Fid%3D1260544287' type='text/javascript'%3E%3C/script%3E"));</script>
-	&copy;2018 yvshuo
+	&copy;2019 yvshuo
 	<br>
 	Powered by <a href="https://github.com/yvshuo/hexo-theme-yvue" target="_blank">Yvue</a>
 </div>
